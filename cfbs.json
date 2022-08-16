@@ -28,6 +28,31 @@
         "copy policy/main.cf services/lynis/main.cf",
         "json cfbs/def.json def.json"
       ]
+    },
+    {
+      "name": "autorun",
+      "description": "Enable autorun functionality",
+      "tags": ["supported", "management"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/olehermanse",
+      "version": "1.0.1",
+      "commit": "c3b7329b240cf7ad062a0a64ee8b607af2cb912a",
+      "subdirectory": "management/autorun",
+      "added_by": "compliance-report-imports",
+      "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "compliance-report-imports",
+      "version": "0.0.6",
+      "description": "Keep compliance report definitions up to date",
+      "tags": ["experimental", "cfengine-enterprise"],
+      "repo": "https://github.com/nickanderson/cfengine-security-hardening",
+      "by": "https://github.com/nickanderson",
+      "commit": "6f6996bc36c07c91bcf9da9276d434cc0426ee97",
+      "subdirectory": "./compliance-report-imports",
+      "dependencies": ["autorun"],
+      "added_by": "cfbs add",
+      "steps": ["copy ./compliance-report-imports.cf services/autorun/"]
     }
   ],
   "git": true
