@@ -1,0 +1,7 @@
+{
+  "name": "Example",
+  "type": "policy-set",
+  "description": "Play around with CFBS",
+  "build": [],
+  "git": true
+}
