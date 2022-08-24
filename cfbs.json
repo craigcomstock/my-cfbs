@@ -13,19 +13,6 @@
       "commit": "a87b7fea6f7a88808b327730a4ba784a3dc664eb",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
-    },
-    {
-      "name": "demo",
-      "version": "1.0.0",
-      "description": "Enables convenient and insecure settings for demoing CFEngine",
-      "tags": ["management", "experimental"],
-      "repo": "https://github.com/cfengine/modules",
-      "by": "https://github.com/olehermanse",
-      "commit": "05bf5e5b1c014018a7b93a524e035c1a21bcffa4",
-      "subdirectory": "management/demo",
-      "dependencies": ["autorun", "every-minute"],
-      "added_by": "cfbs add",
-      "steps": ["json def.json def.json"]
     }
   ],
   "git": true
