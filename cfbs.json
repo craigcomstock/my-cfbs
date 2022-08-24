@@ -15,19 +15,6 @@
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
     {
-      "name": "compliance-report-imports",
-      "version": "0.0.6",
-      "description": "Keep compliance report definitions up to date",
-      "tags": ["experimental", "cfengine-enterprise"],
-      "repo": "https://github.com/nickanderson/cfengine-security-hardening",
-      "by": "https://github.com/nickanderson",
-      "commit": "6f6996bc36c07c91bcf9da9276d434cc0426ee97",
-      "subdirectory": "./compliance-report-imports",
-      "dependencies": ["autorun"],
-      "added_by": "cfbs add",
-      "steps": ["copy ./compliance-report-imports.cf services/autorun/"]
-    },
-    {
       "name": "compliance-report-os-is-vendor-supported",
       "version": "0.0.2",
       "description": "Compliance report definition for checking if the current OS version is supported by the vendor",
