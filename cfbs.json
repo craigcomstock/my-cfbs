@@ -15,21 +15,6 @@
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
     {
-      "name": "lynis",
-      "version": "0.2.1",
-      "description": "CFEngine policy to automate the installation, running, and reporting of CISOfy's lynis system audits",
-      "tags": ["security", "compliance", "experimental"],
-      "repo": "https://github.com/nickanderson/cfengine-lynis",
-      "by": "https://github.com/nickanderson",
-      "commit": "f1bf2c0c9f6ccca54085f05e914351aad8e52852",
-      "subdirectory": "",
-      "added_by": "cfbs add",
-      "steps": [
-        "copy policy/main.cf services/lynis/main.cf",
-        "json cfbs/def.json def.json"
-      ]
-    },
-    {
       "name": "autorun",
       "description": "Enable autorun functionality",
       "tags": ["supported", "management"],
