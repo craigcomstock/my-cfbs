@@ -7,6 +7,9 @@
 
 bundle agent fedora_macbookpro_clamshell_mode
 {
+  meta:
+    "tags" slist => { "autorun" };
+
   # sudo dmidecode --string system-family
   # MacBook Pro
   classes:
