@@ -26,8 +26,8 @@ bundle agent fedora_macbookpro_clamshell_mode
 # https://libvirt.org/auth.html
 # To allow non-root users greater access, the libvirtd.conf file can be edited to change the permissions via the unix_sock_rw_perms, config parameter and to set a user group via the unix_sock_group parameter. For example, setting the former to mode 0770 and the latter wheel would let any user in the wheel group connect to the libvirt daemon.
 # so uncomment unix_sock_group = "libvirt" in /etc/libvirt/libvirtd.conf
-# add primary_user if present in host specific data to /etc/group libvirt group
-bundle agent libvirt_access_for_primary_user
+# add any users in host specific data "libvirt_users" to /etc/group libvirt group
+bundle agent libvirt_group_access
 {
   meta:
     "tags" slist => { "autorun" };
@@ -36,9 +36,9 @@ bundle agent libvirt_access_for_primary_user
     "libvirtd_conf" string => "/etc/libvirt/libvirtd.conf";
 
   classes:
-    "have_primary_user" expression => isvariable("data:variables.primary_user");
+    "have_libvirt_users" expression => isvariable("data:variables.libvirt_users");
 
   reports:
-    have_primary_user::
-      "CMDB has set a primary_user variable so configure that user to have easier access to libvirt.";
+    have_libvirt_users::
+      "CMDB has set a libvirt_users variable so configure those users to have easier access to libvirt.";
 }
