@@ -30,7 +30,7 @@ bundle agent fedora_macbookpro_clamshell_mode
 # watchout, todo, minimum version 3.20
 body members libvirt_members
 {
-  include => @(data:variables.libvirt_users);
+  include => { @(data:variables.libvirt_users) };
 }
 
 bundle agent libvirt_group_access
@@ -44,7 +44,7 @@ bundle agent libvirt_group_access
   classes:
     "have_libvirt_users" expression => isvariable("data:variables.libvirt_users");
 
-  file:
+  files:
     have_libvirt_users::
       "$(libvirtd_conf)" edit_line => lines_present( "unix_sock_group = 'libvirt'" );
 
