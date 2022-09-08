@@ -1,25 +1,3 @@
-# https://www.reddit.com/r/Fedora/comments/vt9o5t/f36_server_mac_clam_shell/
-# https://workingninja.com/linux-macbook-clamshell-mode
-# I see three lines commented out in fedora 36
-#HandleLidSwitch=suspend                                                                         
-#HandleLidSwitchExternalPower=suspend           
-#HandleLidSwitchDocked=ignore  
-
-bundle agent fedora_macbookpro_clamshell_mode
-{
-  meta:
-      "tags" slist => { "autorun" };
-
-  # sudo dmidecode --string system-family
-  # MacBook Pro
-  classes:
-        "macbookpro" expression => returnszero( "dmidecode --string system-family | grep -q 'MacBook Pro'", "useshell" );
-
-  files:
-    fedora_36.macbookpro::
-      "/etc/systemd/logind.conf" edit_line => lines_present( "HandleLidSwitch=ignore" );
-}
-
 # as a primary user I don't want to authenticate with a dialog box
 # every time libvirt needs to do something in the "background" such as
 # bring up/down boxes with vagrant.

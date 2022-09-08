@@ -95,12 +95,12 @@
       "steps": ["json def.json def.json"]
     },
     {
-      "name": "./macbookpro.cf",
+      "name": "./clamshell-mode.cf",
       "description": "Local policy file added using cfbs command line",
       "tags": ["local"],
       "dependencies": ["autorun"],
       "added_by": "cfbs add",
-      "steps": ["copy ./macbookpro.cf services/autorun/macbookpro.cf"]
+      "steps": ["copy ./clamshell-mode.cf services/autorun/clamshell-mode.cf"]
     },
     {
       "name": "library-for-promise-types-in-python",
@@ -144,6 +144,14 @@
       "steps": [
         "copy ./all_packages_upgraded_policy.cf services/autorun/all_packages_upgraded_policy.cf"
       ]
+    },
+    {
+      "name": "./libvirt.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "dependencies": ["autorun"],
+      "added_by": "cfbs add",
+      "steps": ["copy ./libvirt.cf services/autorun/libvirt.cf"]
     }
   ],
   "git": true
