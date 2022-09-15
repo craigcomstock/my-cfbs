@@ -129,6 +129,21 @@
         "copy groups.py modules/promises/",
         "append enable.cf services/init.cf"
       ]
+    },
+    {
+      "name": "all-packages-upgraded",
+      "version": "0.0.1",
+      "description": "This module ensures that the package manager data is updated and all upgradeable packages are upgraded",
+      "tags": ["supported", "security", "compliance"],
+      "repo": "https://github.com/craigcomstock/cfengine-security-hardening",
+      "by": "https://github.com/craigcomstock",
+      "commit": "b6b7ea9c28d7ae7514bfedf4c564a3eb23bf1798",
+      "subdirectory": "all-packages-upgraded",
+      "dependencies": ["autorun"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./all_packages_upgraded_policy.cf services/autorun/all_packages_upgraded_policy.cf"
+      ]
     }
   ],
   "git": true
