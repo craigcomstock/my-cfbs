@@ -27,9 +27,10 @@ bundle agent libvirt_group_access
       "$(libvirtd_conf)" edit_line => lines_present( "unix_sock_group = 'libvirt'" );
 
   groups:
-    "libvirt"
-      policy => "present",
-      members => libvirt_members;
+    have_libvirt_users::
+      "libvirt"
+        policy => "present",
+        members => libvirt_members;
 
   reports:
     have_libvirt_users::
