@@ -27,21 +27,6 @@
       "steps": ["json def.json def.json"]
     },
     {
-      "name": "compliance-report-lynis",
-      "version": "0.0.1",
-      "description": "Compliance report with Lynis checks",
-      "tags": ["experimental", "security", "compliance"],
-      "repo": "https://github.com/nickanderson/cfengine-lynis",
-      "by": "https://github.com/nickanderson/",
-      "commit": "8286e6b10179fc621ac9583e249dbd245d9727a0",
-      "subdirectory": "./compliance-reports",
-      "dependencies": ["compliance-report-imports", "lynis"],
-      "added_by": "cfbs add",
-      "steps": [
-        "copy ./generated-compliance-report.json .no-distrib/compliance-report-definitions/lynis-compliance-report.json"
-      ]
-    },
-    {
       "name": "every-minute",
       "version": "1.0.0-1",
       "description": "Make policy fetching, evaluation, and reporting happen every minute",
