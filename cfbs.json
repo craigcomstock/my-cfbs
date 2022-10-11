@@ -152,6 +152,21 @@
       "dependencies": ["autorun"],
       "added_by": "cfbs add",
       "steps": ["copy ./libvirt.cf services/autorun/libvirt.cf"]
+    },
+    {
+      "name": "ftp-server-not-installed",
+      "version": "0.0.1",
+      "description": "This module has a policy file which makes sure the ftp server package is not installed on the system",
+      "tags": ["supported", "security", "compliance"],
+      "repo": "https://github.com/craigcomstock/cfengine-security-hardening",
+      "by": "https://github.com/craigcomstock",
+      "commit": "b6b7ea9c28d7ae7514bfedf4c564a3eb23bf1798",
+      "subdirectory": "ftp-server-not-installed",
+      "dependencies": ["autorun"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./ftp_server_policy.cf services/autorun/ftp_server_policy.cf"
+      ]
     }
   ],
   "git": true
