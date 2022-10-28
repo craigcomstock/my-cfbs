@@ -52,14 +52,6 @@
       "steps": ["json def.json def.json"]
     },
     {
-      "name": "./clamshell-mode.cf",
-      "description": "Local policy file added using cfbs command line",
-      "tags": ["local"],
-      "dependencies": ["autorun"],
-      "added_by": "cfbs add",
-      "steps": ["copy ./clamshell-mode.cf services/autorun/clamshell-mode.cf"]
-    },
-    {
       "name": "library-for-promise-types-in-python",
       "description": "Library enabling promise types implemented in python",
       "tags": ["supported", "library"],
