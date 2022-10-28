@@ -80,14 +80,6 @@
       ]
     },
     {
-      "name": "./libvirt.cf",
-      "description": "Local policy file added using cfbs command line",
-      "tags": ["local"],
-      "dependencies": ["autorun"],
-      "added_by": "cfbs add",
-      "steps": ["copy ./libvirt.cf services/autorun/libvirt.cf"]
-    },
-    {
       "name": "ftp-server-not-installed",
       "version": "0.0.1",
       "description": "This module has a policy file which makes sure the ftp server package is not installed on the system",
