@@ -1,7 +1,17 @@
 set -e
 set -x
+if ! command -v pip 2>/dev/null; then
+  echo "please install python3 and pip"
+  exit 1
+fi
+if ! command -v cfbs 2>/dev/null; then
+  pip install --upgrade cfbs
+fi
 cfbs build
 # we need cfengine, install master on this host :) needs sudo right? :)
+if ! command -v cf-remote 2>/dev/null; then
+  pip install --upgrade cf-remote
+fi
 if ! command -v cf-agent 2>/dev/null; then
   cf-remote --version master install --clients localhost --edition community
 fi
