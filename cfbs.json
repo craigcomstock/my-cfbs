@@ -13,6 +13,13 @@
       "commit": "379c69aa71ab3069b2ef1c0cca526192fa77b864",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "./open-acl.json",
+      "description": "Local augments file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["json ./open-acl.json def.json"]
     }
   ],
   "git": true
