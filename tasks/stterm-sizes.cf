@@ -11,6 +11,7 @@ bundle agent stterm_sizes
     "deps" slist => {
 "make",
 "gcc",
+"libxft-dev",
 "libfontconfig-dev",
 "libfreetype-dev",
 "libx11-dev"
