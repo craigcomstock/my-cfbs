@@ -9,11 +9,11 @@ bundle agent x11
   # my own personal x11 setup
     linux:: # no x11 on termux or windows really, openbsd needs legacy package methods style
       "${packages}"
-        ifvarclass => "${users}_x11_task",
+        ifvarclass => "${personal:personal.users}_x11_task",
         policy => "present";
 
   files:
-    "/home/${users}/.xinitrc"
+    "/home/${personal:personal.users}/.xinitrc"
       copy_from => default:local_cp("${this.promise_dirname}${const.dirsep}xinitrc.mustache"),
-      perms => default:og(${users},${users});
+      perms => default:og(${personal:personal.users},${personal:personal.users});
 }

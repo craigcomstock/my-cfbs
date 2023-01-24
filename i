@@ -19,6 +19,8 @@ cf-promises -f ./out/masterfiles/promises.cf
 cf-promises -f ./out/masterfiles/update.cf
 sudo cfbs install
 sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
+sudo cf-agent -KI
+sudo cf-agent -KIf update.cf
 # errors encountered when actuating files promise '/var/cfengine/inputs/cf_promises_validated'
 # error: Method 'cfe_internal_update_policy_cpv' failed in some repairs
 # try cf-agent as non-priv user, doesn't work well in many ways...
