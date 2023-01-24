@@ -8,7 +8,13 @@ bundle agent stterm_sizes
   classes:
     "deps_installed" and => { @(deps_class_list) };
   vars:
-    "deps" slist => { "libfontconfig-dev", "libfreetype-dev", "libx11-dev" };
+    "deps" slist => {
+"make",
+"gcc",
+"libfontconfig-dev",
+"libfreetype-dev",
+"libx11-dev"
+};
     "deps_class_list" slist => maplist(canonify("$(this)_installed"), @(deps));
     "stterm_dir" string => "/opt/stterm";
     "sizes" data => '{
@@ -20,25 +26,23 @@ bundle agent stterm_sizes
 
   git:
     linux::
-    "${stterm_dir}"
-      repository => "https://git.suckless.org/st",
-      version => "master",
-      update => "true",
-      force => "true",
-      classes => default:if_ok("git_ok");
+      "${stterm_dir}"
+        repository => "https://git.suckless.org/st",
+        version => "master",
+        update => "true",
+        force => "true",
+        classes => default:if_ok("git_ok");
 
   packages:
     linux::
-    "${deps}" policy => "present",
-      classes => default:if_ok("${deps}_installed");
-
+      "${deps}" policy => "present",
+        ifvarclass => "${personal:personal.users}_x11_task",
+        classes => default:if_ok("${deps}_installed");
 
   methods:
     deps_installed.git_ok::
-      "make_st_${stterm_keys}" usebundle => make_st("${stterm_dir}","${stterm_keys}","${sizes[${stterm_keys}]}");
-
-  reports:
-    "stterm_keys: ${stterm_keys}";
+      "make_st_${stterm_keys}" usebundle => make_st("${stterm_dir}","${stterm_keys}","${sizes[${stterm_keys}]}"),
+        ifvarclass => "${personal:personal.users}_x11_task";
 }
 
 bundle agent make_st(stterm_dir, name, font_size)
