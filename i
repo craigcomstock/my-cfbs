@@ -17,7 +17,8 @@ if ! command -v cf-agent 2>/dev/null; then
 fi
 cf-promises -f ./out/masterfiles/promises.cf
 cf-promises -f ./out/masterfiles/update.cf
-cfbs install
+sudo cfbs install
+sudo cf-agent -Kf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
 # try cf-agent as non-priv user, doesn't work well in many ways...
 #   error: cf-promises needs to be installed in /home/craig/.cfagent/bin for pre-validation of full configuration
 #   error: Failsafe condition triggered. Interactive session detected, skipping failsafe.cf execution.
