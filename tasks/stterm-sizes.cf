@@ -55,6 +55,7 @@ bundle agent make_st(stterm_dir, name, font_size)
       "cp ${stterm_dir}/st /usr/local/bin/${name}"
     );
   classes:
+# instead of this class, I should copy st to ${name} in the checkout dir and compare /usr/local/bin/${name} with dir/${name} in case font_size changes for a name
     "${name}_exists" expression => fileexists("/usr/local/bin/${name}");
 
   commands:
