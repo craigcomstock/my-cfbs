@@ -52,7 +52,8 @@ bundle agent make_st(stterm_dir, name, font_size)
     "build_commands" string => concat(
       "sed -i 's/pixelsize=[0-9]*/pixelsize=${font_size}/' ${stterm_dir}/config.def.h && ",
       "make -C ${stterm_dir} && ",
-      "cp ${stterm_dir}/st /usr/local/bin/${name}"
+      "cp ${stterm_dir}/st /usr/local/bin/${name} &&",
+      "chmod 755 /usr/local/bin/${name}"
     );
   classes:
 # instead of this class, I should copy st to ${name} in the checkout dir and compare /usr/local/bin/${name} with dir/${name} in case font_size changes for a name
@@ -63,6 +64,7 @@ bundle agent make_st(stterm_dir, name, font_size)
      ifvarclass => not("${name}_exists"),
      contain => default:in_shell;
 
+# TODO, perms aren't being enforced on a run when the build happens, depends_on/handle or add to commands! :O
   files:
     "/usr/local/bin/${name}"
       perms => default:m("755");
