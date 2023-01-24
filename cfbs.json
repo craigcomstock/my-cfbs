@@ -49,6 +49,34 @@
         "policy_files services/cfbs/tasks/",
         "bundles personal:x11"
       ]
+    },
+    {
+      "name": "library-for-promise-types-in-python",
+      "description": "Library enabling promise types implemented in python.",
+      "tags": ["supported", "library"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/cfengine",
+      "version": "0.1.1",
+      "commit": "c3b7329b240cf7ad062a0a64ee8b607af2cb912a",
+      "subdirectory": "libraries/python",
+      "added_by": "promise-type-git",
+      "steps": ["copy cfengine.py modules/promises/"]
+    },
+    {
+      "name": "promise-type-git",
+      "description": "Promise type to manage git repos.",
+      "tags": ["supported", "promise-type"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/tranchitella",
+      "version": "0.1.1",
+      "commit": "c3b7329b240cf7ad062a0a64ee8b607af2cb912a",
+      "subdirectory": "promise-types/git",
+      "dependencies": ["library-for-promise-types-in-python"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy git.py modules/promises/",
+        "append enable.cf services/init.cf"
+      ]
     }
   ],
   "git": true
