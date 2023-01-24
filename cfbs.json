@@ -47,7 +47,7 @@
       "steps": [
         "copy ./tasks/x11.cf services/cfbs/tasks/x11.cf",
         "policy_files services/cfbs/tasks/x11.cf",
-        "bundles x11"
+        "bundles personal:x11"
       ]
     }
   ],
