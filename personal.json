@@ -1,0 +1,7 @@
+{
+  "variables": {
+    "personal:personal.users": {
+      "value": [ "craig" ]
+    }
+  }
+}
