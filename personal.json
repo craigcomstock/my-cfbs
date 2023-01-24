@@ -10,6 +10,7 @@
   "vars": {
     "personal:personal.base_packages": [
 "tmux",
+"sudo",
 "mutt",
 "pass",
 "ed",
