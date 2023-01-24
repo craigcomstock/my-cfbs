@@ -20,6 +20,17 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["json ./open-acl.json def.json"]
+    },
+    {
+      "name": "./personal.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./personal.cf services/cfbs/personal.cf",
+        "policy_files services/cfbs/personal.cf",
+        "bundles personal"
+      ]
     }
   ],
   "git": true
