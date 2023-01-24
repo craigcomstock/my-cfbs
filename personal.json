@@ -1,7 +1,11 @@
 {
   "variables": {
     "personal:personal.users": {
-      "value": [ "craig" ]
+      "value": [
+"craig",
+"guest",
+"user"
+      ]
     }
   }
 }

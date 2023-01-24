@@ -19,6 +19,8 @@ cf-promises -f ./out/masterfiles/promises.cf
 cf-promises -f ./out/masterfiles/update.cf
 sudo cfbs install
 sudo cf-agent -Kf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
+# errors encountered when actuating files promise '/var/cfengine/inputs/cf_promises_validated'
+# error: Method 'cfe_internal_update_policy_cpv' failed in some repairs
 # try cf-agent as non-priv user, doesn't work well in many ways...
 #   error: cf-promises needs to be installed in /home/craig/.cfagent/bin for pre-validation of full configuration
 #   error: Failsafe condition triggered. Interactive session detected, skipping failsafe.cf execution.
@@ -34,7 +36,7 @@ sudo cf-agent -Kf update.cf # copy from masterfiles installed by cfbs to /var/cf
 #    error: Method 'cfe_internal_enterprise_main' failed in some repairs
 # so instead, run as root :(
 # sudo: cfbs: command not found
-sudo cfbs install
+#sudo cfbs install
 # Successfully installed cfbs-3.2.8
 # WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
 # Installed to /var/cfengine/masterfiles
@@ -70,10 +72,13 @@ fi
 # NOTE: switched to community package :)
 
 # SUCCESS! CLEAN RUN!
-sudo cf-agent | tee agent.log
-if [ $(cat agent.log | wc -l) != "0" ]; then
-  echo "agent runs should have no output after bootstrapping!"
-  exit 1
-else
-  echo "Congratulations! Everything is good! Promises kept!"
-fi
+sudo cf-agent -KI | tee agent.log
+#if [ $(cat agent.log | wc -l) != "0" ]; then
+#  echo "agent runs should have no output after bootstrapping!"
+#  exit 1
+#else
+#  echo "Congratulations! Everything is good! Promises kept!"
+#fi
+grep guest /etc/passwd # should show up
+ls -l /home/guest # should be there!
+echo "SUCCESS!"

@@ -5,7 +5,35 @@ body file control
 
 bundle agent personal
 {
+  vars:
+    "skel" string => "/etc/skel";
+    "ignore_dirs" slist => { "\.local", "\.cache" };
   users:
-"${personal:personal.users}"
-        policy => "present";
+      "${users}"
+policy => "present",
+home_dir => "/home/${users}",
+home_bundle => home_skel(${users}, ${skel});
+
+  files:
+    "/home/${users}/."
+      perms => default:og(${users},${users}),
+      depth_search => default:recurse_ignore("inf",${ignore_dirs});
+
+  reports:
+    "managing user: ${users}";
+}
+
+bundle agent home_skel(user, skel)
+{
+  files:
+    "/home/${user}/."
+      create => "true",
+      copy_from => default:seed_cp(${skel}),
+      depth_search => default:recurse_ignore("inf", ${ignore_dirs});
+}
+
+body depth_search homedir_ownership
+{
+  exclude_dirs => { "\.local" };
+  depth => "inf";
 }
