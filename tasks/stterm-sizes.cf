@@ -1,3 +1,6 @@
+# TODO not showing up in dmenu, why? fixme!
+# also, font_size is bigger but not changing per build... why?
+# are the commands promises not unique or not iterating?
 body file control
 {
   namespace => "personal";
