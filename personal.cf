@@ -6,6 +6,6 @@ body file control
 bundle agent personal
 {
   users:
-      "${users}"
+"${personal:personal.users}"
         policy => "present";
 }
