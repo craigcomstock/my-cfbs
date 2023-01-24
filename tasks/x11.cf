@@ -11,4 +11,9 @@ bundle agent x11
       "${packages}"
         ifvarclass => "${users}_x11_task",
         policy => "present";
+
+  files:
+    "/home/${users}/.xinitrc"
+      copy_from => default:local_cp("${this.promise_dirname}${const.dirsep}xinitrc.mustache"),
+      perms => default:og(${users},${users});
 }

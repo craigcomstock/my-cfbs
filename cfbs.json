@@ -38,6 +38,17 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["json ./personal.json def.json"]
+    },
+    {
+      "name": "./tasks/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/tasks/",
+        "policy_files services/cfbs/tasks/",
+        "bundles x11"
+      ]
     }
   ],
   "git": true
