@@ -72,6 +72,10 @@ fi
 # NOTE: switched to community package :)
 
 # SUCCESS! CLEAN RUN!
+# break something
+sudo mkdir -p /home/guest/.local
+sudo touch /home/guest/.local/foo
+sudo chown root /home/guest/.local/foo
 sudo cf-agent -KI | tee agent.log
 #if [ $(cat agent.log | wc -l) != "0" ]; then
 #  echo "agent runs should have no output after bootstrapping!"
@@ -80,5 +84,5 @@ sudo cf-agent -KI | tee agent.log
 #  echo "Congratulations! Everything is good! Promises kept!"
 #fi
 grep guest /etc/passwd # should show up
-ls -l /home/guest # should be there!
+sudo ls -l /home/guest # should be there!
 echo "SUCCESS!"

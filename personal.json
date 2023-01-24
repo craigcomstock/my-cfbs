@@ -2,10 +2,19 @@
   "variables": {
     "personal:personal.users": {
       "value": [
-"craig",
 "guest",
 "user"
       ]
     }
+  },
+  "vars": {
+    "personal:personal.base_packages": [
+"tmux",
+"mutt",
+"pass",
+"ed",
+"lynx",
+"git"
+    ]
   }
 }
