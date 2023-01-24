@@ -22,9 +22,15 @@ home_bundle => home_skel(${users}, ${skel});
       perms => default:og(${users},${users}),
       depth_search => default:recurse_ignore("inf",@(ignore_dirs));
 
+  # todo: will probably need a layer of indirection here to support different package names on different systems
   packages:
     "${base_packages}" # stuff for "everybody"
       policy => "present";
+
+  # my own personal x11 setup
+      "${x11_packages}"
+        ifvarclass => "${users}_x11_task",
+        policy => "present";
 
   reports:
     "managing user: ${users}";

@@ -1,1 +1,1 @@
-sudo cf-agent -Kv | tee log
+sudo cf-agent -Kv > log

@@ -7,6 +7,9 @@
       ]
     }
   },
+  "classes": {
+    "personal:guest_x11_task": [ "linux" ]
+  },
   "vars": {
     "personal:personal.base_packages": [
 "tmux",
@@ -15,6 +18,11 @@
 "ed",
 "lynx",
 "git"
+    ],
+    "personal:personal.x11_packages": [
+      "dmenu",
+      "dwm",
+      "stterm"
     ]
   }
 }
