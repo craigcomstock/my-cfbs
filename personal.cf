@@ -1,0 +1,11 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent personal
+{
+  users:
+      "${users}"
+        policy => "present";
+}
