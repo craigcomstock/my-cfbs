@@ -12,6 +12,7 @@ bundle agent personal
 "\.cache"
 };
   users:
+    linux:: # no support for openbsd, windows or termux (yet)
       "${users}"
 policy => "present",
 home_dir => "/home/${users}",
@@ -24,10 +25,12 @@ home_bundle => home_skel(${users}, ${skel});
 
   # todo: will probably need a layer of indirection here to support different package names on different systems
   packages:
+    linux|termux:: # no windows or openbsd yet
     "${base_packages}" # stuff for "everybody"
       policy => "present";
 
   # my own personal x11 setup
+    linux:: # no x11 on termux or windows really, openbsd needs legacy package methods style
       "${x11_packages}"
         ifvarclass => "${users}_x11_task",
         policy => "present";
