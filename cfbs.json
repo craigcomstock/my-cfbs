@@ -47,7 +47,8 @@
       "steps": [
         "directory ./ services/cfbs/tasks/",
         "policy_files services/cfbs/tasks/",
-        "bundles personal:x11"
+        "bundles personal:x11",
+        "bundles personal:stterm_sizes"
       ]
     },
     {

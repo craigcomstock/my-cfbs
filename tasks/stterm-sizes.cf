@@ -1,0 +1,59 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent stterm_sizes
+{
+  classes:
+    "deps_installed" and => { @(deps_class_list) };
+  vars:
+    "deps" slist => { "libfontconfig-dev", "libfreetype-dev", "libx11-dev" };
+    "deps_class_list" slist => maplist(canonify("$(this)_installed"), @(deps));
+    "stterm_dir" string => "/opt/stterm";
+    "sizes" data => '{
+"stm": "20",
+"stl": "30",
+"stxl": "40"
+}';
+    "stterm_keys" slist => getindices("sizes");
+
+  git:
+    linux::
+    "${stterm_dir}"
+      repository => "https://git.suckless.org/st",
+      version => "master",
+      update => "true",
+      force => "true",
+      classes => default:if_ok("git_ok");
+
+  packages:
+    linux::
+    "${deps}" policy => "present",
+      classes => default:if_ok("${deps}_installed");
+
+
+  methods:
+    deps_installed.git_ok::
+      "make_st_${stterm_keys}" usebundle => make_st("${stterm_dir}","${stterm_keys}","${sizes[${stterm_keys}]}");
+
+  reports:
+    "stterm_keys: ${stterm_keys}";
+}
+
+bundle agent make_st(stterm_dir, name, font_size)
+{
+  vars:
+    "build_commands" string => concat(
+      "sed -i 's/pixelsize=[0-9]*/pixelsize=${font_size}/' ${stterm_dir}/config.def.h && ",
+      "make -C ${stterm_dir} && ",
+      "cp ${stterm_dir}/st /usr/local/bin/${name}"
+    );
+  commands:
+    "${build_commands}"
+     contain => default:in_shell;
+
+  files:
+    "/usr/local/bin/${name}"
+      perms => default:m("755");
+}
