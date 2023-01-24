@@ -21,7 +21,7 @@ home_bundle => home_skel(${users}, ${skel});
   files:
     "/home/${users}/."
       perms => default:og(${users},${users}),
-      depth_search => default:recurse_ignore("inf",@(ignore_dirs));
+      depth_search => homedir_ownership("inf",@(ignore_dirs));
 
   # todo: will probably need a layer of indirection here to support different package names on different systems
   packages:
@@ -39,11 +39,12 @@ bundle agent home_skel(user, skel)
     "/home/${user}/."
       create => "true",
       copy_from => default:seed_cp(${skel}),
-      depth_search => default:recurse_ignore("inf", @(ignore_dirs));
+      depth_search => homedir_ownership("inf", @(ignore_dirs));
 }
 
-body depth_search homedir_ownership
+body depth_search homedir_ownership(d, list)
 {
-  exclude_dirs => { "\.local" };
-  depth => "inf";
+  depth => "${d}";
+  exclude_dirs => { @(list) };
+  include_basedir => "true";
 }
