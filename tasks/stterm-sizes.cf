@@ -20,8 +20,8 @@ bundle agent stterm_sizes
     "stterm_dir" string => "/opt/stterm";
     "sizes" data => '{
 "stm": "20",
-"stl": "30",
-"stxl": "40"
+"stl": "40",
+"stxl": "60"
 }';
     "stterm_keys" slist => getindices("sizes");
 
@@ -54,8 +54,12 @@ bundle agent make_st(stterm_dir, name, font_size)
       "make -C ${stterm_dir} && ",
       "cp ${stterm_dir}/st /usr/local/bin/${name}"
     );
+  classes:
+    "${name}_exists" expression => fileexists("/usr/local/bin/${name}");
+
   commands:
     "${build_commands}"
+     ifvarclass => not("${name}_exists"),
      contain => default:in_shell;
 
   files:
