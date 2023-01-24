@@ -1,0 +1,14 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent x11
+{
+  packages:
+  # my own personal x11 setup
+    linux:: # no x11 on termux or windows really, openbsd needs legacy package methods style
+      "${packages}"
+        ifvarclass => "${users}_x11_task",
+        policy => "present";
+}

@@ -8,7 +8,7 @@
     }
   },
   "classes": {
-    "personal:guest_x11_task": [ "linux" ]
+    "personal:guest_x11_task": [ "x220c" ]
   },
   "vars": {
     "personal:personal.base_packages": [
@@ -19,8 +19,8 @@
 "lynx",
 "git"
     ],
-    "personal:personal.x11_packages": [
-      "dmenu",
+    "personal:x11.packages": [
+      "suckless-tools",
       "dwm",
       "stterm"
     ]

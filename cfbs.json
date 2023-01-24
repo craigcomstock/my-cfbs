@@ -38,6 +38,17 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["json ./personal.json def.json"]
+    },
+    {
+      "name": "./tasks/x11.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./tasks/x11.cf services/cfbs/tasks/x11.cf",
+        "policy_files services/cfbs/tasks/x11.cf",
+        "bundles x11"
+      ]
     }
   ],
   "git": true

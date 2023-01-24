@@ -29,12 +29,6 @@ home_bundle => home_skel(${users}, ${skel});
     "${base_packages}" # stuff for "everybody"
       policy => "present";
 
-  # my own personal x11 setup
-    linux:: # no x11 on termux or windows really, openbsd needs legacy package methods style
-      "${x11_packages}"
-        ifvarclass => "${users}_x11_task",
-        policy => "present";
-
   reports:
     "managing user: ${users}";
 }
