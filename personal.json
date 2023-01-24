@@ -18,11 +18,6 @@
 "ed",
 "lynx",
 "git"
-    ],
-    "personal:x11.packages": [
-      "suckless-tools",
-      "dwm",
-      "stterm"
     ]
   }
 }

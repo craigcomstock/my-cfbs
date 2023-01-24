@@ -5,6 +5,13 @@ body file control
 
 bundle agent x11
 {
+  vars:
+    "packages" slist =>  {
+      "suckless-tools",
+      "dwm",
+      "stterm",
+      "xscreensaver"
+    };
   packages:
   # my own personal x11 setup
     linux:: # no x11 on termux or windows really, openbsd needs legacy package methods style
