@@ -31,7 +31,7 @@ bundle agent sudo_main
         ifvarclass => "${personal:personal.users}_${this.bundle}_task";
       "/etc/sudoers"
         edit_line => default:delete_lines_matching( "${personal:personal.users}" ),
-        ifvarclass => not("${personal:personal.users)_${this.bundle}_task");
+        ifvarclass => not("${personal:personal.users}_${this.bundle}_task");
 
   commands:
 }

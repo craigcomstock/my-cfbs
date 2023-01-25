@@ -17,6 +17,7 @@ if ! command -v cf-agent 2>/dev/null; then
 fi
 cf-promises -f ./out/masterfiles/promises.cf
 cf-promises -f ./out/masterfiles/update.cf
+exit 42
 sudo cfbs install
 sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
 sudo cf-agent -KI
@@ -56,7 +57,8 @@ if ! sudo cf-key -p; then
  sudo cf-key # make a hostkey if not already there
 fi
 if ! sudo stat /var/cfengine/policy_server.dat; then
-  sudo cf-agent -IB localhost # self bootstrap for personal policy :)
+  sudo cf-agent -IB raspberrypi # self bootstrap for personal policy :)
+#  sudo cf-agent -IB localhost # self bootstrap for personal policy :)
 fi
 #sudo cf-agent -I
 # SUMMARY: basically OK to go, but many errors related to enterprise versus community policy server?
