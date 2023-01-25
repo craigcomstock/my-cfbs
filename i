@@ -18,7 +18,7 @@ fi
 cf-promises -f ./out/masterfiles/promises.cf
 cf-promises -f ./out/masterfiles/update.cf
 git add -p
-commit
+git commit # so I get a chance to bounce out if I don't like the commit
 git push
 exit 42
 sudo cfbs install
