@@ -2,13 +2,15 @@
   "variables": {
     "personal:personal.users": {
       "value": [
+"craig",
 "guest",
 "user"
       ]
     }
   },
   "classes": {
-    "personal:guest_x11_task": [ "x220c" ]
+    "personal:craig_x11_task": [ "x220c" ],
+    "personal:craig_vpn_task": [ "x220c" ]
   },
   "vars": {
     "personal:personal.base_packages": [
@@ -21,7 +23,8 @@
 "alsa-utils",
 "git",
 "chromium",
-"firefox-esr"
+"firefox-esr",
+"sudo"
     ]
   }
 }
