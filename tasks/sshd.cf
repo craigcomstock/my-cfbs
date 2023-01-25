@@ -14,6 +14,7 @@ bundle agent sshd
 bundle agent sshd_main
 {
 
+# todo, classes, sshd service enabled returnszero "sv status sshd"
   vars:
     "public_key" string => execresult("$(sys.cf_secret) -i $(this.promise_dirname)$(const.dirsep)id_rsa.pub.secret -o -", noshell);
     "packages" slist =>  {
@@ -29,4 +30,13 @@ bundle agent sshd_main
   files:
     "/data/data/com.termux/files/home/.ssh/authorized_keys"
       edit_line => default:lines_present("${public_key}");
+
+# todo commands
+# sv-enable sshd
+# sv up sshd
 }
+
+# also todo, modify sshd_config
+# PasswordAuthentication no
+#  $PREFIX/etc/ssh/sshd_config
+# except we don't get PREFIX but I think I added it somewhere in MPF
