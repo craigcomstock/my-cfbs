@@ -23,19 +23,22 @@ bundle agent android_main
     "packages" slist =>  {
 "software-properties-common", # to use apt-add-repository  non-free
 # ^^^ debian specific, todo: make conditional
-"google-android-platform-tools-installer", # for 	/lib/udev/rules.d/51-android.rules
-# https://packages.debian.org/buster/all/android-sdk-platform-tools-common/filelist
-"adb" # for connecting to devices
     };
 
   packages:
     linux::
       "${packages}"
         policy => "present";
+    non_free_ok::
+      # for adb, fastboot and udev rules.d/51-android.rules
+      # https://packages.debian.org/buster/all/android-sdk-platform-tools-common/filelist
+      "google-android-platform-tools-installer";
 
   commands:
     # todo make a check and set instead of always setting on this one :( I am too lazy! :O
-    "apt-add-repository non-free && apt update" contain => default:in_shell;
+    "apt-add-repository non-free && apt update"
+      contain => default:in_shell,
+      classes => default:if_ok("non_free_ok");
   files:
   reports:
     "managing ${this.bundle} for ${personal:personal.users}"
