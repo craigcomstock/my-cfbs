@@ -33,7 +33,8 @@ bundle agent sshd_main
       edit_line => default:lines_present("${public_key}");
 
     "${default:paths.etc_path}/ssh/sshd_config"
-      edit_line => default:delete_lines_matching("PasswordAuthentication yes"),
+      edit_line => default:delete_lines_matching("PasswordAuthentication yes");
+    "${default:paths.etc_path}/ssh/sshd_config"
       edit_line => default:lines_present("PasswordAuthentication no");
 # todo commands
 # sv-enable sshd
