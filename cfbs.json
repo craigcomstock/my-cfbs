@@ -48,6 +48,7 @@
         "directory ./ services/cfbs/tasks/",
         "policy_files services/cfbs/tasks/",
         "bundles personal:x11",
+        "bundles personal:sshd",
         "bundles personal:passwords",
         "bundles personal:pictures",
         "bundles personal:git",

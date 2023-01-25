@@ -1,0 +1,28 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent sshd
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent sshd_main
+{
+
+  vars:
+    "packages" slist =>  {
+"openssh",
+"termux-services"
+    };
+
+  packages:
+    termux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
