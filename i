@@ -20,7 +20,8 @@ cf-promises -f ./out/masterfiles/update.cf
 git add -p
 git commit # so I get a chance to bounce out if I don't like the commit
 git push
-exit 42
+echo "Ok. Thats about as much as I can do until I fix local bootstrapping to make development easier."
+exit 0
 sudo cfbs install
 sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
 sudo cf-agent -KI
