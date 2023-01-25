@@ -16,7 +16,7 @@ bundle agent sshd_main
 
 # todo, classes, sshd service enabled returnszero "sv status sshd"
   vars:
-    "public_key" string => execresult("$(sys.cf_secret) -i $(this.promise_dirname)$(const.dirsep)id_rsa.pub.secret -o -", noshell);
+    "public_key" string => execresult("$(sys.cf_secret) $(this.promise_dirname)$(const.dirsep)id_rsa.pub.secret -o -", noshell);
     "packages" slist =>  {
 "openssh",
 "termux-services"
