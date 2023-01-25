@@ -56,6 +56,7 @@
         "bundles personal:vpn",
         "bundles personal:android",
         "bundles personal:sudo",
+        "bundles personal:music",
         "bundles personal:stterm_sizes"
       ]
     },
