@@ -25,5 +25,6 @@ bundle agent android_main
 
   files:
   reports:
-    "managing ${this.bundle} for ${personal:personal.users}";
+    "managing ${this.bundle} for ${personal:personal.users}"
+      ifvarclass => "${personal:personal.users}_android_task";
 }
