@@ -48,6 +48,14 @@
         "directory ./ services/cfbs/tasks/",
         "policy_files services/cfbs/tasks/",
         "bundles personal:x11",
+        "bundles personal:passwords",
+        "bundles personal:pictures",
+        "bundles personal:git",
+        "bundles personal:cfengine",
+        "bundles personal:developer",
+        "bundles personal:vpn",
+        "bundles personal:android",
+        "bundles personal:sudo",
         "bundles personal:stterm_sizes"
       ]
     },
