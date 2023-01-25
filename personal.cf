@@ -12,7 +12,7 @@ bundle agent personal
 "\.cache"
 };
   users:
-    linux:: # no support for openbsd, windows or termux (yet)
+    linux.!termux:: # no support for openbsd, windows or termux yet
       "${users}"
 policy => "present",
 home_dir => "/home/${users}",
