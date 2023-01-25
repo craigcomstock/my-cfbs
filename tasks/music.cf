@@ -3,18 +3,19 @@ body file control
   namespace => "personal";
 }
 
-bundle agent template
+bundle agent music
 {
   methods:
       "${this.bundle}_main"
         ifvarclass => "${personal:personal.users}_${this.bundle}_task";
 }
 
-bundle agent template_main
+bundle agent music_main
 {
 
   vars:
     "packages" slist =>  {
+"mpv"
     };
 
   packages:
