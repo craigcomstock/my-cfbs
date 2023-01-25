@@ -30,6 +30,6 @@ bundle agent vpn_main
   files:
     # just warn if the file is not present
     "/home/${personal:personal.users}/bin/northern.ovpn"
-      ifvarclass => "${personal:personal.users}_${this.bundle}_task",
+      ifvarclass => "${personal:personal.users}_vpn_task",
       action => default:policy( "warn" );
 }
