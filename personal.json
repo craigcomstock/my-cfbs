@@ -10,13 +10,13 @@
   },
   "classes": {
     "personal:craig_x11_task": [ "x220c" ],
-    "personal:craig_vpn_task": [ "x220c" ]
+    "personal:craig_vpn_task": [ "x220c" ],
+    "personal:craig_passwords_task": [ "x220c" ],
   },
   "vars": {
     "personal:personal.base_packages": [
 "tmux",
 "mutt",
-"pass",
 "ed",
 "lynx",
 "oathtool",
