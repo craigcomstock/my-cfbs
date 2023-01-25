@@ -21,8 +21,10 @@ bundle agent android_main
       if => "${personal:personal.users}_android_task";
   vars:
     "packages" slist =>  {
-"software-properties-common", # to use apt-add-repository contrib and non-free
+#"software-properties-common", # to use apt-add-repository contrib and non-free
 # ^^^ debian specific, todo: make conditional
+"android-sdk-platform-tools-common", # for 	/lib/udev/rules.d/51-android.rules
+# https://packages.debian.org/buster/all/android-sdk-platform-tools-common/filelist
 "adb" # for connecting to devices
     };
 
@@ -33,8 +35,8 @@ bundle agent android_main
 
   commands:
     # todo make a check and set instead of always setting on this one :( I am too lazy! :O
-    "apt-add-repository contrib" contain => default:in_shell;
-    "apt-add-repository non-free" contain => default:in_shell;
+#    "apt-add-repository contrib" contain => default:in_shell;
+#    "apt-add-repository non-free" contain => default:in_shell;
   files:
   reports:
     "managing ${this.bundle} for ${personal:personal.users}"
