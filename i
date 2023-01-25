@@ -17,6 +17,9 @@ if ! command -v cf-agent 2>/dev/null; then
 fi
 cf-promises -f ./out/masterfiles/promises.cf
 cf-promises -f ./out/masterfiles/update.cf
+git add -p
+commit
+git push
 exit 42
 sudo cfbs install
 sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
