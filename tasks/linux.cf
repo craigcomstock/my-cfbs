@@ -1,0 +1,27 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent linux
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent linux_main
+{
+
+  vars:
+    "packages" slist =>  {
+"alsa-utils" # for alsamixer aka volume control
+    };
+
+  packages:
+    linux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
