@@ -88,3 +88,8 @@ sudo cf-agent -KI | tee agent.log
 grep guest /etc/passwd # should show up
 sudo ls -l /home/guest # should be there!
 echo "SUCCESS!"
+# ugh! can't self bootstrap with community?
+#   228  cf-agent -IB localhost
+#  229  cp -R ../masterfiles/* .
+#  230  cf-agent -KIf update.cf
+#  231  cf-agent -KI
