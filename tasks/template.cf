@@ -1,0 +1,26 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent template
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent template_main
+{
+
+  vars:
+    "packages" slist =>  {
+    };
+
+  packages:
+    linux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
