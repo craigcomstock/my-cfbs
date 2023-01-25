@@ -12,6 +12,9 @@
     "personal:craig_x11_task": [ "x220c" ],
     "personal:craig_vpn_task": [ "x220c" ],
     "personal:craig_cfengine_task": [ "x220c" ],
+    "personal:craig_developer_task": [ "x220c" ],
+    "personal:craig_music_task": [ "x220c" ],
+    "personal:craig_android_task": [ "x220c" ],
     "personal:craig_passwords_task": [ "x220c" ]
   },
   "vars": {
