@@ -19,7 +19,7 @@ bundle agent vpn_main
 
   vars:
     "packages" slist =>  {
-"openvpn3"
+"openvpn"
     };
 
   packages:
