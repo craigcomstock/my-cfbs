@@ -24,7 +24,7 @@
 "alsa-utils",
 "git",
 "chromium",
-"firefox-esr",
+"firefox-esr"
     ]
   }
 }
