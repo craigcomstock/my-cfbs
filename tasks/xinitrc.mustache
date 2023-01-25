@@ -1,3 +1,7 @@
 xrdb -merge .Xresources
+while true; do
+  xsetroot -name "$(date +%D) == $(cat /sys/class/power_supply/BAT0/capacity)"
+  sleep 10
+done &
 xscreensaver &
 exec dwm

@@ -7,11 +7,12 @@ bundle agent x11
 {
   vars:
     "packages" slist =>  {
-      "suckless-tools",
+      "suckless-tools", # for dmenu
       "dwm",
       "stterm",
       "xscreensaver",
-      "xinit"
+      "x11-server-utils", # for xsetroot in xinitrc
+      "xinit" # for startx to start x!
     };
   packages:
   # my own personal x11 setup
