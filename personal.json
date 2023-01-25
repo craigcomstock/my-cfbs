@@ -11,6 +11,7 @@
   "classes": {
     "personal:craig_x11_task": [ "x220c" ],
     "personal:craig_vpn_task": [ "x220c" ],
+    "personal:craig_cfengine_task": [ "x220c" ],
     "personal:craig_passwords_task": [ "x220c" ]
   },
   "vars": {
@@ -24,7 +25,6 @@
 "git",
 "chromium",
 "firefox-esr",
-"sudo"
     ]
   }
 }

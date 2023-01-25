@@ -1,0 +1,37 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent sudo
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent sudo_main
+{
+
+  vars:
+    "packages" slist =>  {
+"sudo"
+    };
+
+  packages:
+    linux::
+      "${packages}"
+        policy => "present";
+
+  files:
+    # managing the sudo group is too hard, just add one line for each approved user
+    linux::
+      "/etc/sudoers"
+        edit_line => default:lines_present( "${personal:personal.users}   ALL=(ALL:ALL) ALL" ),
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+      "/etc/sudoers"
+        edit_line => default:delete_lines_matching( "${personal:personal.users}" ),
+        ifvarclass => not("${personal:personal.users)_${this.bundle}_task");
+
+  commands:
+}

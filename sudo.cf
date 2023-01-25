@@ -1,2 +1,0 @@
-# todo, manage sudo, add users to /etc/group and config properly
-# will need doas for openbsd :) or just use sudo :(

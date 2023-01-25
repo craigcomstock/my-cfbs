@@ -1,0 +1,30 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent cfengine
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent cfengine_main
+{
+
+  vars:
+    "packages" slist =>  {
+# deps for cfbs and cf-remote, basic tools I use a lot
+# don't install cfbs/cf-remote as root, do that manually for now as each user I suppose
+"python3",
+"python3-pip"
+    };
+
+  packages:
+    linux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
