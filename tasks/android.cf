@@ -35,7 +35,7 @@ bundle agent android_main
 
   commands:
     # todo make a check and set instead of always setting on this one :( I am too lazy! :O
-    "apt-add-repository non-free" contain => default:in_shell;
+    "apt-add-repository non-free && apt update" contain => default:in_shell;
   files:
   reports:
     "managing ${this.bundle} for ${personal:personal.users}"
