@@ -32,7 +32,8 @@ bundle agent android_main
     non_free_ok::
       # for adb, fastboot and udev rules.d/51-android.rules
       # https://packages.debian.org/buster/all/android-sdk-platform-tools-common/filelist
-      "google-android-platform-tools-installer";
+      "google-android-platform-tools-installer"
+        policy => "present";
 
   commands:
     # todo make a check and set instead of always setting on this one :( I am too lazy! :O
