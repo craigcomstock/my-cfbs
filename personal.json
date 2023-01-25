@@ -17,7 +17,9 @@
 "pass",
 "ed",
 "lynx",
-"git"
+"git",
+"chromium",
+"firefox-esr"
     ]
   }
 }
