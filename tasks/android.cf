@@ -13,6 +13,10 @@ bundle agent android
 bundle agent android_main
 {
 
+  groups:
+    "plugdev"
+      members => '{ "include": ["${personal:personal.users}] }',
+      if => "${personal:personal.users}_android_task";
   vars:
     "packages" slist =>  {
 "adb" # for connecting to devices
