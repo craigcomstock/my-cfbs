@@ -19,7 +19,7 @@ bundle agent linux_main
     };
 
   packages:
-    linux::
+    linux.!termux::
       "${packages}"
         policy => "present";
 
