@@ -24,6 +24,9 @@ home_bundle => home_skel(${users}, ${skel});
       depth_search => homedir_ownership("inf",@(ignore_dirs));
 
   # todo: will probably need a layer of indirection here to support different package names on different systems
+# move packages list from json to here so I can easily comment on WHY including those packages
+# json is NOT friendly enough for me, sorry.
+# oathtool for github 2fa
   packages:
     linux|termux:: # no windows or openbsd yet
     "${base_packages}" # stuff for "everybody"

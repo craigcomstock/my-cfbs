@@ -1,3 +1,4 @@
+# maybe rename this window-environment?
 body file control
 {
   namespace => "personal";
