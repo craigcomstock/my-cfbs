@@ -29,6 +29,7 @@ bundle agent sshd_main
 
   files:
     "/data/data/com.termux/files/home/.ssh/authorized_keys"
+      create => "true",
       edit_line => default:lines_present("${public_key}");
 
 # todo commands
