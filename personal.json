@@ -17,6 +17,7 @@
 "pass",
 "ed",
 "lynx",
+"alsa-utils",
 "git",
 "chromium",
 "firefox-esr"
