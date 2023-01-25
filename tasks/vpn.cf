@@ -1,0 +1,34 @@
+# how secure does the ovpn file need to be?
+# https://openvpn.net/community-resources/how-to/
+# they should be kept securely
+# this bundle relies on tasks/dotfiles to include the ovpn file and scripts needed to activate openvpn3 manually on the command line
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent vpn
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent vpn_main
+{
+
+  vars:
+    "packages" slist =>  {
+"openvpn3"
+    };
+
+  packages:
+    linux::
+      "${packages}"
+        policy => "present";
+
+  files:
+    # just warn if the file is not present
+    "/home/${personal:personal_users}/bin/northern.ovpn"
+      action => policy( "warn" );
+}
