@@ -29,6 +29,9 @@ bundle agent vpn_main
 
   files:
     # just warn if the file is not present
+    # how to do this properly?
+    #  warning: No action was requested for file '/home/craig/bin/northern.ovpn'. Maybe a typo in the policy?
+
     "/home/${personal:personal.users}/bin/northern.ovpn"
       ifvarclass => "${personal:personal.users}_vpn_task",
       action => default:policy( "warn" );

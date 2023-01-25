@@ -12,10 +12,12 @@ bundle agent android
 
 bundle agent android_main
 {
-
+  # first try: members => '{ "include": ["${personal:personal.users}] }',
+  # gave:    error: Invalid value for attribute 'members': Could not parse JSON for groups promise with promiser 'plugdev' (/var/cfengine/inputs/services/cfbs/tasks/android.cf:17)
+  # forgot a trailing quote :(
   groups:
     "plugdev"
-      members => '{ "include": ["${personal:personal.users}] }',
+      members => '{ "include": ["${personal:personal.users}"] }',
       if => "${personal:personal.users}_android_task";
   vars:
     "packages" slist =>  {
