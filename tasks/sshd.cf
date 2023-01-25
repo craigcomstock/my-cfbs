@@ -1,3 +1,4 @@
+# maybe sv status sshd will show not ready?
 body file control
 {
   namespace => "personal";
@@ -14,6 +15,7 @@ bundle agent sshd_main
 {
 
   vars:
+    "public_key" string => execresult("$(sys.cf_secret) -i $(this.promise_dirname)$(const.dirsep)id_rsa.pub.secret -o -", noshell);
     "packages" slist =>  {
 "openssh",
 "termux-services"
@@ -25,4 +27,6 @@ bundle agent sshd_main
         policy => "present";
 
   files:
+    "/data/data/com.termux/files/home/.ssh/authorized_keys"
+      edit_line => default:lines_present("${public_key}");
 }
