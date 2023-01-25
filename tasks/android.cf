@@ -1,0 +1,29 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent android
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent android_main
+{
+
+  vars:
+    "packages" slist =>  {
+"adb" # for connecting to devices
+    };
+
+  packages:
+    linux::
+      "${packages}"
+        policy => "present";
+
+  files:
+  reports:
+    "managing ${this.bundle} for ${personal:personal.users}";
+}
