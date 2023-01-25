@@ -15,7 +15,9 @@ bundle agent linux_main
 
   vars:
     "packages" slist =>  {
-"alsa-utils" # for alsamixer aka volume control
+"alsa-utils",# for alsamixer aka volume control
+"chromium",
+"firefox-esr"
     };
 
   packages:

@@ -26,9 +26,7 @@
 "ed",
 "lynx",
 "oathtool",
-"git",
-"chromium",
-"firefox-esr"
+"git"
     ]
   }
 }
