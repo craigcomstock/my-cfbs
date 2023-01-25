@@ -1,0 +1,3 @@
+# todo, alsa-utils to get alsamixer
+# x220c had master volume muted, just needed to unmute and turn it up!
+# alsactl would be better, need to make shelli volume command :)
