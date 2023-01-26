@@ -1,0 +1,29 @@
+# todo, alpine postmarketos pinephone doesn't seem to have network time :(
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent ntp
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent ntp_main
+{
+
+  vars:
+    "packages" slist =>  {
+    };
+
+  packages:
+    linux.!termux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
+# apk add openntpd
+# pine:~$ sudo ntpd -s
