@@ -23,9 +23,9 @@ cf-promises -f ./out/masterfiles/update.cf
 #sudo cfbs install
 # with debian dist cfengine3 package the mpf is in a different location so use it
 # just in case, lets touch the promises.cf in case we just installed cfengine3 package from debian repos
-sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
-mpf_dir=$(sudo cf-promises --show-vars=sys.masterdir | grep default: | awk '{print $2}')
-sudo rsync -avz out/masterfiles/ "$mpf_dir"
+# sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
+# ^^^ only for debian repo cfengine3 package
+mpf_dir=$(sudo cf-promises --show-vars=sys.masterdir | grep default: | awk '{print $2}'); sudo rsync -avz out/masterfiles/ "$mpf_dir"
 sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
 sudo cf-agent -KI
 # if all that looks good, add changes and commit and push!
