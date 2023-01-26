@@ -7,7 +7,7 @@ bundle agent personal
 {
   classes:
     alpinelinux::
-      "user_${users}_present" expression => returnszero("grep ${users} /etc/passwd", "useshell");
+      "user_${users}_present" expression => returnszero("grep ${users} /etc/passwd >/dev/null", "useshell");
 
   vars:
     "skel" string => "/etc/skel";
