@@ -8,6 +8,14 @@ body file control
 
 bundle agent stterm_sizes
 {
+  methods:
+    debian::
+      "stterm_sizes"
+        if => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent stterm_sizes_main
+{
   classes:
     "deps_installed" and => { @(deps_class_list) };
   vars:
@@ -29,7 +37,7 @@ bundle agent stterm_sizes
     "stterm_keys" slist => getindices("sizes");
 
   git:
-    linux::
+    debian::
       "${stterm_dir}"
         repository => "https://git.suckless.org/st",
         version => "master",
@@ -38,7 +46,7 @@ bundle agent stterm_sizes
         classes => default:if_ok("git_ok");
 
   packages:
-    linux::
+    debian::
       "${deps}" policy => "present",
         ifvarclass => "${personal:personal.users}_x11_task",
         classes => default:if_ok("${deps}_installed");
