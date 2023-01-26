@@ -20,7 +20,7 @@ bundle agent pictures_main
     };
 
   packages:
-    linux::
+    linux.!termux::
       "${packages}"
         policy => "present";
 

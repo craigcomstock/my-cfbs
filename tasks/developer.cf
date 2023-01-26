@@ -20,12 +20,13 @@ bundle agent developer_main
     };
 
   packages:
-    linux::
+    linux.!termux::
       "${packages}"
         policy => "present";
 
+# todo, termux will need a different directory than /opt :)
   files:
-    linux::
+    linux.!termux::
       "/opt/."
         create => "true",
         perms => default:m("0755");
@@ -35,6 +36,6 @@ bundle agent developer_main
 "make install -C /opt/idesh"
      );
   commands:
-    linux::
+    linux.!termux::
       "${idesh_install_commands}" contain => default:in_shell;
 }

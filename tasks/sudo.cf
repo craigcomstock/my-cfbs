@@ -19,13 +19,13 @@ bundle agent sudo_main
     };
 
   packages:
-    linux::
+    linux.!termux::
       "${packages}"
         policy => "present";
 
   files:
     # managing the sudo group is too hard, just add one line for each approved user
-    linux::
+    linux.!termux::
       "/etc/sudoers"
         edit_line => default:lines_present( "${personal:personal.users}   ALL=(ALL:ALL) ALL" ),
         ifvarclass => "${personal:personal.users}_${this.bundle}_task";

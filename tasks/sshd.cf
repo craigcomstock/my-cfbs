@@ -1,4 +1,4 @@
-# maybe sv status sshd will show not ready?
+# for now, only used to manage sshd in termux on android devices
 body file control
 {
   namespace => "personal";
@@ -15,15 +15,21 @@ bundle agent sshd
 bundle agent sshd_main
 {
 
-# todo, classes, sshd service enabled returnszero "sv status sshd"
+  classes:
+    "packages_installed" expression => and("openssh_installed", "termux_services_installed");
+    "sshd_service_enabled" expression => returnszero("${paths.bin_path}/sv-enable", "useshell");
+    "sshd_service_up" expression => 
+strcmp("up",
+execresult("sv status sshd | cut -d: -f1", "useshell", "both")
+);
+
   vars:
     "public_key" string => execresult("$(sys.cf_secret) decrypt $(this.promise_dirname)$(const.dirsep)id_rsa.pub.secret -o -", noshell);
-    "packages" slist =>  {
-"openssh",
-"termux-services"
-    };
 
   packages:
+    termux::
+      "openssh" policy => "present", classes => if_ok("openssh_installed");
+      "termux-services" policy => "present", classes => if_ok("termux_services_installed");
       "${packages}"
         policy => "present";
 

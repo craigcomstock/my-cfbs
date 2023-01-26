@@ -26,7 +26,7 @@ bundle agent android_main
     };
 
   packages:
-    linux::
+    linux.!termux::
       "${packages}"
         policy => "present";
     non_free_ok::
