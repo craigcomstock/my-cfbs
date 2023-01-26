@@ -1,3 +1,4 @@
+# todo, run apt autoremove daily? run apt update apt upgrade daily!
 body file control
 {
   namespace => "personal";
@@ -17,6 +18,8 @@ bundle agent debian_main
     "packages" slist =>  {
 "resolvconf", # for openvpn dns setup command line style in bin/vpn-on
 "alsa-utils", # for alsactl, aka volume control and such
+"espeakup", # for screenless operations
+"espeak-ng", # espeak-ng which works well with dotfiles bin agenda stuff
 "apt-file" # so I can figure out where things come from or what package I need to install a certain command/file
     };
 

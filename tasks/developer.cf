@@ -15,6 +15,7 @@ bundle agent developer_main
 
   vars:
     "packages" slist =>  {
+"cscope", # for my idesh utilities examining C source code projects
 "jq" # query and validate json
     };
 
@@ -24,4 +25,16 @@ bundle agent developer_main
         policy => "present";
 
   files:
+    linux::
+      "/opt/."
+        create => "true",
+        perms => default:m("0755");
+  vars:
+    "idesh_install_commands" string => concat(
+"git clone https://gitlab.com/craigcomstock/idesh --depth 1 /opt/idesh; ",
+"make install -C /opt/idesh"
+     );
+  commands:
+    linux::
+      "${idesh_install_commands}" contain => default:in_shell;
 }
