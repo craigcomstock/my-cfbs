@@ -1,1 +1,5 @@
-sudo cf-agent -Kv > log
+if [ -n "$TERMUX_VERSION" ]; then
+  cf-agent -Kd > log
+else
+  sudo cf-agent -Kv > log
+fi

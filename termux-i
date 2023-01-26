@@ -1,0 +1,2 @@
+cf-agent -Kf update.cf
+cf-agent -KI
