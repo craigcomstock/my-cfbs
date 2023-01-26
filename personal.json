@@ -23,6 +23,7 @@
   "vars": {
     "personal:personal.base_packages": [
 "tmux",
+"gnupg",
 "mutt",
 "ed",
 "lynx",

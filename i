@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 set -e
 set -x
+if ! command -v rsync 2>/dev/null; then
+  apt install rsync
+  # todo need non-debian/termux package option :)
+fi
 if ! command -v pip 2>/dev/null; then
   echo "please install python3 and pip"
   exit 1
@@ -14,6 +18,7 @@ if ! command -v cf-remote 2>/dev/null; then
   pip install --upgrade cf-remote
 fi
 if ! command -v cf-agent 2>/dev/null; then
+  # todo, on termux, no sudo is needed
   sudo apt install cfengine3 # debian alternate for cf-remote install command :)
   sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
 #  cf-remote --version master install --clients localhost --edition community
@@ -25,9 +30,15 @@ cf-promises -f ./out/masterfiles/update.cf
 # just in case, lets touch the promises.cf in case we just installed cfengine3 package from debian repos
 # sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
 # ^^^ only for debian repo cfengine3 package
-mpf_dir=$(sudo cf-promises --show-vars=sys.masterdir | grep default: | awk '{print $2}'); sudo rsync -avz out/masterfiles/ "$mpf_dir"
-sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
-sudo cf-agent -KI
+if [ -n "$TERMUX_VERSION" ]; then
+  mpf_dir=$(cf-promises --show-vars=sys.masterdir | grep default: | awk '{print $2}'); rsync -avs out/masterfiles/ "$mpf_dir"
+  cf-agent -KIf update.cf
+  cf-agent -KI
+else
+  mpf_dir=$(sudo cf-promises --show-vars=sys.masterdir | grep default: | awk '{print $2}'); sudo rsync -avz out/masterfiles/ "$mpf_dir"
+  sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
+  sudo cf-agent -KI
+fi
 # if all that looks good, add changes and commit and push!
 git add -p
 git commit # so I get a chance to bounce out if I don't like the commit
