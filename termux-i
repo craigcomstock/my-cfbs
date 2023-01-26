@@ -1,2 +1,6 @@
+set -e
+set -x
+echo "first, run update on raspberrypi hub since https://tracker.mender.io/browse/CFE-4140 prevents updates on locally bootstrapped host"
+read
 cf-agent -Kf update.cf
 cf-agent -KI

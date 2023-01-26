@@ -21,12 +21,8 @@ bundle agent sshd_main
     packages_installed::
       # todo maybe don't need sshd_service_installed since sshd_service_enabled handles that case
       "sshd_service_installed" expression => fileexists("${svdir}/sshd/run");
-      "sshd_service_enabled" expression => and("sshd_service_installed",
+      "sshd_service_running" expression => and("sshd_service_installed",
         not(fileexists("${svdir}/sshd/down")));
-      "sshd_service_up" expression => 
-strcmp("up",
-execresult("sv status sshd | cut -d: -f1", "useshell", "both")
-);
 
   vars:
     "svdir" string => "/data/data/com.termux/files/usr/var/service";
@@ -48,11 +44,9 @@ execresult("sv status sshd | cut -d: -f1", "useshell", "both")
       edit_line => default:lines_present("PasswordAuthentication no");
 
   commands:
-    termux.!sshd_service_enabled::
+    # sv-enable enables the service as well as starts it running, easier than checking sv status sshd I suppose
+    termux.!sshd_service_running::
       "sv-enable sshd" contain => default:in_shell;
-    termux.!sshd_service_up::
-    termux.sshd_service_enabled.!sshd_service_up::
-      "sv up sshd" contain => default:in_shell;
 }
 
 # also todo, modify sshd_config
