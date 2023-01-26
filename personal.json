@@ -11,15 +11,15 @@
   "classes": {
     "personal:craig_sshd_task": [ "termux" ],
     "personal:craig_sudo_task": [ "pine" ],
-    "personal:craig_x11_task": [ "x220c" ],
-    "personal:craig_debian_task": [ "x220c" ],
-    "personal:craig_vpn_task": [ "x220c" ],
-    "personal:craig_cfengine_task": [ "x220c" ],
-    "personal:craig_developer_task": [ "x220c" ],
-    "personal:craig_music_task": [ "x220c" ],
-    "personal:craig_android_task": [ "x220c" ],
-    "personal:craig_pictures_task": [ "x220c" ],
-    "personal:craig_passwords_task": [ "x220c" ]
+    "personal:craig_x11_task": [ "x220c","pine" ],
+    "personal:craig_debian_task": [ "x220c","pine" ],
+    "personal:craig_vpn_task": [ "x220c","pine" ],
+    "personal:craig_cfengine_task": [ "x220c","pine" ],
+    "personal:craig_developer_task": [ "x220c","pine" ],
+    "personal:craig_music_task": [ "x220c","pine" ],
+    "personal:craig_android_task": [ "x220c","pine" ],
+    "personal:craig_pictures_task": [ "x220c","pine" ],
+    "personal:craig_passwords_task": [ "x220c","pine" ]
   },
   "vars": {
     "personal:personal.base_packages": [

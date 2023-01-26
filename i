@@ -2,12 +2,21 @@
 set -e
 set -x
 if ! command -v rsync 2>/dev/null; then
-  apt install rsync
+  if command -v apk 2>/dev/null; then
+    sudo apk add rsync
+  else
+    # below needs sudo on debian. I added it for termux :)
+    apt install rsync
+  fi
   # todo need non-debian/termux package option :)
 fi
 if ! command -v pip 2>/dev/null; then
-  echo "please install python3 and pip"
-  exit 1
+  if command -v apk 2>/dev/null; then
+    sudo apk add python3 py3-pip
+  else
+    echo "please install python3 and pip"
+    exit 1
+  fi
 fi
 if ! command -v cfbs 2>/dev/null; then
   pip install --upgrade cfbs
