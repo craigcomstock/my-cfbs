@@ -16,9 +16,10 @@ bundle agent sshd_main
 {
 
   classes:
-    "packages_installed" expression => and("openssh_installed", "termux_services_installed");
-    "sshd_service_enabled" expression => returnszero("${paths.bin_path}/sv-enable", "useshell");
-    "sshd_service_up" expression => 
+    termux::
+      "packages_installed" expression => and("openssh_installed", "termux_services_installed");
+      "sshd_service_enabled" expression => returnszero("${paths.bin_path}/sv-enable", "useshell");
+      "sshd_service_up" expression => 
 strcmp("up",
 execresult("sv status sshd | cut -d: -f1", "useshell", "both")
 );
