@@ -34,8 +34,6 @@ execresult("sv status sshd | cut -d: -f1", "useshell", "both")
     termux::
       "openssh" policy => "present", classes => if_ok("openssh_installed");
       "termux-services" policy => "present", classes => if_ok("termux_services_installed");
-      "${packages}"
-        policy => "present";
 
   files:
     "/data/data/com.termux/files/home/.ssh/authorized_keys"
