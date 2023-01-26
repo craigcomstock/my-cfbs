@@ -5,6 +5,10 @@ body file control
 
 bundle agent personal
 {
+  classes:
+    alpinelinux::
+      "user_${users}_present" expression => returnszero("grep ${users} /etc/passwd", "useshell");
+
   vars:
     "skel" string => "/etc/skel";
 "ignore_dirs" slist => {
@@ -12,11 +16,18 @@ bundle agent personal
 "\.cache"
 };
   users:
-    linux.!termux:: # no support for openbsd, windows or termux yet
+    # todo alpinelinux linux support, alternate, use commands? should work for openbsd in a similar way :)
+    linux.!termux.!alpinelinux:: # no support for openbsd, windows or termux yet
       "${users}"
 policy => "present",
 home_dir => "/home/${users}",
 home_bundle => home_skel(${users}, ${skel});
+
+  commands:
+    alpinelinux::
+      "adduser -D ${users}"
+        if => not("user_${users}_present"),
+        contain => default:in_shell;
 
   files:
     "/home/${users}/."
