@@ -15,6 +15,8 @@ bundle agent debian_main
 
   vars:
     "packages" slist =>  {
+"resolvconf", # for openvpn dns setup command line style in bin/vpn-on
+"alsa-utils", # for alsactl, aka volume control and such
 "apt-file" # so I can figure out where things come from or what package I need to install a certain command/file
     };
 
@@ -23,5 +25,7 @@ bundle agent debian_main
       "${packages}"
         policy => "present";
 
+  commands:
+# todo, run apt-file update if apt-file was just installed
   files:
 }

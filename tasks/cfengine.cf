@@ -30,5 +30,11 @@ bundle agent cfengine_main
 # todo, install cfbs as root for sudo cfbs install :)
 # WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
 
+  commands:
+    # here I want to be debian (currently supported platform) specific and a bit more efficient by chunking together
+    # legacy package promise supports this but I want to short-circuit all this stuff "for now"
+    debian::
+      "apt-get install -y build-essential git libtool autoconf automake bison flex libssl-dev libpcre3-dev libbison-dev libacl1 libacl1-dev lmdb-utils liblmdb-dev libpam0g-dev libtool libyaml-dev"
+        contain => default:in_shell;
   files:
 }

@@ -13,19 +13,23 @@ if ! command -v cf-remote 2>/dev/null; then
   pip install --upgrade cf-remote
 fi
 if ! command -v cf-agent 2>/dev/null; then
-  cf-remote --version master install --clients localhost --edition community
+  sudo apt install cfengine3 # debian alternate for cf-remote install command :)
+  sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
+#  cf-remote --version master install --clients localhost --edition community
 fi
 cf-promises -f ./out/masterfiles/promises.cf
 cf-promises -f ./out/masterfiles/update.cf
+#sudo cfbs install
+# with debian dist cfengine3 package the mpf is in a different location so use it
+mpf_dir=$(sudo cf-promises --show-vars=sys.masterdir | grep default: | awk '{print $2}')
+sudo rsync -avz out/masterfiles/ "$mpf_dir"
+sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
+sudo cf-agent -KI
+# if all that looks good, add changes and commit and push!
 git add -p
 git commit # so I get a chance to bounce out if I don't like the commit
 git push
-echo "Ok. Thats about as much as I can do until I fix local bootstrapping to make development easier."
 exit 0
-sudo cfbs install
-sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
-sudo cf-agent -KI
-sudo cf-agent -KIf update.cf
 # errors encountered when actuating files promise '/var/cfengine/inputs/cf_promises_validated'
 # error: Method 'cfe_internal_update_policy_cpv' failed in some repairs
 # try cf-agent as non-priv user, doesn't work well in many ways...

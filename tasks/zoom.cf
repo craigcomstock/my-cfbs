@@ -1,0 +1,56 @@
+## todo: apt --fix-broken install
+#craig@x220c:~$ sudo dpkg -i Downloads/zoom_amd64.deb
+#[sudo] password for craig:
+#Selecting previously unselected package zoom.
+#(Reading database ... 65596 files and directories currently installed.)
+#Preparing to unpack Downloads/zoom_amd64.deb ...
+#Unpacking zoom (5.13.5.431) ...
+#dpkg: dependency problems prevent configuration of zoom:
+# zoom depends on libxcb-keysyms1; however:
+#  Package libxcb-keysyms1 is not installed.
+# zoom depends on libxcb-image0; however:
+#  Package libxcb-image0 is not installed.
+# zoom depends on libgl1-mesa-glx; however:
+#  Package libgl1-mesa-glx is not installed.
+# zoom depends on libegl1-mesa; however:
+#  Package libegl1-mesa is not installed.
+# zoom depends on libxcb-xtest0; however:
+#  Package libxcb-xtest0 is not installed.
+# zoom depends on ibus; however:
+#  Package ibus is not installed.
+# zoom depends on libxcb-xinerama0; however:
+#  Package libxcb-xinerama0 is not installed.
+# zoom depends on libxkbcommon-x11-0; however:
+#  Package libxkbcommon-x11-0 is not installed.
+# zoom depends on desktop-file-utils; however:
+#  Package desktop-file-utils is not installed.
+#
+#dpkg: error processing package zoom (--install):
+# dependency problems - leaving unconfigured
+
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent zoom
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent zoom_main
+{
+
+  vars:
+    "packages" slist =>  {
+    };
+
+  packages:
+    linux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
