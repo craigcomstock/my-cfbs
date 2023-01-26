@@ -1,0 +1,27 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent debian
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent debian_main
+{
+
+  vars:
+    "packages" slist =>  {
+"apt-file" # so I can figure out where things come from or what package I need to install a certain command/file
+    };
+
+  packages:
+    linux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}

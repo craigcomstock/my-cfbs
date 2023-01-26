@@ -1,0 +1,6 @@
+personal policy repo, via cfengine build/cfbs
+
+# todo
+- refactor so I don't have to add bundles to cfbs.json when I add them... slurp instead!
+- refactor to limit impact
+- create a command to add tasks on any computer, ON that computer, and then communicate that around or up to the git repo?
