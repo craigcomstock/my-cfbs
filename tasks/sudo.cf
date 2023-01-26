@@ -1,3 +1,4 @@
+# todo alpinelinux, add users to wheel group, or a small file in /etc/sudoers.d/
 body file control
 {
   namespace => "personal";
