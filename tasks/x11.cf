@@ -1,4 +1,5 @@
 # todo alpine apk add dmenu lxterminal, setup-xorg-base script
+# alpine also needs xclip for pass ,c ,v to work for me in x11 dwm :)
 # some package provides st? dwm? dmenu?
 # alpine needs xrandr also, not a dep I guess.
 # maybe rename this window-environment?

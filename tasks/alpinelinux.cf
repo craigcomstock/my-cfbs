@@ -16,6 +16,7 @@ bundle agent alpinelinux_main
 
   vars:
     "packages" slist =>  {
+"pinentry-tty", # because gpg is better on the command line with no curses :p
 "coreutils", # because busybox just doesn't cut it?
 "grep" # because grep -r is my friend and not present in busybox default from alpinelinux
     };
