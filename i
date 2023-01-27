@@ -34,6 +34,8 @@ if ! command -v cf-agent 2>/dev/null; then
 fi
 cf-promises -f ./out/masterfiles/promises.cf
 cf-promises -f ./out/masterfiles/update.cf
+echo "alpine cant self bootstrap with default cfengine package"
+exit 0
 #sudo cfbs install
 # with debian dist cfengine3 package the mpf is in a different location so use it
 # just in case, lets touch the promises.cf in case we just installed cfengine3 package from debian repos
