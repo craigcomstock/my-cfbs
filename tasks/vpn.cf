@@ -2,6 +2,9 @@
 # https://openvpn.net/community-resources/how-to/
 # they should be kept securely
 # this bundle relies on tasks/dotfiles to include the ovpn file and scripts needed to activate openvpn3 manually on the command line
+# if using command line stuff, I have to do this manually "right now"
+# I had a script which worked with password store, but it isn't working now
+# sudo openvpn bin/northern.ovpn, then in another window, my vpn-on script to manually add the right dns via resolvconf
 body file control
 {
   namespace => "personal";
