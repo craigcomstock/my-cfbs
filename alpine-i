@@ -1,0 +1,12 @@
+set -e
+set -x
+cfbs build
+cf-promises -f ./out/masterfiles/promises.cf
+cf-promises -f ./out/masterfiles/update.cf
+git add -p
+git commit
+git push
+echo "now, run update on raspberrypi hub since https://tracker.mender.io/browse/CFE-4140 prevents updates on locally bootstrapped host"
+read
+sudo cf-agent -Kf update.cf
+sudo cf-agent -KI
