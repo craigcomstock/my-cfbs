@@ -1,0 +1,29 @@
+# might want proper awk and sed as well :)
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent alpinelinux
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent alpinelinux_main
+{
+
+  vars:
+    "packages" slist =>  {
+"coreutils", # because busybox just doesn't cut it?
+"grep" # because grep -r is my friend and not present in busybox default from alpinelinux
+    };
+
+  packages:
+    alpinelinux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}

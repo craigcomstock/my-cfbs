@@ -1,3 +1,6 @@
+# todo alpine apk add dmenu lxterminal, setup-xorg-base script
+# some package provides st? dwm? dmenu?
+# alpine needs xrandr also, not a dep I guess.
 # maybe rename this window-environment?
 body file control
 {

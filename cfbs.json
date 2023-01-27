@@ -49,6 +49,8 @@
         "policy_files services/cfbs/tasks/",
         "bundles personal:x11",
         "bundles personal:linux",
+        "bundles personal:alpinelinux",
+        "bundles personal:debian",
         "bundles personal:sshd",
         "bundles personal:passwords",
         "bundles personal:pictures",
