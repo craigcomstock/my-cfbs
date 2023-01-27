@@ -17,7 +17,7 @@ bundle agent sshd_main
 
   classes:
     termux::
-      "packages_installed" expression => and("openssh_installed", "termux_services_installed");
+      "packages_installed" expression => and("openssh_installed", "termux_services_installed", "runit_installed");
     packages_installed::
       # todo maybe don't need sshd_service_installed since sshd_service_enabled handles that case
       "sshd_service_installed" expression => fileexists("${svdir}/sshd/run");
@@ -32,6 +32,7 @@ bundle agent sshd_main
     termux::
       "openssh" policy => "present", classes => if_ok("openssh_installed");
       "termux-services" policy => "present", classes => if_ok("termux_services_installed");
+      "runit" policy => "present", classes => if_ok("runit_installed");
 
   files:
     "/data/data/com.termux/files/home/.ssh/authorized_keys"
