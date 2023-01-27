@@ -1,0 +1,30 @@
+# todo, problem here, can't manage packages until python is installed
+# maybe add openssl and python as requirements in cfengine package? :(
+# python isn't STRICTLY required... suggests maybe? for packages promises :)
+# so I could handle this here, if no python, then run a command FIRST, then package promises can follow next agent run :)
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent termux
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent termux_main
+{
+
+  vars:
+    "packages" slist =>  {
+    };
+
+  packages:
+    linux.!termux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
