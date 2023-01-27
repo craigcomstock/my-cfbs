@@ -1,0 +1,30 @@
+# special things for a resource limited device like the pinephone
+# chromium isn't very usable
+# I think by reducing the resolution I may eek better performance and usable gmail/slack in firefox?
+# xrandr --output HDMI-1 --mode 1024x768
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent pinephone
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent pinephone_main
+{
+
+  vars:
+    "packages" slist =>  {
+    };
+
+  packages:
+    linux.!termux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
