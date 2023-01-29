@@ -48,6 +48,7 @@
         "directory ./ services/cfbs/tasks/",
         "policy_files services/cfbs/tasks/",
         "bundles personal:x11",
+        "bundles personal:x220",
         "bundles personal:linux",
         "bundles personal:alpinelinux",
         "bundles personal:debian",

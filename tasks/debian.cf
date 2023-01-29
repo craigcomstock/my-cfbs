@@ -1,3 +1,4 @@
+# todo, firmware for wifi on x220, wifi setup, passphrase in cf-secret file :)
 # todo, run apt autoremove daily? run apt update apt upgrade daily!
 body file control
 {

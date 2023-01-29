@@ -1,0 +1,30 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent x220
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent x220_main
+{
+
+# setup iwlwifi, firmware and repos for debian
+  vars:
+    debian::
+    "packages" slist =>  {
+"firmware-iwlwifi"
+    };
+
+  packages:
+    debian::
+      "${packages}"
+        policy => "present";
+
+  files:
+# todo, find a nice way to check non-free/contrib additions to sources
+}

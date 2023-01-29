@@ -1,3 +1,4 @@
+# todo, actually, stock debian on x220c lacked openssh-server aka sshd, so install that optionally if added to augments
 # for now, only used to manage sshd in termux on android devices
 body file control
 {

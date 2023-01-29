@@ -11,6 +11,7 @@
   "classes": {
     "personal:craig_sshd_task": [ "termux" ],
     "personal:craig_sudo_task": [ "pine" ],
+    "personal:craig_x220_task": [ "x220c" ],
     "personal:craig_x11_task": [ "x220c","pine" ],
     "personal:craig_linux_task": [ "x220c","pine" ],
     "personal:craig_debian_task": [ "x220c","pine" ],
