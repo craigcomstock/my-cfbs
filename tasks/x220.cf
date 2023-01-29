@@ -1,3 +1,12 @@
+# todo add a few management bits, discovery bits
+# lsmod | grep iwl
+# dmesg | grep -i wifi
+# rmmod iwlwifi for after adding firmware-iwlwifi
+# modprobe iwlwifi
+# ed /etc/network/interfaces
+# add iface wlp3s0 inet dhcp # discover wlp3s0 somehow
+# systemctl restart networking
+# might be nice to install networkmanager or make editing wpa_supplicant.conf easy (what nmcli d w does)
 body file control
 {
   namespace => "personal";
