@@ -1,3 +1,4 @@
+# https://wiki.lineageos.org/devices/FP2/build
 body file control
 {
   namespace => "personal";

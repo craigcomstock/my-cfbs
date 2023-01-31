@@ -1,0 +1,9 @@
+Tue Jan 31 01:25:59 PM CST 2023
+
+type=AVC msg=audit(1675192990.250:1137): avc:  denied  { execute } for  pid=8369 comm="(cf-execd)" name="cf-execd" dev="dm-0" ino=154077 scontext=system_u:sys
+tem_r:init_t:s0 tcontext=system_u:object_r:cfengine_var_lib_t:s0 tclass=file permissive=0
+
+so maybe a problem with 
+CFEngine Core 3.22.0a.daf579aef
+
+community packages not having everything in cfengine-enterprise policy
