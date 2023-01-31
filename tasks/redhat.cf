@@ -1,0 +1,30 @@
+# for fedora, probably need CI to make selinux policy?
+# dnf install selinux-policy-devel
+# todo, community agent master on fedora 37 needs selinux disabled :( work on this :)
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent redhat
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent redhat_main
+{
+
+  vars:
+    "packages" slist =>  {
+    };
+
+  packages:
+    linux.!termux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
+# maybe put that in cfengine.cf for redhat eh?!

@@ -13,6 +13,8 @@ fi
 if ! command -v pip 2>/dev/null; then
   if command -v apk 2>/dev/null; then
     sudo apk add python3 py3-pip
+  elif command -v dnf 2>/dev/null; then
+    sudo dnf install -y python3 python3-pip
   else
     echo "please install python3 and pip"
     exit 1
@@ -23,19 +25,22 @@ if ! command -v cfbs 2>/dev/null; then
 fi
 cfbs build
 # we need cfengine, install master on this host :) needs sudo right? :)
-#if ! command -v cf-remote 2>/dev/null; then
-#  pip install --upgrade cf-remote
-#fi
-#if ! command -v cf-agent 2>/dev/null; then
+if ! command -v cf-remote 2>/dev/null; then
+  pip install --upgrade cf-remote
+fi
+if ! command -v cf-agent 2>/dev/null; then
 #  # todo, on termux, no sudo is needed
 #  sudo apt install cfengine3 # debian alternate for cf-remote install command :)
 #  sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
-##  cf-remote --version master install --clients localhost --edition community
-#fi
+  cf-remote --version master install --clients localhost --edition community
+fi
 cf-promises -f ./out/masterfiles/promises.cf
 cf-promises -f ./out/masterfiles/update.cf
 #echo "alpine cant self bootstrap with default cfengine package"
 #exit 0
+if ! sudo command -v cfbs 2>/dev/null; then
+  sudo pip install --upgrade cfbs
+fi
 sudo cfbs install
 sudo cf-agent -KIf update.cf
 sudo cf-agent -KI
@@ -93,8 +98,9 @@ if ! sudo cf-key -p; then
  sudo cf-key # make a hostkey if not already there
 fi
 if ! sudo stat /var/cfengine/policy_server.dat; then
-  sudo cf-agent -IB raspberrypi # self bootstrap for personal policy :)
-#  sudo cf-agent -IB localhost # self bootstrap for personal policy :)
+#  sudo cf-agent -IB raspberrypi # self bootstrap for personal policy :)
+# use 127.0.0.1 instead of localhost, workaround for an issue I found
+  sudo cf-agent -IB 127.0.0.1 # self bootstrap for personal policy :)
 fi
 #sudo cf-agent -I
 # SUMMARY: basically OK to go, but many errors related to enterprise versus community policy server?

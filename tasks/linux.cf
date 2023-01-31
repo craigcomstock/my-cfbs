@@ -14,11 +14,17 @@ bundle agent linux_main
 {
 
   vars:
-    "packages" slist =>  {
+    linux.!fedora::
+      "packages" slist =>  {
 "alsa-utils",# for alsamixer aka volume control
 "chromium",
 "firefox-esr"
     };
+    linux.fedora::
+      "packages" slist => {
+"chromium",
+"firefox"
+};
 
   packages:
     linux.!termux::
