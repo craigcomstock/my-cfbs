@@ -23,20 +23,23 @@ if ! command -v cfbs 2>/dev/null; then
 fi
 cfbs build
 # we need cfengine, install master on this host :) needs sudo right? :)
-if ! command -v cf-remote 2>/dev/null; then
-  pip install --upgrade cf-remote
-fi
-if ! command -v cf-agent 2>/dev/null; then
-  # todo, on termux, no sudo is needed
-  sudo apt install cfengine3 # debian alternate for cf-remote install command :)
-  sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
-#  cf-remote --version master install --clients localhost --edition community
-fi
+#if ! command -v cf-remote 2>/dev/null; then
+#  pip install --upgrade cf-remote
+#fi
+#if ! command -v cf-agent 2>/dev/null; then
+#  # todo, on termux, no sudo is needed
+#  sudo apt install cfengine3 # debian alternate for cf-remote install command :)
+#  sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
+##  cf-remote --version master install --clients localhost --edition community
+#fi
 cf-promises -f ./out/masterfiles/promises.cf
 cf-promises -f ./out/masterfiles/update.cf
-echo "alpine cant self bootstrap with default cfengine package"
-exit 0
-#sudo cfbs install
+#echo "alpine cant self bootstrap with default cfengine package"
+#exit 0
+sudo cfbs install
+sudo cf-agent -KIf update.cf
+sudo cf-agent -KI
+exit 0 # local debian version
 # with debian dist cfengine3 package the mpf is in a different location so use it
 # just in case, lets touch the promises.cf in case we just installed cfengine3 package from debian repos
 # sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
