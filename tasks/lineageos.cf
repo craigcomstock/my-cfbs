@@ -1,0 +1,26 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent lineageos
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent lineageos_main
+{
+
+  vars:
+    "packages" slist =>  {
+    };
+
+  packages:
+    linux.!termux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}

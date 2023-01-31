@@ -1,3 +1,4 @@
+# fedora needs some work, ovpn file import in gnome settings is fine and seems to connect but DNS doesn't work for ci.cfengine.com?
 # how secure does the ovpn file need to be?
 # https://openvpn.net/community-resources/how-to/
 # they should be kept securely
