@@ -1,0 +1,28 @@
+# for ish app, which is an x86 emulated alpine linux environment
+# wish I could manage installing apps: vlc, gmail, banking, slack, someday those will all be console driven right? ;)
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent ios
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent ios_main
+{
+
+  vars:
+    "packages" slist =>  {
+    };
+
+  packages:
+    linux.!termux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}

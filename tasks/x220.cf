@@ -26,6 +26,7 @@ bundle agent x220_main
   vars:
     debian::
     "packages" slist =>  {
+"mypaint", # because I have a pen (thinkpad x220 tablet) I should have an app for it
 "firmware-iwlwifi"
     };
 
