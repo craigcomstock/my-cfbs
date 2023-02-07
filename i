@@ -41,11 +41,6 @@ cf-promises -f ./out/masterfiles/update.cf
 if ! sudo command -v cfbs 2>/dev/null; then
   sudo pip install --upgrade cfbs
 fi
-sudo cfbs install
-sudo cf-agent -KIf update.cf
-#sudo cf-agent -KI
-sudo cf-agent -Kd | tee log
-exit 0 # local debian version
 # with debian dist cfengine3 package the mpf is in a different location so use it
 # just in case, lets touch the promises.cf in case we just installed cfengine3 package from debian repos
 # sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
@@ -59,6 +54,8 @@ else
   sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
   sudo cf-agent -KI
 fi
+
+exit 0
 # if all that looks good, add changes and commit and push!
 git add -p
 git commit # so I get a chance to bounce out if I don't like the commit

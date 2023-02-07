@@ -24,6 +24,12 @@ bundle agent vagrant_main
   services:
     "libvirtd"
       service_policy => "enabled";
+    "libvirtd"
+      service_policy => "start";
+    "virtnetworkd"
+      service_policy => "enabled";
+    "virtnetworkd"
+      service_policy => "start";
   packages:
     linux.!termux::
       "${packages}"
@@ -31,3 +37,16 @@ bundle agent vagrant_main
 
   files:
 }
+# [craig@mbp play-cfbs]$ sudo systemctl stop libvirtd
+# Warning: Stopping libvirtd.service, but it can still be activated by:
+#   libvirtd-admin.socket
+#   libvirtd.socket
+#   libvirtd-ro.socket
+# [craig@mbp play-cfbs]$ sudo systemctl disable libvirtd
+# Removed "/etc/systemd/system/multi-user.target.wants/libvirtd.service".
+# Removed "/etc/systemd/system/sockets.target.wants/virtlockd.socket".
+# Removed "/etc/systemd/system/sockets.target.wants/virtlogd.socket".
+# Removed "/etc/systemd/system/sockets.target.wants/libvirtd.socket".
+# Removed "/etc/systemd/system/sockets.target.wants/libvirtd-ro.socket".
+# https://github.com/hashicorp/vagrant/issues/12664
+# virtnetworkd service must be enabled and started
