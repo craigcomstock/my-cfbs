@@ -11,6 +11,7 @@ body file control
 bundle agent x11
 {
   vars:
+    !alpine::
     "packages" slist =>  {
       "suckless-tools", # for dmenu
       "dwm",
@@ -19,6 +20,12 @@ bundle agent x11
       "x11-xserver-utils", # for xsetroot in xinitrc
       "xinit" # for startx to start x!
     };
+    alpine::
+      "packages" slist => {
+"dmenu",
+"dwm",
+"st"
+};
   packages:
   # my own personal x11 setup
     # only linux, not termux or windows or openbsd
