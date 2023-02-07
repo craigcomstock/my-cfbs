@@ -53,6 +53,7 @@
         "bundles personal:x220",
         "bundles personal:linux",
         "bundles personal:yocto",
+        "bundles personal:vagrant",
         "bundles personal:alpinelinux",
         "bundles personal:debian",
         "bundles personal:sshd",

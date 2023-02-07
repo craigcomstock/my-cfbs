@@ -1,0 +1,27 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent vagrant
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent vagrant_main
+{
+
+  vars:
+    "packages" slist =>  {
+"vagrant vagrant-libvirt"
+    };
+
+  packages:
+    linux.!termux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
