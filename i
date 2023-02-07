@@ -43,7 +43,8 @@ if ! sudo command -v cfbs 2>/dev/null; then
 fi
 sudo cfbs install
 sudo cf-agent -KIf update.cf
-sudo cf-agent -KI
+#sudo cf-agent -KI
+sudo cf-agent -Kd | tee log
 exit 0 # local debian version
 # with debian dist cfengine3 package the mpf is in a different location so use it
 # just in case, lets touch the promises.cf in case we just installed cfengine3 package from debian repos

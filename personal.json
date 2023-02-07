@@ -14,7 +14,7 @@
     "personal:craig_x220_task": [ "x220c" ],
     "personal:craig_x11_task": [ "x220c","pine" ],
     "personal:craig_yocto_task": [ "craigs_mbp_lan","fedora" ],
-    "personal:craig_vagrant": [ "mbp" ],
+    "personal:craig_vagrant_task": [ "mbp" ],
     "personal:craig_linux_task": [ "x220c","pine","mbp" ],
     "personal:craig_debian_task": [ "x220c","pine" ],
     "personal:craig_vpn_task": [ "x220c","pine" ],

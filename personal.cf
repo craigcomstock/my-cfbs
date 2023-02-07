@@ -13,6 +13,8 @@ bundle agent personal
     "skel" string => "/etc/skel";
 "ignore_dirs" slist => {
 "\.local",
+"src",
+"cfe",
 "BACKUP",
 "\.cache"
 };

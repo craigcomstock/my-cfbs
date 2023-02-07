@@ -16,7 +16,9 @@ bundle agent vagrant_main
 
   vars:
     "packages" slist =>  {
-"vagrant vagrant-libvirt"
+"vagrant",
+"vagrant-libvirt",
+"libvirt-daemon"
     };
 
   services:
