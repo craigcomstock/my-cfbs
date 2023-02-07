@@ -1,3 +1,4 @@
+# https://app.vagrantup.com/generic
 body file control
 {
   namespace => "personal";
@@ -18,6 +19,9 @@ bundle agent vagrant_main
 "vagrant vagrant-libvirt"
     };
 
+  services:
+    "libvirtd"
+      service_policy => "enabled";
   packages:
     linux.!termux::
       "${packages}"
