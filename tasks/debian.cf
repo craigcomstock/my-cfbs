@@ -8,6 +8,7 @@ body file control
 bundle agent debian
 {
   methods:
+    debian::
       "${this.bundle}_main"
         ifvarclass => "${personal:personal.users}_${this.bundle}_task";
 }

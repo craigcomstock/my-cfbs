@@ -1,3 +1,8 @@
+cfbs build
+sudo cfbs install
+sudo cf-agent -KIf update.cf
+sudo cf-agent -KI
+exit 0
 #!/usr/bin/env sh
 set -e
 set -x
@@ -54,7 +59,6 @@ else
   sudo cf-agent -KIf update.cf # copy from masterfiles installed by cfbs to /var/cfengine/inputs
   sudo cf-agent -KI
 fi
-
 exit 0
 # if all that looks good, add changes and commit and push!
 git add -p
