@@ -19,7 +19,7 @@
     "personal:craig_debian_task": [ "x220c","pine" ],
     "personal:craig_vpn_task": [ "x220c","pine" ],
     "personal:craig_cfengine_task": [ "x220c","pine" ],
-    "personal:craig_developer_task": [ "x220c","pine" ],
+    "personal:craig_developer_task": [ "x220c","pine","mbp"],
     "personal:craig_music_task": [ "x220c","pine" ],
     "personal:craig_android_task": [ "x220c","pine", "libre" ],
     "personal:craig_pictures_task": [ "x220c","pine","craigs_mbp_lan","fedora" ],
