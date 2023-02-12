@@ -1,8 +1,3 @@
-cfbs build
-sudo cfbs install
-sudo cf-agent -KIf update.cf
-sudo cf-agent -KI
-exit 0
 #!/usr/bin/env sh
 set -e
 set -x
@@ -36,6 +31,7 @@ fi
 if ! command -v cf-agent 2>/dev/null; then
 #  # todo, on termux, no sudo is needed
 #  sudo apt install cfengine3 # debian alternate for cf-remote install command :)
+# sudo touch /var/lib/cfengine/inputs/promises.cf # alpine
 #  sudo touch /var/lib/cfengine3/inputs/promises.cf # "bootstrap"
   cf-remote --version master install --clients localhost --edition community
 fi
