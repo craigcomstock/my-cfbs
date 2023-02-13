@@ -1,0 +1,27 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent irc
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent irc_main
+{
+
+  vars:
+    "packages" slist =>  {
+"ircii" # on debian
+    };
+
+  packages:
+    linux.!termux::
+      "${packages}"
+        policy => "present";
+
+  files:
+}
