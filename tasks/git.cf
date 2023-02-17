@@ -16,6 +16,8 @@ bundle agent git_main
 
   vars:
     "packages" slist =>  {
+"git",
+"git-email" # dnf fedora package name
     };
 
   packages:
