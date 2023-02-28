@@ -15,5 +15,5 @@ bundle agent xcode_main
   packages:
     darwin::
       "mas" # needed to install apple store items from brew
-        package_method => brew("${personal:personal.users}"), package_policy => "add";
+        package_method => default:brew("${personal:personal.users}"), package_policy => "add";
 }
