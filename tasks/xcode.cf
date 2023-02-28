@@ -1,0 +1,19 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent xcode
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent xcode_main
+{
+  packages:
+    darwin::
+      "mas" # needed to install apple store items from brew
+        package_method => brew("${personal:personal.users}"), package_policy => "add";
+}
