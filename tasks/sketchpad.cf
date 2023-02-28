@@ -1,0 +1,7 @@
+#with dual monitors, LVDS-1 and HDMI-2 on x220 table the touch/pen was offset incorrectly on the lower(built-in LVDS-1) monitor
+#https://askubuntu.com/questions/51445/how-do-i-calibrate-a-touchscreen-on-a-dual-monitor-system
+#xinput to find the device, Pen stylus id=11 in this case
+#xrandr to find the display name, LVDS-1 in this case
+#then associate
+#xinput map-to-output 11 LVDS-1
+#and voila! works again!

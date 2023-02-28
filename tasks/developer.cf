@@ -15,6 +15,7 @@ bundle agent developer_main
 
   vars:
     "packages" slist =>  {
+"scrot", # screen capture utility for linux, should abstract this and shelli-ize it for multi-platform :)
 "cscope", # for my idesh utilities examining C source code projects
 "jq" # query and validate json
     };
