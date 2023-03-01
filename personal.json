@@ -9,7 +9,7 @@
     }
   },
   "classes": {
-    "personal:craig_xcode_task": [ "craigs-mbp" ]
+    "personal:craig_xcode_task": [ "craigs_mbp" ]
   },
   "vars": {
     "personal:personal.base_packages": [
