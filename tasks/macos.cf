@@ -46,7 +46,7 @@ bundle agent macos_main
 # patterned after brew package_method
 body package_method mas(user)
 {
-  package_changes => "bulk";
+  package_changes => "individual";
   package_add_command => "$(darwin_knowledge.call_sudo) -u $(user) $(personal:macos_main.call_mas) install";
   package_delete_command => "$(darwin_knowledge.call_sudo) -u $(user) $(personal:macos_main.call_mas) uninstall";
   package_delete_convention => "$(name)";
