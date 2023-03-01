@@ -22,6 +22,7 @@ bundle agent macos_main
     "packages" slist => {
 "mas", # needed to install apple store stuff, like xcode
 "google-chrome",
+"android-studio",
 "openvpn-connect"
     };
 
@@ -31,13 +32,17 @@ bundle agent macos_main
       package_method => default:brew("${personal:personal.users}"),
       package_policy => "add";
     darwin&has_mas::
-      "497799835"
+# maybe related to running mas list as another user?
+#    error: Finished command related to promiser '497799835' -- an error occurred, returned 1
+#   error: Bulk package schedule execution failed somewhere - unknown outcome for '497799835'
+      "497799835" # xcode
         package_method => mas("${personal:personal.users}"),
         package_policy => "add";
 
 }
 
 
+# todo, you have to sign-in first, before `mas` will work :) check this? make a class-guard for it? warn somehow? if you just run `mas install` a dialog will pop up :) :p
 # patterned after brew package_method
 body package_method mas(user)
 {
