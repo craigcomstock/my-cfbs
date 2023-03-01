@@ -1,0 +1,60 @@
+body file control
+{
+  namespace => "personal";
+}
+
+bundle agent macos
+{
+  methods:
+      "${this.bundle}_main"
+        ifvarclass => "${personal:personal.users}_${this.bundle}_task";
+}
+
+bundle agent macos_main
+{
+  classes:
+    "has_mas" expression => returnszero("command -v mas", "useshell");
+
+  vars:
+    "packages" slist => [
+"mas", # needed to install apple store stuff, like xcode
+"google-chrome",
+"openvpn-connect"
+    ];
+
+  packages:
+    darwin::
+    "${packages}"
+      package_method => default:brew("${personal:personal.users}"),
+      package_policy => "add";
+    darwin&has_mas::
+      "497799835"
+        package_method => mas("${personal:personal.users}"),
+        package_policy => "add";
+
+}
+
+
+# patterned after brew package_method
+body package_method mas(user)
+{
+  package_changes => "bulk";
+  package_add_command => "$(darwin_knowledge.call_sudo) -u $(user) $(darwin_knowledge.call_mas) install";
+  package_delete_command => "$(darwin_knowledge.call_sudo) -u $(user) $(darwin_knowledge.call_mas) uninstall";
+  package_delete_convention => "$(name)";
+  package_name_convention => "$(name)";
+
+  package_installed_regex => ".*";
+  package_list_command => "$(darwin_knowledge.call_sudo) -u $(user) $(darwin_knowledge.call_mas) list";
+  package_list_name_regex => "$(darwin_knowledge.mas_name_regex)";
+  package_list_version_regex => "$(darwin_knowledge.mas_version_regex)";
+  # TODO, not quite right, mas HAS no update command?
+  package_list_update_command => "$(darwin_knowledge.call_sudo) -u $(user) $(darwin_knowledge.call_mas) upgrade";
+  package_list_update_ifelapsed => "$(common_knowledge.list_update_ifelapsed)";
+
+
+  package_verify_command => "$(darwin_knowledge.call_sudo) -u $(user) $(darwin_knowledge.call_mas) list";
+  package_noverify_returncode => "1";
+
+  package_update_command => "$(darwin_knowledge.call_sudo) -u $(user) $(darwin_knowledge.call_mas) update";
+}

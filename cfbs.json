@@ -48,7 +48,7 @@
         "directory ./ services/cfbs/tasks/",
         "policy_files services/cfbs/tasks/",
         "bundles personal:x11",
-        "bundles personal:xcode",
+        "bundles personal:macos",
         "bundles personal:postmarketos",
         "bundles personal:ios",
         "bundles personal:x220",
