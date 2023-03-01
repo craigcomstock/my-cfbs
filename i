@@ -1,3 +1,8 @@
+set -e
+cfbs build
+cf-promises -f ./out/masterfiles/promises.cf
+cf-promises -f ./out/masterfiles/update.cf
+exit 0
 #!/usr/bin/env sh
 set -e
 set -x
