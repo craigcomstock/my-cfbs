@@ -10,7 +10,7 @@
   },
   "classes": {
     "personal:craig_macos_task": [ "craigs_mbp" ],
-    "personal:craig_pip_task": [ "raspberrypi" ],
+    "personal:craig_pip_task": [ "raspberrypi" ]
   },
   "vars": {
     "personal:personal.base_packages": [
