@@ -20,6 +20,6 @@ bundle agent pip_main
     linux.!termux::
       "non_existing_package_to_force_inventory"
         package_policy => "add",
-        package_method => pip(""),
+        package_method => default:pip(""),
         action => default:if_elapsed_day;
 }
