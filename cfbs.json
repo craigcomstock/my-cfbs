@@ -51,6 +51,7 @@
         "bundles personal:macos",
         "bundles personal:postmarketos",
         "bundles personal:ios",
+        "bundles personal:pip",
         "bundles personal:x220",
         "bundles personal:linux",
         "bundles personal:yocto",
