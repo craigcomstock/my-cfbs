@@ -3,6 +3,12 @@
 # vagrant plugin repair gives
 # Unable to resolve dependency: user requested 'vagrant-libvirt (= 0.10.7)'
 # vagrant plugin expunge --reinstall, then vagrant up, and all is well! :)
+# on macos with brew maybe vagrant+libvirt?
+#  To restart libvirt after an upgrade:
+#  brew services restart libvirt
+#Or, if you don't want/need a background service you can just run:
+  /usr/local/opt/libvirt/sbin/libvirtd -f /usr/local/etc/libvirt/libvirtd.conf
+#craig@Craigs-MacBook-Pro ~ % brew services restart libvirt
 # https://app.vagrantup.com/generic
 body file control
 {
