@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: show github context contents
-        run: echo ${{ tojson(github) }}
+        run: echo "${{ tojson(github) }}"
       - name: hi
         run: echo "hi"
