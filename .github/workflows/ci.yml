@@ -8,4 +8,4 @@ jobs:
       - name: show github context contents
         run: echo '${{ tojson(github) }}'
       - name: hi
-        run: echo "hi"
+        run: echo "yoda"
