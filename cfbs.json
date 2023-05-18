@@ -5,14 +5,11 @@
   "build": [
     {
       "name": "masterfiles",
-      "description": "Official CFEngine Masterfiles Policy Framework (MPF).",
-      "tags": ["supported", "base"],
-      "repo": "https://github.com/cfengine/masterfiles",
-      "by": "https://github.com/cfengine",
-      "version": "3.21.1",
-      "commit": "379c69aa71ab3069b2ef1c0cca526192fa77b864",
-      "added_by": "cfbs add",
-      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
+      "url": "https://github.com/cfengine/masterfiles",
+      "commit": "40526fc4c2cc0a39b2096d656bcb79924dcc39f7",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"],
+      "added_by": "cfbs add"
     }
   ],
   "git": true
