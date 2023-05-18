@@ -10,6 +10,17 @@
       "commit": "40526fc4c2cc0a39b2096d656bcb79924dcc39f7",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"],
       "added_by": "cfbs add"
+    },
+    {
+      "name": "./chrony.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./chrony.cf services/cfbs/chrony.cf",
+        "policy_files services/cfbs/chrony.cf",
+        "bundles chrony"
+      ]
     }
   ],
   "git": true
