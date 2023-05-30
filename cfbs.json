@@ -42,6 +42,17 @@
       "subdirectory": "management/autorun",
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "./changes_test.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./changes_test.cf services/cfbs/changes_test.cf",
+        "policy_files services/cfbs/changes_test.cf",
+        "bundles changes_test"
+      ]
     }
   ],
   "git": true
