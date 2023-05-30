@@ -21,6 +21,16 @@
         "policy_files services/cfbs/chrony.cf",
         "bundles chrony"
       ]
+    },
+    {
+      "name": "./alert-type-policy-bundle.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./alert-type-policy-bundle.cf services/cfbs/alert-type-policy-bundle.cf",
+        "policy_files services/cfbs/alert-type-policy-bundle.cf"
+      ]
     }
   ],
   "git": true
