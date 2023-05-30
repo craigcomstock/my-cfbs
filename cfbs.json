@@ -21,6 +21,33 @@
         "policy_files services/cfbs/chrony.cf",
         "bundles chrony"
       ]
+    },
+    {
+      "name": "autorun",
+      "description": "Enables autorun functionality.",
+      "tags": ["supported", "management"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/olehermanse",
+      "version": "1.0.1",
+      "commit": "c3b7329b240cf7ad062a0a64ee8b607af2cb912a",
+      "subdirectory": "management/autorun",
+      "added_by": "upgrade-all-packages",
+      "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "upgrade-all-packages",
+      "version": "1.0.0",
+      "description": "Ensures that the package manager data is updated and all upgradeable packages are upgraded.",
+      "tags": ["supported", "security", "compliance"],
+      "repo": "https://github.com/craigcomstock/cfengine-security-hardening",
+      "by": "https://github.com/craigcomstock",
+      "commit": "e3039050296ec20c7e44b3accba84c146cf6ef69",
+      "subdirectory": "upgrade-all-packages",
+      "dependencies": ["autorun"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./upgrade_all_packages.cf services/autorun/upgrade_all_packages.cf"
+      ]
     }
   ],
   "git": true
