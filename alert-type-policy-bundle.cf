@@ -7,7 +7,7 @@ bundle agent alert_type_policy_bundle
 #  methods:
 #    "one_test";
 #    "two_test";
-#}
+}
 
 bundle common test_vars
 {
