@@ -75,6 +75,16 @@
         "policy_files services/cfbs/alert-events-notifications-email.cf",
         "bundles alert_events_notifications_email"
       ]
+    },
+    {
+      "name": "./overlay/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/overlay/",
+        "policy_files services/cfbs/overlay/"
+      ]
     }
   ],
   "git": true
