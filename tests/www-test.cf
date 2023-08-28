@@ -3,7 +3,7 @@ body file control
 {
   inputs => {
     "${sys.libdir}/testing.cf",
-    "$(sys.policy_entry_dirname)/../../policy/www.cf"
+    "$(sys.policy_entry_dirname)/../policy/www.cf"
   };
 }
 
@@ -16,7 +16,8 @@ bundle agent test
 bundle agent check
 {
   classes:
-    "dir_exists" expression => isdir("/src/www");
+    "dir_exists" expression => isdir("/src/www/."),
+      scope => "namespace"; # make global for use by testing.cf
 
   methods:
     "Register test case"
