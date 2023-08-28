@@ -35,6 +35,17 @@
         "policy_files services/cfbs/tests/",
         "bundles __main__"
       ]
+    },
+    {
+      "name": "./policy/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/policy/",
+        "policy_files services/cfbs/policy/",
+        "bundles www"
+      ]
     }
   ],
   "git": true
