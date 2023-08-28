@@ -15,17 +15,6 @@
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
     {
-      "name": "./src/",
-      "description": "Local subdirectory added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/src/",
-        "policy_files services/cfbs/src/",
-        "bundles www"
-      ]
-    },
-    {
       "name": "./tests/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
