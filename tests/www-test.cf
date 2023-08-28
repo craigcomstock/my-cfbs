@@ -1,0 +1,38 @@
+# https://cfengine.com/blog/2023/how-can-i-test-cfengine-policy/
+body file control
+{
+  inputs => {
+    "${sys.libdir}/testing.cf",
+    "${this.promise_dirname}/../src/www.cf"
+  };
+}
+
+bundle agent test
+{
+  methods:
+    "www";
+}
+
+bundle agent check
+{
+  classes:
+    "dir_exists" expressions => isdir("/src/www");
+
+  methods:
+    "Register test case"
+      usebundle => testing_ok_if("dir_exists",
+"Test that the expected dir was created",
+"error: dir was not created",
+"trace",
+"jUnit");
+    "junit report"
+      usebundle => testing_junit_report( "/tmp/test-result.xml" );
+}
+}
+
+bundle agent __main__
+{
+  methods:
+    "test";
+    "check";
+}
