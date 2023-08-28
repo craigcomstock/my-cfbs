@@ -1,0 +1,6 @@
+bundle agent www
+{
+  files:
+    "/src/www/." # trailing `/.` makes it a directory
+      create => "true";
+}
