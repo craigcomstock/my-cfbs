@@ -62,6 +62,17 @@
       "dependencies": ["autorun", "every-minute"],
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "./docker_inventory.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./docker_inventory.cf services/cfbs/docker_inventory.cf",
+        "policy_files services/cfbs/docker_inventory.cf",
+        "bundles docker_inventory"
+      ]
     }
   ],
   "git": true
