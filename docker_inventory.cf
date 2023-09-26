@@ -1,6 +1,8 @@
 bundle agent docker_inventory
 {
   classes:
+    # https://docs.cfengine.com/docs/3.21/examples-tutorials-custom_inventory.html
+    # Simply add the inventory and attribute_name= tags to any variable or namespace scoped classes.
     "have_docker" expression => fileexists("${docker}"),
       scope => "namespace",
       meta => { "inventory", "attribute_name=Docker Installed" };
