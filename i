@@ -1,0 +1,2 @@
+rm /tmp/*.json
+cf-agent -KIf ./docker_inventory.cf
