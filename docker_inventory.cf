@@ -2,6 +2,7 @@ bundle agent docker_inventory
 {
   classes:
     "have_docker" expression => fileexists("${docker}"),
+      scope => "namespace",
       meta => { "inventory", "attribute_name=Docker Installed" };
 
   vars:
