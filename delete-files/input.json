@@ -5,7 +5,7 @@
     "namespace": "delete_files",
     "response": [
       { "path": "/tmp/yoda", "why": "because" },
-      { "path": "\\C\\yoda", "why": "well on windows too of course!" }
+      { "path": "/yoda", "why": "well on windows too of course!" }
     ],
     "subtype": [
       {
