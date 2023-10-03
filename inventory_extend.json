@@ -1,0 +1,7 @@
+{
+  "classes": {
+    "default:services_autorun": {
+      "class_expressions": [ "any::" ]
+    }
+  }
+}

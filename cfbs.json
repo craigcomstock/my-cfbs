@@ -117,6 +117,13 @@
         "copy ./inventory_extend.cf services/cfbs/inventory_extend.cf",
         "policy_files services/cfbs/inventory_extend.cf"
       ]
+    },
+    {
+      "name": "./inventory_extend.json",
+      "description": "Local augments file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["json ./inventory_extend.json def.json"]
     }
   ],
   "git": true
