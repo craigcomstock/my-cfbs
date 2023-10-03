@@ -107,6 +107,16 @@
         "bundles delete_files:delete_files",
         "policy_files services/cfbs/modules/delete-files/delete-files.cf"
       ]
+    },
+    {
+      "name": "./inventory_extend.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./inventory_extend.cf services/cfbs/inventory_extend.cf",
+        "policy_files services/cfbs/inventory_extend.cf"
+      ]
     }
   ],
   "git": true
