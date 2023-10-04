@@ -4,8 +4,8 @@ bundle agent policy_not_kept
     "tags" slist => { "autorun" };
 
   commands:
-    windows::
-      "C:\Windows\System32\cmd.exe /c exit 1";
-    !windows::
-      "/bin/false";
+#    windows::
+#      "C:\Windows\System32\cmd.exe /c exit 1";
+#    !windows::
+#      "/bin/false";
 }
