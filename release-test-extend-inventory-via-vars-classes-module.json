@@ -1,0 +1,8 @@
+{
+  "inputs": [ "services/release-test-extend-inventory-via-vars-classes-module.cf" ],
+  "variables": {
+    "default:def.control_common_bundlesequence_end": {
+     "value": [ "release_test_extend_inventory_via_vars_classes_module" ]
+    }
+  }
+}
