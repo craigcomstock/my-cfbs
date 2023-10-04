@@ -189,8 +189,7 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "copy ./release-test-extend-inventory-via-vars-classes-module.cf services/cfbs/release-test-extend-inventory-via-vars-classes-module.cf",
-        "policy_files services/cfbs/release-test-extend-inventory-via-vars-classes-module.cf"
+        "copy ./release-test-extend-inventory-via-vars-classes-module.cf services/release-test-extend-inventory-via-vars-classes-module.cf"
       ]
     },
     {
