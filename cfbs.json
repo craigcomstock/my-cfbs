@@ -161,6 +161,17 @@
       "subdirectory": "reporting/client-initiated-reporting",
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "./changes-test.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./changes-test.cf services/cfbs/changes-test.cf",
+        "policy_files services/cfbs/changes-test.cf",
+        "bundles changes_test"
+      ]
     }
   ],
   "git": true
