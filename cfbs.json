@@ -172,6 +172,16 @@
         "policy_files services/cfbs/changes-test.cf",
         "bundles changes_test"
       ]
+    },
+    {
+      "name": "./inventory_from_classes_common_bundle.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./inventory_from_classes_common_bundle.cf services/cfbs/inventory_from_classes_common_bundle.cf",
+        "policy_files services/cfbs/inventory_from_classes_common_bundle.cf"
+      ]
     }
   ],
   "git": true
