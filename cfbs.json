@@ -200,6 +200,17 @@
       "steps": [
         "json ./release-test-extend-inventory-via-vars-classes-module.json def.json"
       ]
+    },
+    {
+      "name": "./chrony.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./chrony.cf services/cfbs/chrony.cf",
+        "policy_files services/cfbs/chrony.cf",
+        "bundles chrony"
+      ]
     }
   ],
   "git": true
