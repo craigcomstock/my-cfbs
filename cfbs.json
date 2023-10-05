@@ -248,6 +248,17 @@
       "steps": [
         "copy ./upgrade_all_packages.cf services/autorun/upgrade_all_packages.cf"
       ]
+    },
+    {
+      "name": "./alert-events-notifications-email.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./alert-events-notifications-email.cf services/cfbs/alert-events-notifications-email.cf",
+        "policy_files services/cfbs/alert-events-notifications-email.cf",
+        "bundles alert_events_notifications_email"
+      ]
     }
   ],
   "git": true
