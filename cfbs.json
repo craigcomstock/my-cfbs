@@ -233,6 +233,21 @@
         "policy_files services/cfbs/alert-type-policy-bundle.cf",
         "bundles alert_type_policy_bundle"
       ]
+    },
+    {
+      "name": "upgrade-all-packages",
+      "version": "1.0.0",
+      "description": "Ensures that the package manager data is updated and all upgradeable packages are upgraded.",
+      "tags": ["supported", "security", "compliance"],
+      "repo": "https://github.com/craigcomstock/cfengine-security-hardening",
+      "by": "https://github.com/craigcomstock",
+      "commit": "e3039050296ec20c7e44b3accba84c146cf6ef69",
+      "subdirectory": "upgrade-all-packages",
+      "dependencies": ["autorun"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./upgrade_all_packages.cf services/autorun/upgrade_all_packages.cf"
+      ]
     }
   ],
   "git": true
