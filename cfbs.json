@@ -222,6 +222,17 @@
         "policy_files services/cfbs/policy-not-kept.cf",
         "bundles policy_not_kept"
       ]
+    },
+    {
+      "name": "./alert-type-policy-bundle.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./alert-type-policy-bundle.cf services/cfbs/alert-type-policy-bundle.cf",
+        "policy_files services/cfbs/alert-type-policy-bundle.cf",
+        "bundles alert_type_policy_bundle"
+      ]
     }
   ],
   "git": true
