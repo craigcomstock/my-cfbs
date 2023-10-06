@@ -219,6 +219,46 @@
         "policy_files services/cfbs/alert-events-notifications-email.cf",
         "bundles alert_events_notifications_email"
       ]
+    },
+    {
+      "name": "compliance-report-imports",
+      "description": "Used by other modules to import compliance reports to Mission Portal.",
+      "tags": ["experimental", "cfengine-enterprise"],
+      "repo": "https://github.com/nickanderson/cfengine-security-hardening",
+      "by": "https://github.com/nickanderson",
+      "version": "0.0.8",
+      "commit": "06f0894b662befbba4e775884f21cfe8573c32d6",
+      "subdirectory": "./compliance-report-imports",
+      "dependencies": ["autorun"],
+      "added_by": "compliance-report-os-is-vendor-supported",
+      "steps": ["copy ./compliance-report-imports.cf services/autorun/"]
+    },
+    {
+      "name": "autorun",
+      "description": "Enables autorun functionality.",
+      "tags": ["supported", "management"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/olehermanse",
+      "version": "1.0.1",
+      "commit": "c3b7329b240cf7ad062a0a64ee8b607af2cb912a",
+      "subdirectory": "management/autorun",
+      "added_by": "compliance-report-imports",
+      "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "compliance-report-os-is-vendor-supported",
+      "version": "0.0.3",
+      "description": "Compliance report definition for checking if the current OS version is supported by the vendor.",
+      "tags": ["experimental", "compliance-report", "cfengine-enterprise"],
+      "repo": "https://github.com/nickanderson/cfengine-security-hardening",
+      "by": "https://github.com/nickanderson",
+      "commit": "1b9d2fab3d3fd43fae3d34f864c8cfa4574b01b4",
+      "subdirectory": "./compliance-report-os-is-vendor-supported",
+      "dependencies": ["compliance-report-imports"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./os-is-vendor-supported.json .no-distrib/compliance-report-definitions/os-is-vendor-supported.json"
+      ]
     }
   ],
   "git": true
