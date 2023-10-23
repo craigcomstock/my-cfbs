@@ -1,3 +1,8 @@
+# Error message given during initialization: Unable to resolve dependency: user requested 'vagrant-libvirt (= 0.10.7)'
+# ^^^ debian 11 w500
+# vagrant plugin repair gives
+# Unable to resolve dependency: user requested 'vagrant-libvirt (= 0.10.7)'
+# vagrant plugin expunge --reinstall, then vagrant up, and all is well! :)
 # https://app.vagrantup.com/generic
 body file control
 {
