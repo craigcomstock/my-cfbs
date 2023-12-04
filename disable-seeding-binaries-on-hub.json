@@ -1,0 +1,5 @@
+{
+   "classes": {
+     "mpf_disable_hub_masterfiles_software_update_seed": [ "policy_server::" ]
+   }
+}
