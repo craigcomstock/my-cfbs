@@ -1,8 +1,16 @@
 {
   "name": "play-cfbs@home",
-  "type": "policy-set",
   "description": "Example description",
+  "type": "policy-set",
   "build": [
+    {
+      "name": "masterfiles",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
+      "url": "https://github.com/cfengine/masterfiles",
+      "commit": "ca637d4e6148432a90b7db598a4137956c0e0282",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"],
+      "added_by": "cfbs add"
+    },
     {
       "name": "client-initiated-reporting",
       "version": "0.1.1",
@@ -62,14 +70,6 @@
         "policy_files services/cfbs/docker_inventory.cf",
         "bundles docker_inventory"
       ]
-    },
-    {
-      "name": "masterfiles",
-      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
-      "url": "https://github.com/cfengine/masterfiles",
-      "commit": "ca637d4e6148432a90b7db598a4137956c0e0282",
-      "steps": ["run ./prepare.sh -y", "copy ./ ./"],
-      "added_by": "cfbs add"
     }
   ],
   "git": true
