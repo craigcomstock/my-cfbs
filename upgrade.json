@@ -1,8 +1,16 @@
 {
   "classes": {
-    "trigger_upgrade": [
-      "cfengine_3",
-      "cfengine_3_23_(?!0$)\\d+"
-    ]
+    "default:trigger_upgrade": {
+      "class_expressions": [
+        "!(am_policy_hub|policy_server).!cfengine_3_23_0::"
+      ],
+      "comment": "We want clients to self upgrade their binary version if they aren't running the desired version."
+    }
+  },
+  "variables": {
+    "default:def.cfengine_software_pkg_version": {
+      "value": "3.23.0",
+      "comment": "When self upgrading, this is the binary version we want to be installed."
+    }
   }
 }
