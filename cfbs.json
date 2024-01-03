@@ -281,8 +281,7 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "copy ./overlay/services/autorun/compliance-report-imports.cf services/cfbs/overlay/services/autorun/compliance-report-imports.cf",
-        "policy_files services/cfbs/overlay/services/autorun/compliance-report-imports.cf"
+        "copy ./overlay/services/autorun/compliance-report-imports.cf services/autorun/compliance-report-imports.cf"
       ]
     }
   ],
