@@ -1,0 +1,6 @@
+bundle agent cfengine_ci
+{
+  methods:
+    data:ci_buildhost::
+      "cfengine_ci_buildhost";
+}

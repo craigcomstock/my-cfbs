@@ -1,0 +1,53 @@
+bundle agent cfengine_ci_buildhost
+{
+  packages:
+    debian_9|debian_10::
+      "python-psycopg2";
+    debian_11|debian_12::
+      "python3-psycopg2";
+    ubuntu_16:: # ubuntu_16 doesn't have systemd-coredump by default?
+      "systemd-coredump";
+    ubuntu_20::
+      "autoconf"; # because on arm ubu20 we need to reconfigure
+      "shellcheck"; # not sure why, ubu20 addition
+
+# todo, is absent good enough and same as purge? or do we need to push harder?
+    debian|ubuntu::
+      "libltdl7" policy => "absent";
+      "libltdl-dev" policy => "absent";
+
+# todo --allow-change-held-packages introduced in debian-12, why?
+# packages to install
+      "binutils";
+      "bison";
+      "build-essential";
+      "curl"; # added for debian-10
+      "debhelper";
+      "default-jre";
+      "dpkg-dev";
+      "expat";
+      "fakeroot";
+      "flex";
+      "gdb";
+      "libcurses5"; # added for debian-10
+      "libcurses5-dev"; # added for debian-10
+      "libexpat1-dev";
+      "libmodule-load-conditional-perl";
+      "libpam0g-dev";
+      "ntp";
+      "pkg-config";
+      "psmisc";
+      "python"; # note on debian, always python2
+      "python3-pip";
+      "rsync"; # added for debian-10
+
+  commands:
+    debian_11|debian_12::
+      "wget https://bootstrap.pypa.io/pip/2.7/get-pip.py -O get-pip.py && python2 get-pip.py && pip install psycopg2-binary"
+        contain => in_shell;
+    ubuntu_16:: # mingw host
+      "dpkg --add-architecture i386";
+    ubuntu:: # hack for aws ubuntu hosts
+      "sed -ri 's/localhost //' /etc/hosts";
+      "hostnamectl set-hostname localhost.localdomain";
+}

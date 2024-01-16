@@ -7,7 +7,7 @@
       "name": "masterfiles",
       "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
       "url": "https://github.com/cfengine/masterfiles",
-      "commit": "14a003f432599d2d0b7c8f3e32d4c1da34311635",
+      "commit": "e55963787d8a57c0577d573593ef43034810107d",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"],
       "added_by": "cfbs add"
     },
@@ -84,6 +84,27 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["json ./disable-seeding-binaries-on-hub.json def.json"]
+    },
+    {
+      "name": "./cfengine-ci/cfengine-ci-buildhost.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./cfengine-ci/cfengine-ci-buildhost.cf services/cfbs/cfengine-ci/cfengine-ci-buildhost.cf",
+        "policy_files services/cfbs/cfengine-ci/cfengine-ci-buildhost.cf"
+      ]
+    },
+    {
+      "name": "./cfengine-ci/cfengine-ci.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./cfengine-ci/cfengine-ci.cf services/cfbs/cfengine-ci/cfengine-ci.cf",
+        "policy_files services/cfbs/cfengine-ci/cfengine-ci.cf",
+        "bundles cfengine_ci"
+      ]
     }
   ],
   "git": true
