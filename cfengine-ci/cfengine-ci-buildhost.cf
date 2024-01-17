@@ -10,7 +10,7 @@ bundle agent cfengine_ci_buildhost
     ubuntu_20::
       "autoconf"; # because on arm ubu20 we need to reconfigure
       "shellcheck"; # not sure why, ubu20 addition
-    debian.(!debian_12)::
+    debian.(!debian_12.!ubuntu_22)::
       "python"; # debian_12 has only python3
 
 # todo, is absent good enough and same as purge? or do we need to push harder?
