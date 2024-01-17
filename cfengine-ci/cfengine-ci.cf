@@ -1,6 +1,17 @@
 bundle agent cfengine_ci
 {
-  methods:
+  vars:
+    "flag_file" string => "${sys.statedir}/ci_buildhost.flag";
+
+  files:
     data:ci_buildhost::
+     "${flag_file}"
+       create => true;
+
+  classes:
+    "ci_buildhost" expresion => fileexists("${flag_file}");
+
+  methods:
+    data:ci_buildhost|ci_buildhost::
       "cfengine_ci_buildhost";
 }
