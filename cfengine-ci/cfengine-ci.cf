@@ -9,7 +9,8 @@ bundle agent cfengine_ci
        create => "true";
 
   classes:
-    "ci_buildhost" expression => fileexists("${flag_file}");
+    "ci_buildhost" expression => fileexists("${flag_file}"),
+      meta => { "inventory" };
 
   methods:
     data:ci_buildhost|ci_buildhost::
