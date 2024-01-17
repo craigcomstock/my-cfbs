@@ -6,7 +6,7 @@ bundle agent cfengine_ci
   files:
     data:ci_buildhost|ci_buildhost::
      "${flag_file}"
-       create => true;
+       create => "true";
 
   classes:
     "ci_buildhost" expression => fileexists("${flag_file}");
