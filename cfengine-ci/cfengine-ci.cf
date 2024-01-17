@@ -4,7 +4,7 @@ bundle agent cfengine_ci
     "flag_file" string => "${sys.statedir}/ci_buildhost.flag";
 
   files:
-    data:ci_buildhost::
+    data:ci_buildhost|ci_buildhost::
      "${flag_file}"
        create => true;
 
