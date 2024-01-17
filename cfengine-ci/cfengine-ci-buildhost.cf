@@ -48,6 +48,8 @@ bundle agent cfengine_ci_buildhost
       "have_pip2" expression => fileexists("/usr/local/bin/pip");
     ubuntu_16::
       "have_i386_architecture" expression => strcmp(execresult("${paths.dpkg} --print-foreign-architectures", "noshell"), "i386");
+    ubuntu::
+      "have_localhost_hostname" expression => strcmp(execresult("${paths.hostname}", "noshell"), "localhost.localdomain");
 
   files:
     debian_9::
@@ -59,11 +61,14 @@ bundle agent cfengine_ci_buildhost
     debian_11.!have_pip2::
       "wget https://bootstrap.pypa.io/pip/2.7/get-pip.py -O get-pip.py && python2 get-pip.py && pip install psycopg2-binary"
         contain => in_shell;
+
     ubuntu_16.!have_i386_architecture:: # mingw build host
       "${paths.dpkg} --add-architecture i386";
-# TODO WHY ,,,,
-    ubuntu:: # hack for aws ubuntu hosts
-      "${paths.sed} -ri 's/localhost //' /etc/hosts";
-# TODO test in AWS both of these hacks to know how to detect and promise
+
+    ubuntu.!have_localhost_hostname:: # hack for aws ubuntu hosts having unique ip-n-n-n-n hostnames, we need localhost.localdomain
       "/usr/bin/hostnamectl set-hostname localhost.localdomain";
+
+# skip /etc/hosts change for now, seems kind of wrong and corrupts ip6 entries like `::1 ip6-ip6-loopback`
+#    ubuntu::
+#      "${paths.sed} -ri 's/localhost //' /etc/hosts";
 }
