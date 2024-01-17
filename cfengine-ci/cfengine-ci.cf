@@ -10,6 +10,7 @@ bundle agent cfengine_ci
 
   classes:
     "ci_buildhost" expression => fileexists("${flag_file}"),
+      scope => "namespace",
       meta => { "inventory" };
 
   methods:
