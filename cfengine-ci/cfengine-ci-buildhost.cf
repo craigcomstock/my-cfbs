@@ -47,7 +47,7 @@ bundle agent cfengine_ci_buildhost
     debian_11::
       "have_pip2" expression => fileexists("/usr/local/bin/pip");
     ubuntu_16::
-      "have_i386_architecture" expression => strcmp(execresult("${paths.dpkg} --print-foreign-architectures"), "i386");
+      "have_i386_architecture" expression => strcmp(execresult("${paths.dpkg} --print-foreign-architectures", "noshell"), "i386");
 
   files:
     debian_9::
