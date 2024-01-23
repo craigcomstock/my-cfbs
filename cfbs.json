@@ -105,6 +105,57 @@
         "policy_files services/cfbs/cfengine-ci/cfengine-ci.cf",
         "bundles cfengine_ci"
       ]
+    },
+    {
+      "name": "compliance-report-imports",
+      "description": "Keep compliance report definitions up to date",
+      "url": "https://github.com/nickanderson/cfengine-security-hardening",
+      "commit": "3a7f3b38694b787e4708d30c7f621a194de96b3e",
+      "subdirectory": "./compliance-report-imports",
+      "dependencies": ["autorun"],
+      "steps": ["copy ./compliance-report-imports.cf services/autorun/"],
+      "added_by": "cfbs add"
+    },
+    {
+      "name": "stig-red-hat-enterprise-linux-7",
+      "description": "Red Hat Enterprise Linux 7 Security Technical Implementation Guide",
+      "url": "https://github.com/nickanderson/cfengine-security-hardening",
+      "commit": "3a7f3b38694b787e4708d30c7f621a194de96b3e",
+      "subdirectory": "./stig/red_hat_enterprise_linux_7/",
+      "dependencies": ["compliance-report-imports"],
+      "steps": [
+        "copy ./config.cf services/security-hardening/stig/rhel-7/config.cf",
+        "copy ./V-204392/V-204392.cf services/security-hardening/stig/rhel-7/V-204392.cf",
+        "copy ./V-204424/V-204424.cf services/security-hardening/stig/rhel-7/V-204424.cf",
+        "copy ./V-204425/V-204425.cf services/security-hardening/stig/rhel-7/V-204425.cf",
+        "copy ./V-204502/V-204502.cf services/security-hardening/stig/rhel-7/V-204502.cf",
+        "copy ./V-204594/V-204594.cf services/security-hardening/stig/rhel-7/V-204594.cf",
+        "copy ./V-204620/V-204620.cf services/security-hardening/stig/rhel-7/V-204620.cf",
+        "copy ./V-204621/V-204621.cf services/security-hardening/stig/rhel-7/V-204621.cf",
+        "copy ./V-204627/V-204627.cf services/security-hardening/stig/rhel-7/V-204627.cf",
+        "copy ./V-214799/V-214799.cf services/security-hardening/stig/rhel-7/V-214799.cf",
+        "copy ./V-204497/V-204497.cf services/security-hardening/stig/rhel-7/V-204497.cf",
+        "copy ./V-204443/V-204443.cf services/security-hardening/stig/rhel-7/V-204443.cf",
+        "copy ./V-204442/V-204442.cf services/security-hardening/stig/rhel-7/V-204442.cf",
+        "copy ./chaos.cf services/security-hardening/stig/rhel-7/chaos.cf",
+        "copy ./compliance-reports/compliance-report.json ./.no-distrib/compliance-report-definitions/red-hat-enterprise-linux-7-security-technical-implementation-guide.json",
+        "policy_files services/security-hardening/stig/rhel-7/V-204392.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-204424.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-204425.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-204502.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-204594.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-204620.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-204621.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-204627.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-214799.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-204497.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-204443.cf",
+        "policy_files services/security-hardening/stig/rhel-7/V-204442.cf",
+        "policy_files services/security-hardening/stig/rhel-7/chaos.cf",
+        "policy_files services/security-hardening/stig/rhel-7/config.cf",
+        "bundles RHEL_7_STIG:run"
+      ],
+      "added_by": "cfbs add"
     }
   ],
   "git": true
