@@ -1,0 +1,40 @@
+[
+  {
+    "bundle": "main",
+    "label": "Uninstall",
+    "namespace": "conditional_installer",
+    "question": "Which package(s) would you like to be uninstalled?",
+    "response": "poopshipdestroyer",
+    "type": "string",
+    "variable": "packages_to_uninstall"
+  },
+  {
+    "bundle": "main",
+    "label": "Install",
+    "namespace": "conditional_installer",
+    "subtype": [
+      {
+        "key": "packages",
+        "label": "Package(s)",
+        "question": "Package(s) to install",
+        "type": "string"
+      },
+      {
+        "key": "condition",
+        "label": "Condition",
+        "question": "Condition for where to install",
+        "type": "string"
+      },
+      {
+        "default": "Unknown",
+        "key": "why",
+        "label": "Why",
+        "question": "Why?",
+        "type": "string"
+      }
+    ],
+    "type": "list",
+    "variable": "packages_to_install",
+    "while": "Do you want to specify more packages to be installed?"
+  }
+]
