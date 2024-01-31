@@ -2,22 +2,23 @@
   "name": "play-cfbs@home",
   "description": "Example description",
   "type": "policy-set",
+  "git": true,
   "build": [
     {
       "name": "masterfiles",
       "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
       "url": "https://github.com/cfengine/masterfiles",
       "commit": "e55963787d8a57c0577d573593ef43034810107d",
-      "steps": ["run ./prepare.sh -y", "copy ./ ./"],
-      "added_by": "cfbs add"
+      "added_by": "cfbs add",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
     {
       "name": "client-initiated-reporting",
-      "version": "0.1.1",
       "description": "Enables client initiated reporting and disable pull collection.",
       "tags": ["experimental", "reporting"],
       "repo": "https://github.com/cfengine/modules",
       "by": "https://github.com/cfengine",
+      "version": "0.1.1",
       "commit": "c3b7329b240cf7ad062a0a64ee8b607af2cb912a",
       "subdirectory": "reporting/client-initiated-reporting",
       "added_by": "cfbs add",
@@ -49,11 +50,11 @@
     },
     {
       "name": "demo",
-      "version": "1.0.0",
       "description": "Enables convenient and insecure settings for demoing CFEngine.",
       "tags": ["management", "experimental"],
       "repo": "https://github.com/cfengine/modules",
       "by": "https://github.com/olehermanse",
+      "version": "1.0.0",
       "commit": "05bf5e5b1c014018a7b93a524e035c1a21bcffa4",
       "subdirectory": "management/demo",
       "dependencies": ["autorun", "every-minute"],
@@ -113,8 +114,8 @@
       "commit": "3a7f3b38694b787e4708d30c7f621a194de96b3e",
       "subdirectory": "./compliance-report-imports",
       "dependencies": ["autorun"],
-      "steps": ["copy ./compliance-report-imports.cf services/autorun/"],
-      "added_by": "cfbs add"
+      "added_by": "cfbs add",
+      "steps": ["copy ./compliance-report-imports.cf services/autorun/"]
     },
     {
       "name": "stig-red-hat-enterprise-linux-7",
@@ -123,6 +124,7 @@
       "commit": "3a7f3b38694b787e4708d30c7f621a194de96b3e",
       "subdirectory": "./stig/red_hat_enterprise_linux_7/",
       "dependencies": ["compliance-report-imports"],
+      "added_by": "cfbs add",
       "steps": [
         "copy ./config.cf services/security-hardening/stig/rhel-7/config.cf",
         "copy ./V-204392/V-204392.cf services/security-hardening/stig/rhel-7/V-204392.cf",
@@ -154,9 +156,63 @@
         "policy_files services/security-hardening/stig/rhel-7/chaos.cf",
         "policy_files services/security-hardening/stig/rhel-7/config.cf",
         "bundles RHEL_7_STIG:run"
+      ]
+    },
+    {
+      "name": "conditional-installer",
+      "description": "Allows you to specify packages you want installed and conditions for where you want them installed, as well as a list of packages you generally want uninstalled.",
+      "tags": ["security", "management", "experimental"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/olehermanse",
+      "version": "0.0.1",
+      "commit": "e6c731a9aead018e1c4895f6b77249fa417aa4bd",
+      "subdirectory": "security/conditional-installer",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy main.cf services/cfbs/modules/conditional-installer/main.cf",
+        "input conditional-installer/input.json def.json",
+        "bundles conditional_installer:main",
+        "policy_files services/cfbs/modules/conditional-installer/main.cf"
       ],
-      "added_by": "cfbs add"
+      "input": [
+        {
+          "type": "string",
+          "variable": "packages_to_uninstall",
+          "namespace": "conditional_installer",
+          "bundle": "main",
+          "label": "Uninstall",
+          "question": "Which package(s) would you like to be uninstalled?"
+        },
+        {
+          "type": "list",
+          "variable": "packages_to_install",
+          "namespace": "conditional_installer",
+          "bundle": "main",
+          "label": "Install",
+          "subtype": [
+            {
+              "key": "packages",
+              "type": "string",
+              "label": "Package(s)",
+              "question": "Package(s) to install"
+            },
+            {
+              "key": "condition",
+              "type": "string",
+              "label": "Condition",
+              "question": "Condition for where to install"
+            },
+            {
+              "key": "why",
+              "type": "string",
+              "label": "Why",
+              "question": "Why?",
+              "default": "Unknown"
+            }
+          ],
+          "while": "Do you want to specify more packages to be installed?"
+        }
+      ]
     }
-  ],
-  "git": true
+  ]
 }
