@@ -12,5 +12,5 @@ bundle agent openwrt_inventory_impl
     "dhcp_leases_data" string => execresult("ssh root@192.168.1.1 cat /tmp/dhcp.leases", useshell);
 
   reports:
-    "dhcp_leases_data is ${with}" with => storejson(dhcp_leases_data);
+    "dhcp_leases_data is ${with}" with => storejson("${dhcp_leases_data}");
 }
