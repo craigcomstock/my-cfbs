@@ -73,13 +73,6 @@
       ]
     },
     {
-      "name": "./upgrade.json",
-      "description": "Local augments file added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": ["json ./upgrade.json def.json"]
-    },
-    {
       "name": "./disable-seeding-binaries-on-hub.json",
       "description": "Local augments file added using cfbs command line",
       "tags": ["local"],
