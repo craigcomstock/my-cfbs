@@ -3,9 +3,5 @@ bundle agent openwrt_inventory
   # danger, create an ssh key with no passphrase on your hub, add the public key to http://192.168.1.1/cgi-bin/luci/admin/system/admin/sshkeys and voila, danger!
   commands:
     "scp root@192.168.1.1:/tmp/dhcp.leases $(sys.statedir)/dhcp.leases"
-      classes => if_ok("dhcp_leases_obtained"),
       contain => in_shell;
-    dhcp_leases_obtained::
-      "$(this.promise_dirname)/import-dhcp-hosts.sh $(sys.statedir)/dhcp.leases"
-        contain => in_shell;
 }
