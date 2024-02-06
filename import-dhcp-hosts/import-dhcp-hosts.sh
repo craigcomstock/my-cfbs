@@ -25,6 +25,7 @@ do
     /var/cfengine/bin/psql cfdb -c "insert into __contexts values('$hostkey','$mac_class','{inventory,attribute_name=none,source=agent,hardclass}',null)"
     /var/cfengine/bin/psql cfdb -c "insert into __variables values('$hostkey','default','sys','fqhost','$hostname','string','default.sys.fqhost','{inventory,source=agent,"\""attribute_name=Host name"\""}',null);"
     /var/cfengine/bin/psql cfdb -c "insert into __variables values('$hostkey','default','sys','hardware_addresses','{"\"$mac\""}','slist','default.sys.hardware_addresses','{inventory,source=agent,"\""attribute_name=MAC addresses"\""}',null);"
+# todo, fix this cf-hub complaint Feb 06 21:13:51 10409104ea72 cf-hub[14746]: CFEngine(hub)  Host '192.168.1.196' (unregistered_host_00:14:2d:68:82:db) has no lastseen information
     /var/cfengine/bin/psql cfdb -c "call update_inventory_by_hostkey('$hostkey')"
   fi
 done <${dhcp_leases_file}
