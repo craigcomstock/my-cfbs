@@ -161,6 +161,17 @@
         "policy_files services/cfbs/openwrt_inventory.cf",
         "bundles openwrt_inventory"
       ]
+    },
+    {
+      "name": "./import-dhcp-hosts/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/import-dhcp-hosts/",
+        "policy_files services/cfbs/import-dhcp-hosts/",
+        "bundles import_dhcp_hosts"
+      ]
     }
   ]
 }
