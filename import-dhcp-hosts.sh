@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
-set -ex
-/var/cfengine/bin/psql cfdb -c "delete from __hosts where hostkey like 'unregistered%'"
-/var/cfengine/bin/psql cfdb -c "delete from __variables where hostkey like 'unregistered%'"
-/var/cfengine/bin/psql cfdb -c "delete from __contexts where hostkey like 'unregistered%'"
+set -e
+dhcp_leases_file=$1
+
+# optional: remove all unregistered hosts before importing from dhcp.leases file
+#/var/cfengine/bin/psql cfdb -c "delete from __hosts where hostkey like 'unregistered%'"
+#/var/cfengine/bin/psql cfdb -c "delete from __variables where hostkey like 'unregistered%'"
+#/var/cfengine/bin/psql cfdb -c "delete from __contexts where hostkey like 'unregistered%'"
 while IFS= read -r line
 do
   mac=$(echo $line | awk '{print $2}')
@@ -14,6 +17,7 @@ do
   hostkey=$(/var/cfengine/bin/psql cfdb --tuples-only -c "select hostkey from contexts where contextname = '"${mac_class}"'" | xargs)
   if [ -n "$hostkey" ]; then
     echo "found $hostkey for mac $mac"
+    # TODO do anything? update?
   else
     echo "no host found for mac $mac"
     hostkey="unregistered_host_$mac"
@@ -23,6 +27,6 @@ do
     /var/cfengine/bin/psql cfdb -c "insert into __variables values('$hostkey','default','sys','hardware_addresses','{"\"$mac\""}','slist','default.sys.hardware_addresses','{inventory,source=agent,"\""attribute_name=MAC addresses"\""}',null);"
     /var/cfengine/bin/psql cfdb -c "call update_inventory_by_hostkey('$hostkey')"
   fi
-done <dhcp.leases
+done <${dhcp_leases_file}
 /var/cfengine/bin/psql cfdb -c "TRUNCATE TABLE ContextCache"
 /var/cfengine/bin/psql cfdb -c "INSERT INTO ContextCache (hostkey, contextvector) SELECT hostkey, to_tsvector('simple',replace(x::text,'_','.')) FROM ( SELECT hostkey, array_agg(contextname) as x FROM __Contexts GROUP BY hostkey) as sub;"

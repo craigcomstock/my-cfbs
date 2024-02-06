@@ -1,21 +1,11 @@
 bundle agent openwrt_inventory
 {
-  methods:
-    policy_server::
-      "openwrt_inventory_impl";
-}
-
-bundle agent openwrt_inventory_impl
-{
   # danger, create an ssh key with no passphrase on your hub, add the public key to http://192.168.1.1/cgi-bin/luci/admin/system/admin/sshkeys and voila, danger!
-  vars:
-    # todo should probably cache the file instead of retrieving every five, nah, retrieve it, keep it up to date! :O
-    policy_server::
-    "dhcp_leases_json" string => execresult(`ssh root@192.168.1.1 cat /tmp/dhcp.leases | jq -R -n -c '[inputs|split(" ")|{(.[1]):{"ip":(.[2]), "expires":(.[0]), "hostname":(.[3]), "mac":(.[1])}}] | add'`, useshell);
-    "dhcp_leases_data" data => parsejson("${dhcp_leases_json}");
-
-  reports:
-    "${dhcp_leases_json}";
-    "dhcp_leases_data ${with}" with => storejson(dhcp_leases_data);
-    "${dhcp_leases_data}";
+  commands:
+    "scp root@192.168.1.1:/tmp/dhcp.leases $(sys.statedir)/dhcp.leases"
+      classes => if_ok("dhcp_leases_obtained"),
+      contain => in_shell;
+    dhcp_leases_obtained::
+      "$(this.promise_dirname)/import-dhcp-hosts.sh $(sys.statedir)/dhcp.leases"
+        contain => in_shell;
 }
