@@ -1,0 +1,16 @@
+bundle agent openwrt_inventory
+{
+  methods:
+    policy_server::
+      "openwrt_inventory_impl";
+}
+
+bundle agent openwrt_inventory_impl
+{
+  # danger, create an ssh key with no passphrase on your hub, add the public key to http://192.168.1.1/cgi-bin/luci/admin/system/admin/sshkeys and voila, danger!
+  vars:
+    "dhcp_leases_data" string => execresult("ssh root@192.168.1.1 cat /tmp/dhcp.leases", useshell);
+
+  reports:
+    "dhcp_leases_data is ${with}" with => storejson(dhcp_leases_data);
+}
