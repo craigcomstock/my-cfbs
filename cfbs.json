@@ -163,6 +163,15 @@
       ]
     },
     {
+      "name": "./compliance_report_allhostsmustberunningcfengine.json",
+      "description": "Compliance report: All hosts must run CFEngine",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./compliance_report_allhostsmustberunningcfengine.json ./.no-distrib/compliance-report-definitions/compliance_report_allhostsmustberunningcfengine.json"
+      ]
+    },
+    {
       "name": "./import-dhcp-hosts/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],

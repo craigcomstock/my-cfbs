@@ -1,0 +1,31 @@
+{
+    "reports": {
+        "all-hosts-must-be-running-cfengine": {
+            "id": "all-hosts-must-be-running-cfengine",
+            "type": "compliance",
+            "title": "All Hosts must be Running CFEngine",
+            "conditions": [
+                "host-is-running-cfengine"
+            ]
+        }
+    },
+    "conditions": {
+        "host-is-running-cfengine": {
+            "id": "host-is-running-cfengine",
+            "name": "Host is running CFEngine",
+            "description": "if it has a CFEngine version then it bootstrapped at least once and reported inventory",
+            "type": "inventory",
+            "condition_for": "passing",
+            "rules": [
+                {
+                    "attribute": "CFEngine version",
+                    "operator": "is_reported",
+                    "value": ""
+                }
+            ],
+            "category": "Infrastructure",
+            "severity": "medium",
+            "host_filter": null
+        }
+    }
+}
