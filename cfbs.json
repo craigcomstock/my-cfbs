@@ -181,6 +181,21 @@
         "policy_files services/cfbs/import-dhcp-hosts/",
         "bundles import_dhcp_hosts"
       ]
+    },
+    {
+      "name": "compliance-report-os-is-vendor-supported",
+      "description": "Compliance report definition for checking if the current OS version is supported by the vendor.",
+      "tags": ["experimental", "compliance-report", "cfengine-enterprise"],
+      "repo": "https://github.com/nickanderson/cfengine-security-hardening",
+      "by": "https://github.com/nickanderson",
+      "version": "0.0.4",
+      "commit": "d828be6de5b73b0058e4367c2ab09bda1cf035ca",
+      "subdirectory": "compliance-report-os-is-vendor-supported",
+      "dependencies": ["compliance-report-imports"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./os-is-vendor-supported.json .no-distrib/compliance-report-definitions/os-is-vendor-supported.json"
+      ]
     }
   ]
 }
