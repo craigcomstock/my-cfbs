@@ -196,6 +196,21 @@
       "steps": [
         "copy ./os-is-vendor-supported.json .no-distrib/compliance-report-definitions/os-is-vendor-supported.json"
       ]
+    },
+    {
+      "name": "upgrade-all-packages",
+      "description": "Ensures that the package manager data is updated and all upgradeable packages are upgraded.",
+      "tags": ["supported", "security", "compliance"],
+      "repo": "https://github.com/craigcomstock/cfengine-security-hardening",
+      "by": "https://github.com/craigcomstock",
+      "version": "1.0.0",
+      "commit": "e3039050296ec20c7e44b3accba84c146cf6ef69",
+      "subdirectory": "upgrade-all-packages",
+      "dependencies": ["autorun"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./upgrade_all_packages.cf services/autorun/upgrade_all_packages.cf"
+      ]
     }
   ]
 }
