@@ -80,27 +80,6 @@
       "steps": ["json ./disable-seeding-binaries-on-hub.json def.json"]
     },
     {
-      "name": "./cfengine-ci/cfengine-ci-buildhost.cf",
-      "description": "Local policy file added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "copy ./cfengine-ci/cfengine-ci-buildhost.cf services/cfbs/cfengine-ci/cfengine-ci-buildhost.cf",
-        "policy_files services/cfbs/cfengine-ci/cfengine-ci-buildhost.cf"
-      ]
-    },
-    {
-      "name": "./cfengine-ci/cfengine-ci.cf",
-      "description": "Local policy file added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "copy ./cfengine-ci/cfengine-ci.cf services/cfbs/cfengine-ci/cfengine-ci.cf",
-        "policy_files services/cfbs/cfengine-ci/cfengine-ci.cf",
-        "bundles cfengine_ci"
-      ]
-    },
-    {
       "name": "compliance-report-imports",
       "description": "Keep compliance report definitions up to date",
       "url": "https://github.com/nickanderson/cfengine-security-hardening",
