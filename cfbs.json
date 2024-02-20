@@ -152,34 +152,12 @@
       ]
     },
     {
-      "name": "./openwrt_inventory.cf",
-      "description": "Local policy file added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "copy ./openwrt_inventory.cf services/cfbs/openwrt_inventory.cf",
-        "policy_files services/cfbs/openwrt_inventory.cf",
-        "bundles openwrt_inventory"
-      ]
-    },
-    {
       "name": "./compliance_report_allhostsmustberunningcfengine.json",
       "description": "Compliance report: All hosts must run CFEngine",
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
         "copy ./compliance_report_allhostsmustberunningcfengine.json ./.no-distrib/compliance-report-definitions/compliance_report_allhostsmustberunningcfengine.json"
-      ]
-    },
-    {
-      "name": "./import-dhcp-hosts/",
-      "description": "Local subdirectory added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/import-dhcp-hosts/",
-        "policy_files services/cfbs/import-dhcp-hosts/",
-        "bundles import_dhcp_hosts"
       ]
     },
     {
