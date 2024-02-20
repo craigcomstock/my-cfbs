@@ -1,0 +1,10 @@
+bundle agent physical_hosts
+{
+  classes:
+    "physical_host" expression => and(isvariable("default.cfe_autorun_inventory_dmidecode.dmi[system-manufacturer]"),
+                                      isvariable("default.cfe_autorun_inventory_dmidecode.dmi[system-serial-number]")),
+      meta => { "inventory", "attribute_name=Physical Host" };
+    "virtual_host" expression => not(and(isvariable("default.cfe_autorun_inventory_dmidecode.dmi[system-manufacturer]"),
+                                         isvariable("default.cfe_autorun_inventory_dmidecode.dmi[system-serial-number]"))),
+      meta => { "inventory", "attribute_name=Virtual Host" };
+}
