@@ -186,8 +186,7 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "copy ./overlay/inventory/os.cf services/cfbs/overlay/inventory/os.cf",
-        "policy_files services/cfbs/overlay/inventory/os.cf"
+        "copy ./overlay/inventory/os.cf inventory/os.cf"
       ]
     }
   ]
