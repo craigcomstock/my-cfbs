@@ -135,4 +135,9 @@ any::
   "description" string => "$(sys.os_release[PRETTY_NAME])",
                     if => isvariable("sys.os_release[PRETTY_NAME]"),
                 meta => { "inventory", "attribute_name=OS", "derived-from=sys.os_release" };
+darwin::
+  "product_name" string => execresult("/usr/bin/sw_vers --productName", useshell);
+  "product_version" string => execresult("/usr/bin/sw_vers --productVersion", useshell);
+  "description" string => "$(product_name) $(product_version)",
+    meta => { "inventory", "attribute_name=OS", "derived-from=sw_vers command" };
 }
