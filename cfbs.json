@@ -179,6 +179,16 @@
         "policy_files services/cfbs/physical_hosts.cf",
         "bundles physical_hosts"
       ]
+    },
+    {
+      "name": "./overlay/inventory/os.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./overlay/inventory/os.cf services/cfbs/overlay/inventory/os.cf",
+        "policy_files services/cfbs/overlay/inventory/os.cf"
+      ]
     }
   ]
 }
