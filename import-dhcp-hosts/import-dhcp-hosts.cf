@@ -1,8 +1,15 @@
 bundle agent import_dhcp_hosts
 {
+  vars:
+    "import_script" string => "${this.promise_dirname}/import-dhcp-hosts.sh";
+    "dhcp_leases" string => "${sys.statedir}/dhcp.leases";
+
+  files:
+    "${import_script}" perms => m("0700");
+
   commands:
     policy_server::
-      "$(this.promise_dirname)/import-dhcp-hosts.sh $(sys.statedir)/dhcp.leases"
-        if => fileexists("$(sys.statedir)/dhcp.leases"),
+      "${import_script} ${dhcp_leases}"
+        if => fileexists("${import_script}"),
         contain => in_shell;
 }
