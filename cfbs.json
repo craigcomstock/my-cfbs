@@ -185,8 +185,17 @@
       "description": "Local policy file added using cfbs command line",
       "tags": ["local"],
       "added_by": "cfbs add",
+      "steps": ["copy ./overlay/inventory/os.cf inventory/os.cf"]
+    },
+    {
+      "name": "./import-dhcp-hosts/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
       "steps": [
-        "copy ./overlay/inventory/os.cf inventory/os.cf"
+        "directory ./ services/cfbs/import-dhcp-hosts/",
+        "policy_files services/cfbs/import-dhcp-hosts/",
+        "bundles import_dhcp_hosts"
       ]
     }
   ]
