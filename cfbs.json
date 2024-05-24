@@ -8,7 +8,7 @@
       "name": "masterfiles",
       "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
       "url": "https://github.com/cfengine/masterfiles",
-      "commit": "59dd756ff353ffb194e8a126e9fba00a5db1340c",
+      "commit": "9e96fcf45470171d9bd73b9118085d1292f13429",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
@@ -78,16 +78,6 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["json ./disable-seeding-binaries-on-hub.json def.json"]
-    },
-    {
-      "name": "compliance-report-imports",
-      "description": "Keep compliance report definitions up to date",
-      "url": "https://github.com/nickanderson/cfengine-security-hardening",
-      "commit": "3a7f3b38694b787e4708d30c7f621a194de96b3e",
-      "subdirectory": "./compliance-report-imports",
-      "dependencies": ["autorun"],
-      "added_by": "cfbs add",
-      "steps": ["copy ./compliance-report-imports.cf services/autorun/"]
     },
     {
       "name": "stig-red-hat-enterprise-linux-7",
