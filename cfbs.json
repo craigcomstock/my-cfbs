@@ -198,6 +198,22 @@
         "policy_files services/cfbs/openwrt_inventory.cf",
         "bundles openwrt_inventory"
       ]
+    },
+    {
+      "name": "compliance-report-imports",
+      "description": "Used by other modules to import compliance reports to Mission Portal.",
+      "tags": ["experimental", "cfengine-enterprise"],
+      "repo": "https://github.com/nickanderson/cfengine-security-hardening",
+      "by": "https://github.com/nickanderson",
+      "version": "0.0.11",
+      "commit": "9bd8f0d837905b4ae4104d78af26f274d1a45b5e",
+      "subdirectory": "compliance-report-imports",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./compliance-report-imports.cf services/cfbs/modules/compliance-report-imports/compliance-report-imports.cf",
+        "policy_files services/cfbs/modules/compliance-report-imports/compliance-report-imports.cf",
+        "bundles default:compliance_report_imports"
+      ]
     }
   ]
 }
