@@ -173,6 +173,101 @@
         "policy_files services/cfbs/modules/compliance-report-imports/compliance-report-imports.cf",
         "bundles default:compliance_report_imports"
       ]
+    },
+    {
+      "name": "stig-rhel-7",
+      "description": "Red Hat Enterprise Linux 7 Security Technical Implementation Guide",
+      "tags": ["security", "experimental"],
+      "repo": "https://github.com/nickanderson/cfengine-security-hardening",
+      "by": "https://github.com/nickanderson",
+      "version": "0.0.1",
+      "commit": "f20b82a0f714d5b76fafc1d788ac9b720dea0a03",
+      "subdirectory": "stig/red_hat_enterprise_linux_7",
+      "dependencies": ["compliance-report-imports"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./compliance-reports/compliance-report.json ./.no-distrib/compliance-report-definitions/red-hat-enterprise-linux-7-security-technical-implementation-guide.json",
+        "copy ./config.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/config.cf",
+        "copy ./V-204392/V-204392.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204392.cf",
+        "copy ./V-204424/V-204424.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204424.cf",
+        "copy ./V-204425/V-204425.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204425.cf",
+        "copy ./V-204502/V-204502.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204502.cf",
+        "copy ./V-204594/V-204594.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204594.cf",
+        "copy ./V-204620/V-204620.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204620.cf",
+        "copy ./V-204621/V-204621.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204621.cf",
+        "copy ./V-204627/V-204627.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204627.cf",
+        "copy ./V-214799/V-214799.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-214799.cf",
+        "copy ./V-204497/V-204497.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204497.cf",
+        "copy ./V-204443/V-204443.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204443.cf",
+        "copy ./V-204442/V-204442.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204442.cf",
+        "copy ./chaos.cf services/cfbs/modules/stig-red-hat-enterprise-linux-7/chaos.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204392.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204424.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204425.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204502.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204594.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204620.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204621.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204627.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-214799.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204497.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204443.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/V-204442.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/chaos.cf",
+        "policy_files services/cfbs/modules/stig-red-hat-enterprise-linux-7/config.cf",
+        "bundles rhel_7_stig:run",
+        "input ./input.json def.json"
+      ],
+      "input": [
+        {
+          "type": "string",
+          "namespace": "rhel_7_stig",
+          "bundle": "config",
+          "variable": "mode",
+          "label": "Mode",
+          "question": "What mode should the module be in? (warn|enforce)",
+          "default": "warn"
+        },
+        {
+          "type": "string",
+          "namespace": "rhel_7_stig",
+          "bundle": "config",
+          "variable": "context",
+          "label": "Enabled",
+          "question": "Under which context should this module be enabled?",
+          "default": "centos_7|redhat_7"
+        },
+        {
+          "type": "list",
+          "namespace": "rhel_7_stig",
+          "bundle": "config",
+          "variable": "exceptions",
+          "label": "Exceptions",
+          "subtype": [
+            {
+              "key": "id",
+              "type": "string",
+              "label": "Finding ID",
+              "question": "Which finding would you like to add an exception for (e.g.: V-204443)"
+            },
+            {
+              "key": "why",
+              "type": "string",
+              "label": "Why",
+              "question": "Why is there an exception?",
+              "default": "Unknown"
+            },
+            {
+              "key": "context",
+              "type": "string",
+              "label": "Context",
+              "question": "Under what context should this be an exception?",
+              "default": "centos_7|redhat_7"
+            }
+          ],
+          "while": "Do you want to add another exception?"
+        }
+      ]
     }
   ]
 }
