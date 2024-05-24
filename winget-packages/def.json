@@ -1,0 +1,10 @@
+{
+  "variables": {
+    "default:def.default_package_module": {
+      "value": {
+        "windows_10": "winget"
+      }
+      "comment": "This variable provides the ability to override the default package manager to use for a platform. Keys are based on the value of $(sys.flavor) for the targeted platform."
+    }
+  }
+}
