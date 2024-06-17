@@ -19,7 +19,8 @@
       "added_by": "cfbs add",
       "steps": [
         "copy ./alert-type-policy-bundle.cf services/cfbs/alert-type-policy-bundle.cf",
-        "policy_files services/cfbs/alert-type-policy-bundle.cf"
+        "policy_files services/cfbs/alert-type-policy-bundle.cf",
+        "bundles alert_type_policy_bundle"
       ]
     }
   ]
