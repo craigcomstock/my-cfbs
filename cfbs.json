@@ -2,15 +2,25 @@
   "name": "manual test 3.21.4",
   "description": "Example description",
   "type": "policy-set",
+  "git": true,
   "build": [
     {
       "name": "masterfiles",
       "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
       "url": "https://github.com/cfengine/masterfiles",
-"commit": "2e0d378b74d6d3a83a1cea82d34c29d617828998",
-      "steps": ["run ./prepare.sh -y", "copy ./ ./"],
-      "added_by": "cfbs add"
+      "commit": "2e0d378b74d6d3a83a1cea82d34c29d617828998",
+      "added_by": "cfbs add",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "./alert-type-policy-bundle.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./alert-type-policy-bundle.cf services/cfbs/alert-type-policy-bundle.cf",
+        "policy_files services/cfbs/alert-type-policy-bundle.cf"
+      ]
     }
-  ],
-  "git": true
+  ]
 }
