@@ -270,16 +270,6 @@
       ]
     },
     {
-      "name": "./winget-packages/",
-      "description": "Local subdirectory added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/winget-packages/",
-        "policy_files services/cfbs/winget-packages/"
-      ]
-    },
-    {
       "name": "conditional-installer",
       "description": "Allows you to specify packages you want installed and conditions for where you want them installed, as well as a list of packages you generally want uninstalled.",
       "tags": ["security", "management", "experimental"],
