@@ -4,7 +4,7 @@
     "label": "Uninstall",
     "namespace": "conditional_installer",
     "question": "Which package(s) would you like to be uninstalled?",
-    "response": "poopshipdestroyer",
+    "response": "talk,talk-server,telnet,telnet-server,samba,apache2",
     "type": "string",
     "variable": "packages_to_uninstall"
   },
@@ -12,6 +12,10 @@
     "bundle": "main",
     "label": "Install",
     "namespace": "conditional_installer",
+    "response": [
+      { "condition": "webserver&debian", "packages": "apache2", "why": "" },
+      { "condition": "webserver&redhat", "packages": "httpd", "why": "" }
+    ],
     "subtype": [
       {
         "key": "packages",
