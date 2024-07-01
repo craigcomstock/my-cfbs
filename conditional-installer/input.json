@@ -13,8 +13,8 @@
     "label": "Install",
     "namespace": "conditional_installer",
     "response": [
-      { "condition": "data:webserver.debian", "packages": "apache2", "why": "" },
-      { "condition": "data:webserver.redhat", "packages": "httpd", "why": "" }
+      { "condition": "webserver.debian", "packages": "apache2", "why": "" },
+      { "condition": "webserver.redhat", "packages": "httpd", "why": "" }
     ],
     "subtype": [
       {
