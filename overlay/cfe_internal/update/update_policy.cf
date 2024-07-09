@@ -862,7 +862,7 @@ bundle agent modules_presence
   reports:
     DEBUG::
       "_override_dir: $(_override_dir)";
-      "_package_paths_tmp: $(_package_paths_tmp)";
+      "_package_paths_tmp: $(with)" with => storejson(_package_paths_tmp);
       "_not_vendored_modules_pathname_regex: $(_not_vendored_modules_pathname_regex)";
       "_vendored_modules: $(_vendored_modules)";
       "_override_modules: $(_override_modules)";
