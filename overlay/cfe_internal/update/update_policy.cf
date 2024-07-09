@@ -803,7 +803,7 @@ bundle agent modules_presence
     "_package_paths" slist => filter("$(_override_dir)vendored", _package_paths_tmp, "false", "true", 999);
 
     windows::
-      "_package_paths_tmp" slist => findfiles("$(_override_dir)*");
+      "_package_paths_tmp" slist => findfiles("\Q$(_override_dir)\E*");
       "_vendored_modules" slist => maplist(regex_replace("$(this)", "\Q$(_vendored_dir)\E(.*).mustache", "$1", "g"), @(_vendored_paths));
       "_override_modules" slist => maplist(regex_replace("$(this)", "\Q$(_override_dir)\E(.*)", "$1", "g"), @(_package_paths));
       # replace single backslashes in a windows path with double-backslashes
