@@ -1,4 +1,4 @@
 bundle agent craig
 {
-  reports: "Hey!";
+  reports: "1:50 PM yo!";
 }
