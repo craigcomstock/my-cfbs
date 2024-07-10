@@ -41,6 +41,17 @@
         "policy_files services/cfbs/changes_test.cf",
         "bundles changes_test"
       ]
+    },
+    {
+      "name": "./craig.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./craig.cf services/cfbs/craig.cf",
+        "policy_files services/cfbs/craig.cf",
+        "bundles craig"
+      ]
     }
   ]
 }

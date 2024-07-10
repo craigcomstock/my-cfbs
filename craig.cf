@@ -1,0 +1,4 @@
+bundle agent craig
+{
+  reports: "Hey!";
+}
