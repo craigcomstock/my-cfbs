@@ -1,4 +1,4 @@
 bundle agent craig
 {
-  reports: "4:45 PM yo!";
+  reports: "I'm in Miami!";
 }
