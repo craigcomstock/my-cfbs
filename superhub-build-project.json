@@ -1,0 +1,5 @@
+{
+  "classes": {
+    "default:cfengine_internal_masterfiles_update" : "ubuntu-22"
+  }
+}
