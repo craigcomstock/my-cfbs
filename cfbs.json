@@ -324,6 +324,17 @@
           "while": "Do you want to specify more packages to be installed?"
         }
       ]
+    },
+    {
+      "name": "./sudo.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./sudo.cf services/cfbs/sudo.cf",
+        "policy_files services/cfbs/sudo.cf",
+        "bundles sudo"
+      ]
     }
   ]
 }
