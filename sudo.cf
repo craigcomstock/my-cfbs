@@ -1,5 +1,16 @@
 bundle agent sudo
 {
+  methods:
+    linux:: "_sudo";
+}
+
+bundle agent _sudo
+{
   packages:
-    linux:: "sudo";
+    "sudo";
+
+  groups:
+    "sudo"
+      policy => "present",
+      members => '{ "include": ["craig"] }';
 }
