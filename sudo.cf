@@ -13,4 +13,8 @@ bundle agent _sudo
     "sudo"
       policy => "present",
       members => '{ "include": ["craig"] }';
+
+  files:
+    "/etc/sudoers"
+      edit_line => lines_present("%sudo	ALL=(ALL:ALL) ALL");
 }
