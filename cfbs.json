@@ -137,17 +137,6 @@
       "steps": ["copy ./overlay/inventory/os.cf inventory/os.cf"]
     },
     {
-      "name": "./openwrt_inventory.cf",
-      "description": "Local policy file added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "copy ./openwrt_inventory.cf services/cfbs/openwrt_inventory.cf",
-        "policy_files services/cfbs/openwrt_inventory.cf",
-        "bundles openwrt_inventory"
-      ]
-    },
-    {
       "name": "compliance-report-imports",
       "description": "Used by other modules to import compliance reports to Mission Portal.",
       "tags": ["experimental", "cfengine-enterprise"],
