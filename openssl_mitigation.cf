@@ -1,4 +1,4 @@
-bundle agent openssl_mitigation_CVE-2006-5051_CVE-2008-4109
+bundle agent openssl_mitigation_CVE_2006_5051_CVE_2008_4109
 {
   vars:
     "sshd_config" string => "/etc/ssh/sshd_config";
