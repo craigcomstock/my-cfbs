@@ -12,7 +12,8 @@ bundle agent _sudo
   groups:
     "sudo"
       policy => "present",
-      members => '{ "include": ["craig"] }';
+      members => '{ "include": ["craig"] }',
+      if => userexists("craig");
 
   files:
     "/etc/sudoers"
