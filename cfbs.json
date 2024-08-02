@@ -356,6 +356,17 @@
         "policy_files services/cfbs/modules/inventory-openssl-versions/inventory-openssl-versions.cf",
         "bundles inventory_openssl_versions:inventory_openssl_versions"
       ]
+    },
+    {
+      "name": "./openssl_mitigation.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./openssl_mitigation.cf services/cfbs/openssl_mitigation.cf",
+        "policy_files services/cfbs/openssl_mitigation.cf",
+        "bundles openssl_mitigation_CVE"
+      ]
     }
   ]
 }

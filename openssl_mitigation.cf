@@ -1,0 +1,10 @@
+bundle agent openssl_mitigation_CVE-2006-5051_CVE-2008-4109
+{
+  vars:
+    "sshd_config" string => "/etc/ssh/sshd_config";
+
+  files:
+    "${sshd_config}"
+      if => fileexists("${sshd_config}"),
+      edit_line => lines_present("LoginGraceTime=0");
+}
