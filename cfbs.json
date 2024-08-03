@@ -67,7 +67,7 @@
       "steps": [
         "copy ./inventory-openssh-versions.cf services/cfbs/inventory-openssh-versions.cf",
         "policy_files services/cfbs/inventory-openssh-versions.cf",
-        "bundles inventory_sshd_version"
+        "bundles inventory_sshd_version:inventory_sshd_version"
       ]
     },
     {
