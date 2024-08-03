@@ -12,10 +12,25 @@ bundle agent inventory_sshd_version
 
   vars:
     sshd_binary_works::
-      "sshd_version" string => nth(
-        string_split(execresult("${lib_sshd_config._sshd_path} -td", "useshell"), " ", 3),
-        1),
-      meta => {"inventory", "attribute_name=OpenSSH version"};
+      "sshd_output" string =>
+nth(
+splitstring(
+execresult("/usr/sbin/sshd -td", "useshell"),
+"\\n", 2)
+,0);
+
+  classes:
+    sshd_binary_works::
+    "found_version" expression => regextract(
+"^.*OpenSSH_([0-9\.]+).*",
+"${sshd_output}",
+"captures"
+);
+
+  vars:
+    found_sshd_version::
+      "sshd_version_inventory" string => "${captures[1]}",
+        meta => {"inventory", "attribute_name=OpenSSH version"};
 
   reports:
     DEBUG|DEBUG_INVENTORY_OPENSSH_VERSION::
