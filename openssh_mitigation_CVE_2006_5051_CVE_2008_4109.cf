@@ -3,12 +3,12 @@ bundle agent openssh_mitigation_CVE_2006_5051_CVE_2008_4109
   classes:
     "sshd_version_cve" expression =>
       and(
-        isvariable("sshd_version"),
+        isvariable("inventory_openssh_version.sshd_version"),
         or(
-          version_compare("${sshd_version}", "<", "4.4.1"),
+          version_compare("${inventory_openssh_version.sshd_version}", "<", "4.4.1"),
           and(
-            version_compare("${sshd_version}", ">=", "8.5.1"),
-            version_compare("${sshd_version}", "<=", "9.8.1")
+            version_compare("${inventory_openssh_version.sshd_version}", ">=", "8.5.1"),
+            version_compare("${inventory_openssh_version.sshd_version}", "<=", "9.8.1")
           )
         )
       );
