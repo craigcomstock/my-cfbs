@@ -12,28 +12,31 @@ bundle agent inventory_sshd_version
   classes:
     linux::
       "sshd_binary_works"
-        if => returnszero("${_sshd_path} -td 1>/dev/null 2>&1", "useshell");
+        if => returnszero("${_sshd_path} -t 1>/dev/null 2>&1", "useshell");
+# -t option is Test mode, checks validity of config and sanity of keys, should return zero
 
   vars:
     sshd_binary_works::
       "sshd_output" string =>
 nth(
 splitstring(
-execresult("${_sshd_path} -td", "useshell"),
-"\\n", 2)
-,0);
+execresult("${_sshd_path} -nosuchargument", "useshell"),
+"\\n", 3)
+,1);
 
   classes:
     sshd_binary_works::
     "found_sshd_version" expression => regextract(
-"^.*OpenSSH_([0-9\.]+).*",
+"^.*OpenSSH_([0-9\.p]+).*",
 "${sshd_output}",
 "captures"
 );
 
   vars:
     found_sshd_version::
-      "sshd_version_inventory" string => "${captures[1]}",
+      # OpenSSH versions are in the format (major).(minor)p(patch) so we replace the "p" with "."
+      # to conform more to semantic version standard used by version_compare() function.
+      "sshd_version" string => string_replace("${captures[1]}", "p", "."),
         meta => {"inventory", "attribute_name=OpenSSH version"};
 
   reports:
