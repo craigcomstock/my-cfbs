@@ -6,7 +6,7 @@ body file control
 bundle agent inventory_sshd_version
 {
   vars:
-    "_sshd_path" string => "/usr/bin/sshd";
+    "_sshd_path" string => "/usr/sbin/sshd";
 
   classes:
     linux::
