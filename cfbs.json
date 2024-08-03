@@ -55,6 +55,17 @@
         "copy ./global-key-values.cf services/library-sshd-config/",
         "json cfbs/def.json def.json"
       ]
+    },
+    {
+      "name": "./inventory-openssh-versions.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./inventory-openssh-versions.cf services/cfbs/inventory-openssh-versions.cf",
+        "policy_files services/cfbs/inventory-openssh-versions.cf",
+        "bundles inventory_sshd_version"
+      ]
     }
   ],
   "git": true
