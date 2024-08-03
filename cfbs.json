@@ -69,6 +69,17 @@
         "policy_files services/cfbs/inventory-openssh-versions.cf",
         "bundles inventory_sshd_version:inventory_sshd_version"
       ]
+    },
+    {
+      "name": "./openssh_mitigation_CVE_2006_5051_CVE_2008_4109.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./openssh_mitigation_CVE_2006_5051_CVE_2008_4109.cf services/cfbs/openssh_mitigation_CVE_2006_5051_CVE_2008_4109.cf",
+        "policy_files services/cfbs/openssh_mitigation_CVE_2006_5051_CVE_2008_4109.cf",
+        "bundles openssh_mitigation_CVE_2006_5051_CVE_2008_4109"
+      ]
     }
   ],
   "git": true
