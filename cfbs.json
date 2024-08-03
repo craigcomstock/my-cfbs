@@ -367,6 +367,21 @@
         "policy_files services/cfbs/openssl_mitigation.cf",
         "bundles openssl_mitigation_CVE_2006_5051_CVE_2008_4109"
       ]
+    },
+    {
+      "name": "library-sshd-config",
+      "description": "Library used by other modules to manage sshd configuration.",
+      "tags": ["library", "security", "ssh", "experimental"],
+      "repo": "https://github.com/nickanderson/cfengine-ssh",
+      "by": "https://github.com/nickanderson",
+      "version": "0.1.0",
+      "commit": "abff34c08bf27af56c4c3939bbb6f848eac7fb8d",
+      "subdirectory": "modules/library-sshd-config",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./global-key-values.cf services/library-sshd-config/",
+        "json cfbs/def.json def.json"
+      ]
     }
   ]
 }
