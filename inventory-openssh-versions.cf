@@ -5,17 +5,20 @@ body file control
 
 bundle agent inventory_sshd_version
 {
+  vars:
+    !windows::
+      "_sshd_path" string => "usr/sbin/sshd";
   classes:
     linux::
       "sshd_binary_works"
-        if => returnszero("${lib_sshd_config._sshd_path} -td 1>/dev/null 2>&1", "useshell");
+        if => returnszero("${_sshd_path} -td 1>/dev/null 2>&1", "useshell");
 
   vars:
     sshd_binary_works::
       "sshd_output" string =>
 nth(
 splitstring(
-execresult("/usr/sbin/sshd -td", "useshell"),
+execresult("${_sshd_path} -td", "useshell"),
 "\\n", 2)
 ,0);
 
