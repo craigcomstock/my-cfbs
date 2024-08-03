@@ -358,14 +358,14 @@
       ]
     },
     {
-      "name": "./openssl_mitigation.cf",
+      "name": "./openssh_mitigation.cf",
       "description": "Local policy file added using cfbs command line",
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "copy ./openssl_mitigation.cf services/cfbs/openssl_mitigation.cf",
-        "policy_files services/cfbs/openssl_mitigation.cf",
-        "bundles openssl_mitigation_CVE_2006_5051_CVE_2008_4109"
+        "copy ./openssh_mitigation.cf services/cfbs/openssh_mitigation.cf",
+        "policy_files services/cfbs/openssh_mitigation.cf",
+        "bundles openssh_mitigation_CVE_2006_5051_CVE_2008_4109"
       ]
     },
     {
