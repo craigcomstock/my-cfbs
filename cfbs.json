@@ -40,6 +40,21 @@
         "policy_files services/cfbs/modules/inventory-openssl-versions/inventory-openssl-versions.cf",
         "bundles inventory_openssl_versions:inventory_openssl_versions"
       ]
+    },
+    {
+      "name": "library-sshd-config",
+      "description": "Library used by other modules to manage sshd configuration.",
+      "tags": ["library", "security", "ssh", "experimental"],
+      "repo": "https://github.com/nickanderson/cfengine-ssh",
+      "by": "https://github.com/nickanderson",
+      "version": "0.1.0",
+      "commit": "abff34c08bf27af56c4c3939bbb6f848eac7fb8d",
+      "subdirectory": "modules/library-sshd-config",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./global-key-values.cf services/library-sshd-config/",
+        "json cfbs/def.json def.json"
+      ]
     }
   ],
   "git": true
