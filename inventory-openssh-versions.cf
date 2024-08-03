@@ -8,6 +8,7 @@ bundle agent inventory_sshd_version
   vars:
     !windows::
       "_sshd_path" string => "/usr/sbin/sshd";
+
   classes:
     linux::
       "sshd_binary_works"
@@ -24,7 +25,7 @@ execresult("${_sshd_path} -td", "useshell"),
 
   classes:
     sshd_binary_works::
-    "found_version" expression => regextract(
+    "found_sshd_version" expression => regextract(
 "^.*OpenSSH_([0-9\.]+).*",
 "${sshd_output}",
 "captures"
