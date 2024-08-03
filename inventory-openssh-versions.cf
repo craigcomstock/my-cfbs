@@ -7,7 +7,7 @@ bundle agent inventory_sshd_version
 {
   vars:
     !windows::
-      "_sshd_path" string => "usr/sbin/sshd";
+      "_sshd_path" string => "/usr/sbin/sshd";
   classes:
     linux::
       "sshd_binary_works"
