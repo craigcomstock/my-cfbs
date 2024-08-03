@@ -15,7 +15,7 @@ bundle agent inventory_sshd_version
 
   vars:
     sshd_binary_works::
-      "sshd_version"
+      "sshd_version" string => nth(
         string_split(execresult("${_sshd_path} -td", "useshell"), " ", 3),
         1),
       meta => {"inventory", "attribute_name=OpenSSH version"};
