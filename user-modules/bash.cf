@@ -1,0 +1,33 @@
+body common control
+{
+  inputs => { "$(sys.libdir)/stdlib.cf" };
+}
+bundle agent bash
+{
+  methods:
+    darwin._stdlib_has_path_brew::
+      "bash_on_macos";
+}
+
+bundle agent bash_on_macos
+{
+  packages:
+    "bash"
+      package_method => brew("$(main_user)"),
+      package_policy => "add";
+
+  files:
+    "/etc/shells"
+      edit_line => lines_present("/usr/local/bin/bash"),
+      comment => "MacOS needs /usr/local/bin/bash in /etc/shells in order to accept it as a shell for a user";
+
+  vars:
+    "main_user" string => "$(default:def.main_user)"; # because of wacking def.json augments
+    "bash_path" string => "/usr/local/bin/bash";
+    "chsh_path" string => "/usr/bin/chsh";
+    "main_user_data" data => getuserinfo("$(main_user)");
+    "main_user_shell" string => "$(main_user_data[shell])";
+
+  commands:
+    "$(chsh_path) -s $(bash_path) $(main_user)";
+}

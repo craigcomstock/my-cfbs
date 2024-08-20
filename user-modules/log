@@ -1,0 +1,1034 @@
+ verbose: Could not open extension plugin 'cfengine-enterprise.so' from '/usr/local/var/cfengine/lib/cfengine-enterprise.so': (not installed)
+ verbose:  CFEngine Core 3.24.0
+ verbose: ----------------------------------------------------------------
+ verbose:  Initialization preamble 
+ verbose: ----------------------------------------------------------------
+ verbose: Default port for cfengine is 5308
+ verbose: Work directory is /usr/local/var/cfengine
+ verbose: Making sure that internal directories are private...
+ verbose: Checking integrity of the trusted workdir
+ verbose: Checking integrity of the state database
+ verbose: Checking integrity of the module directory
+ verbose: Checking integrity of the PKI directory
+ verbose: Loaded private key at '/usr/local/var/cfengine/ppkeys/localhost.priv'
+ verbose: Loaded public key '/usr/local/var/cfengine/ppkeys/localhost.pub'
+ verbose: Reference time set to 'Tue Aug 20 17:14:44 2024'
+ verbose: CFEngine Core 3.24.0 - ready
+ verbose: ----------------------------------------------------------------
+ verbose:  Environment discovery 
+ verbose: ----------------------------------------------------------------
+ verbose: Host name is: Craigs-MBP
+ verbose: Operating System Type is darwin
+ verbose: Operating System Release is 23.6.0
+ verbose: Architecture = x86_64
+ verbose: CFEngine detected operating system description is qnx
+ verbose: The time is now Tue Aug 20 17:14:44 2024
+ verbose: Additional hard class defined as: 64_bit
+ verbose: Additional hard class defined as: darwin_23_6_0
+ verbose: Additional hard class defined as: darwin_x86_64
+ verbose: Additional hard class defined as: darwin_x86_64_23_6_0
+ verbose: GNU autoconf class from compile time: compiled_on_darwin23_4_0
+ verbose: Address given by nameserver: 10.42.0.175
+ verbose: Failed to open interface exception file /usr/local/var/cfengine/ignore_interfaces.rx: No such file or directory
+ verbose: Failed to open interface exception file /usr/local/var/cfengine/inputs/ignore_interfaces.rx: No such file or directory
+ verbose: Interface 1: lo0
+ verbose: Interface 2: lo0
+ verbose: Interface 3: lo0
+ verbose: Interface 4: lo0
+ verbose: Interface 5: gif0
+ verbose: Interface 6: stf0
+ verbose: Interface 7: en5
+ verbose: Interface 8: en5
+ verbose: Interface 9: ap1
+ verbose: Interface 10: en0
+ verbose: Interface 11: en0
+ verbose: Interface 12: en0
+ verbose: IP address of host set to 10.42.0.175
+ verbose: Interface 13: awdl0
+ verbose: Interface 14: awdl0
+ verbose: Interface 15: llw0
+ verbose: Interface 16: llw0
+ verbose: Interface 17: en1
+ verbose: Interface 18: en2
+ verbose: Interface 19: en3
+ verbose: Interface 20: en4
+ verbose: Interface 21: bridge0
+ verbose: Interface 22: utun0
+ verbose: Interface 23: utun0
+ verbose: Interface 24: utun1
+ verbose: Interface 25: utun1
+ verbose: Interface 26: utun2
+ verbose: Interface 27: utun2
+ verbose: Interface 28: utun3
+ verbose: Interface 29: utun3
+ verbose: Trying to locate my IPv6 address
+ verbose: Adding MAC address: ac:de:48:00:11:22 for en5
+ verbose: Adding MAC address: aa:66:5a:13:7b:e5 for ap1
+ verbose: Adding MAC address: 3a:b7:14:f5:76:5e for awdl0
+ verbose: Adding MAC address: 26:4f:75:64:c4:81 for en1
+ verbose: Adding MAC address: 26:4f:75:64:c4:80 for en2
+ verbose: Adding MAC address: 26:4f:75:64:c4:85 for en3
+ verbose: Adding MAC address: 26:4f:75:64:c4:84 for en4
+ verbose: Looking for environment from cf-monitord...
+ verbose: Loading environment...
+ verbose: Environment data loaded
+ verbose: Found 8 processors
+ warning: Operating System not properly recognized, setting sys.os_name_human to "Unknown", please submit a bug report for us to fix this
+ verbose: Loading persistent classes
+ verbose: This agent is bootstrapped to: 10.42.0.175
+ verbose: Successfully read bootstrap ID 'zMkCzACn3Rz6WsKf1R2JAyoaObQHNmh7GB9bIN1O' from file '/usr/local/var/cfengine/bootstrap_id.dat'
+ verbose: Additional class defined: am_policy_hub
+ verbose: Additional class defined: policy_server
+ verbose: No host-specific JSON data available at '/usr/local/var/cfengine/data/host_specific.json'
+ verbose: Loading JSON augments from './def.json' (input dir '.', input file './bash.cf'
+ verbose: Loaded augments file './def.json', installing contents
+ verbose: Installing augments variable 'main_user=craig' from file './def.json'
+ verbose: Input file is outside default repository, validating it
+ verbose: Input file './bash.cf' has changed since the last policy read attempt (file is newer than previous)
+ verbose: Input file is changed since last validation, validating it
+ verbose: Verifying the syntax of the inputs...
+ verbose: Checking policy with command '"/usr/local/Cellar/cfengine/3.24.0/bin/cf-promises" "./bash.cf" -b "bash"'
+ warning: Operating System not properly recognized, setting sys.os_name_human to "Unknown", please submit a bug report for us to fix this
+ verbose: Saved policy validated marker file '/usr/local/var/cfengine/state/cf_promises_validated'
+ verbose: ----------------------------------------------------------------
+ verbose:  Loading policy 
+ verbose: ----------------------------------------------------------------
+ verbose: BEGIN parsing file: ./bash.cf
+ verbose: END   parsing file: ./bash.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/stdlib.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/stdlib.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/cfe_internal.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/cfe_internal.cf
+ verbose: Added variable 'previous_state_files' with comment 'The files in this directory record the state at the end of
+                    the previous agent run. They are used in concert with the
+                    promise logs to derive delta reports.'
+ verbose: Added variable 'untracked_files' with comment 'The files in this directory are used in support of the
+                    report_data_select filters. This is a record of all promises
+                    that should not be collected'
+ verbose: Skipping iteration since variable 'files' resolves to an empty list
+ verbose: maparray: argument 'default:cfe_internal_cleanup_agent_reports.reports_size' does not resolve to a container or a list or a CFEngine array
+ verbose: maparray: argument 'default:cfe_internal_cleanup_agent_reports.reports_size' does not resolve to a container or a list or a CFEngine array
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/common.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/common.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/commands.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/commands.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/guest_environments.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/guest_environments.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/testing.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/testing.cf
+ verbose: Skipping iteration since variable 'passed' resolves to an empty list
+ verbose: Skipping iteration since variable 'failed' resolves to an empty list
+ verbose: Skipping iteration since variable 'skipped' resolves to an empty list
+ verbose: Skipping iteration since variable 'todo' resolves to an empty list
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/reports.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/reports.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/services.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/services.cf
+ verbose: Added variable 'inits' with comment 'Currently handled init systems'
+ verbose: Added variable 'default[prefix][sysvservice]' with comment 'Command for sysv service interactions'
+ verbose: Added variable 'default[prefix][systemd]' with comment 'Command for systemd interactions'
+ verbose: Added variable 'default[prefix][sysvinitd]' with comment 'Command prefix for sysv init script interactions'
+ verbose: Added variable 'default[prefix][chkconfig]' with comment 'Command prefix for chkconfig init script interactions'
+ verbose: Added variable 'default[cmd][sysvinitd]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[cmd][sysvservice]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[cmd][systemd]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[cmd][chkconfig]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[pattern]' with comment 'Set default pattern for proc matching'
+ verbose: Added variable 'default[init]' with comment 'Use sysvinitd as the default init system if one isn't defined'
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/paths.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/paths.cf
+ verbose: Skipping iteration since variable '_i' resolves to an empty list
+ verbose: C:     +  Global class: _stdlib_has_path_sudo
+ verbose: Added class '_stdlib_has_path_sudo' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_egrep
+ verbose: Added class '_stdlib_has_path_egrep' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_createrepo
+ verbose: Added class '_stdlib_has_path_createrepo' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_mailx
+ verbose: Added class '_stdlib_has_path_mailx' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_logger
+ verbose: Added class '_stdlib_has_path_logger' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_diff
+ verbose: Added class '_stdlib_has_path_diff' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_netstat
+ verbose: Added class '_stdlib_has_path_netstat' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_virtualenv
+ verbose: Added class '_stdlib_has_path_virtualenv' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_automount
+ verbose: Added class '_stdlib_has_path_automount' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_cat
+ verbose: Added class '_stdlib_has_path_cat' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_sysctl
+ verbose: Added class '_stdlib_has_path_sysctl' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_tr
+ verbose: Added class '_stdlib_has_path_tr' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_hostname
+ verbose: Added class '_stdlib_has_path_hostname' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_bc
+ verbose: Added class '_stdlib_has_path_bc' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_dc
+ verbose: Added class '_stdlib_has_path_dc' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_echo
+ verbose: Added class '_stdlib_has_path_echo' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_crontab
+ verbose: Added class '_stdlib_has_path_crontab' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_test
+ verbose: Added class '_stdlib_has_path_test' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_npm
+ verbose: Added class '_stdlib_has_path_npm' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_cksum
+ verbose: Added class '_stdlib_has_path_cksum' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_awk
+ verbose: Added class '_stdlib_has_path_awk' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_ping
+ verbose: Added class '_stdlib_has_path_ping' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_lsof
+ verbose: Added class '_stdlib_has_path_lsof' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_env
+ verbose: Added class '_stdlib_has_path_env' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_dig
+ verbose: Added class '_stdlib_has_path_dig' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_perl
+ verbose: Added class '_stdlib_has_path_perl' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_cut
+ verbose: Added class '_stdlib_has_path_cut' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_domainname
+ verbose: Added class '_stdlib_has_path_domainname' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_brew
+ verbose: Added class '_stdlib_has_path_brew' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_pip
+ verbose: Added class '_stdlib_has_path_pip' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_find
+ verbose: Added class '_stdlib_has_path_find' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_df
+ verbose: Added class '_stdlib_has_path_df' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_grep
+ verbose: Added class '_stdlib_has_path_grep' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_timedatectl
+ verbose: Added class '_stdlib_has_path_timedatectl' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_printf
+ verbose: Added class '_stdlib_has_path_printf' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_shadow
+ verbose: Added class '_stdlib_has_path_shadow' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_sort
+ verbose: Added class '_stdlib_has_path_sort' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_journalctl
+ verbose: Added class '_stdlib_has_path_journalctl' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_systemctl
+ verbose: Added class '_stdlib_has_path_systemctl' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_ls
+ verbose: Added class '_stdlib_has_path_ls' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_crontabs
+ verbose: Added class '_stdlib_has_path_crontabs' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_dscl
+ verbose: Added class '_stdlib_has_path_dscl' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_sed
+ verbose: Added class '_stdlib_has_path_sed' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_has_path_git
+ verbose: Added class '_stdlib_has_path_git' with comment 'It's useful to know if a given path is defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_sudo
+ verbose: Added class '_stdlib_path_exists_sudo' with comment 'It's useful to know if sudo exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_egrep
+ verbose: Added class '_stdlib_path_exists_egrep' with comment 'It's useful to know if egrep exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_mailx
+ verbose: Added class '_stdlib_path_exists_mailx' with comment 'It's useful to know if mailx exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_logger
+ verbose: Added class '_stdlib_path_exists_logger' with comment 'It's useful to know if logger exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_diff
+ verbose: Added class '_stdlib_path_exists_diff' with comment 'It's useful to know if diff exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_netstat
+ verbose: Added class '_stdlib_path_exists_netstat' with comment 'It's useful to know if netstat exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_automount
+ verbose: Added class '_stdlib_path_exists_automount' with comment 'It's useful to know if automount exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_cat
+ verbose: Added class '_stdlib_path_exists_cat' with comment 'It's useful to know if cat exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_tr
+ verbose: Added class '_stdlib_path_exists_tr' with comment 'It's useful to know if tr exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_hostname
+ verbose: Added class '_stdlib_path_exists_hostname' with comment 'It's useful to know if hostname exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_bc
+ verbose: Added class '_stdlib_path_exists_bc' with comment 'It's useful to know if bc exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_dc
+ verbose: Added class '_stdlib_path_exists_dc' with comment 'It's useful to know if dc exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_echo
+ verbose: Added class '_stdlib_path_exists_echo' with comment 'It's useful to know if echo exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_crontab
+ verbose: Added class '_stdlib_path_exists_crontab' with comment 'It's useful to know if crontab exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_test
+ verbose: Added class '_stdlib_path_exists_test' with comment 'It's useful to know if test exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_cksum
+ verbose: Added class '_stdlib_path_exists_cksum' with comment 'It's useful to know if cksum exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_awk
+ verbose: Added class '_stdlib_path_exists_awk' with comment 'It's useful to know if awk exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_ping
+ verbose: Added class '_stdlib_path_exists_ping' with comment 'It's useful to know if ping exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_lsof
+ verbose: Added class '_stdlib_path_exists_lsof' with comment 'It's useful to know if lsof exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_env
+ verbose: Added class '_stdlib_path_exists_env' with comment 'It's useful to know if env exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_dig
+ verbose: Added class '_stdlib_path_exists_dig' with comment 'It's useful to know if dig exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_perl
+ verbose: Added class '_stdlib_path_exists_perl' with comment 'It's useful to know if perl exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_cut
+ verbose: Added class '_stdlib_path_exists_cut' with comment 'It's useful to know if cut exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_brew
+ verbose: Added class '_stdlib_path_exists_brew' with comment 'It's useful to know if brew exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_find
+ verbose: Added class '_stdlib_path_exists_find' with comment 'It's useful to know if find exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_df
+ verbose: Added class '_stdlib_path_exists_df' with comment 'It's useful to know if df exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_grep
+ verbose: Added class '_stdlib_path_exists_grep' with comment 'It's useful to know if grep exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_printf
+ verbose: Added class '_stdlib_path_exists_printf' with comment 'It's useful to know if printf exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_shadow
+ verbose: Added class '_stdlib_path_exists_shadow' with comment 'It's useful to know if shadow exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_sort
+ verbose: Added class '_stdlib_path_exists_sort' with comment 'It's useful to know if sort exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_ls
+ verbose: Added class '_stdlib_path_exists_ls' with comment 'It's useful to know if ls exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_crontabs
+ verbose: Added class '_stdlib_path_exists_crontabs' with comment 'It's useful to know if crontabs exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_dscl
+ verbose: Added class '_stdlib_path_exists_dscl' with comment 'It's useful to know if dscl exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_sed
+ verbose: Added class '_stdlib_path_exists_sed' with comment 'It's useful to know if sed exists on the filesystem as defined'
+ verbose: C:     +  Global class: _stdlib_path_exists_git
+ verbose: Added class '_stdlib_path_exists_git' with comment 'It's useful to know if git exists on the filesystem as defined'
+ verbose: Skipping iteration since variable '_i' resolves to an empty list
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/packages.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/packages.cf
+ verbose: Skipping promise 'additional_inventory' because constraint 'if => isvariable("default:def.additional_package_inventory_modules[$(sys.flavor)]")' is not met
+ verbose: Skipping promise 'additional_inventory' because constraint 'if => isvariable("default:def.additional_package_inventory_modules[$(sys.flavor)]")' is not met
+ verbose: Added variable 'list_update_ifelapsed' with comment 'The number of minutes to wait before updating the package cache. Note this controls both the software installed and the software updates available.'
+ verbose: Skipping promise 'list_update_ifelapsed' because constraint 'if => not(isvariable("list_update_ifelapsed"))' is not met
+ verbose: have invalid constraint while resolvingpackage promise body: interpreter
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/files.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/files.cf
+ verbose: sort: argument 'default:insert_ini_section.indices' does not resolve to a container or a list or a CFEngine array
+ verbose: sort: argument 'default:insert_ini_section.indices' does not resolve to a container or a list or a CFEngine array
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/users.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/users.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/bundles.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/bundles.cf
+ verbose: length: argument 'default:run_ifdefined.bundlesfound' does not resolve to a container or a list or a CFEngine array
+ verbose: length: argument 'default:run_ifdefined.bundlesfound' does not resolve to a container or a list or a CFEngine array
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/cfengine_enterprise_hub_ha.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/cfengine_enterprise_hub_ha.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/edit_xml.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/edit_xml.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/databases.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/databases.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/storage.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/storage.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/monitor.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/monitor.cf
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/cfe_internal_hub.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/cfe_internal_hub.cf
+ verbose: Skipping iteration since variable 'index' resolves to an empty list
+ verbose: Skipping iteration since variable 'index' resolves to an empty list
+ verbose: Added variable 'vacuum_cfdb_cmd' with comment 'Vacuum Full PostgreSQL (database: cfdb)'
+ verbose: Added variable 'vacuum_cfdb_cmd' with comment 'Vacuum command with update statistics enabled'
+ verbose: BEGIN parsing file: /usr/local/var/cfengine/inputs/lib/processes.cf
+ verbose: END   parsing file: /usr/local/var/cfengine/inputs/lib/processes.cf
+ verbose: ----------------------------------------------------------------
+ verbose: PREFIX LEGEND:
+ verbose:  V: variable or parameter new definition in scope
+ verbose:  C: class/context new definition 
+ verbose:  B: bundle start/end execution marker
+ verbose:  P: promise execution output 
+ verbose:  A: accounting output 
+ verbose:  T: time measurement for stated object (promise or bundle)
+ verbose: ----------------------------------------------------------------
+ verbose: ----------------------------------------------------------------
+ verbose: BEGIN Discovered hard classes:
+ verbose: C: discovered hard class 10_42_0_175
+ verbose: C: discovered hard class 127_0_0_1
+ verbose: C: discovered hard class 64_bit
+ verbose: C: discovered hard class 8_cpus
+ verbose: C: discovered hard class Afternoon
+ verbose: C: discovered hard class August
+ verbose: C: discovered hard class Day20
+ verbose: C: discovered hard class GMT_August
+ verbose: C: discovered hard class GMT_Day20
+ verbose: C: discovered hard class GMT_Evening
+ verbose: C: discovered hard class GMT_Hr22
+ verbose: C: discovered hard class GMT_Hr22_Q1
+ verbose: C: discovered hard class GMT_Lcycle_2
+ verbose: C: discovered hard class GMT_Min10_15
+ verbose: C: discovered hard class GMT_Min14
+ verbose: C: discovered hard class GMT_Q1
+ verbose: C: discovered hard class GMT_Tuesday
+ verbose: C: discovered hard class GMT_Yr2024
+ verbose: C: discovered hard class Hr17
+ verbose: C: discovered hard class Hr17_Q1
+ verbose: C: discovered hard class Lcycle_2
+ verbose: C: discovered hard class Min10_15
+ verbose: C: discovered hard class Min14
+ verbose: C: discovered hard class PK_MD5_c943f0a39a863024611f52bbc0f9ffe7
+ verbose: C: discovered hard class Q1
+ verbose: C: discovered hard class Tuesday
+ verbose: C: discovered hard class Yr2024
+ verbose: C: discovered hard class agent
+ verbose: C: discovered hard class am_policy_hub
+ verbose: C: discovered hard class any
+ verbose: C: discovered hard class cfengine
+ verbose: C: discovered hard class cfengine_3
+ verbose: C: discovered hard class cfengine_3_24
+ verbose: C: discovered hard class cfengine_3_24_0
+ verbose: C: discovered hard class cfengine_in_high
+ verbose: C: discovered hard class community_edition
+ verbose: C: discovered hard class compiled_on_darwin23_4_0
+ verbose: C: discovered hard class craigs_mbp
+ verbose: C: discovered hard class darwin
+ verbose: C: discovered hard class darwin_23_6_0
+ verbose: C: discovered hard class darwin_x86_64
+ verbose: C: discovered hard class darwin_x86_64_23_6_0
+ verbose: C: discovered hard class darwin_x86_64_23_6_0_Darwin_Kernel_Version_23_6_0__Mon_Jul_29_21_13_00_PDT_2024__root_xnu_10063_141_2_1_RELEASE_X86_64
+ verbose: C: discovered hard class diskfree_high_normal
+ verbose: C: discovered hard class entropy_misc_in_low
+ verbose: C: discovered hard class entropy_misc_out_low
+ verbose: C: discovered hard class entropy_postgresql_in_low
+ verbose: C: discovered hard class entropy_postgresql_out_low
+ verbose: C: discovered hard class feature
+ verbose: C: discovered hard class feature_copyfrom
+ verbose: C: discovered hard class feature_copyfrom_restrict
+ verbose: C: discovered hard class feature_copyfrom_restrict_keys
+ verbose: C: discovered hard class feature_curl
+ verbose: C: discovered hard class feature_def
+ verbose: C: discovered hard class feature_def_json
+ verbose: C: discovered hard class feature_def_json_preparse
+ verbose: C: discovered hard class feature_host
+ verbose: C: discovered hard class feature_host_specific
+ verbose: C: discovered hard class feature_host_specific_data
+ verbose: C: discovered hard class feature_host_specific_data_load
+ verbose: C: discovered hard class feature_tls
+ verbose: C: discovered hard class feature_tls_1
+ verbose: C: discovered hard class feature_tls_1_0
+ verbose: C: discovered hard class feature_tls_1_1
+ verbose: C: discovered hard class feature_tls_1_2
+ verbose: C: discovered hard class feature_tls_1_3
+ verbose: C: discovered hard class feature_xml
+ verbose: C: discovered hard class inform_mode
+ verbose: C: discovered hard class ipv4_10
+ verbose: C: discovered hard class ipv4_10_42
+ verbose: C: discovered hard class ipv4_10_42_0
+ verbose: C: discovered hard class ipv4_10_42_0_175
+ verbose: C: discovered hard class ipv4_127
+ verbose: C: discovered hard class ipv4_127_0
+ verbose: C: discovered hard class ipv4_127_0_0
+ verbose: C: discovered hard class ipv4_127_0_0_1
+ verbose: C: discovered hard class loadavg_low
+ verbose: C: discovered hard class mac_88_66_5a_13_7b_e5
+ verbose: C: discovered hard class net_iface_ap1
+ verbose: C: discovered hard class net_iface_awdl0
+ verbose: C: discovered hard class net_iface_bridge0
+ verbose: C: discovered hard class net_iface_en0
+ verbose: C: discovered hard class net_iface_en1
+ verbose: C: discovered hard class net_iface_en2
+ verbose: C: discovered hard class net_iface_en3
+ verbose: C: discovered hard class net_iface_en4
+ verbose: C: discovered hard class net_iface_en5
+ verbose: C: discovered hard class net_iface_gif0
+ verbose: C: discovered hard class net_iface_llw0
+ verbose: C: discovered hard class net_iface_lo0
+ verbose: C: discovered hard class net_iface_stf0
+ verbose: C: discovered hard class net_iface_utun0
+ verbose: C: discovered hard class net_iface_utun1
+ verbose: C: discovered hard class net_iface_utun2
+ verbose: C: discovered hard class net_iface_utun3
+ verbose: C: discovered hard class netbiosdgm_in_high
+ verbose: C: discovered hard class netbiosns_in_high
+ verbose: C: discovered hard class otherprocs_high_normal
+ verbose: C: discovered hard class policy_server
+ verbose: C: discovered hard class rootprocs_high_normal
+ verbose: C: discovered hard class ssh_out_low
+ verbose: C: discovered hard class users_high
+ verbose: C: discovered hard class verbose_mode
+ verbose: C: discovered hard class wwws_out_normal
+ verbose: C: discovered hard class x86_64
+ verbose: END Discovered hard classes
+ verbose: ----------------------------------------------------------------
+ verbose: BEGIN initial soft classes:
+ verbose: C: added soft class _stdlib_has_path_automount
+ verbose: C: added soft class _stdlib_has_path_awk
+ verbose: C: added soft class _stdlib_has_path_bc
+ verbose: C: added soft class _stdlib_has_path_brew
+ verbose: C: added soft class _stdlib_has_path_cat
+ verbose: C: added soft class _stdlib_has_path_cksum
+ verbose: C: added soft class _stdlib_has_path_createrepo
+ verbose: C: added soft class _stdlib_has_path_crontab
+ verbose: C: added soft class _stdlib_has_path_crontabs
+ verbose: C: added soft class _stdlib_has_path_cut
+ verbose: C: added soft class _stdlib_has_path_dc
+ verbose: C: added soft class _stdlib_has_path_df
+ verbose: C: added soft class _stdlib_has_path_diff
+ verbose: C: added soft class _stdlib_has_path_dig
+ verbose: C: added soft class _stdlib_has_path_domainname
+ verbose: C: added soft class _stdlib_has_path_dscl
+ verbose: C: added soft class _stdlib_has_path_echo
+ verbose: C: added soft class _stdlib_has_path_egrep
+ verbose: C: added soft class _stdlib_has_path_env
+ verbose: C: added soft class _stdlib_has_path_find
+ verbose: C: added soft class _stdlib_has_path_git
+ verbose: C: added soft class _stdlib_has_path_grep
+ verbose: C: added soft class _stdlib_has_path_hostname
+ verbose: C: added soft class _stdlib_has_path_journalctl
+ verbose: C: added soft class _stdlib_has_path_logger
+ verbose: C: added soft class _stdlib_has_path_ls
+ verbose: C: added soft class _stdlib_has_path_lsof
+ verbose: C: added soft class _stdlib_has_path_mailx
+ verbose: C: added soft class _stdlib_has_path_netstat
+ verbose: C: added soft class _stdlib_has_path_npm
+ verbose: C: added soft class _stdlib_has_path_perl
+ verbose: C: added soft class _stdlib_has_path_ping
+ verbose: C: added soft class _stdlib_has_path_pip
+ verbose: C: added soft class _stdlib_has_path_printf
+ verbose: C: added soft class _stdlib_has_path_sed
+ verbose: C: added soft class _stdlib_has_path_shadow
+ verbose: C: added soft class _stdlib_has_path_sort
+ verbose: C: added soft class _stdlib_has_path_sudo
+ verbose: C: added soft class _stdlib_has_path_sysctl
+ verbose: C: added soft class _stdlib_has_path_systemctl
+ verbose: C: added soft class _stdlib_has_path_test
+ verbose: C: added soft class _stdlib_has_path_timedatectl
+ verbose: C: added soft class _stdlib_has_path_tr
+ verbose: C: added soft class _stdlib_has_path_virtualenv
+ verbose: C: added soft class _stdlib_path_exists_automount
+ verbose: C: added soft class _stdlib_path_exists_awk
+ verbose: C: added soft class _stdlib_path_exists_bc
+ verbose: C: added soft class _stdlib_path_exists_brew
+ verbose: C: added soft class _stdlib_path_exists_cat
+ verbose: C: added soft class _stdlib_path_exists_cksum
+ verbose: C: added soft class _stdlib_path_exists_crontab
+ verbose: C: added soft class _stdlib_path_exists_crontabs
+ verbose: C: added soft class _stdlib_path_exists_cut
+ verbose: C: added soft class _stdlib_path_exists_dc
+ verbose: C: added soft class _stdlib_path_exists_df
+ verbose: C: added soft class _stdlib_path_exists_diff
+ verbose: C: added soft class _stdlib_path_exists_dig
+ verbose: C: added soft class _stdlib_path_exists_dscl
+ verbose: C: added soft class _stdlib_path_exists_echo
+ verbose: C: added soft class _stdlib_path_exists_egrep
+ verbose: C: added soft class _stdlib_path_exists_env
+ verbose: C: added soft class _stdlib_path_exists_find
+ verbose: C: added soft class _stdlib_path_exists_git
+ verbose: C: added soft class _stdlib_path_exists_grep
+ verbose: C: added soft class _stdlib_path_exists_hostname
+ verbose: C: added soft class _stdlib_path_exists_logger
+ verbose: C: added soft class _stdlib_path_exists_ls
+ verbose: C: added soft class _stdlib_path_exists_lsof
+ verbose: C: added soft class _stdlib_path_exists_mailx
+ verbose: C: added soft class _stdlib_path_exists_netstat
+ verbose: C: added soft class _stdlib_path_exists_perl
+ verbose: C: added soft class _stdlib_path_exists_ping
+ verbose: C: added soft class _stdlib_path_exists_printf
+ verbose: C: added soft class _stdlib_path_exists_sed
+ verbose: C: added soft class _stdlib_path_exists_shadow
+ verbose: C: added soft class _stdlib_path_exists_sort
+ verbose: C: added soft class _stdlib_path_exists_sudo
+ verbose: C: added soft class _stdlib_path_exists_test
+ verbose: C: added soft class _stdlib_path_exists_tr
+ verbose: END initial soft classes
+ verbose: ----------------------------------------------------------------
+ verbose:  Preliminary variable/class-context convergence 
+ verbose: ----------------------------------------------------------------
+ verbose: Skipping promise 'diff_files' because constraint 'unless => isvariable("$(this.promiser)")' is not met
+ verbose: Skipping promise 'promise_log_files' because constraint 'unless => isvariable("$(this.promiser)")' is not met
+ verbose: Skipping promise 'previous_state_files' because constraint 'unless => isvariable("$(this.promiser)")' is not met
+ verbose: Skipping promise 'untracked_files' because constraint 'unless => isvariable("$(this.promiser)")' is not met
+ verbose: Skipping iteration since variable 'files' resolves to an empty list
+ verbose: maparray: argument 'default:cfe_internal_cleanup_agent_reports.reports_size' does not resolve to a container or a list or a CFEngine array
+ verbose: maparray: argument 'default:cfe_internal_cleanup_agent_reports.reports_size' does not resolve to a container or a list or a CFEngine array
+ verbose: length: argument 'default:cfe_internal_cleanup_agent_reports.tmpmap' does not resolve to a container or a list or a CFEngine array
+ verbose: Skipping promise 'DEBUG $(this.bundle): This bundle does not support Windows' because constraint 'ifvarclass => windows.(DEBUG|DEBUG_$(this.bundle))' is not met
+ verbose: Skipping promise '$(const.n)ok $(message)' because constraint 'ifvarclass => tap.testing_$(classname)' is not met
+ verbose: Skipping promise '$(const.n)not ok $(message)' because constraint 'ifvarclass => tap.testing_$(classname)_failed' is not met
+ verbose: Skipping iteration since variable 'passed' resolves to an empty list
+ verbose: Skipping iteration since variable 'failed' resolves to an empty list
+ verbose: Skipping iteration since variable 'skipped' resolves to an empty list
+ verbose: Skipping iteration since variable 'todo' resolves to an empty list
+ verbose: Added variable 'inits' with comment 'Currently handled init systems'
+ verbose: Added variable 'default[prefix][sysvservice]' with comment 'Command for sysv service interactions'
+ verbose: Added variable 'default[prefix][systemd]' with comment 'Command for systemd interactions'
+ verbose: Added variable 'default[prefix][sysvinitd]' with comment 'Command prefix for sysv init script interactions'
+ verbose: Added variable 'default[prefix][chkconfig]' with comment 'Command prefix for chkconfig init script interactions'
+ verbose: Added variable 'default[cmd][sysvinitd]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[cmd][sysvservice]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[cmd][systemd]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[cmd][chkconfig]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[pattern]' with comment 'Set default pattern for proc matching'
+ verbose: Added variable 'default[init]' with comment 'Use sysvinitd as the default init system if one isn't defined'
+ verbose: Skipping promise '$(default[cmd][$(default[init])])' because constraint 'if => and(not(isvariable("startcommand[$(service)]")),not(isvariable("baseinit[$(service)]")),canonify("start_$(service)"),"no_inits_set")' is not met
+ verbose: Skipping promise '$(default[cmd][$(inits)])' because constraint 'if => and(not(isvariable("startcommand[$(service)]")),not(isvariable("baseinit[$(service)]")),canonify("start_$(service)"),canonify("$(inits)_set"))' is not met
+ verbose: Skipping promise '$(default[cmd][$(inits)])' because constraint 'if => and(not(isvariable("startcommand[$(service)]")),not(isvariable("baseinit[$(service)]")),canonify("start_$(service)"),canonify("$(inits)_set"))' is not met
+ verbose: Skipping promise '$(default[cmd][$(inits)])' because constraint 'if => and(not(isvariable("startcommand[$(service)]")),not(isvariable("baseinit[$(service)]")),canonify("start_$(service)"),canonify("$(inits)_set"))' is not met
+ verbose: Skipping promise '$(default[cmd][$(inits)])' because constraint 'if => and(not(isvariable("startcommand[$(service)]")),not(isvariable("baseinit[$(service)]")),canonify("start_$(service)"),canonify("$(inits)_set"))' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): Using init system $(inits)' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): Using init system $(inits)' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): Using init system $(inits)' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): Using init system $(inits)' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): No init system is set, using $(default[init])' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): The service $(service) needs to be started' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): The default service pattern was used: $(default[pattern])' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): The stopcommand is NOT provided, using default' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): The startcommand is NOT provided, using default' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): The restartcommand is NOT provided, using default' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): The reloadcommand is NOT provided, using default' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): The baseinit is NOT provided, using default' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping iteration since variable '_i' resolves to an empty list
+ verbose: Skipping promise 'additional_inventory' because constraint 'if => isvariable("default:def.additional_package_inventory_modules[$(sys.flavor)]")' is not met
+ verbose: Skipping promise 'list_update_ifelapsed' because constraint 'if => not(isvariable("list_update_ifelapsed"))' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): sorry, can't do file-based installs on $(sys.os)' because constraint 'ifvarclass => (DEBUG|DEBUG_$(this.bundle)).filebased.!(suse|sles|opensuse).!debian.!redhat.!aix.!solaris_pkgadd' is not met
+ verbose: Embedded function argument does not resolve to a name - probably too many evaluation levels for 'escape'
+ verbose: Embedded function argument does not resolve to a name - probably too many evaluation levels for 'escape'
+ verbose: Embedded function argument does not resolve to a name - probably too many evaluation levels for 'escape'
+ verbose: Embedded function argument does not resolve to a name - probably too many evaluation levels for 'escape'
+ verbose: Embedded function argument does not resolve to a name - probably too many evaluation levels for 'escape'
+ verbose: sort: argument 'default:insert_ini_section.indices' does not resolve to a container or a list or a CFEngine array
+ verbose: sort: argument 'default:insert_ini_section.indices' does not resolve to a container or a list or a CFEngine array
+ verbose: Skipping promise '$(line)' because constraint 'if => replace_$(cline)_reached' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): deleting $(file) with delete => tidy' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): copying directory $(from) to $(to)' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): copying file $(from) to $(to)' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): creating $(file) with contents '$(str)'' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): creating $(file) with contents '$(summary)'' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): creating $(file) with contents '$(str)', mode '$(mode)', owner '$(owner)' and group '$(group)'' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): creating $(file) with contents '$(summary)', mode '$(mode)', owner '$(owner)' and group '$(group)'' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: mergedata: argument 'default:file_make_mustache.data' does not resolve to a container or a list or a CFEngine array
+ verbose: Skipping promise 'DEBUG $(this.bundle): rendering $(file) with template '$(template)'' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: mergedata: argument 'default:file_make_mustache_with_perms.data' does not resolve to a container or a list or a CFEngine array
+ verbose: Skipping promise 'DEBUG $(this.bundle): rendering $(file) with template '$(template)'' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): creating empty $(file) with 0 size' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): $(link) will be a hard link to $(target)' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'DEBUG $(this.bundle): $(link) will be a symlink to $(target)' because constraint 'ifvarclass => DEBUG|DEBUG_$(this.bundle)' is not met
+ verbose: Skipping promise 'present_with_potentially_different_spacing' because constraint 'if => fileexists("$(crontab)/$(user)")' is not met
+ verbose: Skipping promise '$(log_files)' because constraint 'if => fileexists("$(log_files)")' is not met
+ verbose: Skipping promise '$(this.bundle): $(method) $(host):$(port)/$(uri) got 200 OK' because constraint 'if => url_ok_$(chost)' is not met
+ verbose: Skipping promise '$(this.bundle): $(method) $(host):$(port)/$(uri) did *not* get 200 OK' because constraint 'if => url_not_ok_$(chost)' is not met
+ verbose: length: argument 'default:run_ifdefined.bundlesfound' does not resolve to a container or a list or a CFEngine array
+ verbose: length: argument 'default:run_ifdefined.bundlesfound' does not resolve to a container or a list or a CFEngine array
+ verbose: Skipping promise 'any' because constraint 'if => strcmp("1","$(count)")' is not met
+ verbose: Skipping iteration since variable 'index' resolves to an empty list
+ verbose: Skipping iteration since variable 'index' resolves to an empty list
+ verbose: Skipping promise 'has_sql_function_cleanup_historical_data' because constraint 'if => isexecutable("$(sys.bindir)/psql")' is not met
+ verbose: Skipping promise 'has_sql_table___status' because constraint 'if => isexecutable("$(sys.bindir)/psql")' is not met
+ verbose: Skipping iteration since variable 'index' resolves to an empty list
+ verbose: Skipping iteration since variable 'index' resolves to an empty list
+ verbose: Added variable 'vacuum_cfdb_cmd' with comment 'Vacuum Full PostgreSQL (database: cfdb)'
+ verbose: Added variable 'vacuum_cfdb_cmd' with comment 'Vacuum command with update statistics enabled'
+ verbose: Skipping iteration since variable '_i' resolves to an empty list
+ verbose: Skipping iteration since variable '_i' resolves to an empty list
+ verbose: Skipping promise 'additional_inventory' because constraint 'if => isvariable("default:def.additional_package_inventory_modules[$(sys.flavor)]")' is not met
+ verbose: Skipping promise 'additional_inventory' because constraint 'if => isvariable("default:def.additional_package_inventory_modules[$(sys.flavor)]")' is not met
+ verbose: Skipping promise 'list_update_ifelapsed' because constraint 'if => not(isvariable("list_update_ifelapsed"))' is not met
+ verbose: Skipping promise 'list_update_ifelapsed' because constraint 'if => not(isvariable("list_update_ifelapsed"))' is not met
+ verbose: Skipping promise 'diff_files' because constraint 'unless => isvariable("$(this.promiser)")' is not met
+ verbose: Skipping promise 'promise_log_files' because constraint 'unless => isvariable("$(this.promiser)")' is not met
+ verbose: Skipping promise 'previous_state_files' because constraint 'unless => isvariable("$(this.promiser)")' is not met
+ verbose: Skipping promise 'untracked_files' because constraint 'unless => isvariable("$(this.promiser)")' is not met
+ verbose: Skipping iteration since variable 'files' resolves to an empty list
+ verbose: maparray: argument 'default:cfe_internal_cleanup_agent_reports.reports_size' does not resolve to a container or a list or a CFEngine array
+ verbose: maparray: argument 'default:cfe_internal_cleanup_agent_reports.reports_size' does not resolve to a container or a list or a CFEngine array
+ verbose: Skipping iteration since variable 'passed' resolves to an empty list
+ verbose: Skipping iteration since variable 'failed' resolves to an empty list
+ verbose: Skipping iteration since variable 'skipped' resolves to an empty list
+ verbose: Skipping iteration since variable 'todo' resolves to an empty list
+ verbose: Added variable 'inits' with comment 'Currently handled init systems'
+ verbose: Added variable 'default[prefix][sysvservice]' with comment 'Command for sysv service interactions'
+ verbose: Added variable 'default[prefix][systemd]' with comment 'Command for systemd interactions'
+ verbose: Added variable 'default[prefix][sysvinitd]' with comment 'Command prefix for sysv init script interactions'
+ verbose: Added variable 'default[prefix][chkconfig]' with comment 'Command prefix for chkconfig init script interactions'
+ verbose: Added variable 'default[cmd][sysvinitd]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[cmd][sysvservice]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[cmd][systemd]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[cmd][chkconfig]' with comment 'Default command to control the service'
+ verbose: Added variable 'default[pattern]' with comment 'Set default pattern for proc matching'
+ verbose: Added variable 'default[init]' with comment 'Use sysvinitd as the default init system if one isn't defined'
+ verbose: sort: argument 'default:insert_ini_section.indices' does not resolve to a container or a list or a CFEngine array
+ verbose: sort: argument 'default:insert_ini_section.indices' does not resolve to a container or a list or a CFEngine array
+ verbose: length: argument 'default:run_ifdefined.bundlesfound' does not resolve to a container or a list or a CFEngine array
+ verbose: length: argument 'default:run_ifdefined.bundlesfound' does not resolve to a container or a list or a CFEngine array
+ verbose: Skipping iteration since variable 'index' resolves to an empty list
+ verbose: Skipping iteration since variable 'index' resolves to an empty list
+ verbose: Added variable 'vacuum_cfdb_cmd' with comment 'Vacuum Full PostgreSQL (database: cfdb)'
+ verbose: Added variable 'vacuum_cfdb_cmd' with comment 'Vacuum command with update statistics enabled'
+ verbose: have invalid constraint while resolvingpackage promise body: interpreter
+ verbose: Setting minimum acceptable TLS version: 1.1
+ verbose: Using the OpenSSL's default cipher list
+ verbose: ----------------------------------------------------------------
+ verbose:  Begin policy/promise evaluation 
+ verbose: ----------------------------------------------------------------
+    info: Using command line specified bundlesequence
+ verbose: Using bundlesequence =>  {"bash"}
+ verbose: B: *****************************************************************
+ verbose: B: BEGIN bundle bash
+ verbose: B: *****************************************************************
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_bash_cf_9' of type "methods" (pass 1)
+ verbose: P:    Promiser/affected object: 'bash_on_macos'
+ verbose: P:    Part of bundle: bash
+ verbose: P:    Base context class: darwin._stdlib_has_path_brew
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'[1]
+ verbose: B: *****************************************************************
+ verbose: B: BEGIN bundle bash_on_macos
+ verbose: B: *****************************************************************
+ verbose: V: .........................................................
+ verbose: V: BEGIN variables (pass 1)
+ verbose: V:     Computing value of 'main_user'
+ verbose: V:     Computing value of 'bash_path'
+ verbose: V:     Computing value of 'chsh_path'
+ verbose: V:     Computing value of 'main_user_data'
+ verbose: V:     Computing value of 'main_user_shell'
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_bash_cf_20' of type "files" (pass 1)
+ verbose: P:    Promiser/affected object: '/etc/shells'
+ verbose: P:    Part of bundle: bash_on_macos
+ verbose: P:    Base context class: any
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'/default/bash_on_macos/files/'/etc/shells'[1]
+ verbose: P:
+ verbose: P:    Comment:  MacOS needs /usr/local/bin/bash in /etc/shells in order to accept it as a shell for a user
+ verbose: Using literal pathtype for '/etc/shells'
+ verbose: Handling file edits in edit_line bundle 'lines_present'
+ verbose: V:     +  Private parameter: 'lines' in scope 'lines_present' (type: s) in pass 1
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_files_cf_69' of type "insert_lines" (pass 1)
+ verbose: P:    Promiser/affected object: '/usr/local/bin/bash'
+ verbose: P:    Part of bundle: lines_present
+ verbose: P:    Base context class: any
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'/default/bash_on_macos/files/'/etc/shells'/default/lines_present/insert_lines/'/usr/local/bin/bash'[1]
+ verbose: P:
+ verbose: P:    Comment:  Append lines if they don't exist
+ verbose: Additional promise info: source path '/usr/local/var/cfengine/inputs/lib/files.cf' at line 69 comment 'Append lines if they don't exist'
+ verbose: Promised chunk '/usr/local/bin/bash' exists within selected region of /etc/shells
+ verbose: Additional promise info: source path '/usr/local/var/cfengine/inputs/lib/files.cf' at line 69 comment 'Append lines if they don't exist'
+ verbose: No changes done for the insert_lines promise '/usr/local/bin/bash'
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_files_cf_69' of type "insert_lines" (pass 1)
+ verbose: P:    Promiser/affected object: '/usr/local/bin/bash'
+ verbose: P:    Part of bundle: lines_present
+ verbose: P:    Base context class: any
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'/default/bash_on_macos/files/'/etc/shells'/default/lines_present/insert_lines/'/usr/local/bin/bash'[1]
+ verbose: P:
+ verbose: P:    Comment:  Append lines if they don't exist
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_files_cf_69' of type "insert_lines" (pass 1)
+ verbose: P:    Promiser/affected object: '/usr/local/bin/bash'
+ verbose: P:    Part of bundle: lines_present
+ verbose: P:    Base context class: any
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'/default/bash_on_macos/files/'/etc/shells'/default/lines_present/insert_lines/'/usr/local/bin/bash'[1]
+ verbose: P:
+ verbose: P:    Comment:  Append lines if they don't exist
+ verbose: Additional promise info: source path './bash.cf' at line 20 comment 'MacOS needs /usr/local/bin/bash in /etc/shells in order to accept it as a shell for a user'
+ verbose: No edit changes to file '/etc/shells' need saving
+ verbose: Handling file existence constraints on '/etc/shells'
+ verbose: Additional promise info: source path './bash.cf' at line 20 comment 'MacOS needs /usr/local/bin/bash in /etc/shells in order to accept it as a shell for a user'
+ verbose: No changes done for the files promise '/etc/shells'
+ verbose: A: Promise was KEPT
+ verbose: P: END files promise (/etc/shells)
+ verbose: Using v1 package promises (package_method)
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_bash_cf_15' of type "packages" (pass 1)
+ verbose: P:    Promiser/affected object: 'bash'
+ verbose: P:    Part of bundle: bash_on_macos
+ verbose: P:    Base context class: any
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'/default/bash_on_macos/packages/'bash'[1]
+ verbose: Default package architecture for promise bash is 'default'
+ verbose: Looking for a package manager called '/usr/bin/sudo -u craig /usr/local/bin/brew list --versions'
+ verbose: '/usr/local/var/cfengine/state/software_update_timestamp_sudo' does not exist. Updating package list.
+ verbose: Calling package list update command: '/usr/bin/sudo -u craig /usr/local/bin/brew update'
+ verbose: Running /usr/bin/sudo -u craig /usr/local/bin/brew update in shell
+ verbose: Executing /usr/bin/sudo -u craig /usr/local/bin/brew update...
+    info: Q:sudo -u craig /usr/l ...:==> Updating Homebrew...
+    info: Q:sudo -u craig /usr/l ...:Installing from the API is now the default behaviour!
+    info: Q:sudo -u craig /usr/l ...:You can save space and time by running:
+    info: Q:sudo -u craig /usr/l ...:  brew untap homebrew/core
+    info: Q:sudo -u craig /usr/l ...:  brew untap homebrew/cask
+    info: Q:sudo -u craig /usr/l ...:Updated 1 tap (homebrew/core).
+    info: Q:sudo -u craig /usr/l ...:==> New Formulae
+    info: Q:sudo -u craig /usr/l ...:ldb
+    info: Q:sudo -u craig /usr/l ...:tevent
+ verbose: Reading package list from '/usr/bin/sudo -u craig /usr/local/bin/brew list --versions'
+ verbose: Package (adb-enhanced,2.5.24,default) [name,version,arch] found
+ verbose: Package (autoconf,2.72,default) [name,version,arch] found
+ verbose: Package (automake,1.17,default) [name,version,arch] found
+ verbose: Package (ca-certificates,2024-07-02,default) [name,version,arch] found
+ verbose: Package (cfengine,3.24.0,default) [name,version,arch] found
+ verbose: Package (coreutils,9.5,default) [name,version,arch] found
+ verbose: Package (gettext,0.22.5,default) [name,version,arch] found
+ verbose: Package (gmp,6.3.0,default) [name,version,arch] found
+ verbose: Package (gnu-getopt,2.40.2,default) [name,version,arch] found
+ verbose: Package (gnupg,2.4.5_1,default) [name,version,arch] found
+ verbose: Package (gnutls,3.8.4,default) [name,version,arch] found
+ verbose: Package (gpgme,1.23.2_2,default) [name,version,arch] found
+ verbose: Package (grep,3.11,default) [name,version,arch] found
+ verbose: Package (libassuan,3.0.1,default) [name,version,arch] found
+ verbose: Package (libevent,2.1.12_1,default) [name,version,arch] found
+ verbose: Package (libgcrypt,1.10.3,default) [name,version,arch] found
+ verbose: Package (libgpg-error,1.50,default) [name,version,arch] found
+ verbose: Package (libidn2,2.3.7,default) [name,version,arch] found
+ verbose: Package (libksba,1.6.7,default) [name,version,arch] found
+ verbose: Package (libnghttp2,1.61.0,default) [name,version,arch] found
+ verbose: Package (libpng,1.6.43,default) [name,version,arch] found
+ verbose: Package (libtasn1,4.19.0,default) [name,version,arch] found
+ verbose: Package (libunistring,1.2,default) [name,version,arch] found
+ verbose: Package (libusb,1.0.27,default) [name,version,arch] found
+ verbose: Package (lmdb,0.9.33,default) [name,version,arch] found
+ verbose: Package (lynx,2.8.9rel.1_2,default) [name,version,arch] found
+ verbose: Package (m4,1.4.19,default) [name,version,arch] found
+ verbose: Package (mpdecimal,4.0.0,default) [name,version,arch] found
+ verbose: Package (mutt,2.2.13,default) [name,version,arch] found
+ verbose: Package (ncurses,6.5,default) [name,version,arch] found
+ verbose: Package (nettle,3.10,default) [name,version,arch] found
+ verbose: Package (npth,1.7,default) [name,version,arch] found
+ verbose: Package (openssl@3,3.3.1,default) [name,version,arch] found
+ verbose: Package (p11-kit,0.25.5,default) [name,version,arch] found
+ verbose: Package (pass,1.7.4,default) [name,version,arch] found
+ verbose: Package (pcre2,10.44,default) [name,version,arch] found
+ verbose: Package (pinentry,1.3.1_1,default) [name,version,arch] found
+ verbose: Package (python@3.12,3.12.5,default) [name,version,arch] found
+ verbose: Package (qrencode,4.1.1,default) [name,version,arch] found
+ verbose: Package (readline,8.2.13,default) [name,version,arch] found
+ verbose: Package (sqlite,3.46.1,default) [name,version,arch] found
+ verbose: Package (tmux,3.4_1,default) [name,version,arch] found
+ verbose: Package (tokyo-cabinet,1.4.48,default) [name,version,arch] found
+ verbose: Package (tree,2.1.3,default) [name,version,arch] found
+ verbose: Package (unbound,1.21.0,default) [name,version,arch] found
+ verbose: Package (utf8proc,2.9.0,default) [name,version,arch] found
+ verbose: Package (xz,5.6.2,default) [name,version,arch] found
+ verbose: Package (android-platform-tools,35.0.2,default) [name,version,arch] found
+ verbose: Package (google-chrome,127.0.6533.120,default) [name,version,arch] found
+ verbose: Done checking packages and patches
+ verbose: Verifying action for promise bash
+ verbose: Package version was not specified
+ verbose:  ... trying any arch '*' and any version '*'
+ verbose: PackageMatch: looking for [installed] (bash,*,*) [name,version,arch] in package manager /usr/bin/sudo -u craig /usr/local/bin/brew list --versions
+ verbose: Comparing [installed] package (google-chrome,127.0.6533.120,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (android-platform-tools,35.0.2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (xz,5.6.2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (utf8proc,2.9.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (unbound,1.21.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (tree,2.1.3,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (tokyo-cabinet,1.4.48,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (tmux,3.4_1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (sqlite,3.46.1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (readline,8.2.13,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (qrencode,4.1.1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (python@3.12,3.12.5,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (pinentry,1.3.1_1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (pcre2,10.44,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (pass,1.7.4,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (p11-kit,0.25.5,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (openssl@3,3.3.1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (npth,1.7,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (nettle,3.10,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (ncurses,6.5,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (mutt,2.2.13,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (mpdecimal,4.0.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (m4,1.4.19,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (lynx,2.8.9rel.1_2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (lmdb,0.9.33,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libusb,1.0.27,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libunistring,1.2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libtasn1,4.19.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libpng,1.6.43,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libnghttp2,1.61.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libksba,1.6.7,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libidn2,2.3.7,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libgpg-error,1.50,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libgcrypt,1.10.3,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libevent,2.1.12_1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (libassuan,3.0.1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (grep,3.11,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (gpgme,1.23.2_2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (gnutls,3.8.4,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (gnupg,2.4.5_1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (gnu-getopt,2.40.2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (gmp,6.3.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (gettext,0.22.5,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (coreutils,9.5,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (cfengine,3.24.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (ca-certificates,2024-07-02,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (automake,1.17,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (autoconf,2.72,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [installed] package (adb-enhanced,2.5.24,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: PackageMatch did not find [installed] packages to match the constraints of promise (bash,*,*) [name,version,arch]
+ verbose: CheckPackageState: Installed package match for (bash,*,*) [name,version,arch] was decisive: ERROR-OR-NOMATCH
+ verbose: PackageMatch: looking for [available] (bash,*,*) [name,version,arch] in package manager /usr/bin/sudo -u craig /usr/local/bin/brew list --versions
+ verbose: Comparing [available] package (google-chrome,127.0.6533.120,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (android-platform-tools,35.0.2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (xz,5.6.2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (utf8proc,2.9.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (unbound,1.21.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (tree,2.1.3,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (tokyo-cabinet,1.4.48,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (tmux,3.4_1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (sqlite,3.46.1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (readline,8.2.13,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (qrencode,4.1.1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (python@3.12,3.12.5,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (pinentry,1.3.1_1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (pcre2,10.44,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (pass,1.7.4,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (p11-kit,0.25.5,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (openssl@3,3.3.1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (npth,1.7,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (nettle,3.10,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (ncurses,6.5,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (mutt,2.2.13,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (mpdecimal,4.0.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (m4,1.4.19,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (lynx,2.8.9rel.1_2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (lmdb,0.9.33,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libusb,1.0.27,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libunistring,1.2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libtasn1,4.19.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libpng,1.6.43,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libnghttp2,1.61.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libksba,1.6.7,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libidn2,2.3.7,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libgpg-error,1.50,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libgcrypt,1.10.3,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libevent,2.1.12_1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (libassuan,3.0.1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (grep,3.11,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (gpgme,1.23.2_2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (gnutls,3.8.4,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (gnupg,2.4.5_1,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (gnu-getopt,2.40.2,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (gmp,6.3.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (gettext,0.22.5,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (coreutils,9.5,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (cfengine,3.24.0,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (ca-certificates,2024-07-02,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (automake,1.17,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (autoconf,2.72,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: Comparing [available] package (adb-enhanced,2.5.24,default) to [==] with given (bash,*,*) [name,version,arch]
+ verbose: PackageMatch did not find [available] packages to match the constraints of promise (bash,*,*) [name,version,arch]
+ verbose: CheckPackageState: Available package match for (bash,*,*) [name,version,arch] was decisive: ERROR-OR-NOMATCH
+ verbose: CheckPackageState: matched package (bash,*,*) [name,version,arch]; scheduling operation
+ verbose: Checking if package (bash,*,*) [name,version,arch] is at the desired state (installed=0,matched=0)
+ verbose: Package promises to refer to itself as 'bash' to the manager
+ verbose: Package version seems to match criteria
+ verbose: Package method does NOT specify a file repository
+ verbose: Schedule package for addition
+ verbose: Looking for a package manager called '/usr/bin/sudo -u craig /usr/local/bin/brew install'
+ verbose: Package (bash,any,any) [name,version,arch] found
+ verbose: A: Promise REPAIRED
+ verbose: P: END packages promise (bash)
+ verbose: Offering the following package-promise suggestions to the managers
+ verbose: Deletion schedule...
+ verbose: Addition schedule...
+ verbose: Execute scheduled package addition
+    info: Installing bash...
+ verbose: Command prefix '/usr/bin/sudo -u craig /usr/local/bin/brew install '
+ verbose: Running /usr/bin/sudo -u craig /usr/local/bin/brew install bash  in shell
+ verbose: Executing /usr/bin/sudo -u craig /usr/local/bin/brew install bash ...
+    info: Q:sudo -u craig /usr/l ...:==> Downloading https://ghcr.io/v2/homebrew/core/bash/manifests/5.2.32
+    info: Q:sudo -u craig /usr/l ...:Already downloaded: /Users/craig/Library/Caches/Homebrew/downloads/51996deeade40bbc49abfcf551a22360a0e742c7ff942e260e1cda49fb7d1760--bash-5.2.32.bottle_manifest.json
+    info: Q:sudo -u craig /usr/l ...:==> Fetching bash
+    info: Q:sudo -u craig /usr/l ...:==> Downloading https://ghcr.io/v2/homebrew/core/bash/blobs/sha256:d6e82bc0f21d7b40b9f86d4bdbbf64fbbfa2e81a91c73e937961ac440125037d
+    info: Q:sudo -u craig /usr/l ...:Already downloaded: /Users/craig/Library/Caches/Homebrew/downloads/4f79194dd86c85a0ce0cbd09128c8484105d19657df63ef17ca25a8442aa70a1--bash--5.2.32.sonoma.bottle.tar.gz
+    info: Q:sudo -u craig /usr/l ...:==> Pouring bash--5.2.32.sonoma.bottle.tar.gz
+    info: Q:sudo -u craig /usr/l ...:🍺  /usr/local/Cellar/bash/5.2.32: 163 files, 10.6MB
+    info: Q:sudo -u craig /usr/l ...:==> Running `brew cleanup bash`...
+    info: Q:sudo -u craig /usr/l ...:Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+    info: Q:sudo -u craig /usr/l ...:Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+ verbose: Additional promise info: source path './bash.cf' at line 15
+ verbose: Finished command related to promiser 'bash' -- succeeded
+ verbose: Bulk package schedule execution ok for 'bash' (outcome cannot be promised by cf-agent)
+ verbose: Update schedule...
+ verbose: Patch schedule...
+ verbose: Verify schedule...
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_bash_cf_32' of type "commands" (pass 1)
+ verbose: P:    Promiser/affected object: '/usr/bin/chsh -s /usr/local/bin/bash cra'
+ verbose: P:    Part of bundle: bash_on_macos
+ verbose: P:    Base context class: any
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'/default/bash_on_macos/commands/'/usr/bin/chsh -s /usr/local/bin/bash craig'[1]
+ verbose: Promiser string contains a valid executable '/usr/bin/chsh' - ok
+    info: Executing 'no timeout' ... '/usr/bin/chsh -s /usr/local/bin/bash craig'
+ verbose: Setting umask to 77
+ verbose: Additional promise info: source path './bash.cf' at line 32
+ verbose: Finished command related to promiser '/usr/bin/chsh -s /usr/local/bin/bash craig' -- succeeded
+  notice: Q: "...r/bin/chsh -s /": Changing shell for craig.
+Q: "...r/bin/chsh -s /": chsh: no changes made
+    info: Last 2 quoted lines were generated by promiser '/usr/bin/chsh -s /usr/local/bin/bash craig'
+    info: Completed execution of '/usr/bin/chsh -s /usr/local/bin/bash craig'
+ verbose: A: Promise REPAIRED
+ verbose: P: END commands promise (/usr/bin/chsh -s /usr/local/bi...)
+ verbose: V: .........................................................
+ verbose: V: BEGIN variables (pass 2)
+ verbose: V:     Computing value of 'main_user'
+ verbose: V:     Computing value of 'bash_path'
+ verbose: V:     Computing value of 'chsh_path'
+ verbose: V:     Computing value of 'main_user_data'
+ verbose: V:     Computing value of 'main_user_shell'
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_bash_cf_20' of type "files" (pass 2)
+ verbose: P:    Promiser/affected object: '/etc/shells'
+ verbose: P:    Part of bundle: bash_on_macos
+ verbose: P:    Base context class: any
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'/default/bash_on_macos/files/'/etc/shells'[1]
+ verbose: P:
+ verbose: P:    Comment:  MacOS needs /usr/local/bin/bash in /etc/shells in order to accept it as a shell for a user
+ verbose: Using literal pathtype for '/etc/shells'
+ verbose: Using v1 package promises (package_method)
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_bash_cf_15' of type "packages" (pass 2)
+ verbose: P:    Promiser/affected object: 'bash'
+ verbose: P:    Part of bundle: bash_on_macos
+ verbose: P:    Base context class: any
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'/default/bash_on_macos/packages/'bash'[1]
+ verbose: V: .........................................................
+ verbose: V: BEGIN variables (pass 3)
+ verbose: V:     Computing value of 'main_user'
+ verbose: V:     Computing value of 'bash_path'
+ verbose: V:     Computing value of 'chsh_path'
+ verbose: V:     Computing value of 'main_user_data'
+ verbose: V:     Computing value of 'main_user_shell'
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_bash_cf_20' of type "files" (pass 3)
+ verbose: P:    Promiser/affected object: '/etc/shells'
+ verbose: P:    Part of bundle: bash_on_macos
+ verbose: P:    Base context class: any
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'/default/bash_on_macos/files/'/etc/shells'[1]
+ verbose: P:
+ verbose: P:    Comment:  MacOS needs /usr/local/bin/bash in /etc/shells in order to accept it as a shell for a user
+ verbose: Using literal pathtype for '/etc/shells'
+ verbose: Using v1 package promises (package_method)
+ verbose: P: .........................................................
+ verbose: P: BEGIN promise 'promise_bash_cf_15' of type "packages" (pass 3)
+ verbose: P:    Promiser/affected object: 'bash'
+ verbose: P:    Part of bundle: bash_on_macos
+ verbose: P:    Base context class: any
+ verbose: P:    Stack path: /default/bash/methods/'bash_on_macos'/default/bash_on_macos/packages/'bash'[1]
+ verbose: A: ...................................................
+ verbose: A: Bundle Accounting Summary for 'bash_on_macos' in namespace default
+ verbose: A: Promises kept in 'bash_on_macos' = 1
+ verbose: A: Promises not kept in 'bash_on_macos' = 0
+ verbose: A: Promises repaired in 'bash_on_macos' = 2
+ verbose: A: Aggregate compliance (promises kept/repaired) for bundle 'bash_on_macos' = 100.0%
+ verbose: A: ...................................................
+ verbose: Additional promise info: source path './bash.cf' at line 9
+ verbose: Method 'bash_on_macos' invoked repairs
+ verbose: B: *****************************************************************
+ verbose: B: END bundle bash_on_macos
+ verbose: B: *****************************************************************
+ verbose: A: Promise REPAIRED
+ verbose: P: END methods promise (bash_on_macos)
+ verbose: A: ...................................................
+ verbose: A: Bundle Accounting Summary for 'bash' in namespace default
+ verbose: A: Promises kept in 'bash' = 1
+ verbose: A: Promises not kept in 'bash' = 0
+ verbose: A: Promises repaired in 'bash' = 3
+ verbose: A: Aggregate compliance (promises kept/repaired) for bundle 'bash' = 100.0%
+ verbose: A: ...................................................
+ verbose: B: *****************************************************************
+ verbose: B: END bundle bash
+ verbose: B: *****************************************************************
+ verbose: Waiting for background processes
+ verbose: No more background processes to wait for
+ verbose: No lock purging needed (lock DB usage: 0 %)
+ verbose: Logging total compliance, total 'Outcome of version (not specified) (agent-0): Promises observed to be kept 70.00%, Promises repaired 30.00%, Promises not repaired 0.00%'
