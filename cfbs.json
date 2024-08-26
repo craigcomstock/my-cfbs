@@ -87,6 +87,17 @@
         "policy_files services/cfbs/software/docker-desktop.cf",
         "bundles docker_desktop"
       ]
+    },
+    {
+      "name": "./windows-execution-policy/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/windows-execution-policy/",
+        "policy_files services/cfbs/windows-execution-policy/",
+        "bundles windows_execution_policy_inventory"
+      ]
     }
   ]
 }

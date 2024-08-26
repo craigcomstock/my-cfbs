@@ -1,0 +1,15 @@
+# get the execution policy for all scopes
+# MachinePolicy, UserPolicy, Process, CurrentUser, LocalMachine
+bundle agent windows_execution_policy_inventory
+{
+  vars:
+    windows::
+      "execution_policy_csv_file" string => "${sys.statedir}/windows_execution_policy_list_cache.csv";
+      "execution_policy_list_cache_command" string => "powershell Get-ExecutionPolicy -list | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path ${execution_policy_csv_file}";
+
+
+  commands:
+    windows::
+      "${execution_policy_list_cache_command}"
+        contain => powershell;
+}
