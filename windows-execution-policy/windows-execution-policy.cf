@@ -4,8 +4,8 @@ bundle agent windows_execution_policy_inventory
 {
   vars:
     windows::
-      "execution_policy_csv_file" string => "${sys.statedir}/windows_execution_policy_list_cache.csv";
-      "execution_policy_list_cache_command" string => "powershell Get-ExecutionPolicy -list | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path ${execution_policy_csv_file}";
+      "execution_policy_csv_file" string => "${sys.statedir}${const.dirsep}windows_execution_policy_list_cache.csv";
+      "execution_policy_list_cache_command" string => "Get-ExecutionPolicy -list | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path ${execution_policy_csv_file}";
 
 
   commands:
