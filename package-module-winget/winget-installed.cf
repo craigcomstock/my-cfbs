@@ -6,6 +6,6 @@ bundle agent winget_installed
 
   commands:
     windows.!winget_installed::
-      "${this.promise_dirname}/install-winget.ps1"
+      '& "${this.promise_dirname}/install-winget.ps1"'
         contain => powershell;
 }
