@@ -1,4 +1,4 @@
-package winget_installed
+bundle agent winget_installed
 {
   classes:
     windows::
