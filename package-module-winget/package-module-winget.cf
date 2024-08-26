@@ -1,0 +1,16 @@
+body package_method winget
+{
+      package_changes => "bulk";
+      package_name_convention   => "$(name)";
+      package_delete_convention => "$(name)";
+
+      package_installed_regex => ".*";
+      # caveat, no commas between fields in Get-WinGetPackage | ConvertTo-Csv output allowed, so not in Id or InstalledVersion
+      package_list_name_regex => '^"([^"]*)",.*';
+      package_list_version_regex => '.*,"([^"]*)".*';
+
+      # use powershell as parsing output is easier there
+      package_add_command    => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"Install-WinGetPackage ";
+      package_delete_command => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"Uninstall-WinGetPackage ";
+      package_list_command   => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"Get-WinGetPackage | Select Id,InstalledVersion | ConvertTo-Csv ";
+}
