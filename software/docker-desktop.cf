@@ -1,0 +1,8 @@
+bundle agent docker_desktop
+{
+  packages:
+    windows::
+      "docker.dockerdesktop"
+        package_method => winget,
+        package_policy => "add";
+}
