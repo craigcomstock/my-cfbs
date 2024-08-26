@@ -76,6 +76,17 @@
         "directory ./ services/cfbs/package-module-winget/",
         "policy_files services/cfbs/package-module-winget/"
       ]
+    },
+    {
+      "name": "./software/docker-desktop.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./software/docker-desktop.cf services/cfbs/software/docker-desktop.cf",
+        "policy_files services/cfbs/software/docker-desktop.cf",
+        "bundles docker_desktop"
+      ]
     }
   ]
 }
