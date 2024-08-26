@@ -1,0 +1,11 @@
+package winget_installed
+{
+  classes:
+    windows::
+      "winget_installed" expression => returnszero("winget --info", "powershell");
+
+  commands:
+    windows.!winget_installed::
+      "${this.promise_dirname}/install-winget.ps1"
+        contain => powershell;
+}
