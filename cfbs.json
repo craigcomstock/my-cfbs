@@ -74,7 +74,8 @@
       "added_by": "cfbs add",
       "steps": [
         "directory ./ services/cfbs/package-module-winget/",
-        "policy_files services/cfbs/package-module-winget/"
+        "policy_files services/cfbs/package-module-winget/",
+        "bundles winget_installed"
       ]
     },
     {
