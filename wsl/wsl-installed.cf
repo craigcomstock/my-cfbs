@@ -14,6 +14,12 @@ bundle agent wsl_installed
 
   commands:
     windows.!wsl_installed::
-      "wsl --install | out-null"
+# https://learn.microsoft.com/en-us/powershell/module/dism/enable-windowsoptionalfeature?view=windowsserver2022-ps -NoRestart option to avoid reboot prompt
+      "Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux -NoRestart | out-null"
+        contain => powershell,
+        classes => if_repaired("wsl_install_needs_reboot");
+
+    windows.wsl_install_needs_reboot::
+      "Restart-Computer"
         contain => powershell;
 }
