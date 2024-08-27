@@ -10,6 +10,6 @@ database_rows => {
 "AppsUseLightTheme,REG_DWORD,0",
 "SystemUsesLightTheme,REG_DWORD,0"
 },
-database_type => "ms_registery";
+database_type => "ms_registry";
 
 }
