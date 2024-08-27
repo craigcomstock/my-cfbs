@@ -3,5 +3,7 @@ bundle agent zoom_workplace
   packages:
     windows::
 # found with `winget search zoom`
-      "Zoom.Zoom";
+      "Zoom.Zoom"
+        package_method => winget,
+        package_policy => "add";
 }
