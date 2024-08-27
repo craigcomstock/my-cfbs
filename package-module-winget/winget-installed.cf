@@ -7,7 +7,8 @@ bundle agent winget_installed
 
   classes:
     windows::
-      "winget_installed" expression => returnszero("winget --info | out-null", "powershell");
+# sorry, side-effect here, when checking winget I will also accept the source agreements
+      "winget_installed" expression => returnszero("winget update --accept-source-agreements | out-null", "powershell");
 
   commands:
     windows.!winget_installed.execution_policy_ok::
