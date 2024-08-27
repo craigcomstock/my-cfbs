@@ -1,0 +1,15 @@
+bundle agent windows_theme
+{
+  databases:
+    windows::
+      # dark mode for system and apps please :)
+      "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize"
+        comment => "Dark mode for system and apps",
+database_operation => "create",
+database_rows => {
+"AppsUseLightTheme,REG_DWORD,0",
+"SystemUsesLightTheme,REG_DWORD,0"
+},
+database_type => "ms_registery";
+
+}
