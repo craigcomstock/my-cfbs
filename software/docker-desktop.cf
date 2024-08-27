@@ -7,7 +7,8 @@ bundle agent docker_desktop
 
   packages:
     windows::
-      "docker.dockerdesktop"
+# CASE MATTERS! ;) Sorry.
+      "Docker.DockerDesktop"
         package_method => winget,
         package_policy => "add";
 }
