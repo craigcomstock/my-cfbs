@@ -7,6 +7,7 @@ bundle agent scripts
       "script_file[${i}]" string => string_replace("${script_paths[${i}]}", "${this.promise_dirname}${const.dirsep}", "");
 
   reports:
+    "script_paths: ${with}" with => storejson(script_paths);
     "script_paths[${i}]: ${script_paths[${i}]}";
     "i: ${i}";
     "would copy ${script_paths[$i]} to ${sys.windir}${const.dirsep}${script_file[${i}]}";
