@@ -9,7 +9,8 @@ bundle agent windows_execution_policy_inventory
       "execution_policy_list_cache_command" string => "Get-ExecutionPolicy -list | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${execution_policy_csv_file}'";
       "csv" data => readcsv("${execution_policy_csv_file}");
       "i" slist => getindices("csv");
-      "execution_policy_${csv[${i}][0]}" string => "${csv[${i}][1]}",
+      "execution_policy_${csv[${i}][0]}" data => '
+{"${csv[${i}][0]}": "${csv[${i}][1]}"}',
         meta => { "inventory", "attribute_name=Execution Policy" };
 
   commands:
