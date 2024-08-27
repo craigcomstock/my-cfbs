@@ -19,3 +19,4 @@ bundle agent windows_docker_desktop_dependencies
   methods:
     windows::
       "wsl_installed"; # cfbs add wsl
+}
