@@ -2,7 +2,7 @@ bundle agent winget_installed
 {
   methods:
     windows::
-      "windows_execution_policy_set" usebundle => windows_execution_policy_set("LocalMachine", "Unrestricted"),
+      "powershell_execution_policy_set" usebundle => powershell_execution_policy_set("LocalMachine", "Unrestricted"),
         classes => if_ok("execution_policy_ok");
 
   classes:

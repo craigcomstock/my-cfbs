@@ -3,11 +3,11 @@
 # get the execution policy for all scopes
 # MachinePolicy, UserPolicy, Process, CurrentUser, LocalMachine
 
-bundle agent windows_execution_policy_inventory
+bundle agent powershell_execution_policy_inventory
 {
   vars:
     windows::
-      "execution_policy_csv_file" string => "${sys.statedir}${const.dirsep}windows_execution_policy_list_cache.csv";
+      "execution_policy_csv_file" string => "${sys.statedir}${const.dirsep}powershell_execution_policy_list_cache.csv";
       "execution_policy_list_cache_command" string => "Get-ExecutionPolicy -list | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${execution_policy_csv_file}'";
       "csv" data => readcsv("${execution_policy_csv_file}");
       "i" slist => getindices("csv");
@@ -24,7 +24,7 @@ bundle agent windows_execution_policy_inventory
 # see link below for valid values for scope and policy
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.4
 # This bundle runs a powershell command: Set-ExecutionPolicy -ExecutionPolicy <policy> -Scope <scope>
-bundle agent windows_execution_policy_set(scope, desired_policy)
+bundle agent powershell_execution_policy_set(scope, desired_policy)
 {
   vars:
     windows::
