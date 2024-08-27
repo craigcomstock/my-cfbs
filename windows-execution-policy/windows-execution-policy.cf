@@ -1,3 +1,5 @@
+# Technically this is PowerShell Execution Policy, not Windows specific (TODO: s/windows/powershell/)
+# https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.4
 # get the execution policy for all scopes
 # MachinePolicy, UserPolicy, Process, CurrentUser, LocalMachine
 
@@ -11,7 +13,7 @@ bundle agent windows_execution_policy_inventory
       "i" slist => getindices("csv");
       "execution_policy_${csv[${i}][0]}" data => '
 {"${csv[${i}][0]}": "${csv[${i}][1]}"}',
-        meta => { "inventory", "attribute_name=Execution Policy" };
+        meta => { "inventory", "attribute_name=PowerShell Execution Policy" };
 
   commands:
     windows::
