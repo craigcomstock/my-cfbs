@@ -9,12 +9,13 @@ bundle agent winget_installed
     windows::
 # sorry, side-effect here, when checking winget I will also accept the source agreements
       "winget_installed" expression => returnszero("winget update --accept-source-agreements | out-null", "powershell");
+      "winget_module_installed" expression => returnszero("Get-WinGetPackage | out-null", "powershell");
 
   commands:
     windows.!winget_installed.execution_policy_ok::
       "powershell.exe -File '${this.promise_dirname}/install-winget.ps1'"
         contain => powershell;
-    windows.!winget_installed.execution_policy_ok::
+    windows.!winget_module_installed.execution_policy_ok::
       "powershell.exe -File '${this.promise_dirname}/install-winget-powershell-module.ps1'"
         contain => powershell;
 }
