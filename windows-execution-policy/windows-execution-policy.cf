@@ -1,15 +1,15 @@
 # get the execution policy for all scopes
 # MachinePolicy, UserPolicy, Process, CurrentUser, LocalMachine
+
 bundle agent windows_execution_policy_inventory
 {
   vars:
     windows::
       "execution_policy_csv_file" string => "${sys.statedir}${const.dirsep}windows_execution_policy_list_cache.csv";
       "execution_policy_list_cache_command" string => "Get-ExecutionPolicy -list | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${execution_policy_csv_file}'";
-      "execution_policy_csv" data => readcsv("${execution_policy_csv_file}");
-      "execution_policy_array" data => parsejson("${execution_policy_csv[0]}");
-      "indices" slist => getindices("execution_policy_array");
-      "execution_policy_data[${execution_policy_array[$i][0]}]" string => "${execution_policy_array[$i][1]}",
+      "csv" data => readcsv("${execution_policy_csv_file}");
+      "i" slist => getindices("csv");
+      "execution_policy_${csv[${i}][0]}" string => "${csv[${i}][1]}",
         meta => { "inventory", "attribute_name=Execution Policy" };
 
   commands:
