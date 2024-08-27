@@ -1,0 +1,11 @@
+bundle agent wsl_installed
+{
+  classes:
+    windows::
+      "wsl_installed" expression => execresult("wsl --status", "powershell");
+
+  commands:
+    windows.!wsl_installed::
+      "wsl --install | out-null"
+        contain => powershell;
+}

@@ -99,6 +99,16 @@
         "policy_files services/cfbs/windows-execution-policy/",
         "bundles windows_execution_policy_inventory"
       ]
+    },
+    {
+      "name": "./wsl/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/wsl/",
+        "policy_files services/cfbs/wsl/"
+      ]
     }
   ]
 }
