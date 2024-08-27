@@ -14,4 +14,7 @@ bundle agent winget_installed
     windows.!winget_installed.execution_policy_ok::
       "powershell.exe -File '${this.promise_dirname}/install-winget.ps1'"
         contain => powershell;
+    windows.!winget_installed.execution_policy_ok::
+      "powershell.exe -File '${this.promise_dirname}/install-winget-powershell-module.ps1'"
+        contain => powershell;
 }
