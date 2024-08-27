@@ -10,7 +10,7 @@ bundle agent wsl_installed
 {
   classes:
     windows::
-      "wsl_installed" expression => execresult("wsl --status", "powershell");
+      "wsl_installed" expression => returnszero("wsl --status", "powershell");
 
   commands:
     windows.!wsl_installed::
