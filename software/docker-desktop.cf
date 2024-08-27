@@ -1,3 +1,7 @@
+# TODO switch to windows engine
+# download image
+# docker pull mcr.microsoft.com/windows/servercore:10.0.19042.1889
+# run that, install cfengine, bootstrap to hub!
 bundle agent docker_desktop
 {
   # installing dockerdesktop before dependencies is OK?
