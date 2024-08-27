@@ -90,14 +90,14 @@
       ]
     },
     {
-      "name": "./windows-execution-policy/",
+      "name": "./powershell-execution-policy/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "directory ./ services/cfbs/windows-execution-policy/",
-        "policy_files services/cfbs/windows-execution-policy/",
-        "bundles windows_execution_policy_inventory"
+        "directory ./ services/cfbs/powershell-execution-policy/",
+        "policy_files services/cfbs/powershell-execution-policy/",
+        "bundles powershell_execution_policy_inventory"
       ]
     },
     {
