@@ -18,3 +18,20 @@ bundle agent windows_execution_policy_inventory
       "${execution_policy_list_cache_command}"
         contain => powershell;
 }
+
+# see link below for valid values for scope and policy
+# https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.4
+# This bundle runs a powershell command: Set-ExecutionPolicy -ExecutionPolicy <policy> -Scope <scope>
+bundle agent windows_execution_policy_set(scope, desired_policy)
+{
+  vars:
+    windows::
+      "current_policy" string => execresult("Get-ExecutionPolicy ${scope}", "powershell");
+  classes:
+    windows::
+      "execution_policy_ok" expression => strcmp("${current_policy}", "{desired_policy}");
+  commands:
+    windows.!execution_policy_ok::
+      "Set-ExecutionPolicy -ExecutionPolicy ${policy} -Scope ${scope}"
+      contain => powershell;
+}

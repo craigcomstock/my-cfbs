@@ -1,11 +1,16 @@
 bundle agent winget_installed
 {
+  methods:
+    windows::
+      "windows_execution_policy_set" usebundle => windows_execution_policy_set("LocalMachine", "Unrestricted"),
+        classes => if_ok("execution_policy_ok");
+
   classes:
     windows::
       "winget_installed" expression => returnszero("winget --info | out-null", "powershell");
 
   commands:
-    windows.!winget_installed::
+    windows.!winget_installed.execution_policy_ok::
       "powershell.exe -File '${this.promise_dirname}/install-winget.ps1'"
         contain => powershell;
 }
