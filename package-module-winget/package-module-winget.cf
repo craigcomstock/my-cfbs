@@ -1,3 +1,5 @@
+# NOTE: CASE MATTERS in package names, e.g. Docker.DockerDesktop will match but docker.dockerdesktop won't and so will re-install each agent run!
+# TODO: fix case sensitive package names? ^^^
 body package_method winget
 {
       package_changes => "bulk";
@@ -10,7 +12,7 @@ body package_method winget
       package_list_version_regex => '.*,"([^"]*)".*';
 
       # use powershell as parsing output is easier there
-      package_add_command    => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"Install-WinGetPackage ";
+      package_add_command    => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"winget install --accept-source-agreements --accept-package-agreements ";
       package_delete_command => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"Uninstall-WinGetPackage ";
       package_list_command   => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"Get-WinGetPackage | Select Id,InstalledVersion | ConvertTo-Csv ";
 }
