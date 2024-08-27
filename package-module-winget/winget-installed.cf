@@ -8,6 +8,7 @@ bundle agent winget_installed
   classes:
     windows::
 # sorry, side-effect here, when checking winget I will also accept the source agreements
+# TODO make --accept-source-arguments a boolean cfbs input
       "winget_installed" expression => returnszero("winget update --accept-source-agreements | out-null", "powershell");
       "winget_module_installed" expression => returnszero("Get-WinGetPackage | out-null", "powershell");
 

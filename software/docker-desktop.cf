@@ -1,8 +1,22 @@
 bundle agent docker_desktop
 {
+  # installing dockerdesktop before dependencies is OK?
+  methods:
+    windows::
+      "windows_docker_desktop_dependencies";
+
   packages:
     windows::
       "docker.dockerdesktop"
         package_method => winget,
         package_policy => "add";
+}
+
+# https://docs.docker.com/desktop/install/windows-install/
+# let's use WSL 2 backend
+bundle agent windows_docker_desktop_dependencies
+{
+  methods:
+    windows::
+      "wsl_installed"; # cfbs add wsl
 }

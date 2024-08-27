@@ -33,6 +33,7 @@ bundle agent windows_execution_policy_set(scope, desired_policy)
     windows::
       "execution_policy_ok" expression => strcmp("${current_policy}", "{desired_policy}");
   commands:
+# don't rely on negative knowledge
     windows.!execution_policy_ok::
       "Set-ExecutionPolicy -ExecutionPolicy ${desired_policy} -Scope ${scope}"
       contain => powershell;

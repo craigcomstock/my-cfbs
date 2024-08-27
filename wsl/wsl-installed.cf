@@ -1,3 +1,11 @@
+# maybe some options?
+# https://docs.docker.com/desktop/wsl/
+# To check the WSL mode, run:
+# wsl.exe -l -v
+#To upgrade the Linux distro to v2, run:
+# wsl.exe --set-version (distro name) 2
+#To set v2 as the default version for future installations, run:
+# wsl.exe --set-default-version 2
 bundle agent wsl_installed
 {
   classes:
