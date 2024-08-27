@@ -2,7 +2,7 @@ bundle agent winget_installed
 {
   classes:
     windows::
-      "winget_installed" expression => returnszero("winget --info", "powershell");
+      "winget_installed" expression => returnszero("winget --info | out-null", "powershell");
 
   commands:
     windows.!winget_installed::
