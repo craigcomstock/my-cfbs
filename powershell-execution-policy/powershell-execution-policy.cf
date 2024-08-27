@@ -31,7 +31,7 @@ bundle agent powershell_execution_policy_set(scope, desired_policy)
       "current_policy" string => execresult("Get-ExecutionPolicy ${scope}", "powershell");
   classes:
     windows::
-      "execution_policy_not_ok" expression => not(strcmp("${current_policy}", "{desired_policy}"));
+      "execution_policy_not_ok" expression => not(strcmp("${current_policy}", "${desired_policy}"));
   commands:
     windows.execution_policy_not_ok::
       "Set-ExecutionPolicy -ExecutionPolicy ${desired_policy} -Scope ${scope}"
