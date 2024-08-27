@@ -1,0 +1,19 @@
+# https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v#enable-hyper-v-using-powershell
+bundle agent hyperv_enabled
+{
+  classes:
+    windows::
+      "hyperv_enabled" expression => returnszero("Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V | out-null", "powershell");
+      "hyperv_disabled" expression => not(returnszero("Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V | out-null", "powershell"));
+
+  commands:
+    windows.hyperv_disabled::
+# https://learn.microsoft.com/en-us/powershell/module/dism/enable-windowsoptionalfeature?view=windowsserver2022-ps -NoRestart option to avoid reboot prompt
+      "Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -NoRestart | out-null"
+        contain => powershell,
+        classes => if_repaired("needs_reboot");
+
+    windws.needs_reboot::
+      "Restart-Computer"
+        contain => powershell;
+}

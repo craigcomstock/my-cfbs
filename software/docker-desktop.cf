@@ -13,10 +13,10 @@ bundle agent docker_desktop
 }
 
 # https://docs.docker.com/desktop/install/windows-install/
-# let's use WSL 2 backend
+# use hyper-v, using wsl2 requires a LARGE ubuntu download
 bundle agent windows_docker_desktop_dependencies
 {
   methods:
     windows::
-      "wsl_installed"; # cfbs add wsl
+      "hyperv_enabled"; # cfbs add windows-hyperv
 }
