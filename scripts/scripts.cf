@@ -1,0 +1,11 @@
+bundle agent scripts
+{
+  vars:
+    windows::
+      "script_paths" slist => findfiles("${this.promise_dirname}${const.dirsep}*.{ps1,bat}");
+      "i" slist => getindices(script_paths);
+      "script_file[${i}]" string => string_replace("${script_paths[${i}]}", "${this.promise_dirname}${const.dirsep}", "");
+
+  reports:
+    "would copy ${script_paths[$i]} to ${sys.windir}${const.dirsep}${script_file[${i}]}";
+}

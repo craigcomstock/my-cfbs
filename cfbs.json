@@ -141,6 +141,17 @@
         "policy_files services/cfbs/software/zoom.cf",
         "bundles zoom_workplace"
       ]
+    },
+    {
+      "name": "./scripts/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/scripts/",
+        "policy_files services/cfbs/scripts/",
+        "bundles scripts"
+      ]
     }
   ]
 }
