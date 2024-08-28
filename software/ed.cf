@@ -11,12 +11,6 @@ bundle agent ed_installed
     windows::
       "name" string => "ed";
       "version" string => "1.2";
-# failed attempts at rationality, sourceforge blocked me so to speak ;)
-#      "filename" string => "ed-${version}-setup.exe";
-# sourceforge is dumb, downloads aren't reliable due to redirects, javascript, etc, so download to /var/cfengine/data for lack of a better location
-#      "url" string => "http://downloads.sourceforge.net/gnuwin32/${filename}";
-#      "exe_path" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}${filename}"; # TODO: maybe add a sys.tmpdir?
-
       "tmpdir" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}";
       "names" slist => { "bin", "dep" };
       "md5sum[bin]" string => "abba4aeefb9aeab69bc889189b41a484";
@@ -28,14 +22,9 @@ bundle agent ed_installed
         copy_from => remote_dcp("/var/cfengine/master_software_updates/${name}-${version}-${names}.zip", @(def.policy_servers)),
         classes => if_ok( "${names}_ok" );
   commands:
-# commented out the iwr retrieve on host since sourceforge URLs stink, always end up with junk exe file
-#    windows::
-#      "iwr '${url}' -OutFile ${exe_path}"
-#        contain => powershell,
-#        classes => if_ok("download_ok");
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-7.4
      windows::
-      `powershell -command "if((Get-FileHash ${tmpdir}${name}-${version}-${names}.zip -Algorithm MD5 | select-object -expandproperty hash) -eq '${md5sum[${names}]}'){exit 0}else{exit 1}"`
+      `powershell -command \"if((Get-FileHash ${tmpdir}${name}-${version}-${names}.zip -Algorithm MD5 | select-object -expandproperty hash) -eq '${md5sum[${names}]}'){exit 0}else{exit 1}\"`
         contain => powershell,
         if => "${names}_ok",
         classes => if_ok( "${names}_md5sum_ok" );
@@ -50,9 +39,5 @@ bundle agent ed_installed
   packages:
     !windows::
       "ed" policy => "present";
-# nope, have to use commands promise to unzip instead of installing a package
-#    windows::
-#      "${exe_path}"
-#        policy => "present";
 }
 
