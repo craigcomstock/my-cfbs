@@ -9,20 +9,23 @@ bundle agent ed_installed
 {
   vars:
     windows::
-      "version" string => "1.2";
-      "filename" string => "ed-${version}-setup.exe";
+# failed attempts at rationality, sourceforge blocked me so to speak ;)
+#      "version" string => "1.2";
+#      "filename" string => "ed-${version}-setup.exe";
 # sourceforge is dumb, downloads aren't reliable due to redirects, javascript, etc, so download to /var/cfengine/data for lack of a better location
 #      "url" string => "http://downloads.sourceforge.net/gnuwin32/${filename}";
-# TODO, how to manage a different workdir on the SERVER?
-      "source_path" string => "/var/cfengine/master_software_updates/${filename}";
-      "exe_path" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}${filename}"; # TODO: maybe add a sys.tmpdir?
-      "md5sum" string => "ef6d4e0f62847f7de9cb4edbabb9e9d1";
+#      "exe_path" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}${filename}"; # TODO: maybe add a sys.tmpdir?
+
+      "local" string => "${sys.workdir}${const.dirsep}software_updates${const.dirsep}";
+      "filenames" slist => { "ed-1.2-bin.zip", "ed-1.2-dep.zip" };
+      "md5sum[ed-1.2-bin.zip]" string => "abba4aeefb9aeab69bc889189b41a484";
+      "md5sum[ed-1.2-dep.zip]" string => "3b24b595afecd1b93861ad4a023b62ea";
 
   files:
     windows::
-      "${exe_path}"
-        copy_from => remote_dcp("${source_path}", @(def.policy_servers)),
-        classes => if_ok("download_ok");
+      "${local}${filenames}"
+        copy_from => remote_dcp("/var/cfengine/master_software_updates/${filenames}", @(def.policy_servers)),
+        classes => if_ok("${filenames}_ok");
   commands:
 # commented out the iwr retrieve on host since sourceforge URLs stink, always end up with junk exe file
 #    windows::
@@ -30,15 +33,23 @@ bundle agent ed_installed
 #        contain => powershell,
 #        classes => if_ok("download_ok");
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-7.4
-    windows.download_ok::
-      `powershell -command "if((Get-FileHash ${exe_path} -Algorithm MD5 | select-object -expandproperty hash) -eq '${md5sum}'){exit 0}else{exit 1}"`
+     windows::
+      `powershell -command "if((Get-FileHash ${local}${filenames} -Algorithm MD5 | select-object -expandproperty hash) -eq '${${md5sum[${filenames}]}}'){exit 0}else{exit 1}"`
         contain => powershell,
-        classes => cmd_repair(1, "md5sum_ok");
+        classes => cmd_repair(1, canonify("${filenames}_md5sum_ok"));
+
+# use standard path that the setup.exe uses: GnuWin32\Ed
+      "Expand-Archive -Path ${local}${filenames} -DestinationPath ${sys.winprogdir86}${const.dirsep}GnuWin32${const.dirsep}Ed"
+        if => canonify("${filenames}_md5sum_ok"),
+        contain => powershell;
+
+# TODO: add to path with yet ANOTHER module :p
 
   packages:
     !windows::
       "ed" policy => "present";
-    windows.md5sum_ok::
-      "${exe_path}"
-        policy => "present";
+# nope, have to use commands promise to unzip instead of installing a package
+#    windows::
+#      "${exe_path}"
+#        policy => "present";
 }
