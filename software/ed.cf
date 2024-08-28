@@ -13,7 +13,8 @@ bundle agent ed_installed
       "filename" string => "ed-${version}-setup.exe";
 # sourceforge is dumb, downloads aren't reliable due to redirects, javascript, etc, so download to /var/cfengine/data for lack of a better location
 #      "url" string => "http://downloads.sourceforge.net/gnuwin32/${filename}";
-      "source_path" string => "${sys.workdir}${const.dirsep}data${const.dirsep}${filename}";
+# TODO, how to manage a different workdir on the SERVER?
+      "source_path" string => "/var/cfengine/data/${filename}";
       "exe_path" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}${filename}"; # TODO: maybe add a sys.tmpdir?
       "md5sum" string => "ef6d4e0f62847f7de9cb4edbabb9e9d1";
 
