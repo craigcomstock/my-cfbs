@@ -40,5 +40,6 @@ bundle agent set_windows_optional_feature_state(feature_name, desired_state)
 
     windows::
       "Restart-Computer"
+        contain => powershell,
         if => "restart_needed";
 }
