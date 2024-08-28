@@ -20,7 +20,7 @@ bundle agent ed_installed
   files:
     windows::
       "${exe_path}"
-        copy_from => remote_dcp("${source_path}", "${sys.policy_server}"),
+        copy_from => remote_dcp("${source_path}", @(def.policy_servers)),
         classes => if_ok("download_ok");
   commands:
 # commented out the iwr retrieve on host since sourceforge URLs stink, always end up with junk exe file
