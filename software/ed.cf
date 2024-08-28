@@ -11,17 +11,23 @@ bundle agent ed_installed
     windows::
       "version" string => "1.2";
       "filename" string => "ed-${version}-setup.exe";
+# sourceforge is dumb, downloads aren't reliable due to redirects, javascript, etc, so download to /var/cfengine/data for lack of a better location
 #      "url" string => "http://downloads.sourceforge.net/gnuwin32/${filename}";
-#"url" string => "https://downloads.sourceforge.net/project/gnuwin32/ed/1.2/ed-1.2-setup.exe?ts=gAAAAABmz0KwPNubuFSmC3nFUEGmBGATJwHpixqTE78QuAo8Q0_z3I1RZgugUqjlFUcfBQUc12B9YsacOXch5Xl8vmWAuHAHwA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fgnuwin32%2Ffiles%2Fed%2F1.2%2Fed-1.2-setup.exe%2Fdownload%3Fuse_mirror%3Dphoenixnap";
-"url" string => "https://downloads.sourceforge.net/project/gnuwin32/ed/1.2/ed-1.2-setup.exe?ts=gAAAAABmz0SdDZit8hdXaxgtKVON5u4Wu5kGknzaFxPFikE-AVUDmegVtaX3AeWah2Op3jQJF2Uk7ygd2wE9T_YXgUcj_9brxA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fgnuwin32%2Ffiles%2Fed%2F1.2%2Fed-1.2-setup.exe%2Fdownload%3Fuse_mirror%3Dphoenixnap";
+      "source_path" string => "${sys.workdir}${const.dirsep}data${const.dirsep}${filename}";
       "exe_path" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}${filename}"; # TODO: maybe add a sys.tmpdir?
       "md5sum" string => "ef6d4e0f62847f7de9cb4edbabb9e9d1";
 
-  commands:
+  files:
     windows::
-      "iwr '${url}' -OutFile ${exe_path}"
-        contain => powershell,
+      "${exe_path}"
+        copy_from => remote_dcp("${source_path}", "${sys.policy_server}"),
         classes => if_ok("download_ok");
+  commands:
+# commented out the iwr retrieve on host since sourceforge URLs stink, always end up with junk exe file
+#    windows::
+#      "iwr '${url}' -OutFile ${exe_path}"
+#        contain => powershell,
+#        classes => if_ok("download_ok");
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-7.4
     windows.download_ok::
       `powershell -command "if((Get-FileHash ${exe_path} -Algorithm MD5 | select-object -expandproperty hash) -eq '${md5sum}'){exit 0}else{exit 1}"`
