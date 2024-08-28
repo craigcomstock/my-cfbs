@@ -1,7 +1,7 @@
 bundle agent ed
 {
   methods:
-    data:variables.ed_installed::
+    data:ed_installed::
       "ed_installed";
 }
 
