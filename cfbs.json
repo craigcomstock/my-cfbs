@@ -128,7 +128,8 @@
       "added_by": "cfbs add",
       "steps": [
         "directory ./ services/cfbs/software/",
-        "policy_files services/cfbs/software/"
+        "policy_files services/cfbs/software/",
+        "bundles ed"
       ]
     }
   ]

@@ -27,7 +27,7 @@ bundle agent ed_installed
         classes => cmd_repair(1, "md5sum_ok");
 
   packages:
-    !windows:
+    !windows::
       "ed" policy => "present";
     windows.md5sum_ok::
       "${package_exe_path}"
