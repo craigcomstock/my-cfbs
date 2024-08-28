@@ -24,7 +24,7 @@ bundle agent ed_installed
   commands:
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-7.4
      windows::
-      `powershell -command \"if((Get-FileHash ${tmpdir}${name}-${version}-${names}.zip -Algorithm MD5 | select-object -expandproperty hash) -eq '${md5sum[${names}]}'){exit 0}else{exit 1}\"`
+      "if((Get-FileHash ${tmpdir}${name}-${version}-${names}.zip -Algorithm MD5 | select-object -expandproperty hash) -eq '${md5sum[${names}]}'){exit 0}else{exit 1}"
         contain => powershell,
         if => "${names}_ok",
         classes => if_ok( "${names}_md5sum_ok" );
