@@ -9,17 +9,18 @@ bundle agent ed_installed
 {
   vars:
     windows::
+      "name" string => "ed";
+      "version" string => "1.2";
 # failed attempts at rationality, sourceforge blocked me so to speak ;)
-#      "version" string => "1.2";
 #      "filename" string => "ed-${version}-setup.exe";
 # sourceforge is dumb, downloads aren't reliable due to redirects, javascript, etc, so download to /var/cfengine/data for lack of a better location
 #      "url" string => "http://downloads.sourceforge.net/gnuwin32/${filename}";
 #      "exe_path" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}${filename}"; # TODO: maybe add a sys.tmpdir?
 
       "local" string => "${sys.workdir}${const.dirsep}software_updates${const.dirsep}";
-      "filenames" slist => { "ed-1.2-bin.zip", "ed-1.2-dep.zip" };
-      "md5sum[ed-1.2-bin.zip]" string => "abba4aeefb9aeab69bc889189b41a484";
-      "md5sum[ed-1.2-dep.zip]" string => "3b24b595afecd1b93861ad4a023b62ea";
+      "names" slist => { "bin", "dep" };
+      "md5sum[bin]" string => "abba4aeefb9aeab69bc889189b41a484";
+      "md5sum[dep]" string => "3b24b595afecd1b93861ad4a023b62ea";
 
   files:
     windows::
@@ -34,14 +35,14 @@ bundle agent ed_installed
 #        classes => if_ok("download_ok");
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-7.4
      windows::
-      `powershell -command "if((Get-FileHash ${local}${filenames} -Algorithm MD5 | select-object -expandproperty hash) -eq '${${md5sum[${filenames}]}}'){exit 0}else{exit 1}"`
+      `powershell -command "if((Get-FileHash ${local}${name}-${version}-${names}.zip -Algorithm MD5 | select-object -expandproperty hash) -eq '${${md5sum[${names}]}}'){exit 0}else{exit 1}"`
         contain => powershell,
-        if => concat( canonify("${filenames}"), "_ok" ),
-        classes => if_ok( concat( canonify("${filenames}"), "_md5sum_ok" ) );
+        if => "${names}_ok",
+        classes => if_ok( "${names}_md5sum_ok" );
 
 # use standard path that the setup.exe uses: GnuWin32\Ed
       "Expand-Archive -Path ${local}${filenames} -DestinationPath ${sys.winprogdir86}${const.dirsep}GnuWin32${const.dirsep}Ed"
-        if => concat( canonify("${filenames}", "_md5sum_ok" ) ),
+        if => "${names}_md5sum_ok",
         contain => powershell;
 
 # TODO: add to path with yet ANOTHER module :p
