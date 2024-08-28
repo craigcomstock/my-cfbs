@@ -17,11 +17,14 @@ bundle agent ed_installed
       "names" slist => { "bin", "dep" };
       "md5sum[bin]" string => "abba4aeefb9aeab69bc889189b41a484";
       "md5sum[dep]" string => "3b24b595afecd1b93861ad4a023b62ea";
+  classes:
+    "${names}_installed" expression => fileexists("${sys.winprogdir86}${const.dirsep}GnuWin32${const.dirsep}Ed${const.dirsep}manifest${const.dirsep}${name}-${version}-${names}.ver");
 
   files:
     windows::
       "${tmpdir}${name}-${version}-${names}.zip"
         copy_from => remote_dcp("/var/cfengine/master_software_updates/${name}-${version}-${names}.zip", @(def.policy_servers)),
+        if => not("${names_installed}"),
         classes => if_ok( "${names}_ok" );
   commands:
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-7.4
