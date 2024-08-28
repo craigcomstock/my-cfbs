@@ -24,9 +24,9 @@ bundle agent ed_installed
 
   files:
     windows::
-      "${local}${filenames}"
-        copy_from => remote_dcp("/var/cfengine/master_software_updates/${filenames}", @(def.policy_servers)),
-        classes => if_ok( concat( canonify("${filenames}"), "_ok" ) );
+      "${local}${name}-${version}-${names}.zip"
+        copy_from => remote_dcp("/var/cfengine/master_software_updates/${name}-${version}-${names}.zip", @(def.policy_servers)),
+        classes => if_ok( "${names}_ok" );
   commands:
 # commented out the iwr retrieve on host since sourceforge URLs stink, always end up with junk exe file
 #    windows::
@@ -41,7 +41,7 @@ bundle agent ed_installed
         classes => if_ok( "${names}_md5sum_ok" );
 
 # use standard path that the setup.exe uses: GnuWin32\Ed
-      "Expand-Archive -Path ${local}${filenames} -DestinationPath ${sys.winprogdir86}${const.dirsep}GnuWin32${const.dirsep}Ed"
+      "Expand-Archive -Path ${local}${name}-${version}-${names}.zip -DestinationPath ${sys.winprogdir86}${const.dirsep}GnuWin32${const.dirsep}Ed"
         if => "${names}_md5sum_ok",
         contain => powershell;
 
