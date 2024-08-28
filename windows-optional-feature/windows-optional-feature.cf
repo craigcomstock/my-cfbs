@@ -26,10 +26,12 @@ bundle agent windows_optional_feature
 bundle agent set_windows_optional_feature_state(feature_name, desired_state)
 {
   vars:
+# convert a flexible desired state of enable,Enable,Enabled,enabled to that which is expected from Get- and Enable-|Disable- cmdlets
+    "state_name" string => ifelse(regcmp("enable*", string_downcase("${desired_state}")), "Enabled", "Disabled");
     "state_prefix" string => ifelse(regcmp("enable*", string_downcase("${desired_state}")), "Enable", "Disable");
   commands:
     windows::
-      "if((Get-WindowsOptionalFeature -Online -FeatureName ${feature_name} | select-Object state) -ne '${desired_state}'){exit 0}else{exit 1}"
+      "if((Get-WindowsOptionalFeature -Online -FeatureName ${feature_name} | select-Object state) -ne '${state_name}'){exit 0}else{exit 1}"
         contain => powershell,
         classes => if_ok("state_not_ok");
     windows.state_not_ok::
