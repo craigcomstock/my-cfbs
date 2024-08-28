@@ -11,8 +11,7 @@ bundle agent powershell_execution_policy_inventory
       "execution_policy_list_cache_command" string => "Get-ExecutionPolicy -list | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${execution_policy_csv_file}'";
       "csv" data => readcsv("${execution_policy_csv_file}");
       "i" slist => getindices("csv");
-      "execution_policy_${csv[${i}][0]}" string =>
-"${csv[${i}][0]}:${csv[${i}][1]}",
+      "execution_policy_${csv[${i}][0]}" string => "${csv[${i}][0]}:${csv[${i}][1]}",
         meta => { "inventory", "attribute_name=PowerShell Execution Policy" };
 
   commands:
@@ -26,13 +25,11 @@ bundle agent powershell_execution_policy_inventory
 # This bundle runs a powershell command: Set-ExecutionPolicy -ExecutionPolicy <policy> -Scope <scope>
 bundle agent powershell_execution_policy_set(scope, desired_policy)
 {
-  vars:
-    windows::
-      "current_policy" string => execresult("Get-ExecutionPolicy ${scope}", "powershell");
-  classes:
-    windows::
-      "execution_policy_not_ok" expression => not(strcmp("${current_policy}", "${desired_policy}"));
   commands:
+    windows::
+      "if((Get-ExecutionPolicy ${scope}) -ne '${desired_policy}'){exit 0}else{exit 1}"`
+        contain => powershell,
+        classes => if_ok("execution_policy_not_ok");
     windows.execution_policy_not_ok::
       "Set-ExecutionPolicy -ExecutionPolicy ${desired_policy} -Scope ${scope}"
       contain => powershell;

@@ -1,12 +1,14 @@
 bundle agent ed
 {
   methods:
+# set `ed_installed` as a class in Group data or Host Specific data! :)
     data:ed_installed::
       "ed_installed";
 }
 
 bundle agent ed_installed
 {
+# sadly sourceforge downloads from https://gnuwin32.sourceforge.net/packages/ed.htm don't work well with redirects/javascript in the middle so I download manually and place in /var/cfengine/master_software_updates on my hub.
   vars:
     windows::
       "name" string => "ed";
