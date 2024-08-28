@@ -111,17 +111,6 @@
       ]
     },
     {
-      "name": "./software/zoom.cf",
-      "description": "Local policy file added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "copy ./software/zoom.cf services/cfbs/software/zoom.cf",
-        "policy_files services/cfbs/software/zoom.cf",
-        "bundles zoom_workplace"
-      ]
-    },
-    {
       "name": "./scripts/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],

@@ -1,0 +1,35 @@
+bundle agent ed
+{
+  methods:
+    data:variables.ed_installed::
+      "ed_installed";
+}
+
+bundle agent ed_installed
+{
+  vars:
+    windows::
+      "package_version" string => "1.2";
+      "package_filename" string => "ed-${package_version}-setup.exe";
+      "package_url" string => "http://downloads.sourceforge.net/gnuwin32/${package_filename}";
+      "package_exe_path" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}${package_filename}"; # TODO: maybe add a sys.tmpdir?
+      "package_md5sum" string => "ef6d4e0f62847f7de9cb4edbabb9e9d1";
+
+  commands:
+    windows::
+      "iwr ${package_url} -OutFile ${package_exe_path}"
+        contain => powershell,
+        classes => if_ok("download_ok");
+# https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-7.4
+    windows.download_ok::
+      `powershell -command "if((Get-FileHash ${package_exe_path} -Algorithm MD5 | select-object -expandproperty hash) -eq '${package_md5sum}'){exit 0}else{exit 1}"`
+        contain => powershell,
+        classes => cmd_repair(1, "md5sum_ok");
+
+  packages:
+    !windows:
+      "ed" policy => "present";
+    windows.md5sum_ok::
+      "${package_exe_path}"
+        policy => "present";
+}
