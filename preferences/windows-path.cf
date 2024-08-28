@@ -1,0 +1,3 @@
+# TODO, make a way to manage the entries in the system windows path
+# there is a lot here, so probably inventory and then add/delete entries with separate bundles would be cool
+# https://lazyadmin.nl/powershell/set-environment-variable/

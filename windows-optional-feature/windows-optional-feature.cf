@@ -1,19 +1,32 @@
+# https://learn.microsoft.com/en-us/powershell/module/dism/get-windowsoptionalfeature?view=windowsserver2022-ps
+# https://learn.microsoft.com/en-us/powershell/module/dism/disable-windowsoptionalfeature?view=windowsserver2022-ps
+# https://learn.microsoft.com/en-us/powershell/module/dism/enable-windowsoptionalfeature?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v#enable-hyper-v-using-powershell
-bundle agent hyperv_enabled
+bundle agent windows_optional_feature
 {
-  classes:
-    windows::
-      "hyperv_enabled" expression => returnszero("Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V | out-null", "powershell");
-      "hyperv_disabled" expression => not(returnszero("Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V | out-null", "powershell"));
+  vars:
+    "${this.bundle}_cache_file" string => "${sys.statedir}${const.dirsep}${this.bundle}_cache.csv";
+    "${this.bundle}_command" string => "Get-WindowsOptionalFeature -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${${this.bundle}_cache_file}'";
+    "csv" data => readcsv("${${this.bundle}_cache_file}");
 
-  commands:
-    windows.hyperv_disabled::
-# https://learn.microsoft.com/en-us/powershell/module/dism/enable-windowsoptionalfeature?view=windowsserver2022-ps -NoRestart option to avoid reboot prompt
-      "Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -NoRestart | out-null"
-        contain => powershell,
-        classes => if_repaired("needs_reboot");
-
-    windws.needs_reboot::
-      "Restart-Computer"
-        contain => powershell;
+  reports:
+    "${this.bundle}.csv: ${with}" with => storejson(csv);
 }
+
+#{
+#  classes:
+#    windows::
+#      "hyperv_enabled" expression => returnszero("Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V | out-null", "powershell");
+#      "hyperv_disabled" expression => not(returnszero("Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V | out-null", "powershell"));
+#
+#  commands:
+#    windows.hyperv_disabled::
+## https://learn.microsoft.com/en-us/powershell/module/dism/enable-windowsoptionalfeature?view=windowsserver2022-ps -NoRestart option to avoid reboot prompt
+#      "Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -NoRestart | out-null"
+#        contain => powershell,
+#        classes => if_repaired("needs_reboot");
+#
+#    windws.needs_reboot::
+#      "Restart-Computer"
+#        contain => powershell;
+#}
