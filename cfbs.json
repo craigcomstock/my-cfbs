@@ -131,6 +131,16 @@
         "policy_files services/cfbs/scripts/",
         "bundles scripts"
       ]
+    },
+    {
+      "name": "./software/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/software/",
+        "policy_files services/cfbs/software/"
+      ]
     }
   ]
 }
