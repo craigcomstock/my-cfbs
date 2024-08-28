@@ -2,19 +2,19 @@
 # download image
 # docker pull mcr.microsoft.com/windows/servercore:10.0.19042.1889
 # run that, install cfengine, bootstrap to hub!
-bundle agent docker_desktop
+bundle agent docker
 {
   methods:
-    data:docker_desktop_installed::
-      "docker_desktop_installed";
+    data:docker_installed::
+      "docker_installed";
 }
 
-bundle agent docker_desktop_installed
+bundle agent docker_installed
 {
   # installing dockerdesktop before dependencies is OK?
   methods:
     windows::
-      "windows_docker_desktop_dependencies";
+      "windows_docker_dependencies";
 
   packages:
     windows::
@@ -26,7 +26,7 @@ bundle agent docker_desktop_installed
 
 # https://docs.docker.com/desktop/install/windows-install/
 # use hyper-v, using wsl2 requires a LARGE ubuntu download
-bundle agent windows_docker_desktop_dependencies
+bundle agent windows_docker_dependencies
 {
   methods:
     windows::

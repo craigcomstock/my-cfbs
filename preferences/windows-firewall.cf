@@ -1,0 +1,1 @@
+# for cfengine testing I want the private network to be OPEN so I can trigger agent runs and report collection
