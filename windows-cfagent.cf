@@ -1,0 +1,9 @@
+bundle agent windows_cfagent
+{
+  docker:
+    windows::
+      "test-cfengine"
+        command => "msiexec /i https://cfengine-package-repos.s3.amazonaws.com/enterprise/Enterprise-3.24.0/agent/windows_x86_64/cfengine-nova-3.24.0-1-x86_64.msi",
+        image => "mcr.microsoft.com/windows/servercore:10.0.19042.1889",
+        state => "running"; # created, running, exited, paused, dead
+}
