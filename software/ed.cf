@@ -9,21 +9,21 @@ bundle agent ed_installed
 {
   vars:
     windows::
-      "package_version" string => "1.2";
-      "package_filename" string => "ed-${package_version}-setup.exe";
-#      "package_url" string => "http://downloads.sourceforge.net/gnuwin32/${package_filename}";
+      "version" string => "1.2";
+      "filename" string => "ed-${version}-setup.exe";
+#      "url" string => "http://downloads.sourceforge.net/gnuwin32/${filename}";
 "url" string => "https://downloads.sourceforge.net/project/gnuwin32/ed/1.2/ed-1.2-setup.exe?ts=gAAAAABmz0KwPNubuFSmC3nFUEGmBGATJwHpixqTE78QuAo8Q0_z3I1RZgugUqjlFUcfBQUc12B9YsacOXch5Xl8vmWAuHAHwA%3D%3D&r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fgnuwin32%2Ffiles%2Fed%2F1.2%2Fed-1.2-setup.exe%2Fdownload%3Fuse_mirror%3Dphoenixnap";
-      "package_exe_path" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}${package_filename}"; # TODO: maybe add a sys.tmpdir?
-      "package_md5sum" string => "ef6d4e0f62847f7de9cb4edbabb9e9d1";
+      "exe_path" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}${filename}"; # TODO: maybe add a sys.tmpdir?
+      "md5sum" string => "ef6d4e0f62847f7de9cb4edbabb9e9d1";
 
   commands:
     windows::
-      "iwr ${package_url} -OutFile ${package_exe_path}"
+      "iwr ${url} -OutFile ${exe_path}"
         contain => powershell,
         classes => if_ok("download_ok");
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-7.4
     windows.download_ok::
-      `powershell -command "if((Get-FileHash ${package_exe_path} -Algorithm MD5 | select-object -expandproperty hash) -eq '${package_md5sum}'){exit 0}else{exit 1}"`
+      `powershell -command "if((Get-FileHash ${exe_path} -Algorithm MD5 | select-object -expandproperty hash) -eq '${md5sum}'){exit 0}else{exit 1}"`
         contain => powershell,
         classes => cmd_repair(1, "md5sum_ok");
 
@@ -31,6 +31,6 @@ bundle agent ed_installed
     !windows::
       "ed" policy => "present";
     windows.md5sum_ok::
-      "${package_exe_path}"
+      "${exe_path}"
         policy => "present";
 }
