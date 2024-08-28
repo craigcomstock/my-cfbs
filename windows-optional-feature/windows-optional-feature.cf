@@ -9,8 +9,13 @@ bundle agent windows_optional_feature
     "${this.bundle}_command" string => "Get-WindowsOptionalFeature -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${${this.bundle}_cache_file}'";
     "csv" data => readcsv("${${this.bundle}_cache_file}");
 
+  commands:
+   windows::
+     "${${this.bundle}_command}"
+       contain => powershell;
   reports:
-    "${this.bundle}.csv: ${with}" with => storejson(csv);
+    windows::
+      "${this.bundle}.csv: ${with}" with => storejson(csv);
 }
 
 #{
