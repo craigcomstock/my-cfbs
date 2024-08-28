@@ -3,12 +3,13 @@ bundle agent scripts
   vars:
     windows::
       "script_paths" slist => findfiles("${this.promise_dirname}${const.dirsep}*.{ps1,bat}");
-      "i" slist => getindices("script_paths");
-      "script_file[${i}]" string => string_replace("${script_paths[${i}]}", "${this.promise_dirname}${const.dirsep}", "");
+      "scripts[${script_paths}]" string => string_replace("${script_paths}", "${source}", "${dest}");
+  files:
+    windows::
+      "${scripts[${script_paths}]}"
+        copy_from => local_cp(${script_paths});
 
   reports:
+    "scripts[${script_paths}] = ${scripts[${script_paths}]}";
     "script_paths: ${with}" with => storejson(script_paths);
-    "script_paths[${i}]: ${script_paths[${i}]}";
-    "i: ${i}";
-    "would copy ${script_paths[$i]} to ${sys.windir}${const.dirsep}${script_file[${i}]}";
 }
