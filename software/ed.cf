@@ -17,14 +17,14 @@ bundle agent ed_installed
 #      "url" string => "http://downloads.sourceforge.net/gnuwin32/${filename}";
 #      "exe_path" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}${filename}"; # TODO: maybe add a sys.tmpdir?
 
-      "local" string => "${sys.workdir}${const.dirsep}software_updates${const.dirsep}";
+      "tmpdir" string => "${sys.windir}${const.dirsep}Temp${const.dirsep}";
       "names" slist => { "bin", "dep" };
       "md5sum[bin]" string => "abba4aeefb9aeab69bc889189b41a484";
       "md5sum[dep]" string => "3b24b595afecd1b93861ad4a023b62ea";
 
   files:
     windows::
-      "${local}${name}-${version}-${names}.zip"
+      "${tmpdir}${name}-${version}-${names}.zip"
         copy_from => remote_dcp("/var/cfengine/master_software_updates/${name}-${version}-${names}.zip", @(def.policy_servers)),
         classes => if_ok( "${names}_ok" );
   commands:
@@ -35,13 +35,13 @@ bundle agent ed_installed
 #        classes => if_ok("download_ok");
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-7.4
      windows::
-      `powershell -command "if((Get-FileHash ${local}${name}-${version}-${names}.zip -Algorithm MD5 | select-object -expandproperty hash) -eq '${md5sum[${names}]}'){exit 0}else{exit 1}"`
+      `powershell -command "if((Get-FileHash ${tmpdir}${name}-${version}-${names}.zip -Algorithm MD5 | select-object -expandproperty hash) -eq '${md5sum[${names}]}'){exit 0}else{exit 1}"`
         contain => powershell,
         if => "${names}_ok",
         classes => if_ok( "${names}_md5sum_ok" );
 
 # use standard path that the setup.exe uses: GnuWin32\Ed
-      "Expand-Archive -Path ${local}${name}-${version}-${names}.zip -DestinationPath ${sys.winprogdir86}${const.dirsep}GnuWin32${const.dirsep}Ed"
+      "Expand-Archive -Path ${tmpdir}${name}-${version}-${names}.zip -DestinationPath ${sys.winprogdir86}${const.dirsep}GnuWin32${const.dirsep}Ed"
         if => "${names}_md5sum_ok",
         contain => powershell;
 
