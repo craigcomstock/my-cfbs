@@ -35,7 +35,8 @@ bundle agent set_windows_optional_feature_state(feature_name, desired_state)
         contain => powershell,
         classes => if_ok("state_not_ok");
     windows.state_not_ok::
-      "${state_prefix}-WindowsOptionalFeature -Online -FeatureName ${feature_name} -NoRestart"
+# -All enables parent features if need be
+      "${state_prefix}-WindowsOptionalFeature -Online -FeatureName ${feature_name} -NoRestart -All"
         contain => powershell,
         classes => if_repaired("restart_needed");
 # -NoRestart so that we don't wait forever for a Yes reply from a user
