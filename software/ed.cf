@@ -18,7 +18,7 @@ bundle agent ed_installed
 
   commands:
     windows::
-      "iwr ${url} -OutFile ${exe_path}"
+      "iwr '${url}' -OutFile ${exe_path}"
         contain => powershell,
         classes => if_ok("download_ok");
 # https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators?view=powershell-7.4
