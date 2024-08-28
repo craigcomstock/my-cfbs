@@ -25,7 +25,7 @@ bundle agent ed_installed
     windows::
       "${local}${filenames}"
         copy_from => remote_dcp("/var/cfengine/master_software_updates/${filenames}", @(def.policy_servers)),
-        classes => if_ok(canonify("${filenames}_ok"));
+        classes => if_ok( concat( canonify("${filenames}"), "_ok" ) );
   commands:
 # commented out the iwr retrieve on host since sourceforge URLs stink, always end up with junk exe file
 #    windows::
@@ -37,7 +37,7 @@ bundle agent ed_installed
       `powershell -command "if((Get-FileHash ${local}${filenames} -Algorithm MD5 | select-object -expandproperty hash) -eq '${${md5sum[${filenames}]}}'){exit 0}else{exit 1}"`
         contain => powershell,
         if => canonify("${filenames}_ok"),
-        classes => if_ok(canonify("${filenames}_md5sum_ok"));
+        classes => if_ok( concat( canonify("${filenames}"), "_md5sum_ok" ) );
 
 # use standard path that the setup.exe uses: GnuWin32\Ed
       "Expand-Archive -Path ${local}${filenames} -DestinationPath ${sys.winprogdir86}${const.dirsep}GnuWin32${const.dirsep}Ed"
@@ -54,3 +54,4 @@ bundle agent ed_installed
 #      "${exe_path}"
 #        policy => "present";
 }
+
