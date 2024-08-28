@@ -4,6 +4,13 @@
 # run that, install cfengine, bootstrap to hub!
 bundle agent docker_desktop
 {
+  methods:
+    data:docker_desktop_installed::
+      "docker_desktop_installed";
+}
+
+bundle agent docker_desktop_installed
+{
   # installing dockerdesktop before dependencies is OK?
   methods:
     windows::

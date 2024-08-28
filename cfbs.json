@@ -129,7 +129,7 @@
       "steps": [
         "directory ./ services/cfbs/software/",
         "policy_files services/cfbs/software/",
-        "bundles ed"
+        "bundles ed docker zoom"
       ]
     },
     {

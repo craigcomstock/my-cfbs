@@ -1,4 +1,11 @@
-bundle agent zoom_workplace
+bundle agent zoom
+{
+  methods:
+    data:zoom_installed::
+      "zoom_installed";
+}
+
+bundle agent zoom_installed
 {
   packages:
     windows::
