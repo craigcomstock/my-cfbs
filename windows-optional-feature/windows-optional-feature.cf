@@ -1,4 +1,5 @@
 # TODO: set system-wide cmdb data for "ok to restart"
+# TODO: setup some sort of "signalling" so that at the END of the agent run, we restart?
 # https://learn.microsoft.com/en-us/powershell/module/dism/get-windowsoptionalfeature?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/powershell/module/dism/disable-windowsoptionalfeature?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/powershell/module/dism/enable-windowsoptionalfeature?view=windowsserver2022-ps
