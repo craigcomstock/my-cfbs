@@ -9,7 +9,7 @@ bundle agent windows_optional_feature
     "${this.bundle}_command" string => "Get-WindowsOptionalFeature -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${${this.bundle}_cache_file}'";
     "csv" data => readcsv("${${this.bundle}_cache_file}");
     "i" slist => getindices("csv");
-    "${this.bundle}_${csv[${i}][0]}" string => "${csv[${i}][0]}:${csv[${i}][1]}",
+    "${this.bundle}[${i}]" string => "${csv[${i}][0]}:${csv[${i}][1]}",
       meta => { "inventory", "attribute_name=Windows Optional Features" };
 
   commands:
