@@ -111,16 +111,6 @@
       ]
     },
     {
-      "name": "./windows-hyper-v/",
-      "description": "Local subdirectory added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/windows-hyper-v/",
-        "policy_files services/cfbs/windows-hyper-v/"
-      ]
-    },
-    {
       "name": "./preferences/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
