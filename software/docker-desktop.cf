@@ -23,5 +23,5 @@ bundle agent windows_docker_desktop_dependencies
 {
   methods:
     windows::
-      "hyperv_enabled"; # cfbs add windows-hyperv
+      "enable-hyperv" usebundle => set_windows_optional_feature_state("Microsoft-Hyper-V", "Enabled");
 }
