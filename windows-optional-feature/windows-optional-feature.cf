@@ -21,10 +21,11 @@ bundle agent windows_optional_feature
        contain => powershell;
 }
 
+# TODO, maybe make enable_ and disable_ bundles instead, to match the PowerShell commands :p
 bundle agent set_windows_optional_feature_state(feature_name, desired_state)
 {
   vars:
-    "state_prefix" string => ifelse(strcmp("Enabled",${desired_state}), "Enable", "Disable");
+    "state_prefix" string => ifelse(regcmp("enable*", string_downcase("${desired_state}")), "Enable", "Disable");
   commands:
     windows::
       "if((Get-WindowsOptionalFeature -Online -FeatureName ${feature_name} | select-Object state) -ne '${desired_state}'){exit 0}else{exit 1}"

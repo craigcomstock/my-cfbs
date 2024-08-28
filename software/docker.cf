@@ -30,5 +30,6 @@ bundle agent windows_docker_dependencies
 {
   methods:
     windows::
-      "enable-hyperv" usebundle => set_windows_optional_feature_state("Microsoft-Hyper-V", "Enabled");
+      "enable-containers" usebundle => set_windows_optional_feature_state("containers", "enable");
+      "enable-hyperv" usebundle => set_windows_optional_feature_state("Microsoft-Hyper-V", "enable");
 }
