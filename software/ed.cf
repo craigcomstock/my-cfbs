@@ -30,7 +30,7 @@ bundle agent ed_installed
         classes => if_ok( "${names}_md5sum_ok" );
 
 # use standard path that the setup.exe uses: GnuWin32\Ed
-      "Expand-Archive -Path ${tmpdir}${name}-${version}-${names}.zip -DestinationPath ${sys.winprogdir86}${const.dirsep}GnuWin32${const.dirsep}Ed"
+      "Expand-Archive -Path ${tmpdir}${name}-${version}-${names}.zip -DestinationPath '${sys.winprogdir86}${const.dirsep}GnuWin32${const.dirsep}Ed'"
         if => "${names}_md5sum_ok",
         contain => powershell;
 
