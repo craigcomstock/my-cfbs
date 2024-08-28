@@ -8,8 +8,4 @@ bundle agent scripts
     windows::
       "${scripts[${script_paths}]}"
         copy_from => local_cp(${script_paths});
-
-  reports:
-    "scripts[${script_paths}] = ${scripts[${script_paths}]}";
-    "script_paths: ${with}" with => storejson(script_paths);
 }
