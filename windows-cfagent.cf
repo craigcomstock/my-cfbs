@@ -7,3 +7,6 @@ bundle agent windows_cfagent
         image => "mcr.microsoft.com/windows/servercore:10.0.19042.1889",
         state => "running"; # created, running, exited, paused, dead
 }
+
+# PS C:\Users\jenkins> & 'C:\Program Files\Docker\Docker\DockerCli.exe' -SwitchWindowsEngine
+# PS C:\Users\jenkins> docker build -f .\Dockerfile .
