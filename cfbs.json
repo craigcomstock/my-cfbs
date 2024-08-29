@@ -129,6 +129,17 @@
         "policy_files services/cfbs/windows-optional-feature/",
         "bundles windows_optional_feature"
       ]
+    },
+    {
+      "name": "./lib/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/lib/",
+        "policy_files services/cfbs/lib/",
+        "bundles reboot"
+      ]
     }
   ]
 }
