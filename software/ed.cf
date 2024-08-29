@@ -40,6 +40,7 @@ bundle agent ed_installed
         contain => powershell;
 
 # TODO: add to path with yet ANOTHER module :p
+# C:\Program Files (x86)\GnuWin32\Ed\bin
 
   packages:
     !windows::
