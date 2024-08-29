@@ -1,3 +1,5 @@
+# docker save and docker load to make things "faster" for demo :)
+# maybe try to make an appx package as well!? cfengine-agent that is.
 bundle agent windows_cfagent
 {
   docker:
