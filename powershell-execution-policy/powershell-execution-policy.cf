@@ -30,8 +30,8 @@ bundle agent powershell_execution_policy_set(scope, desired_policy)
 # refine this to swallow errors on exit 1 :)
       "if((Get-ExecutionPolicy ${scope}) -ne '${desired_policy}'){exit 0}else{exit 1}"
         contain => powershell,
-        classes => if_ok("execution_policy_not_ok");
-    windows.execution_policy_not_ok::
+        classes => kept0_repaired1("policy_not_ok", "policy_ok");
+    windows.policy_not_ok::
       "Set-ExecutionPolicy -ExecutionPolicy ${desired_policy} -Scope ${scope}"
       contain => powershell;
 }
