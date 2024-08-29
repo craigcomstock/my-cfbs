@@ -129,6 +129,17 @@
         "policy_files services/cfbs/windows-optional-feature/",
         "bundles windows_optional_feature"
       ]
+    },
+    {
+      "name": "./reboot.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./reboot.cf services/cfbs/reboot.cf",
+        "policy_files services/cfbs/reboot.cf",
+        "bundles reboot"
+      ]
     }
   ]
 }

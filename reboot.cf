@@ -1,0 +1,8 @@
+bundle agent reboot
+{
+# purpose here is to watch for a class defined: reboot_needed, and reboot, hopefully no reboot loops
+  commands:
+    windows.reboot_needed::
+       "Write-Host would call Restart-Computer"
+         contain => powershell;
+}
