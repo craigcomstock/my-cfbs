@@ -33,7 +33,7 @@ bundle agent set_windows_optional_feature_state(feature_name, desired_state)
     windows::
       "if((Get-WindowsOptionalFeature -Online -FeatureName ${feature_name} | select-object -expandproperty state) -ne '${state_name}'){exit 0}else{exit 1}"
         contain => powershell,
-        classes => if_ok("state_not_ok");
+        classes => kept0_repaired1("state_not_ok","state_ok");
     windows.state_not_ok::
 # -All enables parent features if need be
       "${state_prefix}-WindowsOptionalFeature -Online -FeatureName ${feature_name} -NoRestart -All"
@@ -46,4 +46,12 @@ bundle agent set_windows_optional_feature_state(feature_name, desired_state)
   classes:
     windows::
       "default:restart_needed" expression => "restart_needed";
+}
+
+body classes kept0_repaired1(kept0_class, repaired1_class)
+{
+  kept_returncodes => { "0" };
+  repaired_returncodes => { "1" };
+  promise_kept => { "${kept0_class}" };
+  promise_repaired => { "${repaired1_class}" };
 }
