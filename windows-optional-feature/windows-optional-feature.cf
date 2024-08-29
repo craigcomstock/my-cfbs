@@ -43,8 +43,7 @@ bundle agent set_windows_optional_feature_state(feature_name, desired_state)
 # then if we ran this command due to needing to, restart below.
 # TODO: need a "no restarts" cmdb item
 
+  classes:
     windows::
-      "Restart-Computer"
-        contain => powershell,
-        if => "restart_needed";
+      "default:restart_needed" expression => "restart_needed";
 }
