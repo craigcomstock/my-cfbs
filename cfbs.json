@@ -118,6 +118,33 @@
         "policy_files services/cfbs/lib/",
         "bundles reboot"
       ]
+    },
+    {
+      "name": "powershell-execution-policy",
+      "description": "Inventory and bundle for PowerShell Execution Policy",
+      "url": "https://github.com/craigcomstock/modules",
+      "commit": "29c53a3f08c542896a6978423794c2061f9e3647",
+      "subdirectory": "management/powershell-execution-policy",
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/powershell-execution-policy/",
+        "policy_files services/cfbs/powershell-execution-policy/",
+        "bundles powershell_execution_policy_inventory"
+      ]
+    },
+    {
+      "name": "package-module-winget",
+      "description": "Package method for Windows winget package manager.",
+      "url": "https://github.com/craigcomstock/modules",
+      "commit": "29c53a3f08c542896a6978423794c2061f9e3647",
+      "subdirectory": "management/package-module-winget",
+      "dependencies": ["powershell-execution-policy"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/modules/package-module-winget/",
+        "policy_files services/cfbs/modules/package-module-winget/",
+        "bundles winget_installed"
+      ]
     }
   ]
 }
