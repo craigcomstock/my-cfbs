@@ -55,17 +55,6 @@
       "steps": ["json def.json def.json"]
     },
     {
-      "name": "./package-module-winget/",
-      "description": "Local subdirectory added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/package-module-winget/",
-        "policy_files services/cfbs/package-module-winget/",
-        "bundles winget_installed"
-      ]
-    },
-    {
       "name": "./wsl/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
