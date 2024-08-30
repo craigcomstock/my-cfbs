@@ -1,0 +1,51 @@
+bundle agent windows_capability
+{
+  methods:
+    windows.!data:disable_windows_capability_inventory::
+      "windows_capability_inventory";
+}
+
+# https://learn.microsoft.com/en-us/powershell/module/dism/get-windowscapability?view=windowsserver2022-ps
+# https://learn.microsoft.com/en-us/powershell/module/dism/remove-windowscapability?view=windowsserver2022-ps
+# https://learn.microsoft.com/en-us/powershell/module/dism/add-windowscapability?view=windowsserver2022-ps
+bundle agent windows_capability_inventory
+{
+  vars:
+    windows::
+      "${this.bundle}_cache_file" string => "${sys.statedir}${const.dirsep}${this.bundle}_cache.csv";
+      "${this.bundle}_command" string => "Get-WindowsCapability -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${${this.bundle}_cache_file}'";
+      "csv" data => readcsv("${${this.bundle}_cache_file}");
+      "i" slist => getindices("csv");
+      "${this.bundle}[${i}]" string => "${csv[${i}][0]}:${csv[${i}][1]}",
+        meta => { "inventory", "attribute_name=Windows Capability" };
+
+  commands:
+   windows::
+     "${${this.bundle}_command}"
+       contain => powershell;
+}
+
+bundle agent add_windows_capability(capability_name)
+{
+  methods:
+    "Add" usebundle => _windows_capability_state(capability_name, "Add");
+}
+bundle agent remove_windows_optionial_capability(capability_name)
+{
+  methods:
+    "Remove" usebundle => _windows_capability_state(capability_name, "Remove");
+}
+
+bundle agent _windows_capability_state(capability_name, desired_state)
+{
+  vars:
+    "state_prefix" string => string_replace("${desired_state}", "d", ""); # we can do this because we control the inputs above
+  classes:
+    windows::
+      "state_not_ok" expression => returnszero("if((Get-WindowsCapability -Online -FeatureName ${capability_name} | select-object -expandproperty state) -ne '${state_name}'){exit 0}else{exit 1}", "powershell");
+
+  commands:
+    windows.state_not_ok::
+      "${state_prefix}-WindowsCapability -Online -FeatureName ${capability_name}"
+        contain => powershell;
+}

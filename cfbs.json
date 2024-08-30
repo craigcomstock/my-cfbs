@@ -136,7 +136,7 @@
       "name": "package-module-winget",
       "description": "Package method for Windows winget package manager.",
       "url": "https://github.com/craigcomstock/modules",
-"commit": "668baed0d423ecc1eb1d8f5627941d9713154fb7",
+      "commit": "668baed0d423ecc1eb1d8f5627941d9713154fb7",
       "subdirectory": "management/package-module-winget",
       "dependencies": ["powershell-execution-policy"],
       "added_by": "cfbs add",
@@ -144,6 +144,17 @@
         "directory ./ services/cfbs/modules/package-module-winget/",
         "policy_files services/cfbs/modules/package-module-winget/",
         "bundles winget_installed"
+      ]
+    },
+    {
+      "name": "./windows-capability/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/windows-capability/",
+        "policy_files services/cfbs/windows-capability/",
+        "bundles windows_capability"
       ]
     }
   ]
