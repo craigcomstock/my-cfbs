@@ -133,17 +133,17 @@
       ]
     },
     {
-      "name": "package-module-winget",
+      "name": "package-method-winget",
       "description": "Package method for Windows winget package manager.",
       "url": "https://github.com/craigcomstock/modules",
-      "commit": "668baed0d423ecc1eb1d8f5627941d9713154fb7",
-      "subdirectory": "management/package-module-winget",
+"commit": "e2d9b78e7133e66d159101dbca846e8cf8651ebb",
+      "subdirectory": "management/package-method-winget",
       "dependencies": ["powershell-execution-policy"],
       "added_by": "cfbs add",
       "steps": [
-        "directory ./ services/cfbs/modules/package-module-winget/",
-        "policy_files services/cfbs/modules/package-module-winget/",
-        "bundles winget_installed"
+        "directory ./ services/cfbs/modules/package-method-winget/",
+        "policy_files services/cfbs/modules/package-method-winget/",
+        "bundles package_method_winget winget_installed"
       ]
     },
     {
