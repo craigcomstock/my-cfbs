@@ -144,6 +144,16 @@
         "directory ./ services/cfbs/modules/package-method-winget/",
         "policy_files services/cfbs/modules/package-method-winget/",
         "bundles package_method_winget winget_installed"
+      ],
+      "input": [
+        {
+          "type": "string",
+          "variable": "package_method_winget_accept_source_agreements",
+          "namespace": "data",
+          "bundle": "package_method_winget",
+          "label": "Accept Source Agreements",
+          "question": "Would you like to accept source agreements for winget inventory and packages promises? [yes|no]"
+        }
       ]
     },
     {
