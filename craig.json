@@ -1,6 +1,6 @@
 {
   "variables": {
-    "data:package_method_winget.accept_source_agreements": { "value": "yes" },
-    "data:package_method_winget.accept_package_agreements": { "value": "yes" }
+    "data:package_method_winget.package_method_winget_accept_source_agreements": { "value": "yes" },
+    "data:package_method_winget.package_method_winget_accept_package_agreements": { "value": "yes" }
   }
 }
