@@ -142,6 +142,7 @@
       "added_by": "cfbs add",
       "steps": [
         "directory ./ services/cfbs/modules/package-method-winget/",
+ "input package-method-winget/input.json def.json",
         "policy_files services/cfbs/modules/package-method-winget/",
         "bundles package_method_winget winget_installed"
       ],
