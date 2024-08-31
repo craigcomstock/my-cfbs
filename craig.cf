@@ -1,0 +1,8 @@
+bundle agent craig
+{
+  packages:
+    windows::
+      "Microsoft.WindowsTerminal"
+        package_method => winget,
+        package_policy => "add";
+}
