@@ -257,8 +257,7 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "directory ./ services/cfbs/override/",
-        "policy_files services/cfbs/override/"
+        "directory ./ ./"
       ]
     }
   ]
