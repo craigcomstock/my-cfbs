@@ -123,7 +123,7 @@
       "name": "powershell-execution-policy",
       "description": "Inventory and bundle for PowerShell Execution Policy",
       "url": "https://github.com/craigcomstock/modules",
-"commit": "5892721443da66b4033f730d13cdc4322b84ad8e",
+      "commit": "5892721443da66b4033f730d13cdc4322b84ad8e",
       "subdirectory": "management/powershell-execution-policy",
       "added_by": "cfbs add",
       "steps": [
@@ -136,7 +136,7 @@
       "name": "package-method-winget",
       "description": "Package method for Windows winget package manager.",
       "url": "https://github.com/craigcomstock/modules",
-"commit": "5892721443da66b4033f730d13cdc4322b84ad8e",
+      "commit": "5892721443da66b4033f730d13cdc4322b84ad8e",
       "subdirectory": "management/package-method-winget",
       "dependencies": ["powershell-execution-policy"],
       "added_by": "cfbs add",
@@ -250,6 +250,16 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["json ./craig.json def.json"]
+    },
+    {
+      "name": "./override/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/override/",
+        "policy_files services/cfbs/override/"
+      ]
     }
   ]
 }
