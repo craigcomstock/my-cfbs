@@ -144,7 +144,6 @@
         "input ./input.json def.json",
         "directory ./ services/cfbs/modules/package-method-winget/",
         "policy_files services/cfbs/modules/package-method-winget/",
-        "json inventory.json def.json",
         "bundles package_method_winget:package_method_winget winget_installed:winget_installed"
       ],
       "input": [
