@@ -148,11 +148,19 @@
       "input": [
         {
           "type": "string",
-          "variable": "package_method_winget_accept_source_agreements",
-          "namespace": "data",
+          "variable": "accept_source_agreements",
+          "namespace": "package_method_winget",
           "bundle": "package_method_winget",
           "label": "Accept Source Agreements",
           "question": "Would you like to accept source agreements for winget inventory and packages promises? [yes|no]"
+        },
+        {
+          "type": "string",
+          "variable": "accept_package_agreements",
+          "namespace": "package_method_winget",
+          "bundle": "package_method_winget",
+          "label": "Accept Package Agreements",
+          "question": "Would you like to accept package agreements for winget inventory and packages promises? [yes|no]"
         }
       ]
     },
