@@ -136,7 +136,7 @@
       "name": "package-method-winget",
       "description": "Package method for Windows winget package manager.",
       "url": "https://github.com/craigcomstock/modules",
-      "commit": "dc9df31590d3de343f43e32a18953ebbb6673c81",
+"commit": "8f298edb2a542847a161b5076c64551503a452f5",
       "subdirectory": "management/package-method-winget",
       "dependencies": ["powershell-execution-policy"],
       "added_by": "cfbs add",
