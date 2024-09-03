@@ -136,8 +136,7 @@
       "name": "package-method-winget",
       "description": "Package method for Windows winget package manager.",
       "url": "https://github.com/craigcomstock/modules",
-"commit": "dc9df31590d3de343f43e32a18953ebbb6673c81",
-
+      "commit": "dc9df31590d3de343f43e32a18953ebbb6673c81",
       "subdirectory": "management/package-method-winget",
       "dependencies": ["powershell-execution-policy"],
       "added_by": "cfbs add",
@@ -145,6 +144,7 @@
         "input ./input.json def.json",
         "directory ./ services/cfbs/modules/package-method-winget/",
         "policy_files services/cfbs/modules/package-method-winget/",
+        "json package_inventory.json def.json",
         "bundles package_method_winget:package_method_winget winget_installed"
       ],
       "input": [
@@ -243,6 +243,13 @@
       "steps": [
         "copy ./upgrade_all_packages.cf services/autorun/upgrade_all_packages.cf"
       ]
+    },
+    {
+      "name": "./craig.json",
+      "description": "Local augments file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["json ./craig.json def.json"]
     }
   ]
 }
