@@ -29,8 +29,8 @@ bundle common package_module_knowledge
     slackware::
       "platform_default" string => "slackpkg";
 
-    windows::
-      "platform_default" string => "winget";
+#    windows::
+#      "platform_default" string => "winget";
 
     alpinelinux::
       "platform_default" string => "apk";
