@@ -136,7 +136,7 @@
       "name": "package-method-winget",
       "description": "Package method for Windows winget package manager.",
       "url": "https://github.com/craigcomstock/modules",
-"commit": "a7de3694aa9f9bd227da48eddffecc92e38fe9c8",
+      "commit": "a7de3694aa9f9bd227da48eddffecc92e38fe9c8",
       "subdirectory": "management/package-method-winget",
       "dependencies": ["powershell-execution-policy"],
       "added_by": "cfbs add",
@@ -226,13 +226,6 @@
           "while": "Specify another file you want deleted on your hosts?"
         }
       ]
-    },
-    {
-      "name": "./craig.json",
-      "description": "Local augments file added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": ["json ./craig.json def.json"]
     },
     {
       "name": "upgrade-all-packages",
