@@ -30,7 +30,7 @@ bundle common package_module_knowledge
       "platform_default" string => "slackpkg";
 
     windows::
-      "platform_default" string => "winget";
+      "platform_default" string => "winget2";
 
     alpinelinux::
       "platform_default" string => "apk";
@@ -449,6 +449,29 @@ basedir=default";
 
 }
 
+body package_method winget2
+{
+      package_changes => "bulk";
+      package_name_convention   => "$(name)";
+      package_delete_convention => "$(name)";
+
+      package_installed_regex => ".*";
+      # Note that package_list_name_regex does not allow for commas inside of package names as parsing that from ConvertTo-Csv below would be too complex
+      package_list_name_regex => '^"([^"]*)",.*';
+      package_list_version_regex => '.*,"([^"]*)".*';
+
+
+      # Here we use the Get-WinGetPackage Cmdlet because it is easier to produce easily parsed information that way
+      package_list_command   => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"Get-WinGetPackage | Select Id,InstalledVersion | ConvertTo-Csv ";
+      package_delete_command => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"Uninstall-WinGetPackage ";
+
+      # Here we use winget instead of PowerShell Cmdlets because we can provide the --accept-source-agreements and --accept-package-agreements this way which gets around dialog prompts
+      package_method_winget:accept_source_agreements.package_method_winget:accept_package_agreements::
+        package_add_command    => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"winget install --accept-source-agreements --accept-package-agreements ";
+      !package_method_winget:accept_source_agreements|!package_method_winget:accept_package_agreements::
+        # the package name is appended to the end of this command, so we try here to make a command which conveys information only
+        package_add_command => "$(sys.winsysdir)\\WindowsPowerShell\\v1.0\\powershell.exe -Command \"Write-Host You must set some vars for package-method-winget to work;exit 1; rem Trying to add package:";
+}
 body package_method pip(flags)
 # @depends common_knowledge pip_knowledge
 # @brief Python `pip' package management
