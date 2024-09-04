@@ -1,5 +1,8 @@
 {
   "variables": {
+"data:winget_installed.allow_powershell_execution_policy_change": {
+  "value": "yes"
+},
     "default:def.additional_package_inventory_modules": {
       "value": {
         "windows": [
