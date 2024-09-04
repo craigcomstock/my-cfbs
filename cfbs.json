@@ -133,39 +133,6 @@
       ]
     },
     {
-      "name": "package-method-winget",
-      "description": "Package method for Windows winget package manager.",
-      "url": "https://github.com/craigcomstock/modules",
-"commit": "3b491b600d6c3d093284586e2b05e005265b3716",
-      "subdirectory": "management/package-method-winget",
-      "dependencies": ["powershell-execution-policy"],
-      "added_by": "cfbs add",
-      "steps": [
-        "input ./input.json def.json",
-        "directory ./ services/cfbs/modules/package-method-winget/",
-        "policy_files services/cfbs/modules/package-method-winget/",
-        "bundles package_method_winget:package_method_winget winget_installed:winget_installed"
-      ],
-      "input": [
-        {
-          "type": "string",
-          "variable": "accept_source_agreements",
-          "namespace": "package_method_winget",
-          "bundle": "package_method_winget",
-          "label": "Accept Source Agreements",
-          "question": "Would you like to accept source agreements for winget inventory and packages promises? [yes|no]"
-        },
-        {
-          "type": "string",
-          "variable": "accept_package_agreements",
-          "namespace": "package_method_winget",
-          "bundle": "package_method_winget",
-          "label": "Accept Package Agreements",
-          "question": "Would you like to accept package agreements for winget inventory and packages promises? [yes|no]"
-        }
-      ]
-    },
-    {
       "name": "./windows-capability/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
@@ -255,9 +222,7 @@
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
       "added_by": "cfbs add",
-      "steps": [
-        "directory ./ ./"
-      ]
+      "steps": ["directory ./ ./"]
     }
   ]
 }
