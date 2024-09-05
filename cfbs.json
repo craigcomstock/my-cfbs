@@ -228,7 +228,7 @@
       "name": "package-method-winget",
       "description": "Package method for Windows winget package manager.",
       "url": "https://github.com/craigcomstock/modules",
-"commit": "b14365d8e1e680e5b6c83aeb09e7e331a76f079c",
+"commit": "d8b568f7eeb0c2824d735c98171809ac7cb2aac8",
       "subdirectory": "management/package-method-winget",
       "dependencies": ["powershell-execution-policy"],
       "added_by": "cfbs add",
@@ -242,6 +242,7 @@
         {
           "type": "string",
           "variable": "accept_source_agreements",
+"namespace": "data",
           "bundle": "package_method_winget",
           "label": "Accept Source Agreements",
           "question": "Would you like to accept source agreements for winget inventory and packages promises? [yes|no]"
@@ -249,6 +250,7 @@
         {
           "type": "string",
           "variable": "accept_package_agreements",
+"namespace": "data",
           "bundle": "package_method_winget",
           "label": "Accept Package Agreements",
           "question": "Would you like to accept package agreements for winget inventory and packages promises? [yes|no]"
@@ -256,6 +258,7 @@
         {
           "type": "string",
           "variable": "allow_powershell_execution_policy_change",
+"namespace": "data",
           "bundle": "winget_installed",
           "label": "Allow necessary PowerShell Execution Policy change: LocalMachine set to Unrestricted in order to install winget and cmdlets",
           "question": "Would you like to allow this module to change PowerShell Execution Policy to LocalMachine:Unrestricted? [yes|no]"
