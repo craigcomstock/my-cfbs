@@ -122,8 +122,8 @@
     {
       "name": "powershell-execution-policy",
       "description": "Inventory and bundle for PowerShell Execution Policy",
-      "url": "https://github.com/craigcomstock/modules",
-      "commit": "5892721443da66b4033f730d13cdc4322b84ad8e",
+      "url": "https://github.com/cfengine/modules",
+"commit": "dc6e25ea429b45c91e5c56497335321bf8fd5495",
       "subdirectory": "management/powershell-execution-policy",
       "added_by": "cfbs add",
       "steps": [
