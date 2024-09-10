@@ -120,19 +120,6 @@
       ]
     },
     {
-      "name": "powershell-execution-policy",
-      "description": "Inventory and bundle for PowerShell Execution Policy",
-      "url": "https://github.com/cfengine/modules",
-      "commit": "dc6e25ea429b45c91e5c56497335321bf8fd5495",
-      "subdirectory": "management/powershell-execution-policy",
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/powershell-execution-policy/",
-        "policy_files services/cfbs/powershell-execution-policy/",
-        "bundles powershell_execution_policy_inventory"
-      ]
-    },
-    {
       "name": "./windows-capability/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
