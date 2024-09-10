@@ -1,0 +1,29 @@
+[
+  {
+    "type": "string",
+    "variable": "accept_source_agreements",
+    "namespace": "data",
+    "bundle": "package_method_winget",
+    "label": "Accept Source Agreements",
+    "question": "Would you like to accept source agreements for winget packages promises? [yes|no]",
+    "response": "yes"
+  },
+  {
+    "type": "string",
+    "variable": "accept_package_agreements",
+    "namespace": "data",
+    "bundle": "package_method_winget",
+    "label": "Accept Package Agreements",
+    "question": "Would you like to accept package agreements for winget packages promises? [yes|no]",
+    "response": "yes"
+  },
+  {
+    "type": "string",
+    "variable": "allow_powershell_execution_policy_change",
+    "namespace": "data",
+    "bundle": "winget_installed",
+    "label": "Allow necessary PowerShell Execution Policy change: LocalMachine set to Unrestricted in order to install winget and cmdlets",
+    "question": "Would you like to allow this module to change PowerShell Execution Policy to LocalMachine:Unrestricted? [yes|no]",
+    "response": "yes"
+  }
+]
