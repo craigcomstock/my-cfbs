@@ -29,12 +29,12 @@ bundle agent windows_capability_inventory
 bundle agent windows_capability_present(capability_name)
 {
   methods:
-    "Present" usebundle => _windows_capability_state(capability_name, "Present");
+    "Present" usebundle => _windows_capability_state("${capability_name}", "Present");
 }
 bundle agent windows_optionial_capability_NotPresent(capability_name)
 {
   methods:
-    "NotPresent" usebundle => _windows_capability_state(capability_name, "NotPresent");
+    "NotPresent" usebundle => _windows_capability_state("${capability_name}", "NotPresent");
 }
 
 bundle agent _windows_capability_state(capability_name, desired_state)
