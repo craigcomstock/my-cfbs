@@ -26,28 +26,28 @@ bundle agent windows_capability_inventory
        contain => powershell;
 }
 
-bundle agent add_windows_capability(capability_name)
+bundle agent windows_capability_present(capability_name)
 {
   methods:
-    "Add" usebundle => _windows_capability_state(capability_name, "Add");
+    "Present" usebundle => _windows_capability_state(capability_name, "Present");
 }
-bundle agent remove_windows_optionial_capability(capability_name)
+bundle agent windows_optionial_capability_NotPresent(capability_name)
 {
   methods:
-    "Remove" usebundle => _windows_capability_state(capability_name, "Remove");
+    "NotPresent" usebundle => _windows_capability_state(capability_name, "NotPresent");
 }
 
 bundle agent _windows_capability_state(capability_name, desired_state)
 {
   vars:
-    "state_prefix" string => string_replace("${desired_state}", "d", ""); # we can do this because we control the inputs above
+    "operation" string => if(strcmp("${desired}state}", "Present"), "Add", "Remove");
   classes:
     windows::
-      "state_not_ok" expression => returnszero("if((Get-WindowsCapability -Online -Name ${capability_name} | select-object -expandproperty state) -ne '${state_name}'){exit 0}else{exit 1}", "powershell");
+      "state_not_ok" expression => returnszero("if((Get-WindowsCapability -Online -Name ${capability_name} | select-object -expandproperty state) -ne '${desired_state}'){exit 0}else{exit 1}", "powershell");
 
   commands:
     windows.state_not_ok::
-      "${state_prefix}-WindowsCapability -Online -Name ${capability_name}"
+      "${operation}-WindowsCapability -Online -Name ${capability_name}"
         classes => if_ok("state_changed"),
         contain => powershell;
 
