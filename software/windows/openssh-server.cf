@@ -9,10 +9,10 @@ bundle agent openssh_server_installed
 {
   methods:
     windows::
-      "Get OpenSSH.Server* capability Name"
-        comment => "Usually the Name is OpenSSH.Server~~~~<version>",
-        usebundle => get_windows_capability("OpenSSH.Server*"),
-        useresult => "search_results";
+#      "Get OpenSSH.Server* capability Name"
+#        comment => "Usually the Name is OpenSSH.Server~~~~<version>",
+#        usebundle => get_windows_capability("OpenSSH.Server*"),
+#        useresult => "search_results";
 #length(getvalues(search_results)) != 1 then boom, otherwise take search_results[0] as the name to use below
       "OpenSSH.Server*" 
                 usebundle => add_windows_capability("${this.promiser}"),
