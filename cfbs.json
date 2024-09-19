@@ -283,6 +283,17 @@
       "dependencies": ["autorun", "every-minute"],
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "./software/windows/openssh-server.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./software/windows/openssh-server.cf services/cfbs/software/windows/openssh-server.cf",
+        "policy_files services/cfbs/software/windows/openssh-server.cf",
+        "bundles openssh_server"
+      ]
     }
   ]
 }
