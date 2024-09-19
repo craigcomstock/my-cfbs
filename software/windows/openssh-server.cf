@@ -29,6 +29,6 @@ bundle agent openssh_server_installed
 
 body service_method winmethod
 {
-  service_type = "windows";
+  service_type => "windows";
   service_autostart_policy => "boot_time";
 }
