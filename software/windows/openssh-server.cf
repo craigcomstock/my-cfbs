@@ -15,5 +15,6 @@ bundle agent openssh_server_installed
 
   commands:
     windows.openssh_added::
-      "Set-Service -Name sshd -StartupType 'Automatic'; Start-Service sshd";
+      "Set-Service -Name sshd -StartupType 'Automatic' Start-Service sshd"
+        contain => powershell;
 }
