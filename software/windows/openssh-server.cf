@@ -18,8 +18,6 @@ bundle agent openssh_server_installed
       "sshd"
         service_policy => "start",
         service_method => winmethod;
-#      "Set-Service -Name sshd -StartupType 'Automatic' Start-Service sshd"
-# Get-Service -Name sshd | select-object -expandproperty status
 }
 
 body service_method winmethod
