@@ -13,7 +13,8 @@ bundle agent windows_capability_inventory
   vars:
     windows::
       "${this.bundle}_cache_file" string => "${sys.statedir}${const.dirsep}${this.bundle}_cache.csv";
-      "${this.bundle}_command" string => "Get-WindowsCapability -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${${this.bundle}_cache_file}'";
+      "${this.bundle}_command" string => "Get-WindowsCapability -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${${this.bundle}_cache_file}'",
+        if => not(fileexists("${${this.bundle}_cache_file}"));
       "csv" data => readcsv("${${this.bundle}_cache_file}");
       "i" slist => getindices("csv");
       "${this.bundle}[${i}]" string => "${csv[${i}][0]}:${csv[${i}][1]}",
@@ -47,5 +48,11 @@ bundle agent _windows_capability_state(capability_name, desired_state)
   commands:
     windows.state_not_ok::
       "${state_prefix}-WindowsCapability -Online -FeatureName ${capability_name}"
+        classes => if_ok("state_changed"),
         contain => powershell;
+
+  files:
+    windows.state_changed_ok::
+      "windows_capability_inventory_cache_file"
+        delete => tidy;
 }
