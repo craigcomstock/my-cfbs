@@ -1,0 +1,8 @@
+# instead of docker desktop, let's use containerd
+# https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=containerd
+
+installation script:
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-ContainerdRuntime/install-containerd-runtime.ps1" -o install-containerd-runtime.ps1
+.\install-containerd-runtime.ps1
+
+# ^^^ wow, so much code in that script! a lot of good tips and tricks/info!
