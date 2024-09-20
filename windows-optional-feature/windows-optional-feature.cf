@@ -1,11 +1,16 @@
-# TODO: set system-wide cmdb data for "ok to restart"
-# TODO: setup some sort of "signalling" so that at the END of the agent run, we restart?
 # https://learn.microsoft.com/en-us/powershell/module/dism/get-windowsoptionalfeature?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/powershell/module/dism/disable-windowsoptionalfeature?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/powershell/module/dism/enable-windowsoptionalfeature?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v#enable-hyper-v-using-powershell
-# TODO add cmdb class to disable this inventory
+
 bundle agent windows_optional_feature
+{
+  methods:
+    windows.!data:disable_windows_optional_feature_inventory::
+      "windows_optional_feature_inventory";
+}
+
+bundle agent windows_optional_feature_inventory
 {
   vars:
     windows::
@@ -22,11 +27,9 @@ bundle agent windows_optional_feature
        contain => powershell;
 }
 
-# TODO, maybe make enable_ and disable_ bundles instead, to match the PowerShell commands :p
-bundle agent set_windows_optional_feature_state(feature_name, desired_state)
+bundle agent windows_optional_feature_state(feature_name, desired_state)
 {
   vars:
-# convert a flexible desired state of enable,Enable,Enabled,enabled to that which is expected from Get- and Enable-|Disable- cmdlets
     "state_name" string => ifelse(regcmp("enable*", string_downcase("${desired_state}")), "Enabled", "Disabled");
     "state_prefix" string => ifelse(regcmp("enable*", string_downcase("${desired_state}")), "Enable", "Disable");
   commands:
@@ -41,9 +44,15 @@ bundle agent set_windows_optional_feature_state(feature_name, desired_state)
         classes => if_repaired("restart_needed");
 # -NoRestart so that we don't wait forever for a Yes reply from a user
 # then if we ran this command due to needing to, restart below.
-# TODO: need a "no restarts" cmdb item
 
   classes:
     windows::
       "default:restart_needed" expression => "restart_needed";
+}
+body classes kept0_repaired1(kept0_class, repaired1_class)
+{
+  kept_returncodes => { "0" };
+  repaired_returncodes => { "1" };
+  promise_kept => { "${kept0_class}" };
+  promise_repaired => { "${repaired1_class}" };
 }

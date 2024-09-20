@@ -294,6 +294,17 @@
         "policy_files services/cfbs/software/windows/openssh-server.cf",
         "bundles openssh_server"
       ]
+    },
+    {
+      "name": "./software/windows/windows-containers.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./software/windows/windows-containers.cf services/cfbs/software/windows/windows-containers.cf",
+        "policy_files services/cfbs/software/windows/windows-containers.cf",
+        "bundles windows_containers"
+      ]
     }
   ]
 }
