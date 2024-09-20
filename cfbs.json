@@ -87,17 +87,6 @@
       ]
     },
     {
-      "name": "./software/",
-      "description": "Local subdirectory added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/software/",
-        "policy_files services/cfbs/software/",
-        "bundles ed docker zoom"
-      ]
-    },
-    {
       "name": "./windows-optional-feature/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
