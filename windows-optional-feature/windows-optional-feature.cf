@@ -3,6 +3,23 @@
 # https://learn.microsoft.com/en-us/powershell/module/dism/enable-windowsoptionalfeature?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v#enable-hyper-v-using-powershell
 
+bundle agent windows_optional_feature_enabled( feature_name )
+{
+  methods:
+    "Enabled" usebundle => windows_optional_feature:_promise_state("${feature_name}", "Enabled");
+}
+
+bundle agent windows_optional_feature_disabled( feature_name )
+{
+  methods:
+    "Disabled" usebundle => windows_optional_feature:_promise_state("${feature_name}", "Disabled");
+}
+
+body file control
+{
+  namespace => "windows_optional_feature";
+}
+
 bundle agent windows_optional_feature
 {
   methods:
@@ -14,45 +31,42 @@ bundle agent windows_optional_feature_inventory
 {
   vars:
     windows::
-      "${this.bundle}_cache_file" string => "${sys.statedir}${const.dirsep}${this.bundle}_cache.csv";
-      "${this.bundle}_command" string => "Get-WindowsOptionalFeature -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${${this.bundle}_cache_file}'";
-      "csv" data => readcsv("${${this.bundle}_cache_file}");
+      "cache_file" string => "${sys.statedir}${const.dirsep}${this.bundle}_cache.csv";
+      "command" string => "Get-WindowsOptionalFeature -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${cache_file}'";
+      "csv" data => readcsv("${cache_file}");
       "i" slist => getindices("csv");
       "${this.bundle}[${i}]" string => "${csv[${i}][0]}:${csv[${i}][1]}",
         meta => { "inventory", "attribute_name=Windows Optional Features" };
 
-  commands:
-   windows::
-     "${${this.bundle}_command}"
-       contain => powershell;
-}
+  files:
+    "${cache_file}"
+      file_select => default:days_old(1),
+      delete => default:tidy;
 
-bundle agent windows_optional_feature_state(feature_name, desired_state)
-{
-  vars:
-    "state_name" string => ifelse(regcmp("enable*", string_downcase("${desired_state}")), "Enabled", "Disabled");
-    "state_prefix" string => ifelse(regcmp("enable*", string_downcase("${desired_state}")), "Enable", "Disable");
   commands:
     windows::
-      "if((Get-WindowsOptionalFeature -Online -FeatureName ${feature_name} | select-object -expandproperty state) -ne '${state_name}'){exit 0}else{exit 1}"
-        contain => powershell,
-        classes => kept0_repaired1("state_not_ok","state_ok");
+     "${command}"
+       if => not(fileexists("${cache_file}")),
+       contain => default:powershell;
+}
+
+bundle agent promise_state(feature_name, desired_state)
+{
+  vars:
+    "operation" string => ifelse(strcmp("${desired_state}", "Enabled"), "Enable", "Disable");
+  classes:
+    windows::
+      "state_not_ok" expression => returnszero(      "if((Get-WindowsOptionalFeature -Online -FeatureName ${feature_name} | select-object -expandproperty state) -ne '${state_name}'){exit 0}else{exit 1}", "powershell");
+  commands:
     windows.state_not_ok::
 # -All enables parent features if need be
-      "${state_prefix}-WindowsOptionalFeature -Online -FeatureName ${feature_name} -NoRestart -All"
-        contain => powershell,
-        classes => if_repaired("restart_needed");
+      "${operation}-WindowsOptionalFeature -Online -FeatureName ${feature_name} -NoRestart -All"
+        contain => default:powershell,
+        classes => default:if_repaired("restart_needed");
 # -NoRestart so that we don't wait forever for a Yes reply from a user
 # then if we ran this command due to needing to, restart below.
 
   classes:
     windows::
       "default:restart_needed" expression => "restart_needed";
-}
-body classes kept0_repaired1(kept0_class, repaired1_class)
-{
-  kept_returncodes => { "0" };
-  repaired_returncodes => { "1" };
-  promise_kept => { "${kept0_class}" };
-  promise_repaired => { "${repaired1_class}" };
 }

@@ -39,12 +39,13 @@ bundle agent windows_capability_inventory
 
   files:
     "${cache_file}"
-      file_select => defuult:days_old(1),
+      file_select => default:days_old(1),
       delete => default:tidy;
 
   commands:
    windows::
      "${command}"
+       if => not(fileexists("${cache_file}")),
        contain => default:powershell;
 }
 
