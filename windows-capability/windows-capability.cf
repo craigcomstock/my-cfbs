@@ -1,3 +1,20 @@
+bundle agent windows_capability_present(capability_name)
+{
+  methods:
+    "Present" usebundle => windows_capability:_windows_capability_state("${capability_name}", "Present");
+}
+bundle agent windows_optionial_capability_NotPresent(capability_name)
+{
+  methods:
+    "NotPresent" usebundle => windows_capability:_windows_capability_state("${capability_name}", "NotPresent");
+}
+
+# start namespace here after we define the generally usable bundles to manage capabilities (Present, NotPresent)
+body file control
+{
+  namespace => "windows_capability";
+}
+
 bundle agent windows_capability
 {
   methods:
@@ -12,30 +29,25 @@ bundle agent windows_capability_inventory
 {
   vars:
     windows::
-      "${this.bundle}_cache_file" string => "${sys.statedir}${const.dirsep}${this.bundle}_cache.csv";
-      "${this.bundle}_command" string => "Get-WindowsCapability -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${${this.bundle}_cache_file}'",
-        if => not(fileexists("${${this.bundle}_cache_file}"));
-      "csv" data => readcsv("${${this.bundle}_cache_file}");
+      "cache_file" string => "${sys.statedir}${const.dirsep}${this.bundle}_cache.csv";
+      "command" string => "Get-WindowsCapability -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${cache_file}'";
+
+      "csv" data => readcsv("${cache_file}");
       "i" slist => getindices("csv");
       "${this.bundle}[${i}]" string => "${csv[${i}][0]}:${csv[${i}][1]}",
         meta => { "inventory", "attribute_name=Windows Capability" };
 
+  files:
+    "${cache_file}"
+      file_select => defuult:days_old(1),
+      delete => default:tidy;
+
   commands:
    windows::
-     "${${this.bundle}_command}"
-       contain => powershell;
+     "${command}"
+       contain => default:powershell;
 }
 
-bundle agent windows_capability_present(capability_name)
-{
-  methods:
-    "Present" usebundle => _windows_capability_state("${capability_name}", "Present");
-}
-bundle agent windows_optionial_capability_NotPresent(capability_name)
-{
-  methods:
-    "NotPresent" usebundle => _windows_capability_state("${capability_name}", "NotPresent");
-}
 
 bundle agent _windows_capability_state(capability_name, desired_state)
 {
@@ -50,11 +62,11 @@ reports:
   commands:
     windows.state_not_ok::
       "${operation}-WindowsCapability -Online -Name ${capability_name}"
-        classes => if_ok("state_changed"),
-        contain => powershell;
+        classes => default:if_ok("state_changed"),
+        contain => default:powershell;
 
   files:
     windows.state_changed_ok::
       "windows_capability_inventory_cache_file"
-        delete => tidy;
+        delete => default:tidy;
 }
