@@ -13,7 +13,7 @@ bundle agent windows_capability
 {
   methods:
     windows.!data:disable_windows_capability_inventory::
-      "windows_capability:inventory";
+      "windows_capability:_inventory";
 }
 
 body file control
@@ -24,7 +24,7 @@ body file control
 # https://learn.microsoft.com/en-us/powershell/module/dism/get-windowscapability?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/powershell/module/dism/remove-windowscapability?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/powershell/module/dism/add-windowscapability?view=windowsserver2022-ps
-bundle agent inventory
+bundle agent _inventory
 {
   vars:
     windows::

@@ -19,7 +19,7 @@ bundle agent windows_optional_feature
 {
   methods:
     windows.!data:disable_windows_optional_feature_inventory::
-      "windows_optional_feature:inventory";
+      "windows_optional_feature:_inventory";
 }
 
 body file control
@@ -27,7 +27,7 @@ body file control
   namespace => "windows_optional_feature";
 }
 
-bundle agent inventory
+bundle agent _inventory
 {
   vars:
     windows::
@@ -50,7 +50,7 @@ bundle agent inventory
        contain => default:powershell;
 }
 
-bundle agent promise_state(feature_name, desired_state)
+bundle agent _promise_state(feature_name, desired_state)
 {
   vars:
     "operation" string => ifelse(strcmp("${desired_state}", "Enabled"), "Enable", "Disable");
