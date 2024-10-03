@@ -25,7 +25,7 @@ bundle agent windows_containers_installed
 
 # https://docs.docker.com/desktop/install/windows-install/
 # use hyper-v, using wsl2 requires a LARGE ubuntu download
-bundle agent windows_docker_dependencies
+bundle agent windows_containers_dependencies
 {
   methods:
     windows::
