@@ -14,13 +14,10 @@ bundle agent windows_containers_installed
       "windows_containers_dependencies";
 
   packages:
-    windows.have_winget::
+    windows::
       "Docker.DockerDesktop"
         package_method => winget,
         package_policy => "add";
-    windows.!have_winget::
-      # TODO: download and install from https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=docs-driven-download-win-amd64&_gl=1*7hq75r*_gcl_au*NjkxNzMuMTcyNDc4NjY2Mw..*_ga*MTIxNDYzNjE2OS4xNzI0NzgwMTM0*_ga_XJWPQMJYHQ*MTcyNjg1MTYwMi44LjEuMTcyNjg1MTYxNS40Ny4wLjA.
-      # That URL comes from https://docs.docker.com/desktop/install/windows-install/
 }
 
 # https://docs.docker.com/desktop/install/windows-install/
