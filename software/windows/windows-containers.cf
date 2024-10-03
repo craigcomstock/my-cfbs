@@ -19,15 +19,15 @@ bundle agent _installed
 {
   methods:
     windows::
-      "windows_containers_dependencies",
-      classes => if_repaired("dependencies_installed");
+      "windows_containers_dependencies"
+      classes => default:if_repaired("dependencies_installed");
 
   packages:
     windows.dependencies_installed::
       "Docker.DockerDesktop"
-        package_method => winget,
+        package_method => default:winget,
         package_policy => "add",
-        classes => if_repaired("docker_installed");
+        classes => default:if_repaired("docker_installed");
 
 #  services:
 #    windows.dependencies_installed.docker_installed::
@@ -40,6 +40,6 @@ bundle agent windows_containers_dependencies
 {
   methods:
     windows::
-      "enable-containers" usebundle => windows_optional_feature_enabled("containers");
-      "enable-hyperv" usebundle => windows_optional_feature_enabled("Microsoft-Hyper-V");
+      "enable-containers" usebundle => default:windows_optional_feature_enabled("containers");
+      "enable-hyperv" usebundle => default:windows_optional_feature_enabled("Microsoft-Hyper-V");
 }
