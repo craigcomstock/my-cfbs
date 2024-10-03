@@ -1,3 +1,5 @@
+# https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce
+# One physical computer system running Windows 10 or 11 Professional or Enterprise with Anniversary Update (version 1607) or later.
 bundle agent windows_containers
 {
   methods:

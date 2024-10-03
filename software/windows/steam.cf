@@ -1,0 +1,15 @@
+bundle agent steam
+{
+  methods:
+    data:steam_installed::
+      "steam_installed";
+}
+
+bundle agent steam_installed
+{
+  packages:
+    windows::
+      "Valve.Steam"
+        package_method => winget,
+        package_policy => "add";
+}

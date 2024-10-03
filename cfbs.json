@@ -283,6 +283,17 @@
         "policy_files services/cfbs/software/windows/windows-containers.cf",
         "bundles windows_containers"
       ]
+    },
+    {
+      "name": "./software/windows/steam.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./software/windows/steam.cf services/cfbs/software/windows/steam.cf",
+        "policy_files services/cfbs/software/windows/steam.cf",
+        "bundles steam"
+      ]
     }
   ]
 }
