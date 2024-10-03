@@ -98,17 +98,6 @@
       ]
     },
     {
-      "name": "./lib/",
-      "description": "Local subdirectory added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/lib/",
-        "policy_files services/cfbs/lib/",
-        "bundles reboot"
-      ]
-    },
-    {
       "name": "./windows-capability/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
