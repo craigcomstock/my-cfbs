@@ -18,7 +18,7 @@ bundle agent windows_containers_installed
 
   packages:
     windows::
-      "Stevedore"
+      "Docker.DockerDesktop"
         package_method => winget,
         package_policy => "add";
 }
