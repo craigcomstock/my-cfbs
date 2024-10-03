@@ -1,5 +1,8 @@
 # https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce
 # One physical computer system running Windows 10 or 11 Professional or Enterprise with Anniversary Update (version 1607) or later.
+
+# TODO, maybe try BuildKit instead of docker, docker desktop, containerd or podman?
+# https://techcommunity.microsoft.com/t5/containers/getting-started-build-a-basic-hello-world-image-with-buildkit/ba-p/4096154
 bundle agent windows_containers
 {
   methods:
@@ -15,7 +18,7 @@ bundle agent windows_containers_installed
 
   packages:
     windows::
-      "Docker.DockerDesktop"
+      "Stevedore"
         package_method => winget,
         package_policy => "add";
 }
