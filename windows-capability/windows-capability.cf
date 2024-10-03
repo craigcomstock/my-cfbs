@@ -9,23 +9,22 @@ bundle agent windows_optionial_capability_NotPresent(capability_name)
     "NotPresent" usebundle => windows_capability:_windows_capability_state("${capability_name}", "NotPresent");
 }
 
-# start namespace here after we define the generally usable bundles to manage capabilities (Present, NotPresent)
+bundle agent windows_capability
+{
+  methods:
+    windows.!data:disable_windows_capability_inventory::
+      "windows_capability:inventory";
+}
+
 body file control
 {
   namespace => "windows_capability";
 }
 
-bundle agent windows_capability
-{
-  methods:
-    windows.!data:disable_windows_capability_inventory::
-      "windows_capability_inventory";
-}
-
 # https://learn.microsoft.com/en-us/powershell/module/dism/get-windowscapability?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/powershell/module/dism/remove-windowscapability?view=windowsserver2022-ps
 # https://learn.microsoft.com/en-us/powershell/module/dism/add-windowscapability?view=windowsserver2022-ps
-bundle agent windows_capability_inventory
+bundle agent inventory
 {
   vars:
     windows::

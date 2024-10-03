@@ -15,19 +15,19 @@ bundle agent windows_optional_feature_disabled( feature_name )
     "Disabled" usebundle => windows_optional_feature:_promise_state("${feature_name}", "Disabled");
 }
 
+bundle agent windows_optional_feature
+{
+  methods:
+    windows.!data:disable_windows_optional_feature_inventory::
+      "windows_optional_feature:inventory";
+}
+
 body file control
 {
   namespace => "windows_optional_feature";
 }
 
-bundle agent windows_optional_feature
-{
-  methods:
-    windows.!data:disable_windows_optional_feature_inventory::
-      "windows_optional_feature_inventory";
-}
-
-bundle agent windows_optional_feature_inventory
+bundle agent inventory
 {
   vars:
     windows::
