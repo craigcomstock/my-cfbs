@@ -294,6 +294,17 @@
         "policy_files services/cfbs/software/windows/steam.cf",
         "bundles steam"
       ]
+    },
+    {
+      "name": "./windows-misc/windows-computer-name.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./windows-misc/windows-computer-name.cf services/cfbs/windows-misc/windows-computer-name.cf",
+        "policy_files services/cfbs/windows-misc/windows-computer-name.cf",
+        "bundles windows_computer_name"
+      ]
     }
   ]
 }

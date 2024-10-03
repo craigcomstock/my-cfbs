@@ -1,0 +1,16 @@
+bundle agent windows_computer_name
+{
+  vars:
+    windows::
+      "hostname" string => execresult("hostname", "powershell");
+
+  classes:
+    windows::
+      "hostname_ok" expression => strcmp("${hostname}", "${data:variables.windows_computer_name}");
+
+  commands:
+    windows.!hostname_ok::
+      "Rename-Computer -NewName ${data:variables.windows_computer_name}"
+        contain => default:powershell,
+        if => isvariable("data:variables.windows_computer_name");
+}
