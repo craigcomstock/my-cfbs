@@ -60,11 +60,11 @@ bundle agent _windows_capability_state(capability_name, desired_state)
   commands:
     windows.state_not_ok::
       "${operation}-WindowsCapability -Online -Name ${capability_name}"
-        classes => default:if_ok("state_changed"),
+        classes => default:results("bundle", "state"),
         contain => default:powershell;
 
   files:
-    windows.state_changed_ok::
-      "windows_capability_inventory_cache_file"
+    windows.state_repaired::
+      "${_inventory.cache_file}"
         delete => default:tidy;
 }
