@@ -283,6 +283,45 @@
         "policy_files services/cfbs/software/windows/xps-viewer.cf",
         "bundles xps_viewer"
       ]
+    },
+    {
+      "name": "windows-capability",
+      "description": "Manage and inventory Windows Capabilities.",
+      "url": "https://github.com/craigcomstock/modules",
+      "commit": "bd14392fe738ae0ba01ece24bb5759f960554c2a",
+      "subdirectory": "management/windows-capability",
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/windows-capability/",
+        "policy_files services/cfbs/windows-capability/",
+        "bundles windows_capability"
+      ]
+    },
+    {
+      "name": "windows-openssh-server",
+      "description": "Optionally install Windows OpenSSH Server.",
+      "url": "https://github.com/craigcomstock/modules",
+      "commit": "bd14392fe738ae0ba01ece24bb5759f960554c2a",
+      "subdirectory": "software/windows",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy windows-openssh-server.cf services/cfbs/software/windows/windows-openssh-server.cf",
+        "policy_files services/cfbs/software/windows/windows-openssh-server.cf",
+        "bundles windows_openssh_server"
+      ]
+    },
+    {
+      "name": "windows-optional-feature",
+      "description": "Manage and inventory Windows Optional Features.",
+      "url": "https://github.com/craigcomstock/modules",
+      "commit": "bd14392fe738ae0ba01ece24bb5759f960554c2a",
+      "subdirectory": "management/windows-optional-feature",
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/windows-optional-feature/",
+        "policy_files services/cfbs/windows-optional-feature/",
+        "bundles windows_optional_feature"
+      ]
     }
   ]
 }
