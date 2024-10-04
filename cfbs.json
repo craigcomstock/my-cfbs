@@ -98,17 +98,6 @@
       ]
     },
     {
-      "name": "./windows-capability/",
-      "description": "Local subdirectory added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/windows-capability/",
-        "policy_files services/cfbs/windows-capability/",
-        "bundles windows_capability"
-      ]
-    },
-    {
       "name": "./craig.cf",
       "description": "Local policy file added using cfbs command line",
       "tags": ["local"],
