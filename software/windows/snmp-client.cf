@@ -1,0 +1,28 @@
+# some tips: https://woshub.com/install-configure-snmp-service-windows/
+bundle agent snmp_client
+{
+  methods:
+    data:snmp_client_installed::
+      "snmp_client_installed";
+}
+
+bundle agent snmp_client_installed
+{
+  methods:
+    windows::
+      "SNMP.Client is installed"
+        usebundle => windows_capability_installed("SNMP.Client"),
+                classes => classes_generic("snmp_client");
+
+  services:
+    windows.snmp_client_ok::
+      "snmp"
+        service_policy => "start",
+        service_method => winmethod;
+}
+
+body service_method winmethod
+{
+  service_type => "windows";
+  service_autostart_policy => "boot_time";
+}
