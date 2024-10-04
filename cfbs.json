@@ -87,17 +87,6 @@
       ]
     },
     {
-      "name": "./windows-optional-feature/",
-      "description": "Local subdirectory added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/windows-optional-feature/",
-        "policy_files services/cfbs/windows-optional-feature/",
-        "bundles windows_optional_feature"
-      ]
-    },
-    {
       "name": "./craig.cf",
       "description": "Local policy file added using cfbs command line",
       "tags": ["local"],
