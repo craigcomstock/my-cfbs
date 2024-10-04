@@ -51,8 +51,6 @@ bundle agent _inventory
 
 bundle agent _windows_capability_state(capability_name, desired_state)
 {
-reports:
-  "_windows_capability_state, capability_name:${capability_name}, desired_state=${desired_state}";
   vars:
     "operation" string => ifelse(strcmp("${desired_state}", "Present"), "Add", "Remove");
   classes:
