@@ -1,7 +1,7 @@
-bundle agent windows_capability_present(capability_name)
+bundle agent windows_capability_installed(capability_name)
 {
   methods:
-    "Present" usebundle => windows_capability:_windows_capability_state("${capability_name}", "Present");
+    "Installed" usebundle => windows_capability:_windows_capability_state("${capability_name}", "Installed");
 }
 bundle agent windows_optionial_capability_NotPresent(capability_name)
 {
@@ -52,7 +52,7 @@ bundle agent _inventory
 bundle agent _windows_capability_state(capability_name, desired_state)
 {
   vars:
-    "operation" string => ifelse(strcmp("${desired_state}", "Present"), "Add", "Remove");
+    "operation" string => ifelse(strcmp("${desired_state}", "Installed"), "Add", "Remove");
   classes:
     windows::
       "state_not_ok" expression => returnszero("if((Get-WindowsCapability -Online -Name ${capability_name} | select-object -expandproperty state) -ne '${desired_state}'){exit 0}else{exit 1}", "powershell");
