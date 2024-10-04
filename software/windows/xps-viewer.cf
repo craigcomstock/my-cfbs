@@ -1,0 +1,14 @@
+bundle agent xps_viewer
+{
+  methods:
+    data:xps_viewer_installed::
+      "xps_viewer_installed";
+}
+
+bundle agent xps_viewer_installed
+{
+  methods:
+    windows::
+      "XPS Viewer is installed"
+        usebundle => windows_capability_installed("XPS.Viewer");
+}

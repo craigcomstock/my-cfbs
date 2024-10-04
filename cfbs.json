@@ -305,6 +305,17 @@
         "policy_files services/cfbs/windows-misc/windows-computer-name.cf",
         "bundles windows_computer_name"
       ]
+    },
+    {
+      "name": "./software/windows/xps-viewer.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./software/windows/xps-viewer.cf services/cfbs/software/windows/xps-viewer.cf",
+        "policy_files services/cfbs/software/windows/xps-viewer.cf",
+        "bundles xps_viewer"
+      ]
     }
   ]
 }
