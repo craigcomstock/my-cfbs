@@ -31,11 +31,11 @@ bundle agent _inventory
 {
   vars:
     windows::
-      "cache_file" string => "${sys.statedir}${const.dirsep}${this.bundle}_cache.csv";
+      "cache_file" string => "${sys.statedir}${const.dirsep}${this.namespace}_cache.csv";
       "command" string => "Get-WindowsOptionalFeature -Online | ConvertTo-Csv -notypeinformation | select-object -skip 1 | Set-Content -Path '${cache_file}'";
       "csv" data => readcsv("${cache_file}");
       "i" slist => getindices("csv");
-      "${this.bundle}[${i}]" string => "${csv[${i}][0]}:${csv[${i}][1]}",
+      "${this.namespace}[${i}]" string => "${csv[${i}][0]}:${csv[${i}][1]}",
         meta => { "inventory", "attribute_name=Windows Optional Features" };
 
   files:
