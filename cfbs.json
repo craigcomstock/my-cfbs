@@ -308,6 +308,14 @@
         "policy_files services/cfbs/windows-optional-feature/",
         "bundles windows_optional_feature"
       ]
+    },
+    {
+      "name": "masterfiles",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
+      "url": "https://github.com/cfengine/masterfiles",
+      "commit": "0aa403ddcea6d9144ec89be7b5101ffa49c549d9",
+      "added_by": "cfbs add",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     }
   ]
 }
