@@ -2,6 +2,7 @@
   "name": "Example project",
   "description": "Example description",
   "type": "policy-set",
+  "git": true,
   "build": [
     {
       "name": "masterfiles",
@@ -25,16 +26,6 @@
       "subdirectory": "reporting/client-initiated-reporting",
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
-    },
-    {
-      "name": "./CFE_knowledge.cf",
-      "description": "Overlay fix for ENT-9693, ldap directory permissions",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": [
-        "copy ./CFE_knowledge.cf cfe_internal/enterprise/CFE_knowledge.cf"
-      ]
     }
-  ],
-  "git": true
+  ]
 }
