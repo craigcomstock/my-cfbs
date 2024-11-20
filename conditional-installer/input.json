@@ -1,43 +1,47 @@
 [
   {
-    "type": "string",
-    "variable": "packages_to_uninstall",
-    "namespace": "conditional_installer",
     "bundle": "main",
     "label": "Uninstall",
+    "namespace": "conditional_installer",
     "question": "Which package(s) would you like to be uninstalled?",
-    "response": "none"
+    "type": "string",
+    "variable": "packages_to_uninstall",
+    "response": ""
   },
   {
-    "type": "list",
-    "variable": "packages_to_install",
-    "namespace": "conditional_installer",
     "bundle": "main",
     "label": "Install",
+    "namespace": "conditional_installer",
+    "response": [
+      {
+        "condition": "any",
+        "packages": "ed",
+        "why": "the standard unix editor"
+      }
+    ],
     "subtype": [
       {
         "key": "packages",
-        "type": "string",
         "label": "Package(s)",
-        "question": "Package(s) to install"
+        "question": "Package(s) to install",
+        "type": "string"
       },
       {
         "key": "condition",
-        "type": "string",
         "label": "Condition",
-        "question": "Condition for where to install"
+        "question": "Condition for where to install",
+        "type": "string"
       },
       {
+        "default": "Unknown",
         "key": "why",
-        "type": "string",
         "label": "Why",
         "question": "Why?",
-        "default": "Unknown"
+        "type": "string"
       }
     ],
-    "while": "Do you want to specify more packages to be installed?",
-    "response": [
-      { "packages": "ed", "condition": "any", "why": "standard unix editor" }
-    ]
+    "type": "list",
+    "variable": "packages_to_install",
+    "while": "Do you want to specify more packages to be installed?"
   }
 ]
