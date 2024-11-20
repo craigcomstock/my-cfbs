@@ -12,7 +12,11 @@
     "label": "Install",
     "namespace": "conditional_installer",
     "response": [
-      { "condition": "", "packages": "ed", "why": "the standard unix editor" }
+      {
+        "condition": "any",
+        "packages": "ed",
+        "why": "the standard unix editor"
+      }
     ],
     "subtype": [
       {
