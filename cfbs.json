@@ -1,0 +1,7 @@
+{
+  "name": "3.21.6 testing",
+  "description": "Example description",
+  "type": "policy-set",
+  "git": true,
+  "build": []
+}
