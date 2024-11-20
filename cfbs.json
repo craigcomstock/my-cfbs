@@ -79,6 +79,22 @@
           "while": "Do you want to specify more packages to be installed?"
         }
       ]
+    },
+    {
+      "name": "windows-capability",
+      "description": "Manage and inventory Windows Capabilities.",
+      "tags": ["supported", "windows", "inventory", "management"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/craigcomstock",
+      "version": "1.0.0",
+      "commit": "9daca3b9e366daeeb53e872685a358c78823f29d",
+      "subdirectory": "management/windows-capability",
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/windows-capability/",
+        "policy_files services/cfbs/windows-capability/",
+        "bundles windows_capability"
+      ]
     }
   ]
 }
