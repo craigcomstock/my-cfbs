@@ -1,0 +1,7 @@
+{
+  "name": "latest-mpf-vanilla",
+  "description": "Just MPF, master, nothing else",
+  "type": "policy-set",
+  "git": true,
+  "build": []
+}
