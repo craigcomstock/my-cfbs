@@ -4,9 +4,9 @@
     "label": "Uninstall",
     "namespace": "conditional_installer",
     "question": "Which package(s) would you like to be uninstalled?",
+    "response": "",
     "type": "string",
-    "variable": "packages_to_uninstall",
-    "response": ""
+    "variable": "packages_to_uninstall"
   },
   {
     "bundle": "main",
@@ -14,7 +14,7 @@
     "namespace": "conditional_installer",
     "response": [
       {
-        "condition": "any",
+        "condition": "!windows",
         "packages": "ed",
         "why": "the standard unix editor"
       }
