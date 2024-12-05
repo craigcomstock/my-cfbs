@@ -17,6 +17,16 @@
         "run EXPLICIT_VERSION=3.24.1 EXPLICIT_RELEASE=1 ./prepare.sh -y",
         "copy ./ ./"
       ]
+    },
+    {
+      "name": "./overlay/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/overlay/",
+        "policy_files services/cfbs/overlay/"
+      ]
     }
   ]
 }
