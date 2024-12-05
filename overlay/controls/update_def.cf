@@ -1,7 +1,6 @@
 bundle common update_def
 # @brief Main default settings for update policy
 {
-{
   classes:
     any::
       "sys_policy_hub_port_exists" expression => isvariable("sys.policy_hub_port");
