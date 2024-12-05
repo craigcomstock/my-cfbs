@@ -1,16 +1,7 @@
 {
-  "name": "latest-mpf-vanilla",
-  "description": "Just MPF, master, nothing else",
+  "name": "Example project",
+  "description": "Example description",
   "type": "policy-set",
   "git": true,
-  "build": [
-    {
-      "name": "masterfiles",
-      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
-      "url": "https://github.com/cfengine/masterfiles",
-      "commit": "bbec246acc998a8ea8b998943bc3ab10aba6e0c7",
-      "added_by": "cfbs init",
-      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
-    }
-  ]
+  "build": []
 }
