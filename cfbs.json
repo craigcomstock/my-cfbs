@@ -189,7 +189,7 @@
       "name": "inventory-windows-services",
       "description": "Inventory running Windows services.",
       "url": "https://github.com/craigcomstock/modules",
-      "commit": "5bed3031ecbd5cfd159538bbddf693f811f3997a",
+      "commit": "3d6e49a68c4d1ca2ad59228d67a79e80f3416210",
       "subdirectory": "inventory",
       "added_by": "cfbs add",
       "steps": [
