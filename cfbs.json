@@ -184,6 +184,19 @@
         "copy ./policy/main.cf services/inventory-systemd/main.cf",
         "json cfbs/def.json def.json"
       ]
+    },
+    {
+      "name": "inventory-windows-services",
+      "description": "Inventory running Windows services.",
+      "url": "https://github.com/craigcomstock/modules",
+      "commit": "9bbb5e8ea73ed64531deebeea0a5f33b9ea90135",
+      "subdirectory": "inventory",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy inventory-windows-services.cf services/cfbs/inventory-windows-services/",
+        "policy_files services/cfbs/inventory-windows-services/",
+        "bundles inventory_windows_services_running"
+      ]
     }
   ]
 }
