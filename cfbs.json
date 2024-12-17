@@ -5,20 +5,6 @@
   "git": true,
   "build": [
     {
-      "name": "masterfiles",
-      "description": "Official CFEngine Masterfiles Policy Framework (MPF).",
-      "tags": ["supported", "base"],
-      "repo": "https://github.com/cfengine/masterfiles",
-      "by": "https://github.com/cfengine",
-      "version": "3.24.1",
-      "commit": "1171e2e50a229d78e2fdd4357a5d07ecc19bdbf4",
-      "added_by": "cfbs init",
-      "steps": [
-        "run EXPLICIT_VERSION=3.24.1 EXPLICIT_RELEASE=1 ./prepare.sh -y",
-        "copy ./ ./"
-      ]
-    },
-    {
       "name": "./overlay/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
@@ -172,20 +158,6 @@
       "added_by": "cfbs add",
       "steps": [
         "copy ./generated-compliance-report.json .no-distrib/compliance-report-definitions/lynis-compliance-report.json"
-      ]
-    },
-    {
-      "name": "inventory-systemd",
-      "description": "Adds reporting data (inventory) for interesting things from systemd.",
-      "tags": ["supported", "inventory", "systemd"],
-      "repo": "https://github.com/nickanderson/cfengine-inventory-systemd",
-      "by": "https://github.com/nickanderson",
-      "version": "0.1.0",
-      "commit": "4b9c0708173d3b5f0855a76063781e2258465788",
-      "added_by": "cfbs add",
-      "steps": [
-        "copy ./policy/main.cf services/inventory-systemd/main.cf",
-        "json cfbs/def.json def.json"
       ]
     }
   ]
