@@ -5,6 +5,20 @@
   "git": true,
   "build": [
     {
+      "name": "masterfiles",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF).",
+      "tags": ["supported", "base"],
+      "repo": "https://github.com/cfengine/masterfiles",
+      "by": "https://github.com/cfengine",
+      "version": "3.24.1",
+      "commit": "1171e2e50a229d78e2fdd4357a5d07ecc19bdbf4",
+      "added_by": "cfbs init",
+      "steps": [
+        "run EXPLICIT_VERSION=3.24.1 EXPLICIT_RELEASE=1 ./prepare.sh -y",
+        "copy ./ ./"
+      ]
+    },
+    {
       "name": "./overlay/",
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
