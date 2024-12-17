@@ -159,6 +159,17 @@
       "steps": [
         "copy ./generated-compliance-report.json .no-distrib/compliance-report-definitions/lynis-compliance-report.json"
       ]
+    },
+    {
+      "name": "inventory-systemd",
+      "description": "Inventory systemd related information",
+      "url": "https://github.com/craigcomstock/cfengine-inventory-systemd",
+      "commit": "f3d005f4141fcd38ced28d8f32707673bb1adb20",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./policy/main.cf services/inventory-systemd/main.cf",
+        "json cfbs/def.json def.json"
+      ]
     }
   ]
 }
