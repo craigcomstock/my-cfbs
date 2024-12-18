@@ -173,6 +173,20 @@
       "steps": [
         "copy ./generated-compliance-report.json .no-distrib/compliance-report-definitions/lynis-compliance-report.json"
       ]
+    },
+    {
+      "name": "inventory-systemd",
+      "description": "Adds reporting data (inventory) for interesting things from systemd.",
+      "tags": ["supported", "inventory", "systemd"],
+      "repo": "https://github.com/nickanderson/cfengine-inventory-systemd",
+      "by": "https://github.com/nickanderson",
+      "version": "0.2.0",
+      "commit": "58961dd09c7fca62fc5e53de4cedc90ebbf55149",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./policy/main.cf services/inventory-systemd/main.cf",
+        "json cfbs/def.json def.json"
+      ]
     }
   ]
 }
