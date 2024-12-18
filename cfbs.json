@@ -175,17 +175,6 @@
       ]
     },
     {
-      "name": "inventory-systemd",
-      "description": "Inventory systemd related information",
-      "url": "https://github.com/craigcomstock/cfengine-inventory-systemd",
-      "commit": "f3d005f4141fcd38ced28d8f32707673bb1adb20",
-      "added_by": "cfbs add",
-      "steps": [
-        "copy ./policy/main.cf services/inventory-systemd/main.cf",
-        "json cfbs/def.json def.json"
-      ]
-    },
-    {
       "name": "inventory-windows-services",
       "description": "Inventory running Windows services.",
       "url": "https://github.com/craigcomstock/modules",
