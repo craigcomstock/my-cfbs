@@ -1,0 +1,7 @@
+{
+  "name": "manual test 3.25.0",
+  "description": "testing cfe build during release of a non-lts",
+  "type": "policy-set",
+  "git": true,
+  "build": []
+}
