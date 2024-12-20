@@ -3,5 +3,14 @@
   "description": "testing cfe build during release of a non-lts",
   "type": "policy-set",
   "git": true,
-  "build": []
+  "build": [
+    {
+      "name": "masterfiles",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
+      "url": "https://github.com/cfengine/masterfiles",
+      "commit": "28114b7e72ff3b1954453a385caa7166b30508cf",
+      "added_by": "cfbs add",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    }
+  ]
 }
