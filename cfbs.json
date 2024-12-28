@@ -166,6 +166,17 @@
       "subdirectory": "reporting/client-initiated-reporting",
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "./timex-familyconnect-senior.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./timex-familyconnect-senior.cf services/cfbs/timex-familyconnect-senior.cf",
+        "policy_files services/cfbs/timex-familyconnect-senior.cf",
+        "bundles timex_familyconnect_senior"
+      ]
     }
   ]
 }

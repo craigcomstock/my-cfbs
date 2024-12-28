@@ -1,0 +1,11 @@
+bundle agent timex_familyconnect_senior
+{
+  classes:
+    termux::
+      "has_tcl_log" expression => isdir("/sdcard/TCL_LOG");
+
+  files:
+    has_tcl_log::
+      "/sdcard/TCL_LOG/tcl_log.txt*"
+        delete => tidy;
+}
