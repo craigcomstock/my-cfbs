@@ -6,6 +6,6 @@ bundle agent timex_familyconnect_senior
 
   files:
     has_tcl_log::
-      "/sdcard/TCL_LOG/tcl_log.txt.*"
+      "/sdcard/TCL_LOG/tcl_log.*"
         delete => tidy;
 }
