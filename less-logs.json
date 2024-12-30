@@ -1,0 +1,7 @@
+{
+  "variables": {
+    "default:def.mpf_log_dir_retention": {
+      "value": "7"
+    }
+  }
+}

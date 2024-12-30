@@ -177,6 +177,13 @@
         "policy_files services/cfbs/timex-familyconnect-senior.cf",
         "bundles timex_familyconnect_senior"
       ]
+    },
+    {
+      "name": "./less-logs.json",
+      "description": "Local augments file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["json ./less-logs.json def.json"]
     }
   ]
 }
