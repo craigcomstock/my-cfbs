@@ -184,13 +184,6 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["json ./less-logs.json def.json"]
-    },
-    {
-      "name": "./allow-fp4-hotspot-devices.json",
-      "description": "Local augments file added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": ["json ./allow-fp4-hotspot-devices.json def.json"]
     }
   ]
 }
