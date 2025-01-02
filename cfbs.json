@@ -8,7 +8,7 @@
       "name": "masterfiles",
       "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
       "url": "https://github.com/craigcomstock/masterfiles",
-"commit": "c1078c1a3b98020a08e9696e8314238328736c21",
+      "commit": "c1078c1a3b98020a08e9696e8314238328736c21",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
@@ -184,6 +184,13 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["json ./less-logs.json def.json"]
+    },
+    {
+      "name": "./allow-fp4-hotspot-devices.json",
+      "description": "Local augments file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["json ./allow-fp4-hotspot-devices.json def.json"]
     }
   ]
 }
