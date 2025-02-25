@@ -11,6 +11,13 @@
       "commit": "d2e59c8c612500c2b80210d72721fa65fe937e32",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "./no-share-gui.json",
+      "description": "Local augments file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["json ./no-share-gui.json def.json"]
     }
   ]
 }
