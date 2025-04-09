@@ -17,6 +17,18 @@
         "run EXPLICIT_VERSION=3.24.1 EXPLICIT_RELEASE=1 ./prepare.sh -y",
         "copy ./ ./"
       ]
+    },
+    {
+      "name": "package-module-android-application",
+      "description": "Android application package module.",
+      "url": "https://github.com/craigcomstock/cfengine-android-helpers",
+      "commit": "d3f2c21411f40cc8f1e75ce0d379b55f1e3ba8d0",
+      "subdirectory": "management/package-module-android-application",
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/modules/package-module-android-application/",
+        "policy_files services/cfbs/modules/package-module-android-application/package-module-android-application.cf"
+      ]
     }
   ]
 }
