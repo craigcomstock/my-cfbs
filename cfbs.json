@@ -98,6 +98,22 @@
         "policy_files services/cfbs/inventory-windows-services/",
         "bundles inventory_windows_services_running"
       ]
+    },
+    {
+      "name": "windows-optional-feature",
+      "description": "Manage and inventory Windows Optional Features.",
+      "tags": ["supported", "windows", "inventory", "management"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/craigcomstock",
+      "version": "1.0.0",
+      "commit": "9daca3b9e366daeeb53e872685a358c78823f29d",
+      "subdirectory": "management/windows-optional-feature",
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/windows-optional-feature/",
+        "policy_files services/cfbs/windows-optional-feature/",
+        "bundles windows_optional_feature"
+      ]
     }
   ]
 }
