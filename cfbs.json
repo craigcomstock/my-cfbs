@@ -121,8 +121,7 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "copy ./windows-openssh-server.cf services/cfbs/windows-openssh-server.cf",
-        "policy_files services/cfbs/windows-openssh-server.cf"
+        "copy ./windows-openssh-server.cf services/cfbs/software/windows/"
       ]
     }
   ]
