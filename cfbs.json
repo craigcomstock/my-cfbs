@@ -49,6 +49,39 @@
           "while": "Do you want to specify more IPs / subnets?"
         }
       ]
+    },
+    {
+      "name": "windows-capability",
+      "description": "Manage and inventory Windows Capabilities.",
+      "tags": ["supported", "windows", "inventory", "management"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/craigcomstock",
+      "version": "1.0.0",
+      "commit": "9daca3b9e366daeeb53e872685a358c78823f29d",
+      "subdirectory": "management/windows-capability",
+      "added_by": "windows-openssh-server",
+      "steps": [
+        "directory ./ services/cfbs/windows-capability/",
+        "policy_files services/cfbs/windows-capability/",
+        "bundles windows_capability"
+      ]
+    },
+    {
+      "name": "windows-openssh-server",
+      "description": "Optionally install Windows OpenSSH Server.",
+      "tags": ["supported", "windows", "management"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/craigcomstock",
+      "version": "1.0.0",
+      "commit": "9daca3b9e366daeeb53e872685a358c78823f29d",
+      "subdirectory": "software/windows",
+      "dependencies": ["windows-capability"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy windows-openssh-server.cf services/cfbs/software/windows/windows-openssh-server.cf",
+        "policy_files services/cfbs/software/windows/windows-openssh-server.cf",
+        "bundles windows_openssh_server"
+      ]
     }
   ]
 }
