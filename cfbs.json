@@ -15,6 +15,14 @@
         "directory ./ services/cfbs/modules/package-module-android-application/",
         "policy_files services/cfbs/modules/package-module-android-application/package-module-android-application.cf"
       ]
+    },
+    {
+      "name": "masterfiles",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
+      "url": "https://github.com/cfengine/masterfiles",
+      "commit": "d38e3a331ee28604b0225dedd8c089aded95e8c1",
+      "added_by": "cfbs add",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     }
   ]
 }
