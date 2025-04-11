@@ -114,6 +114,16 @@
         "policy_files services/cfbs/windows-optional-feature/",
         "bundles windows_optional_feature"
       ]
+    },
+    {
+      "name": "./windows-openssh-server.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./windows-openssh-server.cf services/cfbs/windows-openssh-server.cf",
+        "policy_files services/cfbs/windows-openssh-server.cf"
+      ]
     }
   ]
 }
