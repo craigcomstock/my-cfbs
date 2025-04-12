@@ -3,7 +3,7 @@
     "bundle": "def",
     "label": "Allowed hosts",
     "namespace": "default",
-    "response": ["10.42.0.0/16"],
+    "response": ["10.42.0.0/16", "192.168.1.0/16"],
     "subtype": {
       "label": "IP / subnet",
       "question": "IP / subnet to allow",
