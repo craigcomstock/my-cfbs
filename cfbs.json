@@ -13,6 +13,7 @@
       "added_by": "cfbs add",
       "steps": [
         "directory ./ services/cfbs/modules/package-module-android-application/",
+        "copy ./android_application modules/packages/",
         "policy_files services/cfbs/modules/package-module-android-application/package-module-android-application.cf",
         "json ./enable-android-application-inventory.json def.json"
       ]
