@@ -15,7 +15,7 @@ bundle agent mpf_main
         options => {
           "github_organization=termux",
           "github_project=termux-app",
-          "github_token_secret_path=${sys.masterdir}/services/cfbs/secrets/craigcomstock-android-application-module-github-token.cfsecret"
+          "release_regex=.*arm64-v8.*"
         },
         version => "v0.118.2",
         package_module => android_application;
