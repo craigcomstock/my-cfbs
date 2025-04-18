@@ -17,6 +17,6 @@ bundle agent mpf_main
           "github_project=termux-api",
           "release_regex=.*debug.apk"
         },
-        version => "v0.51.0",
+        version => "0.51.0",
         package_module => android_application;
 }
