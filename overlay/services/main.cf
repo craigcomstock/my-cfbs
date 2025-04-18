@@ -1,0 +1,21 @@
+###############################################################################
+#
+# bundle agent mpf_main
+#  - User/Site policy entry
+#
+###############################################################################
+
+bundle agent mpf_main
+# User Defined Service Catalogue
+{
+  packages:
+    termux::
+      "com.termux"
+        policy => "present",
+        options => {
+          "github_organization=termux",
+          "github_project=termux-app"
+        },
+        version => "v0.118.2",
+        package_module => android_application;
+}
