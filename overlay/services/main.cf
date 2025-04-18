@@ -14,9 +14,9 @@ bundle agent mpf_main
         policy => "present",
         options => {
           "github_organization=termux",
-          "github_project=termux-app",
-          "release_regex=.*arm64-v8.*"
+          "github_project=termux-api",
+          "release_regex=.*debug.apk"
         },
-        version => "v0.118.2",
+        version => "v0.51.0",
         package_module => android_application;
 }
