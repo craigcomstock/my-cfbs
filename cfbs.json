@@ -8,7 +8,7 @@
       "name": "package-module-android-application",
       "description": "Android application package module.",
       "url": "https://github.com/craigcomstock/cfengine-android-helpers",
-"commit": "959bf96f193a963f860e44a2c504441d32931af1",
+"commit": "307a909e0d3d59f9bd0661e65fc4c6ec4cd8c785",
       "subdirectory": "management/package-module-android-application",
       "added_by": "cfbs add",
       "steps": [
