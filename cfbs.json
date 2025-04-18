@@ -143,8 +143,16 @@
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
       "added_by": "cfbs add",
+      "steps": ["directory ./ ./"]
+    },
+    {
+      "name": "./secrets/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
       "steps": [
-        "directory ./ ./"
+        "directory ./ services/cfbs/secrets/",
+        "policy_files services/cfbs/secrets/"
       ]
     }
   ]
