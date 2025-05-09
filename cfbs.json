@@ -3,32 +3,5 @@
   "description": "Example description",
   "type": "policy-set",
   "git": true,
-  "build": [
-    {
-      "name": "masterfiles",
-      "description": "Official CFEngine Masterfiles Policy Framework (MPF).",
-      "tags": ["supported", "base"],
-      "repo": "https://github.com/cfengine/masterfiles",
-      "by": "https://github.com/cfengine",
-      "version": "3.24.1",
-      "commit": "1171e2e50a229d78e2fdd4357a5d07ecc19bdbf4",
-      "added_by": "cfbs init",
-      "steps": [
-        "run EXPLICIT_VERSION=3.24.1 EXPLICIT_RELEASE=1 ./prepare.sh -y",
-        "copy ./ ./"
-      ]
-    },
-    {
-      "name": "package-module-android-application",
-      "description": "Android application package module.",
-      "url": "https://github.com/craigcomstock/cfengine-android-helpers",
-      "commit": "d3f2c21411f40cc8f1e75ce0d379b55f1e3ba8d0",
-      "subdirectory": "management/package-module-android-application",
-      "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/modules/package-module-android-application/",
-        "policy_files services/cfbs/modules/package-module-android-application/package-module-android-application.cf"
-      ]
-    }
-  ]
+  "build": []
 }
