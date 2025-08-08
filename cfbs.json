@@ -5,18 +5,6 @@
   "git": true,
   "build": [
     {
-      "name": "autorun",
-      "description": "Enables autorun functionality.",
-      "tags": ["supported", "management"],
-      "repo": "https://github.com/cfengine/modules",
-      "by": "https://github.com/olehermanse",
-      "version": "1.0.2",
-      "commit": "e603b586e4028364ceea234f3b71c6e5d78b811e",
-      "subdirectory": "management/autorun",
-      "added_by": "cfbs add",
-      "steps": ["json def.json def.json"]
-    },
-    {
       "name": "masterfiles",
       "description": "Official CFEngine Masterfiles Policy Framework (MPF).",
       "tags": ["supported", "base"],
