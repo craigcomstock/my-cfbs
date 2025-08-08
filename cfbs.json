@@ -17,6 +17,18 @@
         "run EXPLICIT_VERSION=3.24.2 EXPLICIT_RELEASE=1 ./prepare.sh -y",
         "copy ./ ./"
       ]
+    },
+    {
+      "name": "autorun",
+      "description": "Enables autorun functionality.",
+      "tags": ["supported", "management"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/olehermanse",
+      "version": "1.0.2",
+      "commit": "e603b586e4028364ceea234f3b71c6e5d78b811e",
+      "subdirectory": "management/autorun",
+      "added_by": "cfbs add",
+      "steps": ["json def.json def.json"]
     }
   ]
 }
