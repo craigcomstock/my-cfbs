@@ -144,6 +144,17 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["directory ./ ./"]
+    },
+    {
+      "name": "./test-custom-inventory.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./test-custom-inventory.cf services/cfbs/test-custom-inventory.cf",
+        "policy_files services/cfbs/test-custom-inventory.cf",
+        "bundles test_custom_inventory"
+      ]
     }
   ]
 }

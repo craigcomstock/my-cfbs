@@ -1,0 +1,5 @@
+bundle agent test_custom_inventory
+{
+  vars:
+    "TEST" string => "TEST", meta => { "inventory", "attribute_name=Test" };
+}
