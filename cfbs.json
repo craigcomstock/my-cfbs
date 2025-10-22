@@ -13,17 +13,13 @@
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
     {
-      "name": "inventory-sudoers",
-      "description": "Adds reporting data (inventory) for users with sudo access.",
-      "tags": ["supported", "inventory", "security", "sudo"],
-      "repo": "https://github.com/nickanderson/cfengine-inventory-sudoers",
-      "by": "https://github.com/nickanderson",
-      "version": "1.0.3",
-      "commit": "7f6be96d4b8e759de3463facbd3144c8b22cdc78",
+      "name": "./overlay/controls/cf_serverd.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "copy ./policy/main.cf services/inventory-sudoers/main.cf",
-        "json ./cfbs/def.json def.json"
+        "copy ./overlay/controls/cf_serverd.cf services/cfbs/overlay/controls/cf_serverd.cf",
+        "policy_files services/cfbs/overlay/controls/cf_serverd.cf"
       ]
     }
   ]
