@@ -249,6 +249,7 @@ LogLevel warn
 </IfModule>
 
 
+Timeout 120
 {{#classes.mission_portal_http2_enabled}}
 # Use mod_http2
 LoadModule http2_module modules/mod_http2.so
@@ -263,8 +264,6 @@ SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 <FilesMatch \.php$>
 SetHandler "proxy:fcgi://127.0.0.1:9000"
 </FilesMatch>
-# ProxyTimeout defaults to Timeout which defaults to 1 minute which is a bit too short for some API calls
-ProxyTimeout 120
 {{/classes.mission_portal_http2_enabled}}
 {{^classes.mission_portal_http2_enabled}}
 LoadModule php{{{vars.cfe_internal_hub_vars.php_version}}}_module       modules/libphp{{{vars.cfe_internal_hub_vars.php_version}}}.so
