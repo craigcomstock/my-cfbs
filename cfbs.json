@@ -13,11 +13,11 @@
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
     {
-      "name": "./overlay/controls/cf_serverd.cf",
-      "description": "Local policy file added using cfbs command line",
+      "name": "./overlay/",
+      "description": "masterfiles overlays",
       "tags": ["local"],
       "added_by": "cfbs add",
-      "steps": ["copy ./overlay/controls/cf_serverd.cf ./controls"]
+      "steps": ["copy ./ ./"]
     },
     {
       "name": "./execd-no-schedule.json",
