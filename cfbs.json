@@ -17,9 +17,14 @@
       "description": "Local policy file added using cfbs command line",
       "tags": ["local"],
       "added_by": "cfbs add",
-      "steps": [
-        "copy ./overlay/controls/cf_serverd.cf ./controls"
-      ]
+      "steps": ["copy ./overlay/controls/cf_serverd.cf ./controls"]
+    },
+    {
+      "name": "./execd-no-schedule.json",
+      "description": "Local augments file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["json ./execd-no-schedule.json def.json"]
     }
   ]
 }
