@@ -18,8 +18,7 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "copy ./overlay/controls/cf_serverd.cf services/cfbs/overlay/controls/cf_serverd.cf",
-        "policy_files services/cfbs/overlay/controls/cf_serverd.cf"
+        "copy ./overlay/controls/cf_serverd.cf ./controls"
       ]
     }
   ]
