@@ -25,13 +25,6 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": ["json ./execd-no-schedule.json def.json"]
-    },
-    {
-      "name": "./long-agent-expireafter.json",
-      "description": "Local augments file added using cfbs command line",
-      "tags": ["local"],
-      "added_by": "cfbs add",
-      "steps": ["json ./long-agent-expireafter.json def.json"]
     }
   ]
 }
