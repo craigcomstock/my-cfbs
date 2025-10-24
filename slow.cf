@@ -1,0 +1,5 @@
+bundle agent slow
+{
+  commands: "/bin/sleep 90" comment => "just be slow to make policy eval slow and nudge the ENT-13291 bug";
+  reports: "I am slow!";
+}

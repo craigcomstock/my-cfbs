@@ -11,6 +11,17 @@
       "commit": "ada818c6ed45c48af155c961f9ff1ef3c0b28f29",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "./slow.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./slow.cf services/cfbs/slow.cf",
+        "policy_files services/cfbs/slow.cf",
+        "bundles slow"
+      ]
     }
   ]
 }
