@@ -3,5 +3,14 @@
   "description": "Example description",
   "type": "policy-set",
   "git": true,
-  "build": []
+  "build": [
+    {
+      "name": "masterfiles",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
+      "url": "https://github.com/craigcomstock/masterfiles",
+      "commit": "ada818c6ed45c48af155c961f9ff1ef3c0b28f29",
+      "added_by": "cfbs add",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    }
+  ]
 }
