@@ -17,10 +17,14 @@
       "description": "Local subdirectory added using cfbs command line",
       "tags": ["local"],
       "added_by": "cfbs add",
-      "steps": [
-        "directory ./ services/cfbs/mpf-overlay/",
-        "policy_files services/cfbs/mpf-overlay/"
-      ]
+      "steps": ["directory ./ ./"]
+    },
+    {
+      "name": "./un24-settings.json",
+      "description": "Local augments file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["json ./un24-settings.json def.json"]
     }
   ]
 }
