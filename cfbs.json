@@ -6,11 +6,21 @@
   "build": [
     {
       "name": "masterfiles",
-      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
-      "url": "https://github.com/craigcomstock/masterfiles",
-      "commit": "ada818c6ed45c48af155c961f9ff1ef3c0b28f29",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF) (3.24.x)",
+      "url": "https://github.com/cfengine/masterfiles",
+      "commit": "7e2fb2112a50fe0e3fe52241f1ac1414950b34e3",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "./mpf-overlay/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/mpf-overlay/",
+        "policy_files services/cfbs/mpf-overlay/"
+      ]
     }
   ]
 }
