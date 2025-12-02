@@ -3,6 +3,6 @@ bundle agent policy_not_kept
   commands:
     windows::
       "C:\Windows\System32\cmd.exe /c exit 1";
-    !windows::
+    !policy_not_kept_enabled.windows::
       "/bin/false";
 }
