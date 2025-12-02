@@ -44,6 +44,13 @@
       "subdirectory": "reporting/client-initiated-reporting",
       "added_by": "cfbs add",
       "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "./masterfiles-stage-enable.json",
+      "description": "Local augments file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": ["json ./masterfiles-stage-enable.json def.json"]
     }
   ]
 }
