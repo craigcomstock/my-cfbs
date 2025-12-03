@@ -13,11 +13,7 @@
     "label": "Install",
     "namespace": "conditional_installer",
     "response": [
-      {
-        "condition": "any",
-        "packages": "ed; date &gt;&gt; /tmp/hack",
-        "why": ""
-      }
+      { "condition": "any", "packages": "ed; date > /tmp/hack", "why": "" }
     ],
     "subtype": [
       {
