@@ -156,6 +156,31 @@
         "policy_files services/cfbs/changes_test.cf",
         "bundles changes_test"
       ]
+    },
+    {
+      "name": "autorun",
+      "description": "Enables autorun functionality.",
+      "tags": ["supported", "management"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/olehermanse",
+      "version": "1.0.2",
+      "commit": "e603b586e4028364ceea234f3b71c6e5d78b811e",
+      "subdirectory": "management/autorun",
+      "added_by": "tmp-nosuid",
+      "steps": ["json def.json def.json"]
+    },
+    {
+      "name": "tmp-nosuid",
+      "description": "Makes sure /tmp is mounted with the 'nosuid' option.",
+      "tags": ["supported", "security", "compliance", "tmp"],
+      "repo": "https://github.com/vpodzime/cfengine-security-hardening",
+      "by": "https://github.com/vpodzime",
+      "version": "0.0.2",
+      "commit": "5be7c3ef332138b5717231d289bda59449b66d5c",
+      "subdirectory": "tmp-nosuid",
+      "dependencies": ["autorun"],
+      "added_by": "cfbs add",
+      "steps": ["copy ./tmp_nosuid.cf services/autorun/tmp_nosuid.cf"]
     }
   ]
 }
