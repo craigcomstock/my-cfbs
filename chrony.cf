@@ -1,5 +1,11 @@
 bundle agent chrony
 {
+  methods:
+    !windows:: "chrony_main";
+}
+
+bundle agent chrony_main
+{
   meta:
     "tags" slist => { "autorun" };
 
