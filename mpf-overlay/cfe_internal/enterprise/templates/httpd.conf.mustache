@@ -10,7 +10,7 @@ ServerRoot "{{{vars.sys.workdir}}}/httpd"
 # ENT-10646 - Listen 80 often causes IPv6 related errors, specifying ipv4 squashes them.
 #   Unclear why the same is not an issue for 443
 #   To enable listening on ipv6 add Listen [::]:80
-Listen 0.0.0.0:80
+Listen 0.0.0.0:{{{vars.cfe_internal_hub_vars.http_port}}}
 {{/classes.cfe_enterprise_disable_plain_http}}
 
 PidFile "{{{vars.mission_portal_apache_from_stage.httpd_pid_file}}}"
@@ -110,7 +110,12 @@ DocumentRoot "{{{vars.cfe_internal_hub_vars.public_docroot}}}"
 </FilesMatch>
 
 ErrorLog "logs/error_log"
+{{#data:cfengine_enterprise_mission_portal_debug_php_fpm}}
+LogLevel warn rewrite:trace6 proxy:debug proxy_fcgi:debug dir:debug
+{{/data:cfengine_enterprise_mission_portal_debug_php_fpm}}
+{{^data:cfengine_enterprise_mission_portal_debug_php_fpm}}
 LogLevel warn
+{{/data:cfengine_enterprise_mission_portal_debug_php_fpm}}
 
 <IfModule log_config_module>
     LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
@@ -135,7 +140,7 @@ LogLevel warn
   # This content used to be included from an external file
   # /var/cfengine/httpd/conf/extra/httpd-ssl.conf
 
-  Listen 8024
+  Listen {{{vars.cfe_internal_hub_vars.https_port}}}
 
   AddType application/x-x509-ca-cert .crt
   AddType application/x-pkcs7-crl    .crl
@@ -183,12 +188,12 @@ LogLevel warn
   SSLRandomSeed startup builtin
   SSLRandomSeed connect builtin
 
-  <VirtualHost _default_:8024>
+  <VirtualHost _default_:{{{vars.cfe_internal_hub_vars.https_port}}}>
     DocumentRoot "{{{vars.cfe_internal_hub_vars.public_docroot}}}"
     Alias "/api" "{{{vars.cfe_internal_hub_vars.docroot}}}/api"
     Alias "/api/static" "{{{vars.cfe_internal_hub_vars.docroot}}}/api/static"
     Alias "/ldap" "{{{vars.cfe_internal_hub_vars.docroot}}}/ldap"
-    ServerName {{{vars.sys.fqhost}}}:8024
+    ServerName {{{vars.sys.fqhost}}}:{{{vars.cfe_internal_hub_vars.https_port}}}
     # ServerAdmin root@localhost
     ErrorLog "{{{vars.cfe_internal_hub_vars.error_log}}}"
     LogFormat "%h %l %{username}n %t \"%r\" %>s %b"
@@ -244,10 +249,29 @@ LogLevel warn
 </IfModule>
 
 
+# Timeout defaults to 60 but that is too short for some operations on slower hub hardware
+Timeout 120
+
+{{#classes.mission_portal_http2_enabled}}
+# Use mod_http2
+LoadModule http2_module modules/mod_http2.so
+# Prefer http2 protocol
+Protocols h2 h2c http/1.1
+
+# Setup php to be handled by php-fpm. Required for use of mod_http2 due to threading issues in php.
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule proxy_fcgi_module modules/mod_proxy_fcgi.so
+# Need to pass auth headers to fpm
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+<FilesMatch \.php$>
+SetHandler "proxy:fcgi://127.0.0.1:9000"
+</FilesMatch>
+{{/classes.mission_portal_http2_enabled}}
+{{^classes.mission_portal_http2_enabled}}
 LoadModule php{{{vars.cfe_internal_hub_vars.php_version}}}_module       modules/libphp{{{vars.cfe_internal_hub_vars.php_version}}}.so
 AddHandler php{{{vars.cfe_internal_hub_vars.php_version}}}-script       .php
 AddType    application/x-httpd-php-source php{{{vars.cfe_internal_hub_vars.php_version}}}
-
+{{/classes.mission_portal_http2_enabled}}
 
 <Directory "{{{vars.cfe_internal_hub_vars.public_docroot}}}">
 
@@ -258,12 +282,6 @@ AddType    application/x-httpd-php-source php{{{vars.cfe_internal_hub_vars.php_v
 
   <IfModule rewrite_module>
     RewriteEngine On
-
-    {{^classes.cfe_enterprise_disable_http_redirect_to_https}}
-    # Force https with redirection
-    RewriteCond %{HTTPS} off
-    RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-    {{/classes.cfe_enterprise_disable_http_redirect_to_https}}
 
     {{#classes.mission_portal_index_php_redirect_enabled}}
     # redirect from `index.php/path` to `/path`
@@ -281,7 +299,6 @@ AddType    application/x-httpd-php-source php{{{vars.cfe_internal_hub_vars.php_v
 </Directory>
 
 <Directory "{{{vars.cfe_internal_hub_vars.docroot}}}/api">
-  Timeout 120 # Increase timeout for the API, especially agent_run. See ENT-13291
 
     Order deny,allow
     AllowOverride None
