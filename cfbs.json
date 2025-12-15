@@ -6,9 +6,9 @@
   "build": [
     {
       "name": "masterfiles",
-      "description": "Official CFEngine Masterfiles Policy Framework (MPF) (3.24.x)",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF) (3.27.x)",
       "url": "https://github.com/cfengine/masterfiles",
-      "commit": "7e2fb2112a50fe0e3fe52241f1ac1414950b34e3",
+"commit": "d2a424c8852459f68d01d60148978618f4a8d0cb",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
