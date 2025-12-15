@@ -1,5 +1,5 @@
 {
-  "classes": {
-    "default:mpf_disable_mission_portal_docroot_sync_from_share_gui": [ "any" ]
+  "vars": {
+    "cfe_internal_hub_vars.https_port" : "8024"
   }
 }
