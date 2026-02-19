@@ -1,0 +1,8 @@
+bundle agent run_script_update
+{
+  vars:
+    "script_path" string =>     "${sys.inputdir}/services/cfbs/run-script/test.sh";
+
+  commands:
+    "/bin/sh ${script_path}";
+}

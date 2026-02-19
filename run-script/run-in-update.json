@@ -1,0 +1,14 @@
+{
+  "variables": {
+    "default:def.update_inputs": {
+      "value": [
+        "services/cfbs/run-script/main.cf"
+      ]
+    },
+    "default:def.control_common_update_bundlesequence_end": {
+      "value": [
+        "run_script_update"
+      ]
+    }
+  }
+}
