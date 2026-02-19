@@ -25,7 +25,7 @@
       "added_by": "cfbs add",
       "steps": [
         "directory ./ services/cfbs/run-script/",
-        "policy_files services/cfbs/run-script/"
+        "run ./test.sh"
       ]
     }
   ]

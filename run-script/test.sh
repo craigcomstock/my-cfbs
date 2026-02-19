@@ -1,2 +1,2 @@
 date
-date >> /var/cfengine/state/cfbs-run-script.log
+date >> /tmp/cfbs-run-script.log
