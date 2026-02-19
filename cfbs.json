@@ -17,6 +17,16 @@
         "run EXPLICIT_VERSION=3.27.0 EXPLICIT_RELEASE=1 ./prepare.sh -y",
         "copy ./ ./"
       ]
+    },
+    {
+      "name": "./run-script/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/run-script/",
+        "policy_files services/cfbs/run-script/"
+      ]
     }
   ]
 }
