@@ -22,7 +22,7 @@
       "name": "masterfiles",
       "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
       "url": "https://github.com/cfengine/masterfiles",
-      "commit": "2655c7b895fe30b29a24d78dd031801d7713ca81",
+      "commit": "01d6b795c08812e9d3310c2fc3b18833d6a0809c",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
@@ -91,9 +91,9 @@
       "tags": ["supported", "windows", "inventory", "security"],
       "repo": "https://github.com/cfengine/modules",
       "by": "https://github.com/craigcomstock",
-      "version": "0.0.1",
-      "commit": "bf3b21d34d6506671fb7977443d9bfa24ea25241",
-      "subdirectory": "inventory",
+      "version": "0.0.2",
+      "commit": "2c7058ed30a821e4abd85e57326a9c2fba4c7c51",
+      "subdirectory": "inventory/inventory-windows-services",
       "added_by": "cfbs add",
       "steps": [
         "copy inventory-windows-services.cf services/cfbs/inventory-windows-services/",
