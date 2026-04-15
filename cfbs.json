@@ -20,9 +20,9 @@
     },
     {
       "name": "masterfiles",
-      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
-      "url": "https://github.com/cfengine/masterfiles",
-      "commit": "01d6b795c08812e9d3310c2fc3b18833d6a0809c",
+      "description": "cfe-4623 PR",
+      "url": "https://github.com/craigcomstock/masterfiles",
+"commit": "ce7d4e5de00257043d8418567cae53819cd42376",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
