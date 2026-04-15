@@ -19,14 +19,6 @@
       ]
     },
     {
-      "name": "masterfiles",
-      "description": "cfe-4623 PR",
-      "url": "https://github.com/craigcomstock/masterfiles",
-"commit": "ce7d4e5de00257043d8418567cae53819cd42376",
-      "added_by": "cfbs add",
-      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
-    },
-    {
       "name": "allow-hosts",
       "description": "Allows specific hosts (by IP / subnet) to connect and fetch policy.",
       "tags": ["management", "security", "experimental"],
