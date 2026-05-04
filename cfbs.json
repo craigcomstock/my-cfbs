@@ -155,6 +155,16 @@
       "commit": "003ac1e521c490ec43f6179ed6588d599323345a",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "./ent-13756-build-always/",
+      "description": "Local subdirectory added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "directory ./ services/cfbs/ent-13756-build-always/",
+        "policy_files services/cfbs/ent-13756-build-always/"
+      ]
     }
   ]
 }
