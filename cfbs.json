@@ -162,8 +162,8 @@
       "tags": ["local"],
       "added_by": "cfbs add",
       "steps": [
-        "directory ./ services/cfbs/ent-13756-build-always/",
-        "policy_files services/cfbs/ent-13756-build-always/"
+        "run ./now.sh",
+        "directory ./ services/cfbs/ent-13756-build-always/"
       ]
     }
   ]
