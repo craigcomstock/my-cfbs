@@ -152,7 +152,7 @@
       "name": "masterfiles",
       "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
       "url": "https://github.com/cfengine/masterfiles",
-      "commit": "003ac1e521c490ec43f6179ed6588d599323345a",
+"commit": "3c074d6e67702dd3a905deae387eb8994ee1acc1",
       "added_by": "cfbs add",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
     },
