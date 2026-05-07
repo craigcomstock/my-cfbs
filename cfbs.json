@@ -145,6 +145,17 @@
       "steps": [
         "copy ./generated-compliance-report.json .no-distrib/compliance-report-definitions/lynis-compliance-report.json"
       ]
+    },
+    {
+      "name": "./policy-not-kept.cf",
+      "description": "Local policy file added using cfbs command line",
+      "tags": ["local"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./policy-not-kept.cf services/cfbs/policy-not-kept.cf",
+        "policy_files services/cfbs/policy-not-kept.cf",
+        "bundles policy_not_kept"
+      ]
     }
   ]
 }
