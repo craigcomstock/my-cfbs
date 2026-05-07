@@ -1,0 +1,16 @@
+[
+  {
+    "bundle": "def",
+    "label": "Allowed hosts",
+    "namespace": "default",
+    "response": ["172.11.0.0/16"],
+    "subtype": {
+      "label": "IP / subnet",
+      "question": "IP / subnet to allow",
+      "type": "string"
+    },
+    "type": "list",
+    "variable": "acl",
+    "while": "Do you want to specify more IPs / subnets?"
+  }
+]
