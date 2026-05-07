@@ -156,6 +156,32 @@
         "policy_files services/cfbs/policy-not-kept.cf",
         "bundles policy_not_kept"
       ]
+    },
+    {
+      "name": "allow-hosts",
+      "description": "Allows specific hosts (by IP / subnet) to connect and fetch policy.",
+      "tags": ["management", "security", "experimental"],
+      "repo": "https://github.com/olehermanse/cfengine-allow-hosts",
+      "by": "https://github.com/olehermanse",
+      "version": "0.0.2",
+      "commit": "620b4a523d82cb3b50a429b2f8d3511c7efa219c",
+      "added_by": "cfbs add",
+      "steps": ["input ./input.json def.json"],
+      "input": [
+        {
+          "type": "list",
+          "namespace": "default",
+          "bundle": "def",
+          "variable": "acl",
+          "label": "Allowed hosts",
+          "subtype": {
+            "type": "string",
+            "label": "IP / subnet",
+            "question": "IP / subnet to allow"
+          },
+          "while": "Do you want to specify more IPs / subnets?"
+        }
+      ]
     }
   ]
 }
