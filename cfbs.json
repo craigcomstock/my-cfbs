@@ -42,6 +42,109 @@
         "copy ./inventory_passwd_users_all.cf services/local-users/inventory_passwd_users_all/",
         "json cfbs/def.json def.json"
       ]
+    },
+    {
+      "name": "compliance-report-imports",
+      "description": "Used by other modules to import compliance reports to Mission Portal.",
+      "tags": ["cfengine-enterprise", "experimental"],
+      "repo": "https://github.com/nickanderson/cfengine-security-hardening",
+      "by": "https://github.com/nickanderson",
+      "version": "0.0.11",
+      "commit": "9bd8f0d837905b4ae4104d78af26f274d1a45b5e",
+      "subdirectory": "compliance-report-imports",
+      "added_by": "compliance-report-lynis",
+      "steps": [
+        "copy ./compliance-report-imports.cf services/cfbs/modules/compliance-report-imports/compliance-report-imports.cf",
+        "policy_files services/cfbs/modules/compliance-report-imports/compliance-report-imports.cf",
+        "bundles default:compliance_report_imports"
+      ]
+    },
+    {
+      "name": "lynis",
+      "description": "Automates the installation, running, and reporting of CISOfy's lynis system audits.",
+      "tags": ["security", "compliance"],
+      "repo": "https://github.com/nickanderson/cfengine-lynis",
+      "by": "https://github.com/nickanderson",
+      "version": "3.1.6",
+      "commit": "60b97c3e8784238d42ddb33532c7a86de7cde85d",
+      "added_by": "compliance-report-lynis",
+      "steps": [
+        "copy policy/main.cf services/lynis/main.cf",
+        "json cfbs/def.json def.json",
+        "input ./input.json def.json"
+      ],
+      "input": [
+        {
+          "type": "string",
+          "namespace": "lynis",
+          "bundle": "globals",
+          "variable": "version",
+          "label": "Lynis version",
+          "question": "What version of Lynis should be used?",
+          "default": "3.1.6"
+        },
+        {
+          "type": "string",
+          "namespace": "lynis",
+          "bundle": "globals",
+          "variable": "tar_url",
+          "label": "Tarball url",
+          "question": "Where should clients download lynis from (http/https)",
+          "default": "https://downloads.cisofy.com/lynis/lynis-$(version).tar.gz",
+          "comment": "Some may want to self host the tarball within their own infrastructure. This provides an easy way to do that. Note, the archive should be named for the version of Lynis selected."
+        },
+        {
+          "type": "string",
+          "namespace": "lynis",
+          "bundle": "globals",
+          "variable": "archive_hash",
+          "label": "Hash of the tarball",
+          "question": "What is the hash of the tarball?",
+          "default": "0513f62ba5ab615c4333827b804237d58cf7bd623d09e1b4918d3fc85f08fc70"
+        },
+        {
+          "type": "string",
+          "namespace": "lynis",
+          "bundle": "globals",
+          "variable": "hash_type",
+          "label": "Hash type to verify",
+          "question": "What hashing algorithm should be used to verify the Lynis script?",
+          "default": "sha256"
+        },
+        {
+          "type": "string",
+          "namespace": "lynis",
+          "bundle": "globals",
+          "variable": "verify_signature",
+          "label": "Verify GPG signature",
+          "question": "Should the GPG signature of the tarball be verified before extracting? (true/false)",
+          "default": "true"
+        },
+        {
+          "type": "string",
+          "namespace": "lynis",
+          "bundle": "globals",
+          "variable": "gpg_pubkey_url",
+          "label": "GPG public key URL",
+          "question": "Where should the CISOfy GPG signing key be downloaded from?",
+          "default": "https://downloads.cisofy.com/files/cisofy-software.pub"
+        }
+      ]
+    },
+    {
+      "name": "compliance-report-lynis",
+      "description": "Compliance report with Lynis checks.",
+      "tags": ["security", "compliance", "experimental"],
+      "repo": "https://github.com/nickanderson/cfengine-lynis",
+      "by": "https://github.com/nickanderson",
+      "version": "3.1.6",
+      "commit": "c427b0cfd854204a39b3c5aaea907d498577c764",
+      "subdirectory": "compliance-reports",
+      "dependencies": ["compliance-report-imports", "lynis"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./generated-compliance-report.json .no-distrib/compliance-report-definitions/lynis-compliance-report.json"
+      ]
     }
   ]
 }
