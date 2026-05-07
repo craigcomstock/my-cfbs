@@ -182,6 +182,22 @@
           "while": "Do you want to specify more IPs / subnets?"
         }
       ]
+    },
+    {
+      "name": "inventory-windows-services",
+      "description": "Inventory running Windows services.",
+      "tags": ["supported", "windows", "inventory", "security"],
+      "repo": "https://github.com/cfengine/modules",
+      "by": "https://github.com/craigcomstock",
+      "version": "0.0.2",
+      "commit": "2c7058ed30a821e4abd85e57326a9c2fba4c7c51",
+      "subdirectory": "inventory/inventory-windows-services",
+      "added_by": "cfbs add",
+      "steps": [
+        "copy inventory-windows-services.cf services/cfbs/inventory-windows-services/",
+        "policy_files services/cfbs/inventory-windows-services/",
+        "bundles inventory_windows_services_running"
+      ]
     }
   ]
 }
