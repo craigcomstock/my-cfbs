@@ -11,6 +11,37 @@
       "commit": "ed4628805e352fd68d7d72664c859df5a4bb0715",
       "added_by": "cfbs init",
       "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    },
+    {
+      "name": "library-parsed-local-users",
+      "description": "Parses local users from /etc/passwd on the system with their attributes from /etc/shadow.",
+      "tags": ["supported", "library"],
+      "repo": "https://github.com/nickanderson/cfengine-local_users",
+      "by": "https://github.com/nickanderson",
+      "version": "2.0.5",
+      "commit": "ede282c34083ab807543aa734b1142228ab98993",
+      "subdirectory": "parsed_etc_passwd_shadow",
+      "added_by": "inventory-local-users",
+      "steps": [
+        "copy ./parsed_etc_passwd_shadow.cf services/local-users/parsed_etc_passwd_shadow/",
+        "json cfbs/def.json def.json"
+      ]
+    },
+    {
+      "name": "inventory-local-users",
+      "description": "Adds reporting data (inventory) for the local users on the system with their attributes.",
+      "tags": ["supported", "inventory"],
+      "repo": "https://github.com/nickanderson/cfengine-local_users",
+      "by": "https://github.com/nickanderson",
+      "version": "2.0.4",
+      "commit": "3b50be1e5ab09578109921b8f287603b37811350",
+      "subdirectory": "inventory_passwd_users_all",
+      "dependencies": ["library-parsed-local-users"],
+      "added_by": "cfbs add",
+      "steps": [
+        "copy ./inventory_passwd_users_all.cf services/local-users/inventory_passwd_users_all/",
+        "json cfbs/def.json def.json"
+      ]
     }
   ]
 }
