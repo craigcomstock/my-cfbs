@@ -1,0 +1,15 @@
+bundle agent install_brew
+{
+  vars:
+    "brew_user" string => "jenkins"; # todo make this configuration or even auto-detect "primary" user, whatever that means on a system
+  classes:
+    "brew_installed" expression => fileexists("/usr/local/bin/brew");
+
+  commands:
+    "/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
+      if => and(
+not(brew_installed),
+mac_mini
+),
+      contain => setuid("${brew_user}");
+}
