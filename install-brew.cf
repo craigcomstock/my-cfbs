@@ -6,7 +6,7 @@ bundle agent install_brew
     "brew_installed" expression => fileexists("/usr/local/bin/brew");
 
   commands:
-    "/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'"
+    '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"'
       if => and(
 not(brew_installed),
 mac_mini
