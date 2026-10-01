@@ -11,5 +11,5 @@ bundle agent install_brew
 not(brew_installed),
 mac_mini
 ),
-      contain => setuid("${brew_user}");
+      contain => setuid_sh("${brew_user}");
 }
