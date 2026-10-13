@@ -3,5 +3,14 @@
   "description": "Testing CFEngine Build during release",
   "type": "policy-set",
   "git": true,
-  "build": []
+  "build": [
+    {
+      "name": "masterfiles",
+      "description": "Official CFEngine Masterfiles Policy Framework (MPF)",
+      "url": "https://github.com/cfengine/masterfiles",
+      "commit": "3e855b396c4ebfa61ba59665f1cd12e496272e6d",
+      "added_by": "cfbs init",
+      "steps": ["run ./prepare.sh -y", "copy ./ ./"]
+    }
+  ]
 }
