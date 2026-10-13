@@ -1,0 +1,7 @@
+{
+  "name": "CFEngine Release manual testing",
+  "description": "Testing CFEngine Build during release",
+  "type": "policy-set",
+  "git": true,
+  "build": []
+}
